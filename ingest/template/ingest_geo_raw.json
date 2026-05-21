@@ -1,0 +1,90 @@
+{
+  "pipeline_name": "GEO Data Downloader to HDFS (Single Branch Template)",
+  "description": "Luồng xử lý chuẩn để tải và lưu trữ dữ liệu từ NCBI GEO về HDFS",
+  "components": {
+    "segment_1_link_parsing": {
+      "processors": [
+        {
+          "id": "GenerateFlowFile_Processor",
+          "type": "GenerateFlowFile",
+          "version": "1.25.0",
+          "note": "Khởi tạo luồng chạy và chứa dữ liệu cấu hình đầu vào",
+          "output_connections": [
+            {
+              "relationship": "success",
+              "target": "SplitText_Processor"
+            }
+          ]
+        },
+        {
+          "id": "SplitText_Processor",
+          "type": "SplitText",
+          "version": "1.25.0",
+          "note": "Tách dữ liệu text thành từng dòng riêng biệt",
+          "output_connections": [
+            {
+              "relationship": "splits",
+              "target": "ExtractText_Processor"
+            }
+          ]
+        },
+        {
+          "id": "ExtractText_Processor",
+          "type": "ExtractText",
+          "version": "1.25.0",
+          "properties": {
+            "my_url": "(.*)",
+            "Enable Multiline Mode": "false"
+          },
+          "note": "Trích xuất đường dẫn URL từ nội dung văn bản vào thuộc tính thuộc tính my_url",
+          "output_connections": [
+            {
+              "relationship": "matched",
+              "target": "InvokeHTTP_Processor"
+            }
+          ]
+        }
+      ]
+    },
+    "segment_2_data_ingestion": {
+      "processors": [
+        {
+          "id": "InvokeHTTP_Processor",
+          "type": "InvokeHTTP",
+          "version": "1.25.0",
+          "properties": {
+            "Remote URL": "${my_url:trim()}"
+          },
+          "note": "Gửi yêu cầu HTTP GET để tải file từ URL đã trích xuất",
+          "output_connections": [
+            {
+              "relationship": "Response",
+              "target": "UpdateAttribute_Processor"
+            }
+          ]
+        },
+        {
+          "id": "UpdateAttribute_Processor",
+          "type": "UpdateAttribute",
+          "version": "1.25.0",
+          "note": "Đặt lại tên file định dạng chuẩn trước khi lưu trữ",
+          "output_connections": [
+            {
+              "relationship": "success",
+              "target": "PutHDFS_Processor"
+            }
+          ]
+        },
+        {
+          "id": "PutHDFS_Processor",
+          "type": "PutHDFS",
+          "version": "1.25.0",
+          "properties": {
+            "Hadoop Configuration Resources": "/etc/hadoop/conf/core-site.xml, /etc/hadoop/conf/hdfs-site.xml"
+          },
+          "note": "Ghi trực tiếp luồng dữ liệu tải về vào hệ thống thư mục cấu hình trên HDFS"
+        }
+      ]
+    }
+  }
+}

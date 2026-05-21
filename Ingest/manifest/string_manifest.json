@@ -1,0 +1,29 @@
+[
+  {
+    "dataset": "links",
+    "tax_id": "9606",
+    "species": "Homo sapiens",
+    "string_version": "12.0",
+    "url": "https://stringdb-downloads.org/download/protein.links.v12.0/9606.protein.links.v12.0.txt.gz",
+    "filename": "9606.protein.links.v12.0.txt.gz",
+    "hdfs_subdir": "links"
+  },
+  {
+    "dataset": "aliases",
+    "tax_id": "9606",
+    "species": "Homo sapiens",
+    "string_version": "12.0",
+    "url": "https://stringdb-downloads.org/download/protein.aliases.v12.0/9606.protein.aliases.v12.0.txt.gz",
+    "filename": "9606.protein.aliases.v12.0.txt.gz",
+    "hdfs_subdir": "aliases"
+  },
+  {
+    "dataset": "details",
+    "tax_id": "9606",
+    "species": "Homo sapiens",
+    "string_version": "12.0",
+    "url": "https://stringdb-downloads.org/download/protein.info.v12.0/9606.protein.info.v12.0.txt.gz",
+    "filename": "9606.protein.info.v12.0.txt.gz",
+    "hdfs_subdir": "details"
+  }
+]

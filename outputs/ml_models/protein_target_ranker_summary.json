@@ -1,0 +1,292 @@
+{
+  "task": "unsupervised_protein_target_prioritization",
+  "n_targets": 16861,
+  "n_features": 11,
+  "feature_cols": [
+    "gdc_abs_log2_fc",
+    "gdc_neg_log10_fdr",
+    "gdc_neg_log10_p",
+    "target_score",
+    "degree_gene",
+    "weighted_degree_gene",
+    "pagerank",
+    "betweenness_centrality",
+    "geo_validation_bonus",
+    "geo_component_score",
+    "model_importance"
+  ],
+  "n_clusters": 12,
+  "contamination": 0.03,
+  "top_30": [
+    {
+      "protein_ml_rank": 1,
+      "protein_target": "IL6 protein",
+      "encoded_by_gene": "IL6",
+      "protein_ml_priority_score": 1.0,
+      "protein_target_cluster": 9,
+      "target_rank": 297,
+      "target_score": 0.5169073961865772
+    },
+    {
+      "protein_ml_rank": 2,
+      "protein_target": "MME protein",
+      "encoded_by_gene": "MME",
+      "protein_ml_priority_score": 0.983645644847712,
+      "protein_target_cluster": 3,
+      "target_rank": 813,
+      "target_score": 0.4500765937526772
+    },
+    {
+      "protein_ml_rank": 3,
+      "protein_target": "CDK1 protein",
+      "encoded_by_gene": "CDK1",
+      "protein_ml_priority_score": 0.983475423351101,
+      "protein_target_cluster": 9,
+      "target_rank": 342,
+      "target_score": 0.5121985524191331
+    },
+    {
+      "protein_ml_rank": 4,
+      "protein_target": "Cell division cycle protein 20 homolog",
+      "encoded_by_gene": "CDC20",
+      "protein_ml_priority_score": 0.9771820425590456,
+      "protein_target_cluster": 3,
+      "target_rank": 3,
+      "target_score": 0.6119134936007299
+    },
+    {
+      "protein_ml_rank": 5,
+      "protein_target": "EXO1 protein",
+      "encoded_by_gene": "EXO1",
+      "protein_ml_priority_score": 0.9697284649482867,
+      "protein_target_cluster": 3,
+      "target_rank": 9,
+      "target_score": 0.6032880024904006
+    },
+    {
+      "protein_ml_rank": 6,
+      "protein_target": "Cyclin B1",
+      "encoded_by_gene": "CCNB1",
+      "protein_ml_priority_score": 0.9666726896488012,
+      "protein_target_cluster": 3,
+      "target_rank": 2,
+      "target_score": 0.615295585943267
+    },
+    {
+      "protein_ml_rank": 7,
+      "protein_target": "Osteopontin",
+      "encoded_by_gene": "SPP1",
+      "protein_ml_priority_score": 0.9600270115242033,
+      "protein_target_cluster": 4,
+      "target_rank": 18,
+      "target_score": 0.5953212933538929
+    },
+    {
+      "protein_ml_rank": 8,
+      "protein_target": "CDKN2A protein",
+      "encoded_by_gene": "CDKN2A",
+      "protein_ml_priority_score": 0.9463111109865169,
+      "protein_target_cluster": 6,
+      "target_rank": 127,
+      "target_score": 0.5661073388983203
+    },
+    {
+      "protein_ml_rank": 9,
+      "protein_target": "EEF1A2 protein",
+      "encoded_by_gene": "EEF1A2",
+      "protein_ml_priority_score": 0.9415733366351358,
+      "protein_target_cluster": 4,
+      "target_rank": 114,
+      "target_score": 0.5726495603303496
+    },
+    {
+      "protein_ml_rank": 10,
+      "protein_target": "JUN protein",
+      "encoded_by_gene": "JUN",
+      "protein_ml_priority_score": 0.940205283075235,
+      "protein_target_cluster": 3,
+      "target_rank": 409,
+      "target_score": 0.50174561138456
+    },
+    {
+      "protein_ml_rank": 11,
+      "protein_target": "DNA topoisomerase II alpha",
+      "encoded_by_gene": "TOP2A",
+      "protein_ml_priority_score": 0.9376403233407168,
+      "protein_target_cluster": 4,
+      "target_rank": 6,
+      "target_score": 0.6074364446998778
+    },
+    {
+      "protein_ml_rank": 12,
+      "protein_target": "RAD51 protein",
+      "encoded_by_gene": "RAD51",
+      "protein_ml_priority_score": 0.9364697695599731,
+      "protein_target_cluster": 3,
+      "target_rank": 185,
+      "target_score": 0.5436506683284651
+    },
+    {
+      "protein_ml_rank": 13,
+      "protein_target": "Collagen alpha-1(I) chain",
+      "encoded_by_gene": "COL1A1",
+      "protein_ml_priority_score": 0.9337977967541082,
+      "protein_target_cluster": 4,
+      "target_rank": 8,
+      "target_score": 0.6037988476852324
+    },
+    {
+      "protein_ml_rank": 14,
+      "protein_target": "CSF3 protein",
+      "encoded_by_gene": "CSF3",
+      "protein_ml_priority_score": 0.9330125222369129,
+      "protein_target_cluster": 4,
+      "target_rank": 477,
+      "target_score": 0.48927635116084395
+    },
+    {
+      "protein_ml_rank": 15,
+      "protein_target": "STX1A protein",
+      "encoded_by_gene": "STX1A",
+      "protein_ml_priority_score": 0.9329235339238643,
+      "protein_target_cluster": 4,
+      "target_rank": 26,
+      "target_score": 0.5915728235470519
+    },
+    {
+      "protein_ml_rank": 16,
+      "protein_target": "H2AC20 protein",
+      "encoded_by_gene": "H2AC20",
+      "protein_ml_priority_score": 0.9328572894811966,
+      "protein_target_cluster": 3,
+      "target_rank": 1123,
+      "target_score": 0.4258962332958464
+    },
+    {
+      "protein_ml_rank": 17,
+      "protein_target": "ADRB2 protein",
+      "encoded_by_gene": "ADRB2",
+      "protein_ml_priority_score": 0.9322207971931057,
+      "protein_target_cluster": 4,
+      "target_rank": 37,
+      "target_score": 0.5882556328139682
+    },
+    {
+      "protein_ml_rank": 18,
+      "protein_target": "CD4 protein",
+      "encoded_by_gene": "CD4",
+      "protein_ml_priority_score": 0.9297926989540669,
+      "protein_target_cluster": 3,
+      "target_rank": 2612,
+      "target_score": 0.36961314075600166
+    },
+    {
+      "protein_ml_rank": 19,
+      "protein_target": "ALB protein",
+      "encoded_by_gene": "ALB",
+      "protein_ml_priority_score": 0.9284039267850219,
+      "protein_target_cluster": 6,
+      "target_rank": 12491,
+      "target_score": 0.15768808643370022
+    },
+    {
+      "protein_ml_rank": 20,
+      "protein_target": "FAM183A protein",
+      "encoded_by_gene": "FAM183A",
+      "protein_ml_priority_score": 0.9275346277436074,
+      "protein_target_cluster": 6,
+      "target_rank": 1032,
+      "target_score": 0.4320633694161329
+    },
+    {
+      "protein_ml_rank": 21,
+      "protein_target": "CALML5 protein",
+      "encoded_by_gene": "CALML5",
+      "protein_ml_priority_score": 0.9272707977686083,
+      "protein_target_cluster": 6,
+      "target_rank": 5392,
+      "target_score": 0.3060687912820173
+    },
+    {
+      "protein_ml_rank": 22,
+      "protein_target": "ANLN protein",
+      "encoded_by_gene": "ANLN",
+      "protein_ml_priority_score": 0.9254799921467484,
+      "protein_target_cluster": 4,
+      "target_rank": 558,
+      "target_score": 0.4729029580672075
+    },
+    {
+      "protein_ml_rank": 23,
+      "protein_target": "GAPDH protein",
+      "encoded_by_gene": "GAPDH",
+      "protein_ml_priority_score": 0.9245727694504622,
+      "protein_target_cluster": 3,
+      "target_rank": 10774,
+      "target_score": 0.20826614120582695
+    },
+    {
+      "protein_ml_rank": 24,
+      "protein_target": "KIF14 protein",
+      "encoded_by_gene": "KIF14",
+      "protein_ml_priority_score": 0.9242213874703177,
+      "protein_target_cluster": 4,
+      "target_rank": 179,
+      "target_score": 0.5465580655761175
+    },
+    {
+      "protein_ml_rank": 25,
+      "protein_target": "NPM1 protein",
+      "encoded_by_gene": "NPM1",
+      "protein_ml_priority_score": 0.922830175847576,
+      "protein_target_cluster": 3,
+      "target_rank": 1466,
+      "target_score": 0.40891184728688434
+    },
+    {
+      "protein_ml_rank": 26,
+      "protein_target": "HIF1A protein",
+      "encoded_by_gene": "HIF1A",
+      "protein_ml_priority_score": 0.9205473199076607,
+      "protein_target_cluster": 3,
+      "target_rank": 1425,
+      "target_score": 0.4105692920674494
+    },
+    {
+      "protein_ml_rank": 27,
+      "protein_target": "STAT1 protein",
+      "encoded_by_gene": "STAT1",
+      "protein_ml_priority_score": 0.9203376606456812,
+      "protein_target_cluster": 3,
+      "target_rank": 1166,
+      "target_score": 0.4234974074536292
+    },
+    {
+      "protein_ml_rank": 28,
+      "protein_target": "Kinesin-like protein KIF20A",
+      "encoded_by_gene": "KIF20A",
+      "protein_ml_priority_score": 0.9189763478062757,
+      "protein_target_cluster": 4,
+      "target_rank": 15,
+      "target_score": 0.5965376659989735
+    },
+    {
+      "protein_ml_rank": 29,
+      "protein_target": "HSPA9 protein",
+      "encoded_by_gene": "HSPA9",
+      "protein_ml_priority_score": 0.9171635177194126,
+      "protein_target_cluster": 3,
+      "target_rank": 1847,
+      "target_score": 0.3944808551995076
+    },
+    {
+      "protein_ml_rank": 30,
+      "protein_target": "HJURP protein",
+      "encoded_by_gene": "HJURP",
+      "protein_ml_priority_score": 0.9168937055706058,
+      "protein_target_cluster": 4,
+      "target_rank": 47,
+      "target_score": 0.5858829477006541
+    }
+  ]
+}

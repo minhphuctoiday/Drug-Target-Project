@@ -1,0 +1,23 @@
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.ipython/
+.jupyter/
+.matplotlib/
+
+.env
+.env.*
+!.env.example
+
+# Large local data lake artifacts. Keep these outside Git.
+data/raw/
+data/refined/
+data/interim/
+data/processed/
+src/ai_model/*.pkl
+src/ai_model/*.joblib
+
+*.log
+*.tmp

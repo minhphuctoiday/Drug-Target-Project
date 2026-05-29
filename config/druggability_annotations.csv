@@ -1,0 +1,28 @@
+gene_name_norm,druggability_class,druggability_score,drug_class,known_drugs,evidence_note
+PLK1,high_druggability,0.90,kinase inhibitor,volasertib; onvansertib,Mitotic kinase with oncology inhibitor programs; strong LUAD target-candidate evidence in this project.
+AURKB,high_druggability,0.88,Aurora kinase inhibitor,barasertib; alisertib,Aurora kinase family target; cell-cycle dependency signal.
+AURKA,high_druggability,0.88,Aurora kinase inhibitor,alisertib,Aurora kinase target with cancer trial history.
+TOP2A,high_druggability,0.82,topoisomerase inhibitor,etoposide; doxorubicin; irinotecan-related class,Known oncology drug target class; strong proliferative tumor signal.
+BIRC5,moderate_druggability,0.62,apoptosis pathway inhibitor,investigational survivin inhibitors,Survivin is cancer-associated and targetable but clinically challenging.
+CHEK1,high_druggability,0.78,checkpoint kinase inhibitor,prexasertib; rabusertib,DNA damage checkpoint kinase target.
+WEE1,high_druggability,0.78,checkpoint kinase inhibitor,adavosertib,Cell-cycle checkpoint kinase target.
+CDK1,moderate_druggability,0.65,CDK inhibitor,broad CDK inhibitors,Central cell-cycle kinase; selectivity and toxicity require caution.
+CDK4,high_druggability,0.86,CDK4/6 inhibitor,palbociclib; ribociclib; abemaciclib,Clinically validated CDK inhibitor class.
+CDK6,high_druggability,0.86,CDK4/6 inhibitor,palbociclib; ribociclib; abemaciclib,Clinically validated CDK inhibitor class.
+EGFR,high_druggability,0.95,EGFR inhibitor,erlotinib; gefitinib; osimertinib,Canonical LUAD target; included for known-target context.
+ALK,high_druggability,0.95,ALK inhibitor,crizotinib; alectinib; brigatinib,Canonical LUAD target; included for known-target context.
+MET,high_druggability,0.90,MET inhibitor,capmatinib; tepotinib,Actionable LUAD target in selected genomic contexts.
+RET,high_druggability,0.90,RET inhibitor,selpercatinib; pralsetinib,Actionable kinase target in selected genomic contexts.
+ROS1,high_druggability,0.90,ROS1 inhibitor,crizotinib; entrectinib,Actionable kinase target in selected genomic contexts.
+ERBB2,high_druggability,0.90,HER2-targeted therapy,trastuzumab deruxtecan; trastuzumab,Known oncology target with lung cancer relevance in selected contexts.
+KRAS,moderate_druggability,0.70,KRAS inhibitor,sotorasib; adagrasib,Actionable for specific KRAS variants; expression alone is not enough.
+PIK3CA,high_druggability,0.80,PI3K inhibitor,alpelisib,Known pathway target; context-specific.
+MTOR,high_druggability,0.75,mTOR inhibitor,everolimus; temsirolimus,Known signaling target; context-specific.
+VEGFA,moderate_druggability,0.70,anti-angiogenic therapy,bevacizumab,Secreted angiogenesis ligand; clinically targetable pathway.
+KDR,high_druggability,0.76,VEGFR inhibitor,ramucirumab; multi-kinase inhibitors,Angiogenesis receptor target.
+SPP1,contextual_druggability,0.45,secreted/microenvironment target,none established,Strong expression/target signal; druggability more indirect and microenvironment-oriented.
+COL1A1,contextual_druggability,0.35,ECM remodeling target,none established,ECM marker; useful biology signal but direct druggability is limited.
+FOS,contextual_druggability,0.25,transcription factor pathway,none established,Important regulatory signal; direct druggability is difficult.
+EZH2,high_druggability,0.80,EZH2 inhibitor,tazemetostat,Epigenetic oncology target.
+MMP1,moderate_druggability,0.55,MMP inhibitor,broad MMP inhibitor class,ECM remodeling enzyme; historical toxicity/selectivity caveats.
+MMP9,moderate_druggability,0.55,MMP inhibitor,broad MMP inhibitor class,ECM remodeling enzyme; historical toxicity/selectivity caveats.

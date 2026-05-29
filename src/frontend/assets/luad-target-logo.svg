@@ -1,0 +1,52 @@
+<svg width="192" height="192" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="LUAD Protein Target Atlas logo">
+  <defs>
+    <radialGradient id="coreGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(70 54) rotate(48.2) scale(128 116)">
+      <stop stop-color="#63D7FF" stop-opacity="0.92"/>
+      <stop offset="0.42" stop-color="#31D69B" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#06100F" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="frame" x1="27" y1="16" x2="165" y2="176" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#31D69B"/>
+      <stop offset="0.52" stop-color="#63D7FF"/>
+      <stop offset="1" stop-color="#8DA2FF"/>
+    </linearGradient>
+    <linearGradient id="helix" x1="55" y1="41" x2="139" y2="150" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EDF8F3"/>
+      <stop offset="0.4" stop-color="#63D7FF"/>
+      <stop offset="1" stop-color="#31D69B"/>
+    </linearGradient>
+    <filter id="softGlow" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.19 0 0 0 0 0.84 0 0 0 0 0.61 0 0 0 0.72 0"/>
+      <feBlend in="SourceGraphic"/>
+    </filter>
+  </defs>
+
+  <rect x="14" y="14" width="164" height="164" rx="34" fill="#081412"/>
+  <rect x="15" y="15" width="162" height="162" rx="33" stroke="url(#frame)" stroke-opacity="0.76" stroke-width="2"/>
+  <path d="M21 143C49 123 72 126 96 143C121 161 144 157 171 136" stroke="#31D69B" stroke-opacity="0.22" stroke-width="22" stroke-linecap="round"/>
+  <circle cx="96" cy="96" r="73" fill="url(#coreGlow)"/>
+
+  <path d="M47 128C75 119 118 72 145 57" stroke="#63D7FF" stroke-opacity="0.38" stroke-width="4" stroke-linecap="round"/>
+  <path d="M47 64C77 74 115 122 145 136" stroke="#31D69B" stroke-opacity="0.38" stroke-width="4" stroke-linecap="round"/>
+
+  <g filter="url(#softGlow)">
+    <path d="M58 48C93 54 99 137 134 143" stroke="url(#helix)" stroke-width="8" stroke-linecap="round"/>
+    <path d="M134 48C99 54 93 137 58 143" stroke="url(#helix)" stroke-width="8" stroke-linecap="round"/>
+  </g>
+
+  <path d="M64 65H128" stroke="#BDEFE1" stroke-opacity="0.86" stroke-width="4" stroke-linecap="round"/>
+  <path d="M70 86H122" stroke="#BDEFE1" stroke-opacity="0.7" stroke-width="4" stroke-linecap="round"/>
+  <path d="M70 107H122" stroke="#BDEFE1" stroke-opacity="0.7" stroke-width="4" stroke-linecap="round"/>
+  <path d="M64 128H128" stroke="#BDEFE1" stroke-opacity="0.86" stroke-width="4" stroke-linecap="round"/>
+
+  <circle cx="58" cy="48" r="8" fill="#31D69B"/>
+  <circle cx="134" cy="48" r="8" fill="#63D7FF"/>
+  <circle cx="58" cy="143" r="8" fill="#63D7FF"/>
+  <circle cx="134" cy="143" r="8" fill="#31D69B"/>
+  <circle cx="96" cy="96" r="13" fill="#07100F" stroke="#FFCD72" stroke-width="4"/>
+  <circle cx="96" cy="96" r="4" fill="#FFCD72"/>
+
+  <path d="M33 158H55L65 139L80 165L94 132L108 158H159" stroke="#FFCD72" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="159" cy="158" r="5" fill="#FFCD72"/>
+</svg>

@@ -1,0 +1,27 @@
+{
+  "task": "GDC tumor_vs_normal sample classification input",
+  "label_source": "refined gdc/annotate.parquet sample_type",
+  "anti_leakage_design": [
+    "Train/validation/test split is created before feature selection.",
+    "Gene selection uses only train split expression distributions.",
+    "Selection is unsupervised: prevalence, mean expression, and train variance only.",
+    "No tumor/normal differential expression score is used to choose sample-classification features."
+  ],
+  "shape_all": [
+    516,
+    2000
+  ],
+  "split_counts": {
+    "normal": {
+      "test": 4,
+      "train": 16,
+      "val": 4
+    },
+    "tumor": {
+      "test": 74,
+      "train": 344,
+      "val": 74
+    }
+  },
+  "selected_feature_count": 2000
+}

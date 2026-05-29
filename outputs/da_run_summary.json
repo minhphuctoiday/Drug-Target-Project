@@ -1,0 +1,227 @@
+{
+  "parameters": {
+    "batch_size_da": 250000,
+    "string_confidence": 700,
+    "betweenness_top_n": 400,
+    "betweenness_k": 48,
+    "top_n": 100
+  },
+  "gdc_labels": {
+    "label_source": "refined gdc/annotate.parquet sample_type",
+    "file_counts": {
+      "tumor": 492,
+      "normal": 24
+    }
+  },
+  "network": {
+    "confidence_threshold": 700,
+    "edge_rows_after_filter": 240723,
+    "graph_nodes": 19175,
+    "graph_edges": 235148,
+    "betweenness_subgraph_nodes": 8794,
+    "betweenness_subgraph_edges": 190065
+  },
+  "master_rows": 16866,
+  "expression_status_counts": [
+    [
+      "Not significant",
+      13852
+    ],
+    [
+      "FDR Up-regulated",
+      887
+    ],
+    [
+      "Nominal Up-regulated",
+      758
+    ],
+    [
+      "FDR Down-regulated",
+      698
+    ],
+    [
+      "Nominal Down-regulated",
+      671
+    ]
+  ],
+  "geo_validation_counts": [
+    [
+      "geo_weak_signal",
+      7299
+    ],
+    [
+      "missing_geo",
+      7062
+    ],
+    [
+      "validated",
+      2046
+    ],
+    [
+      "conflicting",
+      459
+    ]
+  ],
+  "top_20_targets": [
+    {
+      "gene_name_norm": "PLK1",
+      "target_rank": 1,
+      "target_score": 0.6256816087208867,
+      "gdc_log2_fc": 2.535514007165149,
+      "gdc_adj_p_value": 4.117973020877867e-17,
+      "geo_validation_status": "validated"
+    },
+    {
+      "gene_name_norm": "CCNB1",
+      "target_rank": 2,
+      "target_score": 0.615295585943267,
+      "gdc_log2_fc": 2.7476348802906454,
+      "gdc_adj_p_value": 1.5679856980337607e-20,
+      "geo_validation_status": "validated"
+    },
+    {
+      "gene_name_norm": "CDC20",
+      "target_rank": 3,
+      "target_score": 0.6119134936007299,
+      "gdc_log2_fc": 3.391004721846256,
+      "gdc_adj_p_value": 3.355138011851702e-15,
+      "geo_validation_status": "validated"
+    },
+    {
+      "gene_name_norm": "CAV1",
+      "target_rank": 4,
+      "target_score": 0.6106934473321793,
+      "gdc_log2_fc": -3.3735392251801883,
+      "gdc_adj_p_value": 1.6472556318419225e-29,
+      "geo_validation_status": "validated"
+    },
+    {
+      "gene_name_norm": "CCNA2",
+      "target_rank": 5,
+      "target_score": 0.608346947519223,
+      "gdc_log2_fc": 2.619287389846812,
+      "gdc_adj_p_value": 9.16785707513141e-16,
+      "geo_validation_status": "validated"
+    },
+    {
+      "gene_name_norm": "TOP2A",
+      "target_rank": 6,
+      "target_score": 0.6074364446998778,
+      "gdc_log2_fc": 3.6358702942616725,
+      "gdc_adj_p_value": 3.932427599882625e-19,
+      "geo_validation_status": "validated"
+    },
+    {
+      "gene_name_norm": "AURKB",
+      "target_rank": 7,
+      "target_score": 0.6058912396227416,
+      "gdc_log2_fc": 2.8730653984379595,
+      "gdc_adj_p_value": 1.2267188400631727e-14,
+      "geo_validation_status": "validated"
+    },
+    {
+      "gene_name_norm": "COL1A1",
+      "target_rank": 8,
+      "target_score": 0.6037988476852324,
+      "gdc_log2_fc": 2.8734609417309707,
+      "gdc_adj_p_value": 3.2478501028671326e-09,
+      "geo_validation_status": "validated"
+    },
+    {
+      "gene_name_norm": "EXO1",
+      "target_rank": 9,
+      "target_score": 0.6032880024904006,
+      "gdc_log2_fc": 2.4667855057623753,
+      "gdc_adj_p_value": 1.6115616670157347e-32,
+      "geo_validation_status": "validated"
+    },
+    {
+      "gene_name_norm": "CDCA8",
+      "target_rank": 10,
+      "target_score": 0.6012701376472078,
+      "gdc_log2_fc": 2.648615086781384,
+      "gdc_adj_p_value": 1.6512440398330475e-16,
+      "geo_validation_status": "validated"
+    },
+    {
+      "gene_name_norm": "CENPA",
+      "target_rank": 11,
+      "target_score": 0.5986337150528264,
+      "gdc_log2_fc": 2.686250466360956,
+      "gdc_adj_p_value": 2.938512577931704e-21,
+      "geo_validation_status": "validated"
+    },
+    {
+      "gene_name_norm": "CDC6",
+      "target_rank": 12,
+      "target_score": 0.5978390735131246,
+      "gdc_log2_fc": 2.717230093053017,
+      "gdc_adj_p_value": 1.3533936413453054e-23,
+      "geo_validation_status": "validated"
+    },
+    {
+      "gene_name_norm": "RECQL4",
+      "target_rank": 13,
+      "target_score": 0.5967315579455762,
+      "gdc_log2_fc": 2.545800372819116,
+      "gdc_adj_p_value": 3.1094034201855393e-26,
+      "geo_validation_status": "validated"
+    },
+    {
+      "gene_name_norm": "BUB1B",
+      "target_rank": 14,
+      "target_score": 0.5966020940966962,
+      "gdc_log2_fc": 2.4606714231134035,
+      "gdc_adj_p_value": 1.1266310404437412e-20,
+      "geo_validation_status": "validated"
+    },
+    {
+      "gene_name_norm": "KIF20A",
+      "target_rank": 15,
+      "target_score": 0.5965376659989735,
+      "gdc_log2_fc": 2.6610638645850093,
+      "gdc_adj_p_value": 1.1381399500572591e-16,
+      "geo_validation_status": "validated"
+    },
+    {
+      "gene_name_norm": "CCNB2",
+      "target_rank": 16,
+      "target_score": 0.5961631628431677,
+      "gdc_log2_fc": 2.685413850699674,
+      "gdc_adj_p_value": 2.7147256242434955e-17,
+      "geo_validation_status": "validated"
+    },
+    {
+      "gene_name_norm": "UBE2C",
+      "target_rank": 17,
+      "target_score": 0.5957541885494285,
+      "gdc_log2_fc": 4.006401035769338,
+      "gdc_adj_p_value": 2.9239718277568907e-17,
+      "geo_validation_status": "validated"
+    },
+    {
+      "gene_name_norm": "SPP1",
+      "target_rank": 18,
+      "target_score": 0.5953212933538929,
+      "gdc_log2_fc": 4.997343400244296,
+      "gdc_adj_p_value": 8.702932746138515e-14,
+      "geo_validation_status": "validated"
+    },
+    {
+      "gene_name_norm": "BIRC5",
+      "target_rank": 19,
+      "target_score": 0.595284133443739,
+      "gdc_log2_fc": 3.38204092204588,
+      "gdc_adj_p_value": 3.806039663842532e-18,
+      "geo_validation_status": "validated"
+    },
+    {
+      "gene_name_norm": "CDC45",
+      "target_rank": 20,
+      "target_score": 0.5949945227291098,
+      "gdc_log2_fc": 2.53505065722604,
+      "gdc_adj_p_value": 2.9284215187743057e-18,
+      "geo_validation_status": "validated"
+    }
+  ]
+}

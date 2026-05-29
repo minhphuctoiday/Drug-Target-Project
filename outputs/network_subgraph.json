@@ -1,0 +1,7235 @@
+{
+  "status": "success",
+  "nodes": [
+    {
+      "data": {
+        "id": "PLK1",
+        "label": "PLK1",
+        "target_score": 0.6256816087208867,
+        "pagerank": 0.0004579838996121124,
+        "rank": 1
+      }
+    },
+    {
+      "data": {
+        "id": "CCNB1",
+        "label": "CCNB1",
+        "target_score": 0.615295585943267,
+        "pagerank": 0.0003064365283725703,
+        "rank": 2
+      }
+    },
+    {
+      "data": {
+        "id": "CDC20",
+        "label": "CDC20",
+        "target_score": 0.6119134936007299,
+        "pagerank": 0.00030742393439423075,
+        "rank": 3
+      }
+    },
+    {
+      "data": {
+        "id": "CAV1",
+        "label": "CAV1",
+        "target_score": 0.6106934473321793,
+        "pagerank": 0.0002991830255326795,
+        "rank": 4
+      }
+    },
+    {
+      "data": {
+        "id": "CCNA2",
+        "label": "CCNA2",
+        "target_score": 0.608346947519223,
+        "pagerank": 0.00029580457918083447,
+        "rank": 5
+      }
+    },
+    {
+      "data": {
+        "id": "TOP2A",
+        "label": "TOP2A",
+        "target_score": 0.6074364446998778,
+        "pagerank": 0.00019089636471941818,
+        "rank": 6
+      }
+    },
+    {
+      "data": {
+        "id": "AURKB",
+        "label": "AURKB",
+        "target_score": 0.6058912396227416,
+        "pagerank": 0.00022043948045331345,
+        "rank": 7
+      }
+    },
+    {
+      "data": {
+        "id": "COL1A1",
+        "label": "COL1A1",
+        "target_score": 0.6037988476852324,
+        "pagerank": 0.00024200818607651717,
+        "rank": 8
+      }
+    },
+    {
+      "data": {
+        "id": "EXO1",
+        "label": "EXO1",
+        "target_score": 0.6032880024904006,
+        "pagerank": 0.0002543892598693367,
+        "rank": 9
+      }
+    },
+    {
+      "data": {
+        "id": "CDCA8",
+        "label": "CDCA8",
+        "target_score": 0.6012701376472078,
+        "pagerank": 0.00018405223109749995,
+        "rank": 10
+      }
+    },
+    {
+      "data": {
+        "id": "CENPA",
+        "label": "CENPA",
+        "target_score": 0.5986337150528264,
+        "pagerank": 0.0002127441114305548,
+        "rank": 11
+      }
+    },
+    {
+      "data": {
+        "id": "CDC6",
+        "label": "CDC6",
+        "target_score": 0.5978390735131246,
+        "pagerank": 0.0001744640791869157,
+        "rank": 12
+      }
+    },
+    {
+      "data": {
+        "id": "RECQL4",
+        "label": "RECQL4",
+        "target_score": 0.5967315579455762,
+        "pagerank": 0.00010678791558515,
+        "rank": 13
+      }
+    },
+    {
+      "data": {
+        "id": "BUB1B",
+        "label": "BUB1B",
+        "target_score": 0.5966020940966962,
+        "pagerank": 0.0002559769602044123,
+        "rank": 14
+      }
+    },
+    {
+      "data": {
+        "id": "KIF20A",
+        "label": "KIF20A",
+        "target_score": 0.5965376659989735,
+        "pagerank": 0.00015140162371358085,
+        "rank": 15
+      }
+    },
+    {
+      "data": {
+        "id": "CCNB2",
+        "label": "CCNB2",
+        "target_score": 0.5961631628431677,
+        "pagerank": 0.0002002556150109007,
+        "rank": 16
+      }
+    },
+    {
+      "data": {
+        "id": "UBE2C",
+        "label": "UBE2C",
+        "target_score": 0.5957541885494285,
+        "pagerank": 0.0001801247164087813,
+        "rank": 17
+      }
+    },
+    {
+      "data": {
+        "id": "SPP1",
+        "label": "SPP1",
+        "target_score": 0.5953212933538929,
+        "pagerank": 0.00015907551491199448,
+        "rank": 18
+      }
+    },
+    {
+      "data": {
+        "id": "BIRC5",
+        "label": "BIRC5",
+        "target_score": 0.595284133443739,
+        "pagerank": 0.0001664564231233333,
+        "rank": 19
+      }
+    },
+    {
+      "data": {
+        "id": "CDC45",
+        "label": "CDC45",
+        "target_score": 0.5949945227291098,
+        "pagerank": 0.00020925684147624044,
+        "rank": 20
+      }
+    },
+    {
+      "data": {
+        "id": "RRM2",
+        "label": "RRM2",
+        "target_score": 0.5946893450563328,
+        "pagerank": 0.0001869532939221954,
+        "rank": 21
+      }
+    },
+    {
+      "data": {
+        "id": "FOXM1",
+        "label": "FOXM1",
+        "target_score": 0.5929839725645466,
+        "pagerank": 0.0001261564053866648,
+        "rank": 22
+      }
+    },
+    {
+      "data": {
+        "id": "NEK2",
+        "label": "NEK2",
+        "target_score": 0.5928870757794734,
+        "pagerank": 0.00013735232656954466,
+        "rank": 23
+      }
+    },
+    {
+      "data": {
+        "id": "SLC2A1",
+        "label": "SLC2A1",
+        "target_score": 0.5926810248876664,
+        "pagerank": 8.091575754418172e-05,
+        "rank": 24
+      }
+    },
+    {
+      "data": {
+        "id": "EPAS1",
+        "label": "EPAS1",
+        "target_score": 0.5917033585268042,
+        "pagerank": 9.999266421721578e-05,
+        "rank": 25
+      }
+    },
+    {
+      "data": {
+        "id": "STX1A",
+        "label": "STX1A",
+        "target_score": 0.5915728235470519,
+        "pagerank": 0.0002071002175998285,
+        "rank": 26
+      }
+    },
+    {
+      "data": {
+        "id": "COL3A1",
+        "label": "COL3A1",
+        "target_score": 0.591212739663246,
+        "pagerank": 0.00014436753888728368,
+        "rank": 27
+      }
+    },
+    {
+      "data": {
+        "id": "PLEK2",
+        "label": "PLEK2",
+        "target_score": 0.5905764339623862,
+        "pagerank": 0.0001367312903705177,
+        "rank": 28
+      }
+    },
+    {
+      "data": {
+        "id": "MKI67",
+        "label": "MKI67",
+        "target_score": 0.5901657771990947,
+        "pagerank": 9.279227551485053e-05,
+        "rank": 29
+      }
+    },
+    {
+      "data": {
+        "id": "NDC80",
+        "label": "NDC80",
+        "target_score": 0.5895784572253314,
+        "pagerank": 0.00014549457263023015,
+        "rank": 30
+      }
+    },
+    {
+      "data": {
+        "id": "EZH2",
+        "label": "EZH2",
+        "target_score": 0.5892564305728204,
+        "pagerank": 0.00031122747842839946,
+        "rank": 31
+      }
+    },
+    {
+      "data": {
+        "id": "CCNE1",
+        "label": "CCNE1",
+        "target_score": 0.5892060645203437,
+        "pagerank": 0.00010161503709404322,
+        "rank": 32
+      }
+    },
+    {
+      "data": {
+        "id": "KIF2C",
+        "label": "KIF2C",
+        "target_score": 0.5889604967540564,
+        "pagerank": 0.00015916272453182212,
+        "rank": 33
+      }
+    },
+    {
+      "data": {
+        "id": "CENPF",
+        "label": "CENPF",
+        "target_score": 0.5888996024658403,
+        "pagerank": 0.00014079925680537112,
+        "rank": 34
+      }
+    },
+    {
+      "data": {
+        "id": "TK1",
+        "label": "TK1",
+        "target_score": 0.5887221976500464,
+        "pagerank": 0.0001194793261425165,
+        "rank": 35
+      }
+    },
+    {
+      "data": {
+        "id": "PBK",
+        "label": "PBK",
+        "target_score": 0.5883252090393208,
+        "pagerank": 0.00012063155090606262,
+        "rank": 36
+      }
+    },
+    {
+      "data": {
+        "id": "ADRB2",
+        "label": "ADRB2",
+        "target_score": 0.5882556328139682,
+        "pagerank": 0.00014530860312701673,
+        "rank": 37
+      }
+    },
+    {
+      "data": {
+        "id": "PLAU",
+        "label": "PLAU",
+        "target_score": 0.58805598465632,
+        "pagerank": 8.95125350839707e-05,
+        "rank": 38
+      }
+    },
+    {
+      "data": {
+        "id": "TPX2",
+        "label": "TPX2",
+        "target_score": 0.587872909482402,
+        "pagerank": 0.00013131005671240597,
+        "rank": 39
+      }
+    },
+    {
+      "data": {
+        "id": "TEK",
+        "label": "TEK",
+        "target_score": 0.5878684412716516,
+        "pagerank": 0.0001327864214911132,
+        "rank": 40
+      }
+    },
+    {
+      "data": {
+        "id": "DLGAP5",
+        "label": "DLGAP5",
+        "target_score": 0.5875420129965538,
+        "pagerank": 0.0001454167446541332,
+        "rank": 41
+      }
+    },
+    {
+      "data": {
+        "id": "AURKA",
+        "label": "AURKA",
+        "target_score": 0.5874522552573687,
+        "pagerank": 0.00018929334563344314,
+        "rank": 42
+      }
+    },
+    {
+      "data": {
+        "id": "MELK",
+        "label": "MELK",
+        "target_score": 0.5872189842352842,
+        "pagerank": 0.00012232098337952897,
+        "rank": 43
+      }
+    },
+    {
+      "data": {
+        "id": "SPAG5",
+        "label": "SPAG5",
+        "target_score": 0.5867425387900381,
+        "pagerank": 9.53016208473077e-05,
+        "rank": 44
+      }
+    },
+    {
+      "data": {
+        "id": "CDKN3",
+        "label": "CDKN3",
+        "target_score": 0.586556526943871,
+        "pagerank": 8.551253046550426e-05,
+        "rank": 45
+      }
+    },
+    {
+      "data": {
+        "id": "CEP55",
+        "label": "CEP55",
+        "target_score": 0.5860850282205007,
+        "pagerank": 0.00014774827951361902,
+        "rank": 46
+      }
+    },
+    {
+      "data": {
+        "id": "HJURP",
+        "label": "HJURP",
+        "target_score": 0.5858829477006541,
+        "pagerank": 0.00013659932845096513,
+        "rank": 47
+      }
+    },
+    {
+      "data": {
+        "id": "MMP1",
+        "label": "MMP1",
+        "target_score": 0.5858397266564666,
+        "pagerank": 8.401242641969187e-05,
+        "rank": 48
+      }
+    },
+    {
+      "data": {
+        "id": "MYBL2",
+        "label": "MYBL2",
+        "target_score": 0.5858123302510563,
+        "pagerank": 6.661480865468082e-05,
+        "rank": 49
+      }
+    },
+    {
+      "data": {
+        "id": "ZWINT",
+        "label": "ZWINT",
+        "target_score": 0.5857103486339676,
+        "pagerank": 0.00014558153090672753,
+        "rank": 50
+      }
+    },
+    {
+      "data": {
+        "id": "KIFC1",
+        "label": "KIFC1",
+        "target_score": 0.5854737378399009,
+        "pagerank": 9.866257162180714e-05,
+        "rank": 51
+      }
+    },
+    {
+      "data": {
+        "id": "PDK4",
+        "label": "PDK4",
+        "target_score": 0.585467507284579,
+        "pagerank": 4.086864758175857e-05,
+        "rank": 52
+      }
+    },
+    {
+      "data": {
+        "id": "KIF4A",
+        "label": "KIF4A",
+        "target_score": 0.5848935696987246,
+        "pagerank": 0.00012037484186196965,
+        "rank": 53
+      }
+    },
+    {
+      "data": {
+        "id": "PSAT1",
+        "label": "PSAT1",
+        "target_score": 0.5842876644254851,
+        "pagerank": 5.278792665852645e-05,
+        "rank": 54
+      }
+    },
+    {
+      "data": {
+        "id": "FOSB",
+        "label": "FOSB",
+        "target_score": 0.5834634739740789,
+        "pagerank": 7.511326894609576e-05,
+        "rank": 55
+      }
+    },
+    {
+      "data": {
+        "id": "THBS2",
+        "label": "THBS2",
+        "target_score": 0.5832626994034064,
+        "pagerank": 9.30445461282355e-05,
+        "rank": 56
+      }
+    },
+    {
+      "data": {
+        "id": "AOC3",
+        "label": "AOC3",
+        "target_score": 0.5830858234067786,
+        "pagerank": 7.592445320820866e-05,
+        "rank": 57
+      }
+    },
+    {
+      "data": {
+        "id": "AGER",
+        "label": "AGER",
+        "target_score": 0.5830804552578613,
+        "pagerank": 9.867834835247286e-05,
+        "rank": 58
+      }
+    },
+    {
+      "data": {
+        "id": "VWF",
+        "label": "VWF",
+        "target_score": 0.5829601826185542,
+        "pagerank": 0.0002075382147443074,
+        "rank": 59
+      }
+    },
+    {
+      "data": {
+        "id": "EDNRB",
+        "label": "EDNRB",
+        "target_score": 0.5822895352091633,
+        "pagerank": 7.163033550112248e-05,
+        "rank": 60
+      }
+    },
+    {
+      "data": {
+        "id": "FOS",
+        "label": "FOS",
+        "target_score": 0.5818954335242885,
+        "pagerank": 0.0003083474867799658,
+        "rank": 61
+      }
+    },
+    {
+      "data": {
+        "id": "CDA",
+        "label": "CDA",
+        "target_score": 0.5817445951813129,
+        "pagerank": 9.87573213601915e-05,
+        "rank": 62
+      }
+    },
+    {
+      "data": {
+        "id": "SLC7A5",
+        "label": "SLC7A5",
+        "target_score": 0.5816080242739751,
+        "pagerank": 7.209968523969545e-05,
+        "rank": 63
+      }
+    },
+    {
+      "data": {
+        "id": "SMAD6",
+        "label": "SMAD6",
+        "target_score": 0.5815606044245777,
+        "pagerank": 7.060595521422385e-05,
+        "rank": 64
+      }
+    },
+    {
+      "data": {
+        "id": "KCNN4",
+        "label": "KCNN4",
+        "target_score": 0.580652021899838,
+        "pagerank": 9.084570278602335e-05,
+        "rank": 65
+      }
+    },
+    {
+      "data": {
+        "id": "COL10A1",
+        "label": "COL10A1",
+        "target_score": 0.5798149853446992,
+        "pagerank": 5.244427146024472e-05,
+        "rank": 66
+      }
+    },
+    {
+      "data": {
+        "id": "GINS1",
+        "label": "GINS1",
+        "target_score": 0.5796942173294781,
+        "pagerank": 5.579701722068065e-05,
+        "rank": 67
+      }
+    },
+    {
+      "data": {
+        "id": "KIF11",
+        "label": "KIF11",
+        "target_score": 0.5796120297588674,
+        "pagerank": 0.00022257793947087531,
+        "rank": 68
+      }
+    },
+    {
+      "data": {
+        "id": "HMMR",
+        "label": "HMMR",
+        "target_score": 0.5794871142611634,
+        "pagerank": 0.00012280772550523237,
+        "rank": 69
+      }
+    },
+    {
+      "data": {
+        "id": "NCAPG",
+        "label": "NCAPG",
+        "target_score": 0.5794496116852996,
+        "pagerank": 0.00014659807912533533,
+        "rank": 70
+      }
+    },
+    {
+      "data": {
+        "id": "TGFBR3",
+        "label": "TGFBR3",
+        "target_score": 0.5793959826879814,
+        "pagerank": 3.982928437587255e-05,
+        "rank": 71
+      }
+    },
+    {
+      "data": {
+        "id": "MMP12",
+        "label": "MMP12",
+        "target_score": 0.5792803920699845,
+        "pagerank": 3.4106195450234246e-05,
+        "rank": 72
+      }
+    },
+    {
+      "data": {
+        "id": "DUOX1",
+        "label": "DUOX1",
+        "target_score": 0.5791582632471728,
+        "pagerank": 5.98668991926432e-05,
+        "rank": 73
+      }
+    },
+    {
+      "data": {
+        "id": "EGLN3",
+        "label": "EGLN3",
+        "target_score": 0.5781855449184355,
+        "pagerank": 5.452329177790992e-05,
+        "rank": 74
+      }
+    },
+    {
+      "data": {
+        "id": "TROAP",
+        "label": "TROAP",
+        "target_score": 0.5779124614201274,
+        "pagerank": 5.211791012377447e-05,
+        "rank": 75
+      }
+    },
+    {
+      "data": {
+        "id": "EMCN",
+        "label": "EMCN",
+        "target_score": 0.5774189985446595,
+        "pagerank": 4.332437640677996e-05,
+        "rank": 76
+      }
+    },
+    {
+      "data": {
+        "id": "TNNC1",
+        "label": "TNNC1",
+        "target_score": 0.577309868817573,
+        "pagerank": 4.2406335884251334e-05,
+        "rank": 77
+      }
+    },
+    {
+      "data": {
+        "id": "PTPRB",
+        "label": "PTPRB",
+        "target_score": 0.5772655293881862,
+        "pagerank": 4.041019633386629e-05,
+        "rank": 78
+      }
+    },
+    {
+      "data": {
+        "id": "FOXF1",
+        "label": "FOXF1",
+        "target_score": 0.5772378065319085,
+        "pagerank": 3.452954195275006e-05,
+        "rank": 79
+      }
+    },
+    {
+      "data": {
+        "id": "MB",
+        "label": "MB",
+        "target_score": 0.5770498895905223,
+        "pagerank": 7.705009074417e-05,
+        "rank": 80
+      }
+    },
+    {
+      "data": {
+        "id": "NPR1",
+        "label": "NPR1",
+        "target_score": 0.576688055410311,
+        "pagerank": 8.667288522298198e-05,
+        "rank": 81
+      }
+    },
+    {
+      "data": {
+        "id": "PTGES",
+        "label": "PTGES",
+        "target_score": 0.5765359324553684,
+        "pagerank": 5.190283343192067e-05,
+        "rank": 82
+      }
+    },
+    {
+      "data": {
+        "id": "CALCRL",
+        "label": "CALCRL",
+        "target_score": 0.5765304991349892,
+        "pagerank": 5.07755818086902e-05,
+        "rank": 83
+      }
+    },
+    {
+      "data": {
+        "id": "B3GNT3",
+        "label": "B3GNT3",
+        "target_score": 0.5764324101536007,
+        "pagerank": 6.214179869336085e-05,
+        "rank": 84
+      }
+    },
+    {
+      "data": {
+        "id": "MFAP4",
+        "label": "MFAP4",
+        "target_score": 0.5763814664546795,
+        "pagerank": 3.646035197566931e-05,
+        "rank": 85
+      }
+    },
+    {
+      "data": {
+        "id": "S100A2",
+        "label": "S100A2",
+        "target_score": 0.576322771355554,
+        "pagerank": 2.865554532632327e-05,
+        "rank": 86
+      }
+    },
+    {
+      "data": {
+        "id": "CLIC5",
+        "label": "CLIC5",
+        "target_score": 0.5760563962511258,
+        "pagerank": 5.05464101703936e-05,
+        "rank": 87
+      }
+    },
+    {
+      "data": {
+        "id": "ASPM",
+        "label": "ASPM",
+        "target_score": 0.5758798071753333,
+        "pagerank": 0.00016477813403227302,
+        "rank": 88
+      }
+    },
+    {
+      "data": {
+        "id": "FCN3",
+        "label": "FCN3",
+        "target_score": 0.5758701393204858,
+        "pagerank": 4.614051225356262e-05,
+        "rank": 89
+      }
+    },
+    {
+      "data": {
+        "id": "SPAG4",
+        "label": "SPAG4",
+        "target_score": 0.5758140335482788,
+        "pagerank": 3.644236084401721e-05,
+        "rank": 90
+      }
+    },
+    {
+      "data": {
+        "id": "MMP11",
+        "label": "MMP11",
+        "target_score": 0.5756530046572575,
+        "pagerank": 3.347823953663888e-05,
+        "rank": 91
+      }
+    },
+    {
+      "data": {
+        "id": "DES",
+        "label": "DES",
+        "target_score": 0.5754840355939819,
+        "pagerank": 5.2659594640234966e-05,
+        "rank": 92
+      }
+    },
+    {
+      "data": {
+        "id": "TFPI2",
+        "label": "TFPI2",
+        "target_score": 0.5753618632300969,
+        "pagerank": 1.1178001768876326e-05,
+        "rank": 93
+      }
+    },
+    {
+      "data": {
+        "id": "LYPD3",
+        "label": "LYPD3",
+        "target_score": 0.5751122254884846,
+        "pagerank": 3.270808902405307e-05,
+        "rank": 94
+      }
+    },
+    {
+      "data": {
+        "id": "CLEC3B",
+        "label": "CLEC3B",
+        "target_score": 0.5750777100378889,
+        "pagerank": 1.4847751594205547e-05,
+        "rank": 95
+      }
+    },
+    {
+      "data": {
+        "id": "FHL1",
+        "label": "FHL1",
+        "target_score": 0.5749849876447377,
+        "pagerank": 2.706611024273426e-05,
+        "rank": 96
+      }
+    },
+    {
+      "data": {
+        "id": "FMO2",
+        "label": "FMO2",
+        "target_score": 0.574583247841376,
+        "pagerank": 1.4322089572624406e-05,
+        "rank": 97
+      }
+    },
+    {
+      "data": {
+        "id": "P2RY6",
+        "label": "P2RY6",
+        "target_score": 0.5744052503970535,
+        "pagerank": 2.9102145296384062e-05,
+        "rank": 98
+      }
+    },
+    {
+      "data": {
+        "id": "CYP4B1",
+        "label": "CYP4B1",
+        "target_score": 0.5743701906433435,
+        "pagerank": 9.117064070845642e-06,
+        "rank": 99
+      }
+    },
+    {
+      "data": {
+        "id": "LAMP3",
+        "label": "LAMP3",
+        "target_score": 0.5742438535061146,
+        "pagerank": 1.6119097132378756e-05,
+        "rank": 100
+      }
+    }
+  ],
+  "edges": [
+    {
+      "data": {
+        "source": "KIF20A",
+        "target": "NDC80",
+        "weight": 0.896,
+        "combined_score": 896.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC45",
+        "target": "KIF20A",
+        "weight": 0.797,
+        "combined_score": 797.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC20",
+        "target": "TPX2",
+        "weight": 0.961,
+        "combined_score": 961.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC45",
+        "target": "TK1",
+        "weight": 0.836,
+        "combined_score": 836.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF4A",
+        "target": "KIFC1",
+        "weight": 0.776,
+        "combined_score": 776.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC45",
+        "target": "DLGAP5",
+        "weight": 0.921,
+        "combined_score": 921.0
+      }
+    },
+    {
+      "data": {
+        "source": "BIRC5",
+        "target": "CCNA2",
+        "weight": 0.956,
+        "combined_score": 956.0
+      }
+    },
+    {
+      "data": {
+        "source": "SPAG5",
+        "target": "UBE2C",
+        "weight": 0.884,
+        "combined_score": 884.0
+      }
+    },
+    {
+      "data": {
+        "source": "HMMR",
+        "target": "RRM2",
+        "weight": 0.807,
+        "combined_score": 807.0
+      }
+    },
+    {
+      "data": {
+        "source": "MELK",
+        "target": "NCAPG",
+        "weight": 0.936,
+        "combined_score": 936.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC20",
+        "target": "KIF20A",
+        "weight": 0.981,
+        "combined_score": 981.0
+      }
+    },
+    {
+      "data": {
+        "source": "BUB1B",
+        "target": "CDKN3",
+        "weight": 0.897,
+        "combined_score": 897.0
+      }
+    },
+    {
+      "data": {
+        "source": "PLK1",
+        "target": "SPAG5",
+        "weight": 0.942,
+        "combined_score": 942.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB2",
+        "target": "UBE2C",
+        "weight": 0.968,
+        "combined_score": 968.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKB",
+        "target": "CDCA8",
+        "weight": 0.999,
+        "combined_score": 999.0
+      }
+    },
+    {
+      "data": {
+        "source": "SPAG5",
+        "target": "TK1",
+        "weight": 0.727,
+        "combined_score": 727.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF11",
+        "target": "UBE2C",
+        "weight": 0.916,
+        "combined_score": 916.0
+      }
+    },
+    {
+      "data": {
+        "source": "HJURP",
+        "target": "RRM2",
+        "weight": 0.866,
+        "combined_score": 866.0
+      }
+    },
+    {
+      "data": {
+        "source": "FOXM1",
+        "target": "MELK",
+        "weight": 0.973,
+        "combined_score": 973.0
+      }
+    },
+    {
+      "data": {
+        "source": "MYBL2",
+        "target": "TOP2A",
+        "weight": 0.718,
+        "combined_score": 718.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNA2",
+        "target": "CEP55",
+        "weight": 0.923,
+        "combined_score": 923.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB2",
+        "target": "KIF11",
+        "weight": 0.944,
+        "combined_score": 944.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPA",
+        "target": "KIFC1",
+        "weight": 0.83,
+        "combined_score": 830.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDKN3",
+        "target": "MKI67",
+        "weight": 0.707,
+        "combined_score": 707.0
+      }
+    },
+    {
+      "data": {
+        "source": "DLGAP5",
+        "target": "SPAG5",
+        "weight": 0.928,
+        "combined_score": 928.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIFC1",
+        "target": "PLK1",
+        "weight": 0.727,
+        "combined_score": 727.0
+      }
+    },
+    {
+      "data": {
+        "source": "PTPRB",
+        "target": "TEK",
+        "weight": 0.896,
+        "combined_score": 896.0
+      }
+    },
+    {
+      "data": {
+        "source": "COL1A1",
+        "target": "VWF",
+        "weight": 0.877,
+        "combined_score": 877.0
+      }
+    },
+    {
+      "data": {
+        "source": "MMP1",
+        "target": "MMP11",
+        "weight": 0.772,
+        "combined_score": 772.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDCA8",
+        "target": "CENPF",
+        "weight": 0.962,
+        "combined_score": 962.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC20",
+        "target": "UBE2C",
+        "weight": 0.999,
+        "combined_score": 999.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC20",
+        "target": "SPAG5",
+        "weight": 0.923,
+        "combined_score": 923.0
+      }
+    },
+    {
+      "data": {
+        "source": "MYBL2",
+        "target": "RRM2",
+        "weight": 0.745,
+        "combined_score": 745.0
+      }
+    },
+    {
+      "data": {
+        "source": "ASPM",
+        "target": "TK1",
+        "weight": 0.763,
+        "combined_score": 763.0
+      }
+    },
+    {
+      "data": {
+        "source": "FOS",
+        "target": "FOSB",
+        "weight": 0.999,
+        "combined_score": 999.0
+      }
+    },
+    {
+      "data": {
+        "source": "BUB1B",
+        "target": "DLGAP5",
+        "weight": 0.981,
+        "combined_score": 981.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC45",
+        "target": "SPAG5",
+        "weight": 0.723,
+        "combined_score": 723.0
+      }
+    },
+    {
+      "data": {
+        "source": "MELK",
+        "target": "TROAP",
+        "weight": 0.719,
+        "combined_score": 719.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB2",
+        "target": "KIF2C",
+        "weight": 0.971,
+        "combined_score": 971.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDCA8",
+        "target": "SPAG5",
+        "weight": 0.929,
+        "combined_score": 929.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB1",
+        "target": "CDKN3",
+        "weight": 0.941,
+        "combined_score": 941.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF4A",
+        "target": "TK1",
+        "weight": 0.718,
+        "combined_score": 718.0
+      }
+    },
+    {
+      "data": {
+        "source": "FOXM1",
+        "target": "NEK2",
+        "weight": 0.803,
+        "combined_score": 803.0
+      }
+    },
+    {
+      "data": {
+        "source": "DLGAP5",
+        "target": "KIF11",
+        "weight": 0.997,
+        "combined_score": 997.0
+      }
+    },
+    {
+      "data": {
+        "source": "TOP2A",
+        "target": "ZWINT",
+        "weight": 0.875,
+        "combined_score": 875.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIFC1",
+        "target": "MKI67",
+        "weight": 0.795,
+        "combined_score": 795.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB1",
+        "target": "RRM2",
+        "weight": 0.905,
+        "combined_score": 905.0
+      }
+    },
+    {
+      "data": {
+        "source": "PLK1",
+        "target": "TROAP",
+        "weight": 0.805,
+        "combined_score": 805.0
+      }
+    },
+    {
+      "data": {
+        "source": "FOXM1",
+        "target": "UBE2C",
+        "weight": 0.894,
+        "combined_score": 894.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDKN3",
+        "target": "TPX2",
+        "weight": 0.818,
+        "combined_score": 818.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKA",
+        "target": "CDC45",
+        "weight": 0.701,
+        "combined_score": 701.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKB",
+        "target": "CCNB1",
+        "weight": 0.962,
+        "combined_score": 962.0
+      }
+    },
+    {
+      "data": {
+        "source": "MKI67",
+        "target": "NDC80",
+        "weight": 0.796,
+        "combined_score": 796.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB1",
+        "target": "HMMR",
+        "weight": 0.942,
+        "combined_score": 942.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKA",
+        "target": "HMMR",
+        "weight": 0.97,
+        "combined_score": 970.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF11",
+        "target": "PLK1",
+        "weight": 0.919,
+        "combined_score": 919.0
+      }
+    },
+    {
+      "data": {
+        "source": "RRM2",
+        "target": "TPX2",
+        "weight": 0.943,
+        "combined_score": 943.0
+      }
+    },
+    {
+      "data": {
+        "source": "CEP55",
+        "target": "SPAG5",
+        "weight": 0.876,
+        "combined_score": 876.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC20",
+        "target": "MYBL2",
+        "weight": 0.865,
+        "combined_score": 865.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF2C",
+        "target": "PBK",
+        "weight": 0.909,
+        "combined_score": 909.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF11",
+        "target": "KIF2C",
+        "weight": 0.968,
+        "combined_score": 968.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC20",
+        "target": "TROAP",
+        "weight": 0.827,
+        "combined_score": 827.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPA",
+        "target": "KIF20A",
+        "weight": 0.913,
+        "combined_score": 913.0
+      }
+    },
+    {
+      "data": {
+        "source": "PLK1",
+        "target": "TPX2",
+        "weight": 0.944,
+        "combined_score": 944.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKA",
+        "target": "PBK",
+        "weight": 0.791,
+        "combined_score": 791.0
+      }
+    },
+    {
+      "data": {
+        "source": "BUB1B",
+        "target": "CENPF",
+        "weight": 0.999,
+        "combined_score": 999.0
+      }
+    },
+    {
+      "data": {
+        "source": "ASPM",
+        "target": "AURKB",
+        "weight": 0.89,
+        "combined_score": 890.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF11",
+        "target": "NCAPG",
+        "weight": 0.975,
+        "combined_score": 975.0
+      }
+    },
+    {
+      "data": {
+        "source": "MKI67",
+        "target": "RRM2",
+        "weight": 0.945,
+        "combined_score": 945.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDCA8",
+        "target": "CEP55",
+        "weight": 0.923,
+        "combined_score": 923.0
+      }
+    },
+    {
+      "data": {
+        "source": "GINS1",
+        "target": "UBE2C",
+        "weight": 0.701,
+        "combined_score": 701.0
+      }
+    },
+    {
+      "data": {
+        "source": "CEP55",
+        "target": "KIF4A",
+        "weight": 0.951,
+        "combined_score": 951.0
+      }
+    },
+    {
+      "data": {
+        "source": "HMMR",
+        "target": "KIF4A",
+        "weight": 0.877,
+        "combined_score": 877.0
+      }
+    },
+    {
+      "data": {
+        "source": "MELK",
+        "target": "NEK2",
+        "weight": 0.822,
+        "combined_score": 822.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF2C",
+        "target": "MELK",
+        "weight": 0.935,
+        "combined_score": 935.0
+      }
+    },
+    {
+      "data": {
+        "source": "BUB1B",
+        "target": "EXO1",
+        "weight": 0.807,
+        "combined_score": 807.0
+      }
+    },
+    {
+      "data": {
+        "source": "EXO1",
+        "target": "MELK",
+        "weight": 0.9,
+        "combined_score": 900.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNA2",
+        "target": "MYBL2",
+        "weight": 0.991,
+        "combined_score": 991.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNA2",
+        "target": "RRM2",
+        "weight": 0.939,
+        "combined_score": 939.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDKN3",
+        "target": "PBK",
+        "weight": 0.861,
+        "combined_score": 861.0
+      }
+    },
+    {
+      "data": {
+        "source": "DLGAP5",
+        "target": "TROAP",
+        "weight": 0.77,
+        "combined_score": 770.0
+      }
+    },
+    {
+      "data": {
+        "source": "CEP55",
+        "target": "ZWINT",
+        "weight": 0.867,
+        "combined_score": 867.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB1",
+        "target": "NDC80",
+        "weight": 0.981,
+        "combined_score": 981.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKA",
+        "target": "MYBL2",
+        "weight": 0.84,
+        "combined_score": 840.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPF",
+        "target": "CEP55",
+        "weight": 0.959,
+        "combined_score": 959.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC45",
+        "target": "NCAPG",
+        "weight": 0.918,
+        "combined_score": 918.0
+      }
+    },
+    {
+      "data": {
+        "source": "CEP55",
+        "target": "TOP2A",
+        "weight": 0.928,
+        "combined_score": 928.0
+      }
+    },
+    {
+      "data": {
+        "source": "MKI67",
+        "target": "SPAG5",
+        "weight": 0.869,
+        "combined_score": 869.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB2",
+        "target": "NDC80",
+        "weight": 0.875,
+        "combined_score": 875.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC20",
+        "target": "FOXM1",
+        "weight": 0.937,
+        "combined_score": 937.0
+      }
+    },
+    {
+      "data": {
+        "source": "BUB1B",
+        "target": "HJURP",
+        "weight": 0.897,
+        "combined_score": 897.0
+      }
+    },
+    {
+      "data": {
+        "source": "CEP55",
+        "target": "KIF2C",
+        "weight": 0.948,
+        "combined_score": 948.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDCA8",
+        "target": "KIF20A",
+        "weight": 0.98,
+        "combined_score": 980.0
+      }
+    },
+    {
+      "data": {
+        "source": "ASPM",
+        "target": "SPAG5",
+        "weight": 0.945,
+        "combined_score": 945.0
+      }
+    },
+    {
+      "data": {
+        "source": "ASPM",
+        "target": "CDC45",
+        "weight": 0.703,
+        "combined_score": 703.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDKN3",
+        "target": "TOP2A",
+        "weight": 0.863,
+        "combined_score": 863.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPA",
+        "target": "HJURP",
+        "weight": 0.999,
+        "combined_score": 999.0
+      }
+    },
+    {
+      "data": {
+        "source": "NCAPG",
+        "target": "TPX2",
+        "weight": 0.949,
+        "combined_score": 949.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDKN3",
+        "target": "HMMR",
+        "weight": 0.833,
+        "combined_score": 833.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF11",
+        "target": "KIFC1",
+        "weight": 0.963,
+        "combined_score": 963.0
+      }
+    },
+    {
+      "data": {
+        "source": "BIRC5",
+        "target": "PLK1",
+        "weight": 0.98,
+        "combined_score": 980.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF4A",
+        "target": "MELK",
+        "weight": 0.964,
+        "combined_score": 964.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKB",
+        "target": "CDC20",
+        "weight": 0.998,
+        "combined_score": 998.0
+      }
+    },
+    {
+      "data": {
+        "source": "NDC80",
+        "target": "TOP2A",
+        "weight": 0.876,
+        "combined_score": 876.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPF",
+        "target": "HMMR",
+        "weight": 0.927,
+        "combined_score": 927.0
+      }
+    },
+    {
+      "data": {
+        "source": "COL1A1",
+        "target": "THBS2",
+        "weight": 0.828,
+        "combined_score": 828.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPA",
+        "target": "FOXM1",
+        "weight": 0.794,
+        "combined_score": 794.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKB",
+        "target": "TPX2",
+        "weight": 0.94,
+        "combined_score": 940.0
+      }
+    },
+    {
+      "data": {
+        "source": "TROAP",
+        "target": "UBE2C",
+        "weight": 0.778,
+        "combined_score": 778.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKB",
+        "target": "NEK2",
+        "weight": 0.783,
+        "combined_score": 783.0
+      }
+    },
+    {
+      "data": {
+        "source": "MYBL2",
+        "target": "PLK1",
+        "weight": 0.877,
+        "combined_score": 877.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPA",
+        "target": "MKI67",
+        "weight": 0.785,
+        "combined_score": 785.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB2",
+        "target": "HMMR",
+        "weight": 0.888,
+        "combined_score": 888.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKB",
+        "target": "KIFC1",
+        "weight": 0.906,
+        "combined_score": 906.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB1",
+        "target": "CDC45",
+        "weight": 0.8,
+        "combined_score": 800.0
+      }
+    },
+    {
+      "data": {
+        "source": "EXO1",
+        "target": "PBK",
+        "weight": 0.773,
+        "combined_score": 773.0
+      }
+    },
+    {
+      "data": {
+        "source": "ASPM",
+        "target": "CDC20",
+        "weight": 0.972,
+        "combined_score": 972.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKA",
+        "target": "PLK1",
+        "weight": 0.997,
+        "combined_score": 997.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKA",
+        "target": "RRM2",
+        "weight": 0.892,
+        "combined_score": 892.0
+      }
+    },
+    {
+      "data": {
+        "source": "CEP55",
+        "target": "PLK1",
+        "weight": 0.837,
+        "combined_score": 837.0
+      }
+    },
+    {
+      "data": {
+        "source": "BIRC5",
+        "target": "CDCA8",
+        "weight": 0.999,
+        "combined_score": 999.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF2C",
+        "target": "KIFC1",
+        "weight": 0.932,
+        "combined_score": 932.0
+      }
+    },
+    {
+      "data": {
+        "source": "DLGAP5",
+        "target": "MKI67",
+        "weight": 0.902,
+        "combined_score": 902.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDCA8",
+        "target": "CENPA",
+        "weight": 0.971,
+        "combined_score": 971.0
+      }
+    },
+    {
+      "data": {
+        "source": "NDC80",
+        "target": "NEK2",
+        "weight": 0.985,
+        "combined_score": 985.0
+      }
+    },
+    {
+      "data": {
+        "source": "ASPM",
+        "target": "CENPF",
+        "weight": 0.987,
+        "combined_score": 987.0
+      }
+    },
+    {
+      "data": {
+        "source": "CEP55",
+        "target": "UBE2C",
+        "weight": 0.938,
+        "combined_score": 938.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB2",
+        "target": "HJURP",
+        "weight": 0.905,
+        "combined_score": 905.0
+      }
+    },
+    {
+      "data": {
+        "source": "FOXM1",
+        "target": "HMMR",
+        "weight": 0.805,
+        "combined_score": 805.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKA",
+        "target": "CDCA8",
+        "weight": 0.952,
+        "combined_score": 952.0
+      }
+    },
+    {
+      "data": {
+        "source": "ASPM",
+        "target": "PBK",
+        "weight": 0.951,
+        "combined_score": 951.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPF",
+        "target": "TPX2",
+        "weight": 0.954,
+        "combined_score": 954.0
+      }
+    },
+    {
+      "data": {
+        "source": "FOXM1",
+        "target": "MYBL2",
+        "weight": 0.998,
+        "combined_score": 998.0
+      }
+    },
+    {
+      "data": {
+        "source": "EZH2",
+        "target": "FOXM1",
+        "weight": 0.778,
+        "combined_score": 778.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB2",
+        "target": "CCNE1",
+        "weight": 0.757,
+        "combined_score": 757.0
+      }
+    },
+    {
+      "data": {
+        "source": "BUB1B",
+        "target": "KIF4A",
+        "weight": 0.968,
+        "combined_score": 968.0
+      }
+    },
+    {
+      "data": {
+        "source": "PBK",
+        "target": "UBE2C",
+        "weight": 0.946,
+        "combined_score": 946.0
+      }
+    },
+    {
+      "data": {
+        "source": "BUB1B",
+        "target": "PLK1",
+        "weight": 0.999,
+        "combined_score": 999.0
+      }
+    },
+    {
+      "data": {
+        "source": "COL10A1",
+        "target": "MMP11",
+        "weight": 0.812,
+        "combined_score": 812.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC6",
+        "target": "PBK",
+        "weight": 0.724,
+        "combined_score": 724.0
+      }
+    },
+    {
+      "data": {
+        "source": "ASPM",
+        "target": "NEK2",
+        "weight": 0.916,
+        "combined_score": 916.0
+      }
+    },
+    {
+      "data": {
+        "source": "CEP55",
+        "target": "HMMR",
+        "weight": 0.926,
+        "combined_score": 926.0
+      }
+    },
+    {
+      "data": {
+        "source": "DLGAP5",
+        "target": "UBE2C",
+        "weight": 0.968,
+        "combined_score": 968.0
+      }
+    },
+    {
+      "data": {
+        "source": "ASPM",
+        "target": "BUB1B",
+        "weight": 0.974,
+        "combined_score": 974.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDCA8",
+        "target": "PLK1",
+        "weight": 0.974,
+        "combined_score": 974.0
+      }
+    },
+    {
+      "data": {
+        "source": "BUB1B",
+        "target": "TPX2",
+        "weight": 0.936,
+        "combined_score": 936.0
+      }
+    },
+    {
+      "data": {
+        "source": "BUB1B",
+        "target": "CDC6",
+        "weight": 0.803,
+        "combined_score": 803.0
+      }
+    },
+    {
+      "data": {
+        "source": "NEK2",
+        "target": "ZWINT",
+        "weight": 0.785,
+        "combined_score": 785.0
+      }
+    },
+    {
+      "data": {
+        "source": "ASPM",
+        "target": "MELK",
+        "weight": 0.946,
+        "combined_score": 946.0
+      }
+    },
+    {
+      "data": {
+        "source": "FOXM1",
+        "target": "KIF4A",
+        "weight": 0.897,
+        "combined_score": 897.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDCA8",
+        "target": "TROAP",
+        "weight": 0.794,
+        "combined_score": 794.0
+      }
+    },
+    {
+      "data": {
+        "source": "TOP2A",
+        "target": "TPX2",
+        "weight": 0.942,
+        "combined_score": 942.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPA",
+        "target": "KIF11",
+        "weight": 0.942,
+        "combined_score": 942.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPF",
+        "target": "MKI67",
+        "weight": 0.979,
+        "combined_score": 979.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF4A",
+        "target": "PBK",
+        "weight": 0.938,
+        "combined_score": 938.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNA2",
+        "target": "KIF4A",
+        "weight": 0.895,
+        "combined_score": 895.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDCA8",
+        "target": "UBE2C",
+        "weight": 0.966,
+        "combined_score": 966.0
+      }
+    },
+    {
+      "data": {
+        "source": "MKI67",
+        "target": "TPX2",
+        "weight": 0.954,
+        "combined_score": 954.0
+      }
+    },
+    {
+      "data": {
+        "source": "HJURP",
+        "target": "ZWINT",
+        "weight": 0.773,
+        "combined_score": 773.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF11",
+        "target": "TK1",
+        "weight": 0.761,
+        "combined_score": 761.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNA2",
+        "target": "NDC80",
+        "weight": 0.893,
+        "combined_score": 893.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKA",
+        "target": "AURKB",
+        "weight": 0.922,
+        "combined_score": 922.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB2",
+        "target": "TK1",
+        "weight": 0.88,
+        "combined_score": 880.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNE1",
+        "target": "FOXM1",
+        "weight": 0.776,
+        "combined_score": 776.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC45",
+        "target": "KIF11",
+        "weight": 0.78,
+        "combined_score": 780.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKB",
+        "target": "CDKN3",
+        "weight": 0.724,
+        "combined_score": 724.0
+      }
+    },
+    {
+      "data": {
+        "source": "DLGAP5",
+        "target": "TPX2",
+        "weight": 0.978,
+        "combined_score": 978.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB2",
+        "target": "PBK",
+        "weight": 0.88,
+        "combined_score": 880.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDCA8",
+        "target": "TK1",
+        "weight": 0.704,
+        "combined_score": 704.0
+      }
+    },
+    {
+      "data": {
+        "source": "CEP55",
+        "target": "RRM2",
+        "weight": 0.945,
+        "combined_score": 945.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDA",
+        "target": "TK1",
+        "weight": 0.921,
+        "combined_score": 921.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC45",
+        "target": "HMMR",
+        "weight": 0.748,
+        "combined_score": 748.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC20",
+        "target": "RRM2",
+        "weight": 0.907,
+        "combined_score": 907.0
+      }
+    },
+    {
+      "data": {
+        "source": "MKI67",
+        "target": "ZWINT",
+        "weight": 0.894,
+        "combined_score": 894.0
+      }
+    },
+    {
+      "data": {
+        "source": "PBK",
+        "target": "RRM2",
+        "weight": 0.93,
+        "combined_score": 930.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB1",
+        "target": "CEP55",
+        "weight": 0.94,
+        "combined_score": 940.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPF",
+        "target": "TK1",
+        "weight": 0.782,
+        "combined_score": 782.0
+      }
+    },
+    {
+      "data": {
+        "source": "TPX2",
+        "target": "ZWINT",
+        "weight": 0.913,
+        "combined_score": 913.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNA2",
+        "target": "PLK1",
+        "weight": 0.958,
+        "combined_score": 958.0
+      }
+    },
+    {
+      "data": {
+        "source": "BIRC5",
+        "target": "CDC6",
+        "weight": 0.732,
+        "combined_score": 732.0
+      }
+    },
+    {
+      "data": {
+        "source": "DLGAP5",
+        "target": "NCAPG",
+        "weight": 0.948,
+        "combined_score": 948.0
+      }
+    },
+    {
+      "data": {
+        "source": "TPX2",
+        "target": "UBE2C",
+        "weight": 0.965,
+        "combined_score": 965.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKA",
+        "target": "EZH2",
+        "weight": 0.761,
+        "combined_score": 761.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF4A",
+        "target": "RRM2",
+        "weight": 0.927,
+        "combined_score": 927.0
+      }
+    },
+    {
+      "data": {
+        "source": "MKI67",
+        "target": "PLK1",
+        "weight": 0.831,
+        "combined_score": 831.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPF",
+        "target": "KIF2C",
+        "weight": 0.985,
+        "combined_score": 985.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF2C",
+        "target": "TROAP",
+        "weight": 0.833,
+        "combined_score": 833.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKA",
+        "target": "KIF11",
+        "weight": 0.972,
+        "combined_score": 972.0
+      }
+    },
+    {
+      "data": {
+        "source": "HJURP",
+        "target": "UBE2C",
+        "weight": 0.924,
+        "combined_score": 924.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKA",
+        "target": "KIF2C",
+        "weight": 0.975,
+        "combined_score": 975.0
+      }
+    },
+    {
+      "data": {
+        "source": "NCAPG",
+        "target": "UBE2C",
+        "weight": 0.86,
+        "combined_score": 860.0
+      }
+    },
+    {
+      "data": {
+        "source": "BUB1B",
+        "target": "CEP55",
+        "weight": 0.939,
+        "combined_score": 939.0
+      }
+    },
+    {
+      "data": {
+        "source": "GINS1",
+        "target": "ZWINT",
+        "weight": 0.849,
+        "combined_score": 849.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKB",
+        "target": "PBK",
+        "weight": 0.791,
+        "combined_score": 791.0
+      }
+    },
+    {
+      "data": {
+        "source": "GINS1",
+        "target": "RRM2",
+        "weight": 0.819,
+        "combined_score": 819.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNA2",
+        "target": "UBE2C",
+        "weight": 0.994,
+        "combined_score": 994.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC20",
+        "target": "HMMR",
+        "weight": 0.882,
+        "combined_score": 882.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC6",
+        "target": "TOP2A",
+        "weight": 0.797,
+        "combined_score": 797.0
+      }
+    },
+    {
+      "data": {
+        "source": "HJURP",
+        "target": "MELK",
+        "weight": 0.924,
+        "combined_score": 924.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKB",
+        "target": "HMMR",
+        "weight": 0.76,
+        "combined_score": 760.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB2",
+        "target": "CENPF",
+        "weight": 0.974,
+        "combined_score": 974.0
+      }
+    },
+    {
+      "data": {
+        "source": "SPAG5",
+        "target": "TPX2",
+        "weight": 0.854,
+        "combined_score": 854.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF2C",
+        "target": "KIF4A",
+        "weight": 0.947,
+        "combined_score": 947.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB1",
+        "target": "PLK1",
+        "weight": 0.999,
+        "combined_score": 999.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPF",
+        "target": "TOP2A",
+        "weight": 0.974,
+        "combined_score": 974.0
+      }
+    },
+    {
+      "data": {
+        "source": "FOXM1",
+        "target": "TOP2A",
+        "weight": 0.927,
+        "combined_score": 927.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPA",
+        "target": "NCAPG",
+        "weight": 0.87,
+        "combined_score": 870.0
+      }
+    },
+    {
+      "data": {
+        "source": "DLGAP5",
+        "target": "TOP2A",
+        "weight": 0.978,
+        "combined_score": 978.0
+      }
+    },
+    {
+      "data": {
+        "source": "COL3A1",
+        "target": "THBS2",
+        "weight": 0.804,
+        "combined_score": 804.0
+      }
+    },
+    {
+      "data": {
+        "source": "RRM2",
+        "target": "TOP2A",
+        "weight": 0.956,
+        "combined_score": 956.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNA2",
+        "target": "KIF2C",
+        "weight": 0.949,
+        "combined_score": 949.0
+      }
+    },
+    {
+      "data": {
+        "source": "BIRC5",
+        "target": "DLGAP5",
+        "weight": 0.967,
+        "combined_score": 967.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF20A",
+        "target": "NEK2",
+        "weight": 0.948,
+        "combined_score": 948.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF2C",
+        "target": "MKI67",
+        "weight": 0.892,
+        "combined_score": 892.0
+      }
+    },
+    {
+      "data": {
+        "source": "EXO1",
+        "target": "TPX2",
+        "weight": 0.807,
+        "combined_score": 807.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB2",
+        "target": "CDCA8",
+        "weight": 0.974,
+        "combined_score": 974.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC20",
+        "target": "CDC6",
+        "weight": 0.921,
+        "combined_score": 921.0
+      }
+    },
+    {
+      "data": {
+        "source": "BIRC5",
+        "target": "RRM2",
+        "weight": 0.895,
+        "combined_score": 895.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB1",
+        "target": "SPAG5",
+        "weight": 0.865,
+        "combined_score": 865.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB2",
+        "target": "CDC20",
+        "weight": 0.999,
+        "combined_score": 999.0
+      }
+    },
+    {
+      "data": {
+        "source": "BIRC5",
+        "target": "MYBL2",
+        "weight": 0.844,
+        "combined_score": 844.0
+      }
+    },
+    {
+      "data": {
+        "source": "HJURP",
+        "target": "MKI67",
+        "weight": 0.946,
+        "combined_score": 946.0
+      }
+    },
+    {
+      "data": {
+        "source": "DLGAP5",
+        "target": "MELK",
+        "weight": 0.982,
+        "combined_score": 982.0
+      }
+    },
+    {
+      "data": {
+        "source": "MELK",
+        "target": "MKI67",
+        "weight": 0.911,
+        "combined_score": 911.0
+      }
+    },
+    {
+      "data": {
+        "source": "HJURP",
+        "target": "KIFC1",
+        "weight": 0.845,
+        "combined_score": 845.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDKN3",
+        "target": "RRM2",
+        "weight": 0.713,
+        "combined_score": 713.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB1",
+        "target": "UBE2C",
+        "weight": 0.99,
+        "combined_score": 990.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB1",
+        "target": "TK1",
+        "weight": 0.879,
+        "combined_score": 879.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNA2",
+        "target": "CDKN3",
+        "weight": 0.947,
+        "combined_score": 947.0
+      }
+    },
+    {
+      "data": {
+        "source": "HMMR",
+        "target": "MELK",
+        "weight": 0.884,
+        "combined_score": 884.0
+      }
+    },
+    {
+      "data": {
+        "source": "BIRC5",
+        "target": "SPAG5",
+        "weight": 0.917,
+        "combined_score": 917.0
+      }
+    },
+    {
+      "data": {
+        "source": "FOXM1",
+        "target": "KIF2C",
+        "weight": 0.888,
+        "combined_score": 888.0
+      }
+    },
+    {
+      "data": {
+        "source": "HJURP",
+        "target": "PLK1",
+        "weight": 0.859,
+        "combined_score": 859.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB2",
+        "target": "CENPA",
+        "weight": 0.975,
+        "combined_score": 975.0
+      }
+    },
+    {
+      "data": {
+        "source": "PLK1",
+        "target": "TOP2A",
+        "weight": 0.931,
+        "combined_score": 931.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB1",
+        "target": "ZWINT",
+        "weight": 0.95,
+        "combined_score": 950.0
+      }
+    },
+    {
+      "data": {
+        "source": "EXO1",
+        "target": "PLK1",
+        "weight": 0.777,
+        "combined_score": 777.0
+      }
+    },
+    {
+      "data": {
+        "source": "BIRC5",
+        "target": "HJURP",
+        "weight": 0.912,
+        "combined_score": 912.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF2C",
+        "target": "PLK1",
+        "weight": 0.994,
+        "combined_score": 994.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF11",
+        "target": "MELK",
+        "weight": 0.941,
+        "combined_score": 941.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC45",
+        "target": "ZWINT",
+        "weight": 0.842,
+        "combined_score": 842.0
+      }
+    },
+    {
+      "data": {
+        "source": "ASPM",
+        "target": "DLGAP5",
+        "weight": 0.994,
+        "combined_score": 994.0
+      }
+    },
+    {
+      "data": {
+        "source": "BUB1B",
+        "target": "CCNB2",
+        "weight": 0.993,
+        "combined_score": 993.0
+      }
+    },
+    {
+      "data": {
+        "source": "NEK2",
+        "target": "UBE2C",
+        "weight": 0.923,
+        "combined_score": 923.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC6",
+        "target": "KIF11",
+        "weight": 0.87,
+        "combined_score": 870.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNA2",
+        "target": "KIF20A",
+        "weight": 0.974,
+        "combined_score": 974.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKB",
+        "target": "CCNB2",
+        "weight": 0.99,
+        "combined_score": 990.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB1",
+        "target": "CDC6",
+        "weight": 0.931,
+        "combined_score": 931.0
+      }
+    },
+    {
+      "data": {
+        "source": "MMP1",
+        "target": "PLAU",
+        "weight": 0.852,
+        "combined_score": 852.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDKN3",
+        "target": "KIF11",
+        "weight": 0.848,
+        "combined_score": 848.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC20",
+        "target": "PLK1",
+        "weight": 0.999,
+        "combined_score": 999.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB2",
+        "target": "MKI67",
+        "weight": 0.87,
+        "combined_score": 870.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB1",
+        "target": "TPX2",
+        "weight": 0.949,
+        "combined_score": 949.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC45",
+        "target": "CDCA8",
+        "weight": 0.935,
+        "combined_score": 935.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKB",
+        "target": "CDC45",
+        "weight": 0.926,
+        "combined_score": 926.0
+      }
+    },
+    {
+      "data": {
+        "source": "BUB1B",
+        "target": "MKI67",
+        "weight": 0.932,
+        "combined_score": 932.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB1",
+        "target": "CDC20",
+        "weight": 0.999,
+        "combined_score": 999.0
+      }
+    },
+    {
+      "data": {
+        "source": "NDC80",
+        "target": "PLK1",
+        "weight": 0.951,
+        "combined_score": 951.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC6",
+        "target": "KIF2C",
+        "weight": 0.713,
+        "combined_score": 713.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC20",
+        "target": "DLGAP5",
+        "weight": 0.981,
+        "combined_score": 981.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKB",
+        "target": "KIF4A",
+        "weight": 0.942,
+        "combined_score": 942.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF2C",
+        "target": "SPAG5",
+        "weight": 0.926,
+        "combined_score": 926.0
+      }
+    },
+    {
+      "data": {
+        "source": "FOXM1",
+        "target": "TROAP",
+        "weight": 0.828,
+        "combined_score": 828.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB1",
+        "target": "KIF4A",
+        "weight": 0.931,
+        "combined_score": 931.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB2",
+        "target": "SPAG5",
+        "weight": 0.76,
+        "combined_score": 760.0
+      }
+    },
+    {
+      "data": {
+        "source": "CEP55",
+        "target": "NEK2",
+        "weight": 0.912,
+        "combined_score": 912.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF20A",
+        "target": "TROAP",
+        "weight": 0.831,
+        "combined_score": 831.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF20A",
+        "target": "PBK",
+        "weight": 0.955,
+        "combined_score": 955.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNA2",
+        "target": "CDC20",
+        "weight": 0.999,
+        "combined_score": 999.0
+      }
+    },
+    {
+      "data": {
+        "source": "BUB1B",
+        "target": "CDC45",
+        "weight": 0.817,
+        "combined_score": 817.0
+      }
+    },
+    {
+      "data": {
+        "source": "BIRC5",
+        "target": "MKI67",
+        "weight": 0.939,
+        "combined_score": 939.0
+      }
+    },
+    {
+      "data": {
+        "source": "MELK",
+        "target": "TK1",
+        "weight": 0.792,
+        "combined_score": 792.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC45",
+        "target": "MELK",
+        "weight": 0.876,
+        "combined_score": 876.0
+      }
+    },
+    {
+      "data": {
+        "source": "CEP55",
+        "target": "MELK",
+        "weight": 0.956,
+        "combined_score": 956.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC6",
+        "target": "MELK",
+        "weight": 0.719,
+        "combined_score": 719.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDCA8",
+        "target": "NCAPG",
+        "weight": 0.83,
+        "combined_score": 830.0
+      }
+    },
+    {
+      "data": {
+        "source": "FOXM1",
+        "target": "RRM2",
+        "weight": 0.835,
+        "combined_score": 835.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC6",
+        "target": "EXO1",
+        "weight": 0.966,
+        "combined_score": 966.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKA",
+        "target": "UBE2C",
+        "weight": 0.986,
+        "combined_score": 986.0
+      }
+    },
+    {
+      "data": {
+        "source": "NCAPG",
+        "target": "NDC80",
+        "weight": 0.949,
+        "combined_score": 949.0
+      }
+    },
+    {
+      "data": {
+        "source": "BIRC5",
+        "target": "CENPF",
+        "weight": 0.96,
+        "combined_score": 960.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPA",
+        "target": "CENPF",
+        "weight": 0.965,
+        "combined_score": 965.0
+      }
+    },
+    {
+      "data": {
+        "source": "EXO1",
+        "target": "RRM2",
+        "weight": 0.788,
+        "combined_score": 788.0
+      }
+    },
+    {
+      "data": {
+        "source": "RRM2",
+        "target": "TK1",
+        "weight": 0.914,
+        "combined_score": 914.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKA",
+        "target": "CENPF",
+        "weight": 0.902,
+        "combined_score": 902.0
+      }
+    },
+    {
+      "data": {
+        "source": "RRM2",
+        "target": "ZWINT",
+        "weight": 0.942,
+        "combined_score": 942.0
+      }
+    },
+    {
+      "data": {
+        "source": "ASPM",
+        "target": "CDCA8",
+        "weight": 0.95,
+        "combined_score": 950.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC20",
+        "target": "KIFC1",
+        "weight": 0.915,
+        "combined_score": 915.0
+      }
+    },
+    {
+      "data": {
+        "source": "ASPM",
+        "target": "BIRC5",
+        "weight": 0.879,
+        "combined_score": 879.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB1",
+        "target": "MELK",
+        "weight": 0.972,
+        "combined_score": 972.0
+      }
+    },
+    {
+      "data": {
+        "source": "NCAPG",
+        "target": "RRM2",
+        "weight": 0.892,
+        "combined_score": 892.0
+      }
+    },
+    {
+      "data": {
+        "source": "NCAPG",
+        "target": "TOP2A",
+        "weight": 0.967,
+        "combined_score": 967.0
+      }
+    },
+    {
+      "data": {
+        "source": "FOXM1",
+        "target": "PBK",
+        "weight": 0.845,
+        "combined_score": 845.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC20",
+        "target": "KIF4A",
+        "weight": 0.941,
+        "combined_score": 941.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC6",
+        "target": "UBE2C",
+        "weight": 0.835,
+        "combined_score": 835.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKB",
+        "target": "CEP55",
+        "weight": 0.864,
+        "combined_score": 864.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB2",
+        "target": "KIF20A",
+        "weight": 0.938,
+        "combined_score": 938.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDCA8",
+        "target": "DLGAP5",
+        "weight": 0.961,
+        "combined_score": 961.0
+      }
+    },
+    {
+      "data": {
+        "source": "DLGAP5",
+        "target": "HJURP",
+        "weight": 0.946,
+        "combined_score": 946.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB2",
+        "target": "PLK1",
+        "weight": 0.995,
+        "combined_score": 995.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNA2",
+        "target": "TOP2A",
+        "weight": 0.982,
+        "combined_score": 982.0
+      }
+    },
+    {
+      "data": {
+        "source": "BUB1B",
+        "target": "TOP2A",
+        "weight": 0.98,
+        "combined_score": 980.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKB",
+        "target": "KIF2C",
+        "weight": 0.996,
+        "combined_score": 996.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKA",
+        "target": "HJURP",
+        "weight": 0.852,
+        "combined_score": 852.0
+      }
+    },
+    {
+      "data": {
+        "source": "EXO1",
+        "target": "NDC80",
+        "weight": 0.72,
+        "combined_score": 720.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDKN3",
+        "target": "CENPF",
+        "weight": 0.725,
+        "combined_score": 725.0
+      }
+    },
+    {
+      "data": {
+        "source": "HMMR",
+        "target": "TPX2",
+        "weight": 0.979,
+        "combined_score": 979.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKA",
+        "target": "MELK",
+        "weight": 0.913,
+        "combined_score": 913.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC45",
+        "target": "MKI67",
+        "weight": 0.708,
+        "combined_score": 708.0
+      }
+    },
+    {
+      "data": {
+        "source": "MKI67",
+        "target": "UBE2C",
+        "weight": 0.916,
+        "combined_score": 916.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC20",
+        "target": "CDC45",
+        "weight": 0.946,
+        "combined_score": 946.0
+      }
+    },
+    {
+      "data": {
+        "source": "ASPM",
+        "target": "CENPA",
+        "weight": 0.865,
+        "combined_score": 865.0
+      }
+    },
+    {
+      "data": {
+        "source": "BUB1B",
+        "target": "SPAG5",
+        "weight": 0.951,
+        "combined_score": 951.0
+      }
+    },
+    {
+      "data": {
+        "source": "HMMR",
+        "target": "TOP2A",
+        "weight": 0.902,
+        "combined_score": 902.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPF",
+        "target": "SPAG5",
+        "weight": 0.905,
+        "combined_score": 905.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKA",
+        "target": "BIRC5",
+        "weight": 0.993,
+        "combined_score": 993.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF4A",
+        "target": "PLK1",
+        "weight": 0.821,
+        "combined_score": 821.0
+      }
+    },
+    {
+      "data": {
+        "source": "ASPM",
+        "target": "FOXM1",
+        "weight": 0.848,
+        "combined_score": 848.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKA",
+        "target": "TOP2A",
+        "weight": 0.963,
+        "combined_score": 963.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC6",
+        "target": "RRM2",
+        "weight": 0.929,
+        "combined_score": 929.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNA2",
+        "target": "DLGAP5",
+        "weight": 0.97,
+        "combined_score": 970.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIFC1",
+        "target": "UBE2C",
+        "weight": 0.839,
+        "combined_score": 839.0
+      }
+    },
+    {
+      "data": {
+        "source": "BIRC5",
+        "target": "KIF4A",
+        "weight": 0.925,
+        "combined_score": 925.0
+      }
+    },
+    {
+      "data": {
+        "source": "HMMR",
+        "target": "MKI67",
+        "weight": 0.896,
+        "combined_score": 896.0
+      }
+    },
+    {
+      "data": {
+        "source": "NCAPG",
+        "target": "PBK",
+        "weight": 0.92,
+        "combined_score": 920.0
+      }
+    },
+    {
+      "data": {
+        "source": "MELK",
+        "target": "PBK",
+        "weight": 0.963,
+        "combined_score": 963.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKA",
+        "target": "TPX2",
+        "weight": 0.999,
+        "combined_score": 999.0
+      }
+    },
+    {
+      "data": {
+        "source": "ASPM",
+        "target": "CDKN3",
+        "weight": 0.854,
+        "combined_score": 854.0
+      }
+    },
+    {
+      "data": {
+        "source": "CEP55",
+        "target": "NDC80",
+        "weight": 0.914,
+        "combined_score": 914.0
+      }
+    },
+    {
+      "data": {
+        "source": "BIRC5",
+        "target": "CEP55",
+        "weight": 0.913,
+        "combined_score": 913.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB2",
+        "target": "KIF4A",
+        "weight": 0.864,
+        "combined_score": 864.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB1",
+        "target": "FOXM1",
+        "weight": 0.988,
+        "combined_score": 988.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC20",
+        "target": "NEK2",
+        "weight": 0.999,
+        "combined_score": 999.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF20A",
+        "target": "PLK1",
+        "weight": 0.99,
+        "combined_score": 990.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF2C",
+        "target": "NDC80",
+        "weight": 0.934,
+        "combined_score": 934.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPF",
+        "target": "KIFC1",
+        "weight": 0.746,
+        "combined_score": 746.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF2C",
+        "target": "NEK2",
+        "weight": 0.92,
+        "combined_score": 920.0
+      }
+    },
+    {
+      "data": {
+        "source": "PLK1",
+        "target": "UBE2C",
+        "weight": 0.927,
+        "combined_score": 927.0
+      }
+    },
+    {
+      "data": {
+        "source": "FOXM1",
+        "target": "KIF11",
+        "weight": 0.934,
+        "combined_score": 934.0
+      }
+    },
+    {
+      "data": {
+        "source": "MELK",
+        "target": "RRM2",
+        "weight": 0.933,
+        "combined_score": 933.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC45",
+        "target": "CDC6",
+        "weight": 0.994,
+        "combined_score": 994.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKA",
+        "target": "CDKN3",
+        "weight": 0.87,
+        "combined_score": 870.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC45",
+        "target": "HJURP",
+        "weight": 0.882,
+        "combined_score": 882.0
+      }
+    },
+    {
+      "data": {
+        "source": "COL1A1",
+        "target": "SPP1",
+        "weight": 0.747,
+        "combined_score": 747.0
+      }
+    },
+    {
+      "data": {
+        "source": "ASPM",
+        "target": "ZWINT",
+        "weight": 0.818,
+        "combined_score": 818.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB1",
+        "target": "CENPF",
+        "weight": 0.988,
+        "combined_score": 988.0
+      }
+    },
+    {
+      "data": {
+        "source": "BUB1B",
+        "target": "NCAPG",
+        "weight": 0.952,
+        "combined_score": 952.0
+      }
+    },
+    {
+      "data": {
+        "source": "DLGAP5",
+        "target": "FOXM1",
+        "weight": 0.872,
+        "combined_score": 872.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNA2",
+        "target": "PBK",
+        "weight": 0.943,
+        "combined_score": 943.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC20",
+        "target": "CDCA8",
+        "weight": 0.992,
+        "combined_score": 992.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF20A",
+        "target": "TPX2",
+        "weight": 0.972,
+        "combined_score": 972.0
+      }
+    },
+    {
+      "data": {
+        "source": "BIRC5",
+        "target": "PBK",
+        "weight": 0.978,
+        "combined_score": 978.0
+      }
+    },
+    {
+      "data": {
+        "source": "HMMR",
+        "target": "UBE2C",
+        "weight": 0.896,
+        "combined_score": 896.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNA2",
+        "target": "TK1",
+        "weight": 0.78,
+        "combined_score": 780.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB1",
+        "target": "MKI67",
+        "weight": 0.868,
+        "combined_score": 868.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB1",
+        "target": "CCNB2",
+        "weight": 0.998,
+        "combined_score": 998.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPA",
+        "target": "TPX2",
+        "weight": 0.882,
+        "combined_score": 882.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDKN3",
+        "target": "PLK1",
+        "weight": 0.771,
+        "combined_score": 771.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDCA8",
+        "target": "PBK",
+        "weight": 0.912,
+        "combined_score": 912.0
+      }
+    },
+    {
+      "data": {
+        "source": "FOXM1",
+        "target": "SPAG5",
+        "weight": 0.9,
+        "combined_score": 900.0
+      }
+    },
+    {
+      "data": {
+        "source": "HJURP",
+        "target": "NEK2",
+        "weight": 0.812,
+        "combined_score": 812.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKB",
+        "target": "PLK1",
+        "weight": 0.939,
+        "combined_score": 939.0
+      }
+    },
+    {
+      "data": {
+        "source": "ASPM",
+        "target": "PLK1",
+        "weight": 0.704,
+        "combined_score": 704.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB2",
+        "target": "CEP55",
+        "weight": 0.907,
+        "combined_score": 907.0
+      }
+    },
+    {
+      "data": {
+        "source": "ASPM",
+        "target": "EXO1",
+        "weight": 0.848,
+        "combined_score": 848.0
+      }
+    },
+    {
+      "data": {
+        "source": "HJURP",
+        "target": "KIF4A",
+        "weight": 0.918,
+        "combined_score": 918.0
+      }
+    },
+    {
+      "data": {
+        "source": "CEP55",
+        "target": "NCAPG",
+        "weight": 0.899,
+        "combined_score": 899.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNA2",
+        "target": "TPX2",
+        "weight": 0.954,
+        "combined_score": 954.0
+      }
+    },
+    {
+      "data": {
+        "source": "NCAPG",
+        "target": "SPAG5",
+        "weight": 0.742,
+        "combined_score": 742.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPF",
+        "target": "MELK",
+        "weight": 0.919,
+        "combined_score": 919.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKB",
+        "target": "MKI67",
+        "weight": 0.865,
+        "combined_score": 865.0
+      }
+    },
+    {
+      "data": {
+        "source": "BIRC5",
+        "target": "FOXM1",
+        "weight": 0.958,
+        "combined_score": 958.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF20A",
+        "target": "KIF2C",
+        "weight": 0.973,
+        "combined_score": 973.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKB",
+        "target": "UBE2C",
+        "weight": 0.955,
+        "combined_score": 955.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC45",
+        "target": "EXO1",
+        "weight": 0.963,
+        "combined_score": 963.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC20",
+        "target": "EXO1",
+        "weight": 0.796,
+        "combined_score": 796.0
+      }
+    },
+    {
+      "data": {
+        "source": "COL10A1",
+        "target": "COL3A1",
+        "weight": 0.762,
+        "combined_score": 762.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPA",
+        "target": "TOP2A",
+        "weight": 0.919,
+        "combined_score": 919.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB2",
+        "target": "TPX2",
+        "weight": 0.953,
+        "combined_score": 953.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKB",
+        "target": "CCNA2",
+        "weight": 0.991,
+        "combined_score": 991.0
+      }
+    },
+    {
+      "data": {
+        "source": "FOXM1",
+        "target": "PLK1",
+        "weight": 0.995,
+        "combined_score": 995.0
+      }
+    },
+    {
+      "data": {
+        "source": "ASPM",
+        "target": "KIF2C",
+        "weight": 0.936,
+        "combined_score": 936.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPF",
+        "target": "DLGAP5",
+        "weight": 0.976,
+        "combined_score": 976.0
+      }
+    },
+    {
+      "data": {
+        "source": "HJURP",
+        "target": "NCAPG",
+        "weight": 0.882,
+        "combined_score": 882.0
+      }
+    },
+    {
+      "data": {
+        "source": "SPAG4",
+        "target": "SPAG5",
+        "weight": 0.754,
+        "combined_score": 754.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDKN3",
+        "target": "NDC80",
+        "weight": 0.867,
+        "combined_score": 867.0
+      }
+    },
+    {
+      "data": {
+        "source": "FOXM1",
+        "target": "MKI67",
+        "weight": 0.91,
+        "combined_score": 910.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNA2",
+        "target": "EXO1",
+        "weight": 0.879,
+        "combined_score": 879.0
+      }
+    },
+    {
+      "data": {
+        "source": "ASPM",
+        "target": "CEP55",
+        "weight": 0.95,
+        "combined_score": 950.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKA",
+        "target": "MKI67",
+        "weight": 0.85,
+        "combined_score": 850.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPA",
+        "target": "CEP55",
+        "weight": 0.92,
+        "combined_score": 920.0
+      }
+    },
+    {
+      "data": {
+        "source": "MELK",
+        "target": "MYBL2",
+        "weight": 0.894,
+        "combined_score": 894.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF2C",
+        "target": "RRM2",
+        "weight": 0.758,
+        "combined_score": 758.0
+      }
+    },
+    {
+      "data": {
+        "source": "BUB1B",
+        "target": "CDCA8",
+        "weight": 0.994,
+        "combined_score": 994.0
+      }
+    },
+    {
+      "data": {
+        "source": "BUB1B",
+        "target": "HMMR",
+        "weight": 0.882,
+        "combined_score": 882.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIFC1",
+        "target": "SPAG5",
+        "weight": 0.866,
+        "combined_score": 866.0
+      }
+    },
+    {
+      "data": {
+        "source": "EXO1",
+        "target": "NCAPG",
+        "weight": 0.737,
+        "combined_score": 737.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNA2",
+        "target": "CDCA8",
+        "weight": 0.952,
+        "combined_score": 952.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPF",
+        "target": "PLK1",
+        "weight": 0.973,
+        "combined_score": 973.0
+      }
+    },
+    {
+      "data": {
+        "source": "BUB1B",
+        "target": "CCNB1",
+        "weight": 0.998,
+        "combined_score": 998.0
+      }
+    },
+    {
+      "data": {
+        "source": "SPP1",
+        "target": "THBS2",
+        "weight": 0.726,
+        "combined_score": 726.0
+      }
+    },
+    {
+      "data": {
+        "source": "MYBL2",
+        "target": "TPX2",
+        "weight": 0.747,
+        "combined_score": 747.0
+      }
+    },
+    {
+      "data": {
+        "source": "DLGAP5",
+        "target": "TK1",
+        "weight": 0.811,
+        "combined_score": 811.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC6",
+        "target": "DLGAP5",
+        "weight": 0.855,
+        "combined_score": 855.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF20A",
+        "target": "KIFC1",
+        "weight": 0.941,
+        "combined_score": 941.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPA",
+        "target": "KIF4A",
+        "weight": 0.906,
+        "combined_score": 906.0
+      }
+    },
+    {
+      "data": {
+        "source": "CEP55",
+        "target": "KIF20A",
+        "weight": 0.962,
+        "combined_score": 962.0
+      }
+    },
+    {
+      "data": {
+        "source": "SPAG5",
+        "target": "TROAP",
+        "weight": 0.813,
+        "combined_score": 813.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKA",
+        "target": "KIFC1",
+        "weight": 0.718,
+        "combined_score": 718.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKA",
+        "target": "KIF20A",
+        "weight": 0.936,
+        "combined_score": 936.0
+      }
+    },
+    {
+      "data": {
+        "source": "DLGAP5",
+        "target": "PLK1",
+        "weight": 0.807,
+        "combined_score": 807.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKB",
+        "target": "CDC6",
+        "weight": 0.855,
+        "combined_score": 855.0
+      }
+    },
+    {
+      "data": {
+        "source": "BUB1B",
+        "target": "PBK",
+        "weight": 0.937,
+        "combined_score": 937.0
+      }
+    },
+    {
+      "data": {
+        "source": "ASPM",
+        "target": "CCNB2",
+        "weight": 0.951,
+        "combined_score": 951.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNA2",
+        "target": "SPAG5",
+        "weight": 0.901,
+        "combined_score": 901.0
+      }
+    },
+    {
+      "data": {
+        "source": "HJURP",
+        "target": "HMMR",
+        "weight": 0.878,
+        "combined_score": 878.0
+      }
+    },
+    {
+      "data": {
+        "source": "BIRC5",
+        "target": "CDC45",
+        "weight": 0.873,
+        "combined_score": 873.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKB",
+        "target": "RRM2",
+        "weight": 0.84,
+        "combined_score": 840.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNA2",
+        "target": "FOXM1",
+        "weight": 0.985,
+        "combined_score": 985.0
+      }
+    },
+    {
+      "data": {
+        "source": "EXO1",
+        "target": "HJURP",
+        "weight": 0.746,
+        "combined_score": 746.0
+      }
+    },
+    {
+      "data": {
+        "source": "BUB1B",
+        "target": "CCNA2",
+        "weight": 0.994,
+        "combined_score": 994.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF4A",
+        "target": "TPX2",
+        "weight": 0.965,
+        "combined_score": 965.0
+      }
+    },
+    {
+      "data": {
+        "source": "ASPM",
+        "target": "CCNB1",
+        "weight": 0.952,
+        "combined_score": 952.0
+      }
+    },
+    {
+      "data": {
+        "source": "NCAPG",
+        "target": "NEK2",
+        "weight": 0.823,
+        "combined_score": 823.0
+      }
+    },
+    {
+      "data": {
+        "source": "FOXM1",
+        "target": "TK1",
+        "weight": 0.811,
+        "combined_score": 811.0
+      }
+    },
+    {
+      "data": {
+        "source": "DLGAP5",
+        "target": "PBK",
+        "weight": 0.979,
+        "combined_score": 979.0
+      }
+    },
+    {
+      "data": {
+        "source": "DLGAP5",
+        "target": "HMMR",
+        "weight": 0.999,
+        "combined_score": 999.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIFC1",
+        "target": "TPX2",
+        "weight": 0.826,
+        "combined_score": 826.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF11",
+        "target": "NDC80",
+        "weight": 0.972,
+        "combined_score": 972.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF20A",
+        "target": "KIF4A",
+        "weight": 0.992,
+        "combined_score": 992.0
+      }
+    },
+    {
+      "data": {
+        "source": "HMMR",
+        "target": "NDC80",
+        "weight": 0.835,
+        "combined_score": 835.0
+      }
+    },
+    {
+      "data": {
+        "source": "NDC80",
+        "target": "PBK",
+        "weight": 0.934,
+        "combined_score": 934.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNA2",
+        "target": "KIF11",
+        "weight": 0.978,
+        "combined_score": 978.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDKN3",
+        "target": "KIF4A",
+        "weight": 0.803,
+        "combined_score": 803.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC45",
+        "target": "CENPA",
+        "weight": 0.707,
+        "combined_score": 707.0
+      }
+    },
+    {
+      "data": {
+        "source": "ASPM",
+        "target": "TPX2",
+        "weight": 0.949,
+        "combined_score": 949.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC20",
+        "target": "PBK",
+        "weight": 0.959,
+        "combined_score": 959.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF4A",
+        "target": "ZWINT",
+        "weight": 0.848,
+        "combined_score": 848.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB2",
+        "target": "MELK",
+        "weight": 0.975,
+        "combined_score": 975.0
+      }
+    },
+    {
+      "data": {
+        "source": "UBE2C",
+        "target": "ZWINT",
+        "weight": 0.878,
+        "combined_score": 878.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIFC1",
+        "target": "NCAPG",
+        "weight": 0.841,
+        "combined_score": 841.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKB",
+        "target": "CENPA",
+        "weight": 0.997,
+        "combined_score": 997.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC20",
+        "target": "MKI67",
+        "weight": 0.934,
+        "combined_score": 934.0
+      }
+    },
+    {
+      "data": {
+        "source": "EXO1",
+        "target": "TOP2A",
+        "weight": 0.797,
+        "combined_score": 797.0
+      }
+    },
+    {
+      "data": {
+        "source": "BUB1B",
+        "target": "ZWINT",
+        "weight": 0.996,
+        "combined_score": 996.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDCA8",
+        "target": "MKI67",
+        "weight": 0.923,
+        "combined_score": 923.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC45",
+        "target": "TOP2A",
+        "weight": 0.917,
+        "combined_score": 917.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDCA8",
+        "target": "KIF4A",
+        "weight": 0.932,
+        "combined_score": 932.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB1",
+        "target": "PBK",
+        "weight": 0.962,
+        "combined_score": 962.0
+      }
+    },
+    {
+      "data": {
+        "source": "ASPM",
+        "target": "KIFC1",
+        "weight": 0.845,
+        "combined_score": 845.0
+      }
+    },
+    {
+      "data": {
+        "source": "DLGAP5",
+        "target": "KIF4A",
+        "weight": 0.962,
+        "combined_score": 962.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPA",
+        "target": "ZWINT",
+        "weight": 0.908,
+        "combined_score": 908.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF4A",
+        "target": "NCAPG",
+        "weight": 0.934,
+        "combined_score": 934.0
+      }
+    },
+    {
+      "data": {
+        "source": "NEK2",
+        "target": "RRM2",
+        "weight": 0.724,
+        "combined_score": 724.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB1",
+        "target": "KIFC1",
+        "weight": 0.726,
+        "combined_score": 726.0
+      }
+    },
+    {
+      "data": {
+        "source": "EXO1",
+        "target": "KIF2C",
+        "weight": 0.764,
+        "combined_score": 764.0
+      }
+    },
+    {
+      "data": {
+        "source": "CEP55",
+        "target": "TPX2",
+        "weight": 0.944,
+        "combined_score": 944.0
+      }
+    },
+    {
+      "data": {
+        "source": "FOXM1",
+        "target": "KIF20A",
+        "weight": 0.944,
+        "combined_score": 944.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC45",
+        "target": "KIF4A",
+        "weight": 0.73,
+        "combined_score": 730.0
+      }
+    },
+    {
+      "data": {
+        "source": "COL10A1",
+        "target": "COL1A1",
+        "weight": 0.781,
+        "combined_score": 781.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDCA8",
+        "target": "TPX2",
+        "weight": 0.919,
+        "combined_score": 919.0
+      }
+    },
+    {
+      "data": {
+        "source": "PLK1",
+        "target": "RRM2",
+        "weight": 0.873,
+        "combined_score": 873.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKB",
+        "target": "NCAPG",
+        "weight": 0.913,
+        "combined_score": 913.0
+      }
+    },
+    {
+      "data": {
+        "source": "TK1",
+        "target": "TOP2A",
+        "weight": 0.806,
+        "combined_score": 806.0
+      }
+    },
+    {
+      "data": {
+        "source": "HMMR",
+        "target": "PBK",
+        "weight": 0.893,
+        "combined_score": 893.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF11",
+        "target": "SPAG5",
+        "weight": 0.954,
+        "combined_score": 954.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC6",
+        "target": "PLK1",
+        "weight": 0.809,
+        "combined_score": 809.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF4A",
+        "target": "TROAP",
+        "weight": 0.836,
+        "combined_score": 836.0
+      }
+    },
+    {
+      "data": {
+        "source": "BIRC5",
+        "target": "MELK",
+        "weight": 0.965,
+        "combined_score": 965.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB2",
+        "target": "FOXM1",
+        "weight": 0.895,
+        "combined_score": 895.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB1",
+        "target": "KIF11",
+        "weight": 0.966,
+        "combined_score": 966.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNA2",
+        "target": "CCNE1",
+        "weight": 0.903,
+        "combined_score": 903.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKB",
+        "target": "EXO1",
+        "weight": 0.797,
+        "combined_score": 797.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPA",
+        "target": "NEK2",
+        "weight": 0.85,
+        "combined_score": 850.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF2C",
+        "target": "TPX2",
+        "weight": 0.999,
+        "combined_score": 999.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIFC1",
+        "target": "TOP2A",
+        "weight": 0.859,
+        "combined_score": 859.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDKN3",
+        "target": "CENPA",
+        "weight": 0.824,
+        "combined_score": 824.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPF",
+        "target": "UBE2C",
+        "weight": 0.94,
+        "combined_score": 940.0
+      }
+    },
+    {
+      "data": {
+        "source": "BIRC5",
+        "target": "UBE2C",
+        "weight": 0.992,
+        "combined_score": 992.0
+      }
+    },
+    {
+      "data": {
+        "source": "BIRC5",
+        "target": "KIFC1",
+        "weight": 0.779,
+        "combined_score": 779.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKA",
+        "target": "CENPA",
+        "weight": 0.959,
+        "combined_score": 959.0
+      }
+    },
+    {
+      "data": {
+        "source": "DLGAP5",
+        "target": "ZWINT",
+        "weight": 0.92,
+        "combined_score": 920.0
+      }
+    },
+    {
+      "data": {
+        "source": "BUB1B",
+        "target": "UBE2C",
+        "weight": 0.991,
+        "combined_score": 991.0
+      }
+    },
+    {
+      "data": {
+        "source": "TK1",
+        "target": "TPX2",
+        "weight": 0.792,
+        "combined_score": 792.0
+      }
+    },
+    {
+      "data": {
+        "source": "EXO1",
+        "target": "ZWINT",
+        "weight": 0.724,
+        "combined_score": 724.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB1",
+        "target": "CDCA8",
+        "weight": 0.987,
+        "combined_score": 987.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF4A",
+        "target": "TOP2A",
+        "weight": 0.915,
+        "combined_score": 915.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKB",
+        "target": "BIRC5",
+        "weight": 0.999,
+        "combined_score": 999.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKA",
+        "target": "CCNB2",
+        "weight": 0.988,
+        "combined_score": 988.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF20A",
+        "target": "MELK",
+        "weight": 0.929,
+        "combined_score": 929.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKB",
+        "target": "FOXM1",
+        "weight": 0.889,
+        "combined_score": 889.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPA",
+        "target": "KIF2C",
+        "weight": 0.986,
+        "combined_score": 986.0
+      }
+    },
+    {
+      "data": {
+        "source": "NEK2",
+        "target": "TPX2",
+        "weight": 0.942,
+        "combined_score": 942.0
+      }
+    },
+    {
+      "data": {
+        "source": "MYBL2",
+        "target": "UBE2C",
+        "weight": 0.773,
+        "combined_score": 773.0
+      }
+    },
+    {
+      "data": {
+        "source": "CEP55",
+        "target": "FOXM1",
+        "weight": 0.86,
+        "combined_score": 860.0
+      }
+    },
+    {
+      "data": {
+        "source": "BUB1B",
+        "target": "KIF20A",
+        "weight": 0.977,
+        "combined_score": 977.0
+      }
+    },
+    {
+      "data": {
+        "source": "BIRC5",
+        "target": "TPX2",
+        "weight": 0.952,
+        "combined_score": 952.0
+      }
+    },
+    {
+      "data": {
+        "source": "PBK",
+        "target": "TPX2",
+        "weight": 0.945,
+        "combined_score": 945.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB1",
+        "target": "NEK2",
+        "weight": 0.91,
+        "combined_score": 910.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF4A",
+        "target": "NDC80",
+        "weight": 0.821,
+        "combined_score": 821.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF11",
+        "target": "KIF20A",
+        "weight": 0.98,
+        "combined_score": 980.0
+      }
+    },
+    {
+      "data": {
+        "source": "HJURP",
+        "target": "TOP2A",
+        "weight": 0.911,
+        "combined_score": 911.0
+      }
+    },
+    {
+      "data": {
+        "source": "ASPM",
+        "target": "NDC80",
+        "weight": 0.969,
+        "combined_score": 969.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNA2",
+        "target": "CDC45",
+        "weight": 0.906,
+        "combined_score": 906.0
+      }
+    },
+    {
+      "data": {
+        "source": "TK1",
+        "target": "ZWINT",
+        "weight": 0.898,
+        "combined_score": 898.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNA2",
+        "target": "ZWINT",
+        "weight": 0.901,
+        "combined_score": 901.0
+      }
+    },
+    {
+      "data": {
+        "source": "FOXM1",
+        "target": "NCAPG",
+        "weight": 0.86,
+        "combined_score": 860.0
+      }
+    },
+    {
+      "data": {
+        "source": "ASPM",
+        "target": "HJURP",
+        "weight": 0.931,
+        "combined_score": 931.0
+      }
+    },
+    {
+      "data": {
+        "source": "ASPM",
+        "target": "KIF4A",
+        "weight": 0.952,
+        "combined_score": 952.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDCA8",
+        "target": "TOP2A",
+        "weight": 0.92,
+        "combined_score": 920.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB1",
+        "target": "HJURP",
+        "weight": 0.871,
+        "combined_score": 871.0
+      }
+    },
+    {
+      "data": {
+        "source": "BIRC5",
+        "target": "BUB1B",
+        "weight": 0.987,
+        "combined_score": 987.0
+      }
+    },
+    {
+      "data": {
+        "source": "HMMR",
+        "target": "SPAG5",
+        "weight": 0.701,
+        "combined_score": 701.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB2",
+        "target": "EXO1",
+        "weight": 0.744,
+        "combined_score": 744.0
+      }
+    },
+    {
+      "data": {
+        "source": "BUB1B",
+        "target": "RRM2",
+        "weight": 0.922,
+        "combined_score": 922.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF11",
+        "target": "TPX2",
+        "weight": 0.965,
+        "combined_score": 965.0
+      }
+    },
+    {
+      "data": {
+        "source": "COL1A1",
+        "target": "MMP1",
+        "weight": 0.767,
+        "combined_score": 767.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF2C",
+        "target": "UBE2C",
+        "weight": 0.954,
+        "combined_score": 954.0
+      }
+    },
+    {
+      "data": {
+        "source": "TK1",
+        "target": "UBE2C",
+        "weight": 0.873,
+        "combined_score": 873.0
+      }
+    },
+    {
+      "data": {
+        "source": "BIRC5",
+        "target": "CENPA",
+        "weight": 0.955,
+        "combined_score": 955.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKA",
+        "target": "DLGAP5",
+        "weight": 0.966,
+        "combined_score": 966.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC45",
+        "target": "RRM2",
+        "weight": 0.87,
+        "combined_score": 870.0
+      }
+    },
+    {
+      "data": {
+        "source": "DLGAP5",
+        "target": "EXO1",
+        "weight": 0.787,
+        "combined_score": 787.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB1",
+        "target": "TOP2A",
+        "weight": 0.989,
+        "combined_score": 989.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKB",
+        "target": "BUB1B",
+        "weight": 0.999,
+        "combined_score": 999.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB2",
+        "target": "MYBL2",
+        "weight": 0.868,
+        "combined_score": 868.0
+      }
+    },
+    {
+      "data": {
+        "source": "MKI67",
+        "target": "TROAP",
+        "weight": 0.704,
+        "combined_score": 704.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNA2",
+        "target": "HMMR",
+        "weight": 0.921,
+        "combined_score": 921.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDCA8",
+        "target": "MELK",
+        "weight": 0.902,
+        "combined_score": 902.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB2",
+        "target": "KIFC1",
+        "weight": 0.786,
+        "combined_score": 786.0
+      }
+    },
+    {
+      "data": {
+        "source": "EZH2",
+        "target": "MELK",
+        "weight": 0.738,
+        "combined_score": 738.0
+      }
+    },
+    {
+      "data": {
+        "source": "BUB1B",
+        "target": "CDC20",
+        "weight": 0.999,
+        "combined_score": 999.0
+      }
+    },
+    {
+      "data": {
+        "source": "MKI67",
+        "target": "NCAPG",
+        "weight": 0.908,
+        "combined_score": 908.0
+      }
+    },
+    {
+      "data": {
+        "source": "HJURP",
+        "target": "NDC80",
+        "weight": 0.866,
+        "combined_score": 866.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKB",
+        "target": "DLGAP5",
+        "weight": 0.95,
+        "combined_score": 950.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPA",
+        "target": "UBE2C",
+        "weight": 0.938,
+        "combined_score": 938.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNE1",
+        "target": "CDC20",
+        "weight": 0.76,
+        "combined_score": 760.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF11",
+        "target": "ZWINT",
+        "weight": 0.928,
+        "combined_score": 928.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPF",
+        "target": "EXO1",
+        "weight": 0.9,
+        "combined_score": 900.0
+      }
+    },
+    {
+      "data": {
+        "source": "BIRC5",
+        "target": "TK1",
+        "weight": 0.92,
+        "combined_score": 920.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNA2",
+        "target": "NCAPG",
+        "weight": 0.949,
+        "combined_score": 949.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC45",
+        "target": "KIF2C",
+        "weight": 0.892,
+        "combined_score": 892.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNA2",
+        "target": "CENPF",
+        "weight": 0.944,
+        "combined_score": 944.0
+      }
+    },
+    {
+      "data": {
+        "source": "HJURP",
+        "target": "KIF2C",
+        "weight": 0.938,
+        "combined_score": 938.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKB",
+        "target": "CENPF",
+        "weight": 0.925,
+        "combined_score": 925.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKA",
+        "target": "BUB1B",
+        "weight": 0.924,
+        "combined_score": 924.0
+      }
+    },
+    {
+      "data": {
+        "source": "ASPM",
+        "target": "NCAPG",
+        "weight": 0.972,
+        "combined_score": 972.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC20",
+        "target": "HJURP",
+        "weight": 0.925,
+        "combined_score": 925.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKA",
+        "target": "NDC80",
+        "weight": 0.933,
+        "combined_score": 933.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB1",
+        "target": "GINS1",
+        "weight": 0.711,
+        "combined_score": 711.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB1",
+        "target": "KIF20A",
+        "weight": 0.954,
+        "combined_score": 954.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC6",
+        "target": "GINS1",
+        "weight": 0.744,
+        "combined_score": 744.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKB",
+        "target": "ZWINT",
+        "weight": 0.927,
+        "combined_score": 927.0
+      }
+    },
+    {
+      "data": {
+        "source": "NDC80",
+        "target": "RRM2",
+        "weight": 0.745,
+        "combined_score": 745.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDCA8",
+        "target": "KIFC1",
+        "weight": 0.844,
+        "combined_score": 844.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDCA8",
+        "target": "RRM2",
+        "weight": 0.861,
+        "combined_score": 861.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC45",
+        "target": "KIFC1",
+        "weight": 0.707,
+        "combined_score": 707.0
+      }
+    },
+    {
+      "data": {
+        "source": "MELK",
+        "target": "UBE2C",
+        "weight": 0.948,
+        "combined_score": 948.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC20",
+        "target": "ZWINT",
+        "weight": 0.968,
+        "combined_score": 968.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKB",
+        "target": "KIF20A",
+        "weight": 0.99,
+        "combined_score": 990.0
+      }
+    },
+    {
+      "data": {
+        "source": "CEP55",
+        "target": "TK1",
+        "weight": 0.802,
+        "combined_score": 802.0
+      }
+    },
+    {
+      "data": {
+        "source": "BIRC5",
+        "target": "CCNB2",
+        "weight": 0.993,
+        "combined_score": 993.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPF",
+        "target": "NEK2",
+        "weight": 0.97,
+        "combined_score": 970.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKB",
+        "target": "MELK",
+        "weight": 0.902,
+        "combined_score": 902.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPA",
+        "target": "PLK1",
+        "weight": 0.988,
+        "combined_score": 988.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKA",
+        "target": "NCAPG",
+        "weight": 0.952,
+        "combined_score": 952.0
+      }
+    },
+    {
+      "data": {
+        "source": "HJURP",
+        "target": "KIF20A",
+        "weight": 0.935,
+        "combined_score": 935.0
+      }
+    },
+    {
+      "data": {
+        "source": "MKI67",
+        "target": "PBK",
+        "weight": 0.762,
+        "combined_score": 762.0
+      }
+    },
+    {
+      "data": {
+        "source": "FOXM1",
+        "target": "HJURP",
+        "weight": 0.918,
+        "combined_score": 918.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC20",
+        "target": "KIF11",
+        "weight": 0.987,
+        "combined_score": 987.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC20",
+        "target": "CENPF",
+        "weight": 0.99,
+        "combined_score": 990.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKA",
+        "target": "CDC6",
+        "weight": 0.761,
+        "combined_score": 761.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB1",
+        "target": "NCAPG",
+        "weight": 0.962,
+        "combined_score": 962.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF11",
+        "target": "NEK2",
+        "weight": 0.959,
+        "combined_score": 959.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKB",
+        "target": "KIF11",
+        "weight": 0.964,
+        "combined_score": 964.0
+      }
+    },
+    {
+      "data": {
+        "source": "BUB1B",
+        "target": "TROAP",
+        "weight": 0.753,
+        "combined_score": 753.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC20",
+        "target": "CEP55",
+        "weight": 0.95,
+        "combined_score": 950.0
+      }
+    },
+    {
+      "data": {
+        "source": "PBK",
+        "target": "PLK1",
+        "weight": 0.756,
+        "combined_score": 756.0
+      }
+    },
+    {
+      "data": {
+        "source": "ASPM",
+        "target": "TOP2A",
+        "weight": 0.996,
+        "combined_score": 996.0
+      }
+    },
+    {
+      "data": {
+        "source": "ASPM",
+        "target": "KIF11",
+        "weight": 0.989,
+        "combined_score": 989.0
+      }
+    },
+    {
+      "data": {
+        "source": "HJURP",
+        "target": "PBK",
+        "weight": 0.896,
+        "combined_score": 896.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDCA8",
+        "target": "KIF11",
+        "weight": 0.964,
+        "combined_score": 964.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDCA8",
+        "target": "ZWINT",
+        "weight": 0.78,
+        "combined_score": 780.0
+      }
+    },
+    {
+      "data": {
+        "source": "DLGAP5",
+        "target": "KIF20A",
+        "weight": 0.97,
+        "combined_score": 970.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDKN3",
+        "target": "NEK2",
+        "weight": 0.722,
+        "combined_score": 722.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPF",
+        "target": "RRM2",
+        "weight": 0.822,
+        "combined_score": 822.0
+      }
+    },
+    {
+      "data": {
+        "source": "CEP55",
+        "target": "DLGAP5",
+        "weight": 0.999,
+        "combined_score": 999.0
+      }
+    },
+    {
+      "data": {
+        "source": "EXO1",
+        "target": "RECQL4",
+        "weight": 0.981,
+        "combined_score": 981.0
+      }
+    },
+    {
+      "data": {
+        "source": "BUB1B",
+        "target": "NEK2",
+        "weight": 0.999,
+        "combined_score": 999.0
+      }
+    },
+    {
+      "data": {
+        "source": "BUB1B",
+        "target": "CENPA",
+        "weight": 0.985,
+        "combined_score": 985.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB1",
+        "target": "CCNE1",
+        "weight": 0.746,
+        "combined_score": 746.0
+      }
+    },
+    {
+      "data": {
+        "source": "SPP1",
+        "target": "VWF",
+        "weight": 0.807,
+        "combined_score": 807.0
+      }
+    },
+    {
+      "data": {
+        "source": "BUB1B",
+        "target": "FOXM1",
+        "weight": 0.944,
+        "combined_score": 944.0
+      }
+    },
+    {
+      "data": {
+        "source": "HMMR",
+        "target": "ZWINT",
+        "weight": 0.891,
+        "combined_score": 891.0
+      }
+    },
+    {
+      "data": {
+        "source": "HMMR",
+        "target": "KIF2C",
+        "weight": 0.868,
+        "combined_score": 868.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB2",
+        "target": "TOP2A",
+        "weight": 0.975,
+        "combined_score": 975.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKB",
+        "target": "HJURP",
+        "weight": 0.927,
+        "combined_score": 927.0
+      }
+    },
+    {
+      "data": {
+        "source": "ASPM",
+        "target": "UBE2C",
+        "weight": 0.943,
+        "combined_score": 943.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC20",
+        "target": "TK1",
+        "weight": 0.883,
+        "combined_score": 883.0
+      }
+    },
+    {
+      "data": {
+        "source": "TEK",
+        "target": "VWF",
+        "weight": 0.757,
+        "combined_score": 757.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC20",
+        "target": "NCAPG",
+        "weight": 0.949,
+        "combined_score": 949.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPF",
+        "target": "KIF4A",
+        "weight": 0.879,
+        "combined_score": 879.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDKN3",
+        "target": "CEP55",
+        "weight": 0.822,
+        "combined_score": 822.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIFC1",
+        "target": "MYBL2",
+        "weight": 0.731,
+        "combined_score": 731.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF20A",
+        "target": "SPAG5",
+        "weight": 0.925,
+        "combined_score": 925.0
+      }
+    },
+    {
+      "data": {
+        "source": "DLGAP5",
+        "target": "KIFC1",
+        "weight": 0.915,
+        "combined_score": 915.0
+      }
+    },
+    {
+      "data": {
+        "source": "NEK2",
+        "target": "SPAG5",
+        "weight": 0.848,
+        "combined_score": 848.0
+      }
+    },
+    {
+      "data": {
+        "source": "CEP55",
+        "target": "PBK",
+        "weight": 0.957,
+        "combined_score": 957.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNA2",
+        "target": "CDC6",
+        "weight": 0.999,
+        "combined_score": 999.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPA",
+        "target": "NDC80",
+        "weight": 0.917,
+        "combined_score": 917.0
+      }
+    },
+    {
+      "data": {
+        "source": "NDC80",
+        "target": "SPAG5",
+        "weight": 0.887,
+        "combined_score": 887.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIFC1",
+        "target": "TROAP",
+        "weight": 0.789,
+        "combined_score": 789.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNA2",
+        "target": "HJURP",
+        "weight": 0.877,
+        "combined_score": 877.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC45",
+        "target": "CEP55",
+        "weight": 0.896,
+        "combined_score": 896.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDKN3",
+        "target": "DLGAP5",
+        "weight": 0.962,
+        "combined_score": 962.0
+      }
+    },
+    {
+      "data": {
+        "source": "NEK2",
+        "target": "PLK1",
+        "weight": 0.938,
+        "combined_score": 938.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF2C",
+        "target": "NCAPG",
+        "weight": 0.933,
+        "combined_score": 933.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPA",
+        "target": "DLGAP5",
+        "weight": 0.945,
+        "combined_score": 945.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPF",
+        "target": "ZWINT",
+        "weight": 0.953,
+        "combined_score": 953.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDCA8",
+        "target": "FOXM1",
+        "weight": 0.93,
+        "combined_score": 930.0
+      }
+    },
+    {
+      "data": {
+        "source": "ASPM",
+        "target": "HMMR",
+        "weight": 0.928,
+        "combined_score": 928.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF11",
+        "target": "TOP2A",
+        "weight": 0.975,
+        "combined_score": 975.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDKN3",
+        "target": "KIF2C",
+        "weight": 0.791,
+        "combined_score": 791.0
+      }
+    },
+    {
+      "data": {
+        "source": "BIRC5",
+        "target": "NDC80",
+        "weight": 0.885,
+        "combined_score": 885.0
+      }
+    },
+    {
+      "data": {
+        "source": "EMCN",
+        "target": "TEK",
+        "weight": 0.754,
+        "combined_score": 754.0
+      }
+    },
+    {
+      "data": {
+        "source": "TOP2A",
+        "target": "UBE2C",
+        "weight": 0.973,
+        "combined_score": 973.0
+      }
+    },
+    {
+      "data": {
+        "source": "EPAS1",
+        "target": "SLC2A1",
+        "weight": 0.888,
+        "combined_score": 888.0
+      }
+    },
+    {
+      "data": {
+        "source": "PBK",
+        "target": "TOP2A",
+        "weight": 0.958,
+        "combined_score": 958.0
+      }
+    },
+    {
+      "data": {
+        "source": "BIRC5",
+        "target": "CDKN3",
+        "weight": 0.887,
+        "combined_score": 887.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF20A",
+        "target": "ZWINT",
+        "weight": 0.887,
+        "combined_score": 887.0
+      }
+    },
+    {
+      "data": {
+        "source": "FOXM1",
+        "target": "KIFC1",
+        "weight": 0.75,
+        "combined_score": 750.0
+      }
+    },
+    {
+      "data": {
+        "source": "HMMR",
+        "target": "KIF20A",
+        "weight": 0.909,
+        "combined_score": 909.0
+      }
+    },
+    {
+      "data": {
+        "source": "MKI67",
+        "target": "TOP2A",
+        "weight": 0.993,
+        "combined_score": 993.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF4A",
+        "target": "UBE2C",
+        "weight": 0.905,
+        "combined_score": 905.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNA2",
+        "target": "CENPA",
+        "weight": 0.99,
+        "combined_score": 990.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB2",
+        "target": "NCAPG",
+        "weight": 0.97,
+        "combined_score": 970.0
+      }
+    },
+    {
+      "data": {
+        "source": "EGLN3",
+        "target": "EPAS1",
+        "weight": 0.999,
+        "combined_score": 999.0
+      }
+    },
+    {
+      "data": {
+        "source": "MELK",
+        "target": "TPX2",
+        "weight": 0.958,
+        "combined_score": 958.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKA",
+        "target": "CDC20",
+        "weight": 0.995,
+        "combined_score": 995.0
+      }
+    },
+    {
+      "data": {
+        "source": "PLK1",
+        "target": "ZWINT",
+        "weight": 0.93,
+        "combined_score": 930.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKA",
+        "target": "ZWINT",
+        "weight": 0.787,
+        "combined_score": 787.0
+      }
+    },
+    {
+      "data": {
+        "source": "ASPM",
+        "target": "TROAP",
+        "weight": 0.764,
+        "combined_score": 764.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKA",
+        "target": "FOXM1",
+        "weight": 0.793,
+        "combined_score": 793.0
+      }
+    },
+    {
+      "data": {
+        "source": "HJURP",
+        "target": "TROAP",
+        "weight": 0.918,
+        "combined_score": 918.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB2",
+        "target": "DLGAP5",
+        "weight": 0.974,
+        "combined_score": 974.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB2",
+        "target": "CDC45",
+        "weight": 0.95,
+        "combined_score": 950.0
+      }
+    },
+    {
+      "data": {
+        "source": "FOXM1",
+        "target": "TPX2",
+        "weight": 0.932,
+        "combined_score": 932.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF20A",
+        "target": "TOP2A",
+        "weight": 0.974,
+        "combined_score": 974.0
+      }
+    },
+    {
+      "data": {
+        "source": "ASPM",
+        "target": "KIF20A",
+        "weight": 0.975,
+        "combined_score": 975.0
+      }
+    },
+    {
+      "data": {
+        "source": "BIRC5",
+        "target": "ZWINT",
+        "weight": 0.917,
+        "combined_score": 917.0
+      }
+    },
+    {
+      "data": {
+        "source": "MKI67",
+        "target": "MYBL2",
+        "weight": 0.783,
+        "combined_score": 783.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF11",
+        "target": "RRM2",
+        "weight": 0.947,
+        "combined_score": 947.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC20",
+        "target": "MELK",
+        "weight": 0.964,
+        "combined_score": 964.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC6",
+        "target": "CDCA8",
+        "weight": 0.819,
+        "combined_score": 819.0
+      }
+    },
+    {
+      "data": {
+        "source": "BIRC5",
+        "target": "NEK2",
+        "weight": 0.94,
+        "combined_score": 940.0
+      }
+    },
+    {
+      "data": {
+        "source": "BIRC5",
+        "target": "TROAP",
+        "weight": 0.754,
+        "combined_score": 754.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNA2",
+        "target": "MELK",
+        "weight": 0.939,
+        "combined_score": 939.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF20A",
+        "target": "RRM2",
+        "weight": 0.935,
+        "combined_score": 935.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB2",
+        "target": "CDC6",
+        "weight": 0.961,
+        "combined_score": 961.0
+      }
+    },
+    {
+      "data": {
+        "source": "BUB1B",
+        "target": "NDC80",
+        "weight": 0.992,
+        "combined_score": 992.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKA",
+        "target": "CCNA2",
+        "weight": 0.949,
+        "combined_score": 949.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPF",
+        "target": "NDC80",
+        "weight": 0.987,
+        "combined_score": 987.0
+      }
+    },
+    {
+      "data": {
+        "source": "BIRC5",
+        "target": "HMMR",
+        "weight": 0.882,
+        "combined_score": 882.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF11",
+        "target": "PBK",
+        "weight": 0.955,
+        "combined_score": 955.0
+      }
+    },
+    {
+      "data": {
+        "source": "CEP55",
+        "target": "HJURP",
+        "weight": 0.921,
+        "combined_score": 921.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNA2",
+        "target": "MKI67",
+        "weight": 0.93,
+        "combined_score": 930.0
+      }
+    },
+    {
+      "data": {
+        "source": "DLGAP5",
+        "target": "NDC80",
+        "weight": 0.957,
+        "combined_score": 957.0
+      }
+    },
+    {
+      "data": {
+        "source": "NEK2",
+        "target": "TOP2A",
+        "weight": 0.928,
+        "combined_score": 928.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF2C",
+        "target": "ZWINT",
+        "weight": 0.827,
+        "combined_score": 827.0
+      }
+    },
+    {
+      "data": {
+        "source": "PBK",
+        "target": "ZWINT",
+        "weight": 0.821,
+        "combined_score": 821.0
+      }
+    },
+    {
+      "data": {
+        "source": "EXO1",
+        "target": "FOXM1",
+        "weight": 0.753,
+        "combined_score": 753.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC20",
+        "target": "TOP2A",
+        "weight": 0.98,
+        "combined_score": 980.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPF",
+        "target": "HJURP",
+        "weight": 0.946,
+        "combined_score": 946.0
+      }
+    },
+    {
+      "data": {
+        "source": "CEP55",
+        "target": "KIF11",
+        "weight": 0.997,
+        "combined_score": 997.0
+      }
+    },
+    {
+      "data": {
+        "source": "HMMR",
+        "target": "NEK2",
+        "weight": 0.87,
+        "combined_score": 870.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDKN3",
+        "target": "KIF20A",
+        "weight": 0.835,
+        "combined_score": 835.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNA2",
+        "target": "KIFC1",
+        "weight": 0.847,
+        "combined_score": 847.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB1",
+        "target": "DLGAP5",
+        "weight": 0.965,
+        "combined_score": 965.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPF",
+        "target": "PBK",
+        "weight": 0.949,
+        "combined_score": 949.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC45",
+        "target": "CENPF",
+        "weight": 0.776,
+        "combined_score": 776.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPA",
+        "target": "MELK",
+        "weight": 0.882,
+        "combined_score": 882.0
+      }
+    },
+    {
+      "data": {
+        "source": "SLC2A1",
+        "target": "SLC7A5",
+        "weight": 0.719,
+        "combined_score": 719.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC20",
+        "target": "CENPA",
+        "weight": 0.986,
+        "combined_score": 986.0
+      }
+    },
+    {
+      "data": {
+        "source": "BUB1B",
+        "target": "KIF11",
+        "weight": 0.994,
+        "combined_score": 994.0
+      }
+    },
+    {
+      "data": {
+        "source": "PBK",
+        "target": "SPAG5",
+        "weight": 0.879,
+        "combined_score": 879.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB1",
+        "target": "CENPA",
+        "weight": 0.953,
+        "combined_score": 953.0
+      }
+    },
+    {
+      "data": {
+        "source": "DLGAP5",
+        "target": "NEK2",
+        "weight": 0.963,
+        "combined_score": 963.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKA",
+        "target": "CEP55",
+        "weight": 0.936,
+        "combined_score": 936.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIFC1",
+        "target": "NEK2",
+        "weight": 0.806,
+        "combined_score": 806.0
+      }
+    },
+    {
+      "data": {
+        "source": "NDC80",
+        "target": "TPX2",
+        "weight": 0.788,
+        "combined_score": 788.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKB",
+        "target": "TOP2A",
+        "weight": 0.97,
+        "combined_score": 970.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF11",
+        "target": "MKI67",
+        "weight": 0.931,
+        "combined_score": 931.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC45",
+        "target": "GINS1",
+        "weight": 0.999,
+        "combined_score": 999.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC45",
+        "target": "PBK",
+        "weight": 0.874,
+        "combined_score": 874.0
+      }
+    },
+    {
+      "data": {
+        "source": "BIRC5",
+        "target": "TOP2A",
+        "weight": 0.976,
+        "combined_score": 976.0
+      }
+    },
+    {
+      "data": {
+        "source": "CEP55",
+        "target": "MKI67",
+        "weight": 0.904,
+        "combined_score": 904.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPF",
+        "target": "FOXM1",
+        "weight": 0.989,
+        "combined_score": 989.0
+      }
+    },
+    {
+      "data": {
+        "source": "ASPM",
+        "target": "MKI67",
+        "weight": 0.962,
+        "combined_score": 962.0
+      }
+    },
+    {
+      "data": {
+        "source": "TOP2A",
+        "target": "TROAP",
+        "weight": 0.784,
+        "combined_score": 784.0
+      }
+    },
+    {
+      "data": {
+        "source": "BIRC5",
+        "target": "KIF11",
+        "weight": 0.957,
+        "combined_score": 957.0
+      }
+    },
+    {
+      "data": {
+        "source": "HMMR",
+        "target": "NCAPG",
+        "weight": 0.909,
+        "combined_score": 909.0
+      }
+    },
+    {
+      "data": {
+        "source": "NEK2",
+        "target": "PBK",
+        "weight": 0.88,
+        "combined_score": 880.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPA",
+        "target": "SPAG5",
+        "weight": 0.825,
+        "combined_score": 825.0
+      }
+    },
+    {
+      "data": {
+        "source": "MELK",
+        "target": "SPAG5",
+        "weight": 0.735,
+        "combined_score": 735.0
+      }
+    },
+    {
+      "data": {
+        "source": "DLGAP5",
+        "target": "KIF2C",
+        "weight": 0.975,
+        "combined_score": 975.0
+      }
+    },
+    {
+      "data": {
+        "source": "HJURP",
+        "target": "TPX2",
+        "weight": 0.892,
+        "combined_score": 892.0
+      }
+    },
+    {
+      "data": {
+        "source": "BIRC5",
+        "target": "NCAPG",
+        "weight": 0.876,
+        "combined_score": 876.0
+      }
+    },
+    {
+      "data": {
+        "source": "BUB1B",
+        "target": "MELK",
+        "weight": 0.953,
+        "combined_score": 953.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB1",
+        "target": "EXO1",
+        "weight": 0.773,
+        "combined_score": 773.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC45",
+        "target": "PLK1",
+        "weight": 0.777,
+        "combined_score": 777.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKB",
+        "target": "NDC80",
+        "weight": 0.979,
+        "combined_score": 979.0
+      }
+    },
+    {
+      "data": {
+        "source": "ASPM",
+        "target": "AURKA",
+        "weight": 0.93,
+        "combined_score": 930.0
+      }
+    },
+    {
+      "data": {
+        "source": "MELK",
+        "target": "ZWINT",
+        "weight": 0.903,
+        "combined_score": 903.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDCA8",
+        "target": "CDKN3",
+        "weight": 0.72,
+        "combined_score": 720.0
+      }
+    },
+    {
+      "data": {
+        "source": "HJURP",
+        "target": "SPAG5",
+        "weight": 0.926,
+        "combined_score": 926.0
+      }
+    },
+    {
+      "data": {
+        "source": "EXO1",
+        "target": "KIF11",
+        "weight": 0.772,
+        "combined_score": 772.0
+      }
+    },
+    {
+      "data": {
+        "source": "HJURP",
+        "target": "KIF11",
+        "weight": 0.93,
+        "combined_score": 930.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB1",
+        "target": "MYBL2",
+        "weight": 0.931,
+        "combined_score": 931.0
+      }
+    },
+    {
+      "data": {
+        "source": "ASPM",
+        "target": "RRM2",
+        "weight": 0.854,
+        "combined_score": 854.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDCA8",
+        "target": "KIF2C",
+        "weight": 0.977,
+        "combined_score": 977.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC45",
+        "target": "TPX2",
+        "weight": 0.766,
+        "combined_score": 766.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF4A",
+        "target": "SPAG5",
+        "weight": 0.887,
+        "combined_score": 887.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKB",
+        "target": "MYBL2",
+        "weight": 0.704,
+        "combined_score": 704.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPF",
+        "target": "NCAPG",
+        "weight": 0.924,
+        "combined_score": 924.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB2",
+        "target": "RRM2",
+        "weight": 0.913,
+        "combined_score": 913.0
+      }
+    },
+    {
+      "data": {
+        "source": "ASPM",
+        "target": "CCNA2",
+        "weight": 0.944,
+        "combined_score": 944.0
+      }
+    },
+    {
+      "data": {
+        "source": "MELK",
+        "target": "NDC80",
+        "weight": 0.935,
+        "combined_score": 935.0
+      }
+    },
+    {
+      "data": {
+        "source": "BUB1B",
+        "target": "KIFC1",
+        "weight": 0.862,
+        "combined_score": 862.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF4A",
+        "target": "NEK2",
+        "weight": 0.858,
+        "combined_score": 858.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKA",
+        "target": "SPAG5",
+        "weight": 0.8,
+        "combined_score": 800.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB2",
+        "target": "ZWINT",
+        "weight": 0.92,
+        "combined_score": 920.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNA2",
+        "target": "CCNB2",
+        "weight": 0.965,
+        "combined_score": 965.0
+      }
+    },
+    {
+      "data": {
+        "source": "NDC80",
+        "target": "UBE2C",
+        "weight": 0.87,
+        "combined_score": 870.0
+      }
+    },
+    {
+      "data": {
+        "source": "MKI67",
+        "target": "NEK2",
+        "weight": 0.851,
+        "combined_score": 851.0
+      }
+    },
+    {
+      "data": {
+        "source": "RRM2",
+        "target": "UBE2C",
+        "weight": 0.931,
+        "combined_score": 931.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF20A",
+        "target": "TK1",
+        "weight": 0.791,
+        "combined_score": 791.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKA",
+        "target": "KIF4A",
+        "weight": 0.885,
+        "combined_score": 885.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDCA8",
+        "target": "NEK2",
+        "weight": 0.9,
+        "combined_score": 900.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF11",
+        "target": "KIF4A",
+        "weight": 0.952,
+        "combined_score": 952.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDKN3",
+        "target": "UBE2C",
+        "weight": 0.847,
+        "combined_score": 847.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPA",
+        "target": "HMMR",
+        "weight": 0.87,
+        "combined_score": 870.0
+      }
+    },
+    {
+      "data": {
+        "source": "MELK",
+        "target": "PLK1",
+        "weight": 0.809,
+        "combined_score": 809.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDCA8",
+        "target": "NDC80",
+        "weight": 0.907,
+        "combined_score": 907.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKB",
+        "target": "TK1",
+        "weight": 0.767,
+        "combined_score": 767.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF20A",
+        "target": "UBE2C",
+        "weight": 0.961,
+        "combined_score": 961.0
+      }
+    },
+    {
+      "data": {
+        "source": "BIRC5",
+        "target": "EXO1",
+        "weight": 0.823,
+        "combined_score": 823.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKA",
+        "target": "NEK2",
+        "weight": 0.829,
+        "combined_score": 829.0
+      }
+    },
+    {
+      "data": {
+        "source": "HMMR",
+        "target": "KIF11",
+        "weight": 0.928,
+        "combined_score": 928.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNE1",
+        "target": "CDC6",
+        "weight": 0.902,
+        "combined_score": 902.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC20",
+        "target": "KIF2C",
+        "weight": 0.995,
+        "combined_score": 995.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF2C",
+        "target": "TOP2A",
+        "weight": 0.937,
+        "combined_score": 937.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB1",
+        "target": "KIF2C",
+        "weight": 0.966,
+        "combined_score": 966.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDKN3",
+        "target": "MELK",
+        "weight": 0.842,
+        "combined_score": 842.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKB",
+        "target": "TROAP",
+        "weight": 0.836,
+        "combined_score": 836.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKA",
+        "target": "CCNB1",
+        "weight": 0.979,
+        "combined_score": 979.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF4A",
+        "target": "MKI67",
+        "weight": 0.871,
+        "combined_score": 871.0
+      }
+    },
+    {
+      "data": {
+        "source": "HJURP",
+        "target": "TK1",
+        "weight": 0.723,
+        "combined_score": 723.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPA",
+        "target": "RRM2",
+        "weight": 0.818,
+        "combined_score": 818.0
+      }
+    },
+    {
+      "data": {
+        "source": "BIRC5",
+        "target": "KIF2C",
+        "weight": 0.972,
+        "combined_score": 972.0
+      }
+    },
+    {
+      "data": {
+        "source": "NDC80",
+        "target": "ZWINT",
+        "weight": 0.991,
+        "combined_score": 991.0
+      }
+    },
+    {
+      "data": {
+        "source": "BIRC5",
+        "target": "KIF20A",
+        "weight": 0.973,
+        "combined_score": 973.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDKN3",
+        "target": "NCAPG",
+        "weight": 0.816,
+        "combined_score": 816.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDCA8",
+        "target": "HMMR",
+        "weight": 0.864,
+        "combined_score": 864.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC20",
+        "target": "NDC80",
+        "weight": 0.962,
+        "combined_score": 962.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC6",
+        "target": "ZWINT",
+        "weight": 0.71,
+        "combined_score": 710.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNA2",
+        "target": "CCNB1",
+        "weight": 0.995,
+        "combined_score": 995.0
+      }
+    },
+    {
+      "data": {
+        "source": "MELK",
+        "target": "TOP2A",
+        "weight": 0.955,
+        "combined_score": 955.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF20A",
+        "target": "MKI67",
+        "weight": 0.925,
+        "combined_score": 925.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDKN3",
+        "target": "HJURP",
+        "weight": 0.782,
+        "combined_score": 782.0
+      }
+    },
+    {
+      "data": {
+        "source": "AURKB",
+        "target": "SPAG5",
+        "weight": 0.878,
+        "combined_score": 878.0
+      }
+    },
+    {
+      "data": {
+        "source": "SPAG5",
+        "target": "TOP2A",
+        "weight": 0.941,
+        "combined_score": 941.0
+      }
+    },
+    {
+      "data": {
+        "source": "NCAPG",
+        "target": "ZWINT",
+        "weight": 0.852,
+        "combined_score": 852.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPF",
+        "target": "KIF11",
+        "weight": 0.972,
+        "combined_score": 972.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC45",
+        "target": "RECQL4",
+        "weight": 0.982,
+        "combined_score": 982.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB2",
+        "target": "NEK2",
+        "weight": 0.902,
+        "combined_score": 902.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPF",
+        "target": "KIF20A",
+        "weight": 0.96,
+        "combined_score": 960.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNA2",
+        "target": "NEK2",
+        "weight": 0.943,
+        "combined_score": 943.0
+      }
+    },
+    {
+      "data": {
+        "source": "BIRC5",
+        "target": "CCNB1",
+        "weight": 0.993,
+        "combined_score": 993.0
+      }
+    },
+    {
+      "data": {
+        "source": "BUB1B",
+        "target": "KIF2C",
+        "weight": 0.991,
+        "combined_score": 991.0
+      }
+    },
+    {
+      "data": {
+        "source": "CCNB2",
+        "target": "CDKN3",
+        "weight": 0.893,
+        "combined_score": 893.0
+      }
+    },
+    {
+      "data": {
+        "source": "DLGAP5",
+        "target": "RRM2",
+        "weight": 0.95,
+        "combined_score": 950.0
+      }
+    },
+    {
+      "data": {
+        "source": "BIRC5",
+        "target": "CDC20",
+        "weight": 0.995,
+        "combined_score": 995.0
+      }
+    },
+    {
+      "data": {
+        "source": "KIF20A",
+        "target": "NCAPG",
+        "weight": 0.958,
+        "combined_score": 958.0
+      }
+    },
+    {
+      "data": {
+        "source": "MYBL2",
+        "target": "TK1",
+        "weight": 0.765,
+        "combined_score": 765.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDCA8",
+        "target": "HJURP",
+        "weight": 0.923,
+        "combined_score": 923.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPF",
+        "target": "TROAP",
+        "weight": 0.764,
+        "combined_score": 764.0
+      }
+    },
+    {
+      "data": {
+        "source": "COL1A1",
+        "target": "COL3A1",
+        "weight": 0.999,
+        "combined_score": 999.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC20",
+        "target": "CDKN3",
+        "weight": 0.885,
+        "combined_score": 885.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPA",
+        "target": "PBK",
+        "weight": 0.925,
+        "combined_score": 925.0
+      }
+    },
+    {
+      "data": {
+        "source": "CDC45",
+        "target": "UBE2C",
+        "weight": 0.836,
+        "combined_score": 836.0
+      }
+    },
+    {
+      "data": {
+        "source": "CENPA",
+        "target": "EXO1",
+        "weight": 0.75,
+        "combined_score": 750.0
+      }
+    }
+  ]
+}

@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LUAD Protein Target Atlas</title>
+    <link rel="stylesheet" href="/static/styles.css?v=20260528-ux-upgrade" />
+  </head>
+  <body>
+    <div id="app">
+      <aside class="sidebar">
+        <div class="brand">
+          <img class="brand-mark" src="/static/assets/luad-target-logo.svg" alt="LUAD Protein Target Atlas logo" />
+          <div>
+            <h1>LUAD Protein Target Atlas</h1>
+            <p>Multi-omics + STRING PPI target lab</p>
+          </div>
+        </div>
+        <nav>
+          <a href="#overview" class="active">Overview</a>
+          <a href="#data-fabric">Data Fabric</a>
+          <a href="#targets">Targets</a>
+          <a href="#pathways">Pathways</a>
+          <a href="#heatmap">Heatmap</a>
+          <a href="#network">PPI Network</a>
+          <a href="#model">Model Evidence</a>
+          <a href="#expression-probe">Expression Probe</a>
+          <a href="#assistant">Chatbot</a>
+          <a href="/docs-page">Docs</a>
+        </nav>
+      </aside>
+
+      <main>
+        <section class="hero">
+          <div>
+            <p class="eyebrow">Big Data Analytics for Drug Target Identification</p>
+            <h2>LUAD Protein Target Ranking</h2>
+            <p class="hero-copy">Expression evidence, STRING PPI context and unsupervised ML priority in one research workspace.</p>
+          </div>
+          <div class="metric-strip">
+            <div><span id="metric-auc">-</span><small>Ranked targets</small></div>
+            <div><span id="metric-bal">-</span><small>ML clusters</small></div>
+            <div><span id="metric-features">-</span><small>Evidence features</small></div>
+          </div>
+        </section>
+
+        <section id="overview" class="kpi-grid">
+          <article class="kpi-card">
+            <small>Candidate protein targets</small>
+            <strong id="kpi-master">--</strong>
+            <span>DA feature factory</span>
+          </article>
+          <article class="kpi-card">
+            <small>High-confidence PPI edges</small>
+            <strong id="kpi-edges">--</strong>
+            <span>STRING score >= 700</span>
+          </article>
+          <article class="kpi-card">
+            <small>Validated GEO signals</small>
+            <strong id="kpi-geo">--</strong>
+            <span>Stage association agreement</span>
+          </article>
+          <article class="kpi-card">
+            <small>Top target</small>
+            <strong id="kpi-top">--</strong>
+            <span id="kpi-top-score">Target score</span>
+          </article>
+        </section>
+
+        <section class="insight-ribbon">
+          <div>
+            <small>Research insight summary</small>
+            <strong id="insight-summary">Loading project evidence across TCGA/GDC, GEO and STRING...</strong>
+          </div>
+          <button id="open-command" title="Open command palette">Command palette</button>
+        </section>
+
+        <section id="selection-bar" class="selection-bar hidden">
+          <div>
+            <small>Selected protein target</small>
+            <strong id="selected-target-title">--</strong>
+            <span id="selected-target-subtitle">Cross-filtering dashboard evidence</span>
+          </div>
+          <div class="selection-actions">
+            <button id="selected-ask">Ask chatbot</button>
+            <button id="selected-report">Report</button>
+            <button id="selected-clear">Clear</button>
+          </div>
+        </section>
+
+        <section id="data-fabric" class="panel fabric-panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Big Data system view</p>
+              <h3>Data Sources, Distributed Analytics, Serving Layer</h3>
+            </div>
+          </div>
+          <div id="fabric-flow" class="fabric-flow"></div>
+        </section>
+
+        <section id="targets" class="grid two-wide">
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Target prioritization</p>
+                <h3>Top Candidate Protein Targets</h3>
+              </div>
+              <div class="toolbar">
+                <input id="target-search" class="search" placeholder="Search target/gene" />
+                <select id="evidence-filter">
+                  <option value="">All evidence</option>
+                  <option value="high">High</option>
+                  <option value="medium">Medium</option>
+                  <option value="exploratory">Exploratory</option>
+                  <option value="background">Background</option>
+                </select>
+              </div>
+            </div>
+            <div class="range-row">
+              <label>Min target score <strong id="score-filter-value">0.00</strong></label>
+              <input id="score-filter" type="range" min="0" max="0.7" step="0.01" value="0" />
+            </div>
+            <div id="target-table" class="table"></div>
+          </article>
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Differential expression</p>
+                <h3>Volcano Landscape</h3>
+              </div>
+              <div class="chart-toolbar" data-chart="volcano">
+                <button data-action="zoom-in" title="Zoom in">+</button>
+                <button data-action="zoom-out" title="Zoom out">-</button>
+                <button data-action="reset" title="Reset chart view">Fit</button>
+                <button data-action="fullscreen" title="Open fullscreen">Full</button>
+              </div>
+            </div>
+            <canvas id="volcano-canvas" width="780" height="420"></canvas>
+            <div id="volcano-tooltip" class="canvas-tooltip"></div>
+          </article>
+        </section>
+
+        <section id="pathways" class="grid two">
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Functional enrichment</p>
+                <h3>Top-target Biological Programs</h3>
+              </div>
+            </div>
+            <div id="pathway-table" class="table"></div>
+          </article>
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Evidence decomposition</p>
+                <h3>Integrated Target Evidence</h3>
+              </div>
+            </div>
+            <div id="evidence-chart" class="evidence-chart"></div>
+          </article>
+        </section>
+
+        <section id="network" class="grid two">
+          <article id="heatmap" class="panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Expression matrix</p>
+                <h3>Top-target Heatmap</h3>
+              </div>
+              <div class="toolbar">
+                <button id="heatmap-more">More samples</button>
+                <button id="heatmap-less">Compact</button>
+              </div>
+              <div class="chart-toolbar" data-chart="heatmap">
+                <button data-action="zoom-in" title="Zoom in">+</button>
+                <button data-action="zoom-out" title="Zoom out">-</button>
+                <button data-action="reset" title="Reset chart view">Fit</button>
+                <button data-action="fullscreen" title="Open fullscreen">Full</button>
+              </div>
+            </div>
+            <canvas id="heatmap-canvas" width="720" height="460"></canvas>
+            <div id="heatmap-tooltip" class="canvas-tooltip"></div>
+          </article>
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">STRING high-confidence subgraph</p>
+                <h3>Top-target PPI Network</h3>
+              </div>
+              <div class="chart-toolbar" data-chart="network">
+                <button data-action="zoom-in" title="Zoom in">+</button>
+                <button data-action="zoom-out" title="Zoom out">-</button>
+                <button data-action="reset" title="Reset chart view">Fit</button>
+                <button data-action="fullscreen" title="Open fullscreen">Full</button>
+              </div>
+            </div>
+            <canvas id="network-canvas" width="720" height="460"></canvas>
+            <div class="network-controls">
+              <button id="network-reset">Reset layout</button>
+              <button id="network-top20">Focus top 20</button>
+            </div>
+          </article>
+          <article class="panel wide-panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Supporting feature evidence</p>
+                <h3>Auxiliary Classifier Features + Protein Target Evidence</h3>
+              </div>
+            </div>
+            <div id="importance-table" class="table compact"></div>
+          </article>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Target board</p>
+              <h3>Compare Candidate Protein Targets</h3>
+            </div>
+          </div>
+          <div class="compare-presets">
+            <button data-preset="PLK1,AURKB,TOP2A,SPP1">Top program</button>
+            <button data-preset="PLK1,CDK1,AURKB,KIF20A">Kinases/cell cycle</button>
+            <button data-preset="SPP1,COL1A1,CAV1,IL6">Microenvironment</button>
+            <button data-preset="TOP2A,EXO1,CDC20,CCNB1">DNA/mitosis</button>
+          </div>
+          <div class="chat-row">
+            <input id="compare-input" value="PLK1,AURKB,TOP2A,SPP1" />
+            <button id="compare-run" class="primary">Compare</button>
+          </div>
+          <div id="compare-chips" class="compare-chips"></div>
+          <div id="compare-table" class="table compact" style="margin-top:12px"></div>
+        </section>
+
+        <section id="model" class="grid two">
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Primary ML model</p>
+                <h3>Protein Target Ranker</h3>
+              </div>
+            </div>
+            <div id="model-card" class="model-card"></div>
+          </article>
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Supporting model</p>
+                <h3>Auxiliary Expression Classifier</h3>
+              </div>
+            </div>
+            <div id="auxiliary-card" class="model-card compact-card"></div>
+            <div id="confusion" class="confusion"></div>
+          </article>
+        </section>
+
+        <section id="expression-probe" class="grid two">
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Supporting model</p>
+                <h3>Auxiliary Expression Probe</h3>
+              </div>
+              <button id="load-demo" class="icon-button" title="Load a held-out demo sample">Load demo</button>
+            </div>
+            <div class="model-note">Secondary model: scores tumor-like expression patterns only. Protein target ranking is handled by the unsupervised target ranker.</div>
+            <div class="segmented">
+              <button data-scale="tpm">TPM</button>
+              <button data-scale="log2_tpm" class="selected">log2 TPM</button>
+            </div>
+            <textarea id="expression-input" spellcheck="false" placeholder="Paste protein-coding gene expression as:&#10;TP53,18.2&#10;SPP1,120.4&#10;PLK1,12.0"></textarea>
+            <div class="actions">
+              <button id="predict-button" class="primary">Run auxiliary probe</button>
+              <button id="clear-input">Clear</button>
+            </div>
+          </article>
+
+          <article class="panel result-panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Auxiliary phenotype signal</p>
+                <h3 id="prediction-label">Awaiting expression profile</h3>
+              </div>
+              <div class="probability" id="probability-value">--</div>
+            </div>
+            <div class="probability-bar"><span id="probability-bar"></span></div>
+            <div class="result-grid">
+              <div><small>Confidence</small><strong id="confidence-value">--</strong></div>
+              <div><small>Threshold</small><strong id="threshold-value">--</strong></div>
+              <div><small>Supplied</small><strong id="supplied-value">--</strong></div>
+              <div><small>Missing</small><strong id="missing-value">--</strong></div>
+            </div>
+            <h4>Auxiliary feature contributions</h4>
+            <div id="contribution-list" class="gene-list muted">Run the expression probe to inspect auxiliary model drivers.</div>
+          </article>
+        </section>
+
+        <section id="assistant" class="panel assistant">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Chatbot</p>
+              <h3>Ask about protein targets, encoded genes, or evidence</h3>
+            </div>
+          </div>
+          <div class="chat-shell">
+            <div class="chat-prompts">
+              <button type="button" data-question="Why is PLK1 prioritized as a candidate protein target?">PLK1 rationale</button>
+              <button type="button" data-question="What is the primary ML model in this project?">Primary model</button>
+              <button type="button" data-question="What are the main scientific limitations?">Limitations</button>
+            </div>
+            <div class="chat-row">
+              <input id="chat-question" placeholder="Ask a project-grounded question in English..." />
+              <button id="chat-send" class="primary">Ask</button>
+            </div>
+            <div id="chat-answer" class="chat-answer muted"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <div id="gene-drawer" class="drawer">
+      <button id="drawer-close" class="drawer-close">Close</button>
+      <div id="drawer-content"></div>
+    </div>
+    <div id="command-modal" class="command-modal">
+      <div class="command-box">
+        <input id="command-input" placeholder="Search command, protein target, or encoded gene..." />
+        <div id="command-results"></div>
+      </div>
+    </div>
+    <script src="/static/app.js?v=20260528-ux-upgrade"></script>
+  </body>
+</html>

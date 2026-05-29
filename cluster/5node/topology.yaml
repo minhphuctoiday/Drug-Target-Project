@@ -1,0 +1,58 @@
+cluster_name: drugtarget-luad-5node
+purpose: Big Data Analytics for Drug Target Identification
+execution_status: cluster_ready_design_not_claimed_as_completed_run
+
+nodes:
+  - hostname: node-master-01
+    roles:
+      - hdfs_namenode
+      - yarn_resourcemanager
+      - spark_history_server
+      - spark_driver_gateway
+    suggested_resources:
+      cpu_cores: 8
+      memory_gb: 32
+      disk: hdfs_metadata_and_logs
+
+  - hostname: node-worker-01
+    roles: [hdfs_datanode, yarn_nodemanager, spark_executor]
+    suggested_resources: {cpu_cores: 8, memory_gb: 32, disk: hdfs_data}
+
+  - hostname: node-worker-02
+    roles: [hdfs_datanode, yarn_nodemanager, spark_executor]
+    suggested_resources: {cpu_cores: 8, memory_gb: 32, disk: hdfs_data}
+
+  - hostname: node-worker-03
+    roles: [hdfs_datanode, yarn_nodemanager, spark_executor]
+    suggested_resources: {cpu_cores: 8, memory_gb: 32, disk: hdfs_data}
+
+  - hostname: node-worker-04
+    roles: [hdfs_datanode, yarn_nodemanager, spark_executor]
+    suggested_resources: {cpu_cores: 8, memory_gb: 32, disk: hdfs_data}
+
+spark:
+  master: yarn
+  deploy_mode: cluster
+  executor_instances: 4
+  executor_cores: 4
+  executor_memory: 8g
+  driver_memory: 8g
+  shuffle_partitions: 160
+  adaptive_query_execution: true
+
+hdfs:
+  replication: 3
+  roots:
+    raw: /data/drugtarget/raw
+    refined: /data/drugtarget/refined
+    outputs: /data/drugtarget/outputs
+    checkpoints: /data/drugtarget/checkpoints
+    logs: /data/drugtarget/logs
+
+pipeline_mapping:
+  data_engineering:
+    notebook_source: notebooks/DE_onColab.ipynb
+    cluster_entrypoint: src/distributed/de_spark_pipeline.py
+  data_analysis_ml:
+    notebook_source: notebooks/DA&ML_onColab.ipynb
+    cluster_entrypoint: src/distributed/da_ml_spark_pipeline.py

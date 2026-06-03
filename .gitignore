@@ -237,3 +237,6 @@ data/mart/*
 *.parquet
 *.log
 .DS_Store
+metastore_db/
+analysis/metastore_db/
+hi.ipynb

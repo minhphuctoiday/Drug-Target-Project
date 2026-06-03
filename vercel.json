@@ -1,8 +1,3 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "functions": {
-    "app.py": {
-      "excludeFiles": "{.venv/**,Cleaning/**,Dashboard/**,Ingest/**,ML/**,analysis/**,metastore_db/**,output/**,config/**,*.ipynb,derby.log,**/__pycache__/**,**/*.pyc}"
-    }
-  }
+  "$schema": "https://openapi.vercel.sh/vercel.json"
 }

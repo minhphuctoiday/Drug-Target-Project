@@ -1,0 +1,407 @@
+{
+  "items": [
+    {
+      "gene_name": "SFTPC",
+      "gene_id_base": "ENSG00000168484",
+      "log2FC": -8.190919857851668,
+      "abs_log2FC": 8.190919857851668,
+      "p_value": 0.0,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "AGER",
+      "gene_id_base": "ENSG00000204305",
+      "log2FC": -6.566993363624583,
+      "abs_log2FC": 6.566993363624583,
+      "p_value": 0.0,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "CLDN18",
+      "gene_id_base": "ENSG00000066405",
+      "log2FC": -6.324261953457807,
+      "abs_log2FC": 6.324261953457807,
+      "p_value": 0.0,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "FABP4",
+      "gene_id_base": "ENSG00000170323",
+      "log2FC": -5.667173870209467,
+      "abs_log2FC": 5.667173870209467,
+      "p_value": 0.0,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "SCGB1A1",
+      "gene_id_base": "ENSG00000149021",
+      "log2FC": -5.237443597895559,
+      "abs_log2FC": 5.237443597895559,
+      "p_value": 1.1730307730529144e-40,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "SLC6A4",
+      "gene_id_base": "ENSG00000108576",
+      "log2FC": -5.201006229411667,
+      "abs_log2FC": 5.201006229411667,
+      "p_value": 2.5432376808234487e-101,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "UPK3B",
+      "gene_id_base": "ENSG00000243566",
+      "log2FC": -5.18941824378993,
+      "abs_log2FC": 5.18941824378993,
+      "p_value": 6.2944043811813045e-285,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "SFTPA1",
+      "gene_id_base": "ENSG00000122852",
+      "log2FC": -5.017802745345051,
+      "abs_log2FC": 5.017802745345051,
+      "p_value": 3.87073952302832e-199,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "LGI3",
+      "gene_id_base": "ENSG00000168481",
+      "log2FC": -4.819171641126924,
+      "abs_log2FC": 4.819171641126924,
+      "p_value": 0.0,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "ITLN2",
+      "gene_id_base": "ENSG00000158764",
+      "log2FC": -4.813306113527221,
+      "abs_log2FC": 4.813306113527221,
+      "p_value": 0.0,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "SFTPA2",
+      "gene_id_base": "ENSG00000185303",
+      "log2FC": -4.805880226186607,
+      "abs_log2FC": 4.805880226186607,
+      "p_value": 3.454290951468443e-176,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "WIF1",
+      "gene_id_base": "ENSG00000156076",
+      "log2FC": -4.805204846722299,
+      "abs_log2FC": 4.805204846722299,
+      "p_value": 3.2790745424078447e-226,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "HBB",
+      "gene_id_base": "ENSG00000244734",
+      "log2FC": -4.79400191490631,
+      "abs_log2FC": 4.79400191490631,
+      "p_value": 1.99491593433974e-105,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "ANKRD1",
+      "gene_id_base": "ENSG00000148677",
+      "log2FC": -4.7328206715135135,
+      "abs_log2FC": 4.7328206715135135,
+      "p_value": 7.255536651561998e-83,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "HBA2",
+      "gene_id_base": "ENSG00000188536",
+      "log2FC": -4.584756535376997,
+      "abs_log2FC": 4.584756535376997,
+      "p_value": 4.7127261459116384e-116,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "FCN3",
+      "gene_id_base": "ENSG00000142748",
+      "log2FC": -4.580204223477284,
+      "abs_log2FC": 4.580204223477284,
+      "p_value": 1.8098198611299077e-84,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "MCEMP1",
+      "gene_id_base": "ENSG00000183019",
+      "log2FC": -4.572600316527444,
+      "abs_log2FC": 4.572600316527444,
+      "p_value": 4.5983375140055425e-210,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "FAM107A",
+      "gene_id_base": "ENSG00000168309",
+      "log2FC": -4.565392792032645,
+      "abs_log2FC": 4.565392792032645,
+      "p_value": 5.909434998359612e-172,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "TMEM100",
+      "gene_id_base": "ENSG00000166292",
+      "log2FC": -4.535353223495322,
+      "abs_log2FC": 4.535353223495322,
+      "p_value": 2.1769612946936244e-113,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "FAM83A",
+      "gene_id_base": "ENSG00000147689",
+      "log2FC": 4.4886211403458125,
+      "abs_log2FC": 4.4886211403458125,
+      "p_value": 0.0,
+      "deg_direction": "Upregulated"
+    },
+    {
+      "gene_name": "SPP1",
+      "gene_id_base": "ENSG00000118785",
+      "log2FC": 4.476347889991565,
+      "abs_log2FC": 4.476347889991565,
+      "p_value": 1.2788209301165663e-89,
+      "deg_direction": "Upregulated"
+    },
+    {
+      "gene_name": "GKN2",
+      "gene_id_base": "ENSG00000183607",
+      "log2FC": -4.373744152394437,
+      "abs_log2FC": 4.373744152394437,
+      "p_value": 1.3904161828212448e-232,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "CA4",
+      "gene_id_base": "ENSG00000167434",
+      "log2FC": -4.363536762024364,
+      "abs_log2FC": 4.363536762024364,
+      "p_value": 9.430589200033552e-176,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "CRABP2",
+      "gene_id_base": "ENSG00000143320",
+      "log2FC": 4.362342581203624,
+      "abs_log2FC": 4.362342581203624,
+      "p_value": 3.9056761111867065e-168,
+      "deg_direction": "Upregulated"
+    },
+    {
+      "gene_name": "PEBP4",
+      "gene_id_base": "ENSG00000134020",
+      "log2FC": -4.335823658586983,
+      "abs_log2FC": 4.335823658586983,
+      "p_value": 1.3140923941420819e-292,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "AQP4",
+      "gene_id_base": "ENSG00000171885",
+      "log2FC": -4.257674353690079,
+      "abs_log2FC": 4.257674353690079,
+      "p_value": 1.050094893486e-312,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "CLIC5",
+      "gene_id_base": "ENSG00000112782",
+      "log2FC": -4.210696356240815,
+      "abs_log2FC": 4.210696356240815,
+      "p_value": 0.0,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "CLEC3B",
+      "gene_id_base": "ENSG00000163815",
+      "log2FC": -4.168080902073809,
+      "abs_log2FC": 4.168080902073809,
+      "p_value": 6.522752906727016e-294,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "CYP4B1",
+      "gene_id_base": "ENSG00000142973",
+      "log2FC": -4.156153933401825,
+      "abs_log2FC": 4.156153933401825,
+      "p_value": 7.479389419866474e-184,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "ADH1B",
+      "gene_id_base": "ENSG00000196616",
+      "log2FC": -4.155573880306997,
+      "abs_log2FC": 4.155573880306997,
+      "p_value": 2.380890116252641e-268,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "VEGFD",
+      "gene_id_base": "ENSG00000165197",
+      "log2FC": -4.153182564870585,
+      "abs_log2FC": 4.153182564870585,
+      "p_value": 1.2890442892364303e-236,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "RTKN2",
+      "gene_id_base": "ENSG00000182010",
+      "log2FC": -4.145246703740378,
+      "abs_log2FC": 4.145246703740378,
+      "p_value": 2.1072466617058427e-207,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "TNNC1",
+      "gene_id_base": "ENSG00000114854",
+      "log2FC": -4.1266161553505105,
+      "abs_log2FC": 4.1266161553505105,
+      "p_value": 0.0,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "CAV1",
+      "gene_id_base": "ENSG00000105974",
+      "log2FC": -4.094778962137472,
+      "abs_log2FC": 4.094778962137472,
+      "p_value": 0.0,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "MS4A15",
+      "gene_id_base": "ENSG00000166961",
+      "log2FC": -4.092655205007684,
+      "abs_log2FC": 4.092655205007684,
+      "p_value": 4.1130631710435726e-191,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "INMT",
+      "gene_id_base": "ENSG00000241644",
+      "log2FC": -4.058908999769715,
+      "abs_log2FC": 4.058908999769715,
+      "p_value": 2.78626728703584e-221,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "GPM6A",
+      "gene_id_base": "ENSG00000150625",
+      "log2FC": -3.9952534353140945,
+      "abs_log2FC": 3.9952534353140945,
+      "p_value": 3.633e-320,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "MMP11",
+      "gene_id_base": "ENSG00000099953",
+      "log2FC": 3.975169577209584,
+      "abs_log2FC": 3.975169577209584,
+      "p_value": 2.4410893857262e-156,
+      "deg_direction": "Upregulated"
+    },
+    {
+      "gene_name": "GPD1",
+      "gene_id_base": "ENSG00000167588",
+      "log2FC": -3.9696390415547396,
+      "abs_log2FC": 3.9696390415547396,
+      "p_value": 3.0181398848528966e-158,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "SPINK1",
+      "gene_id_base": "ENSG00000164266",
+      "log2FC": 3.946947854619733,
+      "abs_log2FC": 3.946947854619733,
+      "p_value": 2.5597284654613713e-73,
+      "deg_direction": "Upregulated"
+    },
+    {
+      "gene_name": "GPIHBP1",
+      "gene_id_base": "ENSG00000277494",
+      "log2FC": -3.9439477415859954,
+      "abs_log2FC": 3.9439477415859954,
+      "p_value": 7.522727712842638e-186,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "MARCO",
+      "gene_id_base": "ENSG00000019169",
+      "log2FC": -3.9048861003712396,
+      "abs_log2FC": 3.9048861003712396,
+      "p_value": 7.531506132296173e-203,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "FHL1",
+      "gene_id_base": "ENSG00000022267",
+      "log2FC": -3.8663982455788073,
+      "abs_log2FC": 3.8663982455788073,
+      "p_value": 0.0,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "SOSTDC1",
+      "gene_id_base": "ENSG00000171243",
+      "log2FC": -3.861856783827183,
+      "abs_log2FC": 3.861856783827183,
+      "p_value": 1.4487928973387748e-94,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "SERTM1",
+      "gene_id_base": "ENSG00000180440",
+      "log2FC": -3.741796457479647,
+      "abs_log2FC": 3.741796457479647,
+      "p_value": 4.99605745759048e-152,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "CST1",
+      "gene_id_base": "ENSG00000170373",
+      "log2FC": 3.7132683486075075,
+      "abs_log2FC": 3.7132683486075075,
+      "p_value": 9.54346091333039e-131,
+      "deg_direction": "Upregulated"
+    },
+    {
+      "gene_name": "CAVIN2",
+      "gene_id_base": "ENSG00000168497",
+      "log2FC": -3.7126522536056354,
+      "abs_log2FC": 3.7126522536056354,
+      "p_value": 9.329266906420819e-254,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "FOSB",
+      "gene_id_base": "ENSG00000125740",
+      "log2FC": -3.704471497553059,
+      "abs_log2FC": 3.704471497553059,
+      "p_value": 2.696874750673358e-32,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "SFTPD",
+      "gene_id_base": "ENSG00000133661",
+      "log2FC": -3.6954047672984816,
+      "abs_log2FC": 3.6954047672984816,
+      "p_value": 1.5124430948038304e-213,
+      "deg_direction": "Downregulated"
+    },
+    {
+      "gene_name": "COL10A1",
+      "gene_id_base": "ENSG00000123500",
+      "log2FC": 3.6879725778886576,
+      "abs_log2FC": 3.6879725778886576,
+      "p_value": 5.052883736782684e-152,
+      "deg_direction": "Upregulated"
+    }
+  ],
+  "source": "hdfs://master11:9000/drugtarget/data/analysis/gdc_deg_result",
+  "x_axis": "absolute log2FC",
+  "y_axis": "gene_name"
+}

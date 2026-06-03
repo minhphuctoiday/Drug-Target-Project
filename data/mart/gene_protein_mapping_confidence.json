@@ -1,0 +1,9 @@
+{
+  "items": [
+    {
+      "gene_confidence": "high",
+      "number_of_proteins": 2579
+    }
+  ],
+  "source": "hdfs://master11:9000/drugtarget/data/analysis/deg_mapped_proteins"
+}

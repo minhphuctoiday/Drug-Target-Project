@@ -1,0 +1,56 @@
+{
+  "items": [
+    {
+      "bin_start": 0.2,
+      "bin_end": 0.3,
+      "sample_group": "tumor",
+      "number_of_samples": 6
+    },
+    {
+      "bin_start": 0.3,
+      "bin_end": 0.4,
+      "sample_group": "normal",
+      "number_of_samples": 1
+    },
+    {
+      "bin_start": 0.3,
+      "bin_end": 0.4,
+      "sample_group": "tumor",
+      "number_of_samples": 52
+    },
+    {
+      "bin_start": 0.4,
+      "bin_end": 0.5,
+      "sample_group": "normal",
+      "number_of_samples": 44
+    },
+    {
+      "bin_start": 0.4,
+      "bin_end": 0.5,
+      "sample_group": "tumor",
+      "number_of_samples": 384
+    },
+    {
+      "bin_start": 0.5,
+      "bin_end": 0.7,
+      "sample_group": "normal",
+      "number_of_samples": 14
+    },
+    {
+      "bin_start": 0.5,
+      "bin_end": 0.7,
+      "sample_group": "tumor",
+      "number_of_samples": 100
+    }
+  ],
+  "source_column": "pct_zero_genes",
+  "bins": [
+    0.0,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.7,
+    1.0
+  ]
+}

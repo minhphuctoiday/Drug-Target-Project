@@ -1,0 +1,18 @@
+{
+  "items": [
+    {
+      "mapping_status": "Mapped to STRING protein",
+      "gene_count": 2579,
+      "percentage": 99.26866820631255
+    },
+    {
+      "mapping_status": "Not mapped",
+      "gene_count": 19,
+      "percentage": 0.7313317936874518
+    }
+  ],
+  "source": {
+    "deg_total": 2598,
+    "mapped_distinct_genes": 2579
+  }
+}

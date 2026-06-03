@@ -1,0 +1,11 @@
+{
+  "items": [
+    {
+      "exclusion_reason": "Detected genes outlier",
+      "sample_count": 11
+    }
+  ],
+  "source": "hdfs://master11:9000/drugtarget/data/refined/gdc/quality_check",
+  "x_axis": "QC exclusion reason",
+  "y_axis": "number of excluded samples"
+}

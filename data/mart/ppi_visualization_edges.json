@@ -1,0 +1,6086 @@
+{
+  "items": [
+    {
+      "protein_id_src": "9606.ENSP00000364210",
+      "protein_id_dst": "9606.ENSP00000339191",
+      "gene_name_src": "AGER",
+      "gene_name_dst": "CAV1",
+      "combined_score_protein": 484.0,
+      "edge_weight_protein": 0.484
+    },
+    {
+      "protein_id_src": "9606.ENSP00000481380",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "CCNA2",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 664.0,
+      "edge_weight_protein": 0.664
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000216862",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "CYP24A1",
+      "combined_score_protein": 427.0,
+      "edge_weight_protein": 0.427
+    },
+    {
+      "protein_id_src": "9606.ENSP00000287820",
+      "protein_id_dst": "9606.ENSP00000221515",
+      "gene_name_src": "PPARG",
+      "gene_name_dst": "RETN",
+      "combined_score_protein": 858.0,
+      "edge_weight_protein": 0.858
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000256442",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "CCNB1",
+      "combined_score_protein": 828.0,
+      "edge_weight_protein": 0.828
+    },
+    {
+      "protein_id_src": "9606.ENSP00000320147",
+      "protein_id_dst": "9606.ENSP00000411532",
+      "gene_name_src": "EZH2",
+      "gene_name_dst": "TOP2A",
+      "combined_score_protein": 626.0,
+      "edge_weight_protein": 0.626
+    },
+    {
+      "protein_id_src": "9606.ENSP00000361366",
+      "protein_id_dst": "9606.ENSP00000261405",
+      "gene_name_src": "SFTPD",
+      "gene_name_dst": "VWF",
+      "combined_score_protein": 452.0,
+      "edge_weight_protein": 0.452
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000494175",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "HBB",
+      "combined_score_protein": 472.0,
+      "edge_weight_protein": 0.472
+    },
+    {
+      "protein_id_src": "9606.ENSP00000301633",
+      "protein_id_dst": "9606.ENSP00000306245",
+      "gene_name_src": "BIRC5",
+      "gene_name_dst": "FOS",
+      "combined_score_protein": 607.0,
+      "edge_weight_protein": 0.607
+    },
+    {
+      "protein_id_src": "9606.ENSP00000316152",
+      "protein_id_dst": "9606.ENSP00000457421",
+      "gene_name_src": "SFTPC",
+      "gene_name_dst": "PECAM1",
+      "combined_score_protein": 468.0,
+      "edge_weight_protein": 0.468
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378699",
+      "protein_id_dst": "9606.ENSP00000313950",
+      "gene_name_src": "CDK1",
+      "gene_name_dst": "AURKB",
+      "combined_score_protein": 997.0,
+      "edge_weight_protein": 0.997
+    },
+    {
+      "protein_id_src": "9606.ENSP00000215743",
+      "protein_id_dst": "9606.ENSP00000327368",
+      "gene_name_src": "MMP11",
+      "gene_name_dst": "COL10A1",
+      "combined_score_protein": 812.0,
+      "edge_weight_protein": 0.812
+    },
+    {
+      "protein_id_src": "9606.ENSP00000300403",
+      "protein_id_dst": "9606.ENSP00000361540",
+      "gene_name_src": "TPX2",
+      "gene_name_dst": "CDC20",
+      "combined_score_protein": 961.0,
+      "edge_weight_protein": 0.961
+    },
+    {
+      "protein_id_src": "9606.ENSP00000385675",
+      "protein_id_dst": "9606.ENSP00000287820",
+      "gene_name_src": "IL6",
+      "gene_name_dst": "PPARG",
+      "combined_score_protein": 820.0,
+      "edge_weight_protein": 0.82
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378699",
+      "protein_id_dst": "9606.ENSP00000301633",
+      "gene_name_src": "CDK1",
+      "gene_name_dst": "BIRC5",
+      "combined_score_protein": 997.0,
+      "edge_weight_protein": 0.997
+    },
+    {
+      "protein_id_src": "9606.ENSP00000385675",
+      "protein_id_dst": "9606.ENSP00000369375",
+      "gene_name_src": "IL6",
+      "gene_name_dst": "TEK",
+      "combined_score_protein": 726.0,
+      "edge_weight_protein": 0.726
+    },
+    {
+      "protein_id_src": "9606.ENSP00000320147",
+      "protein_id_dst": "9606.ENSP00000300403",
+      "gene_name_src": "EZH2",
+      "gene_name_dst": "TPX2",
+      "combined_score_protein": 490.0,
+      "edge_weight_protein": 0.49
+    },
+    {
+      "protein_id_src": "9606.ENSP00000418915",
+      "protein_id_dst": "9606.ENSP00000292408",
+      "gene_name_src": "CDKN2A",
+      "gene_name_dst": "FGFR4",
+      "combined_score_protein": 451.0,
+      "edge_weight_protein": 0.451
+    },
+    {
+      "protein_id_src": "9606.ENSP00000385675",
+      "protein_id_dst": "9606.ENSP00000360973",
+      "gene_name_src": "IL6",
+      "gene_name_dst": "AGTR2",
+      "combined_score_protein": 529.0,
+      "edge_weight_protein": 0.529
+    },
+    {
+      "protein_id_src": "9606.ENSP00000415743",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "CD36",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 593.0,
+      "edge_weight_protein": 0.593
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378517",
+      "protein_id_dst": "9606.ENSP00000322788",
+      "gene_name_src": "SPP1",
+      "gene_name_dst": "MMP1",
+      "combined_score_protein": 534.0,
+      "edge_weight_protein": 0.534
+    },
+    {
+      "protein_id_src": "9606.ENSP00000418915",
+      "protein_id_dst": "9606.ENSP00000256104",
+      "gene_name_src": "CDKN2A",
+      "gene_name_dst": "FABP4",
+      "combined_score_protein": 463.0,
+      "edge_weight_protein": 0.463
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378699",
+      "protein_id_dst": "9606.ENSP00000348838",
+      "gene_name_src": "CDK1",
+      "gene_name_dst": "UBE2C",
+      "combined_score_protein": 982.0,
+      "edge_weight_protein": 0.982
+    },
+    {
+      "protein_id_src": "9606.ENSP00000300403",
+      "protein_id_dst": "9606.ENSP00000320147",
+      "gene_name_src": "TPX2",
+      "gene_name_dst": "EZH2",
+      "combined_score_protein": 490.0,
+      "edge_weight_protein": 0.49
+    },
+    {
+      "protein_id_src": "9606.ENSP00000301149",
+      "protein_id_dst": "9606.ENSP00000480053",
+      "gene_name_src": "GPD1",
+      "gene_name_dst": "GPIHBP1",
+      "combined_score_protein": 556.0,
+      "edge_weight_protein": 0.556
+    },
+    {
+      "protein_id_src": "9606.ENSP00000339191",
+      "protein_id_dst": "9606.ENSP00000317997",
+      "gene_name_src": "CAV1",
+      "gene_name_dst": "DUOX1",
+      "combined_score_protein": 564.0,
+      "edge_weight_protein": 0.564
+    },
+    {
+      "protein_id_src": "9606.ENSP00000364210",
+      "protein_id_dst": "9606.ENSP00000261405",
+      "gene_name_src": "AGER",
+      "gene_name_dst": "VWF",
+      "combined_score_protein": 486.0,
+      "edge_weight_protein": 0.486
+    },
+    {
+      "protein_id_src": "9606.ENSP00000416293",
+      "protein_id_dst": "9606.ENSP00000418915",
+      "gene_name_src": "SLC2A1",
+      "gene_name_dst": "CDKN2A",
+      "combined_score_protein": 414.0,
+      "edge_weight_protein": 0.414
+    },
+    {
+      "protein_id_src": "9606.ENSP00000340939",
+      "protein_id_dst": "9606.ENSP00000278282",
+      "gene_name_src": "CLDN18",
+      "gene_name_dst": "SCGB1A1",
+      "combined_score_protein": 428.0,
+      "edge_weight_protein": 0.428
+    },
+    {
+      "protein_id_src": "9606.ENSP00000306606",
+      "protein_id_dst": "9606.ENSP00000301149",
+      "gene_name_src": "ADH1B",
+      "gene_name_dst": "GPD1",
+      "combined_score_protein": 426.0,
+      "edge_weight_protein": 0.426
+    },
+    {
+      "protein_id_src": "9606.ENSP00000306245",
+      "protein_id_dst": "9606.ENSP00000360266",
+      "gene_name_src": "FOS",
+      "gene_name_dst": "JUN",
+      "combined_score_protein": 999.0,
+      "edge_weight_protein": 0.999
+    },
+    {
+      "protein_id_src": "9606.ENSP00000385675",
+      "protein_id_dst": "9606.ENSP00000305372",
+      "gene_name_src": "IL6",
+      "gene_name_dst": "ADRB2",
+      "combined_score_protein": 520.0,
+      "edge_weight_protein": 0.52
+    },
+    {
+      "protein_id_src": "9606.ENSP00000322788",
+      "protein_id_dst": "9606.ENSP00000418915",
+      "gene_name_src": "MMP1",
+      "gene_name_dst": "CDKN2A",
+      "combined_score_protein": 412.0,
+      "edge_weight_protein": 0.412
+    },
+    {
+      "protein_id_src": "9606.ENSP00000415743",
+      "protein_id_dst": "9606.ENSP00000329920",
+      "gene_name_src": "CD36",
+      "gene_name_dst": "MCEMP1",
+      "combined_score_protein": 434.0,
+      "edge_weight_protein": 0.434
+    },
+    {
+      "protein_id_src": "9606.ENSP00000256442",
+      "protein_id_dst": "9606.ENSP00000300093",
+      "gene_name_src": "CCNB1",
+      "gene_name_dst": "PLK1",
+      "combined_score_protein": 999.0,
+      "edge_weight_protein": 0.999
+    },
+    {
+      "protein_id_src": "9606.ENSP00000397082",
+      "protein_id_dst": "9606.ENSP00000361366",
+      "gene_name_src": "SFTPA1",
+      "gene_name_dst": "SFTPD",
+      "combined_score_protein": 851.0,
+      "edge_weight_protein": 0.851
+    },
+    {
+      "protein_id_src": "9606.ENSP00000360266",
+      "protein_id_dst": "9606.ENSP00000284523",
+      "gene_name_src": "JUN",
+      "gene_name_dst": "WNT3A",
+      "combined_score_protein": 484.0,
+      "edge_weight_protein": 0.484
+    },
+    {
+      "protein_id_src": "9606.ENSP00000340939",
+      "protein_id_dst": "9606.ENSP00000361366",
+      "gene_name_src": "CLDN18",
+      "gene_name_dst": "SFTPD",
+      "combined_score_protein": 486.0,
+      "edge_weight_protein": 0.486
+    },
+    {
+      "protein_id_src": "9606.ENSP00000261405",
+      "protein_id_dst": "9606.ENSP00000480053",
+      "gene_name_src": "VWF",
+      "gene_name_dst": "GPIHBP1",
+      "combined_score_protein": 460.0,
+      "edge_weight_protein": 0.46
+    },
+    {
+      "protein_id_src": "9606.ENSP00000361540",
+      "protein_id_dst": "9606.ENSP00000300093",
+      "gene_name_src": "CDC20",
+      "gene_name_dst": "PLK1",
+      "combined_score_protein": 999.0,
+      "edge_weight_protein": 0.999
+    },
+    {
+      "protein_id_src": "9606.ENSP00000256104",
+      "protein_id_dst": "9606.ENSP00000364210",
+      "gene_name_src": "FABP4",
+      "gene_name_dst": "AGER",
+      "combined_score_protein": 466.0,
+      "edge_weight_protein": 0.466
+    },
+    {
+      "protein_id_src": "9606.ENSP00000313950",
+      "protein_id_dst": "9606.ENSP00000481380",
+      "gene_name_src": "AURKB",
+      "gene_name_dst": "CCNA2",
+      "combined_score_protein": 991.0,
+      "edge_weight_protein": 0.991
+    },
+    {
+      "protein_id_src": "9606.ENSP00000306245",
+      "protein_id_dst": "9606.ENSP00000348838",
+      "gene_name_src": "FOS",
+      "gene_name_dst": "UBE2C",
+      "combined_score_protein": 476.0,
+      "edge_weight_protein": 0.476
+    },
+    {
+      "protein_id_src": "9606.ENSP00000415743",
+      "protein_id_dst": "9606.ENSP00000497642",
+      "gene_name_src": "CD36",
+      "gene_name_dst": "LPL",
+      "combined_score_protein": 877.0,
+      "edge_weight_protein": 0.877
+    },
+    {
+      "protein_id_src": "9606.ENSP00000457421",
+      "protein_id_dst": "9606.ENSP00000306245",
+      "gene_name_src": "PECAM1",
+      "gene_name_dst": "FOS",
+      "combined_score_protein": 409.0,
+      "edge_weight_protein": 0.409
+    },
+    {
+      "protein_id_src": "9606.ENSP00000385675",
+      "protein_id_dst": "9606.ENSP00000360266",
+      "gene_name_src": "IL6",
+      "gene_name_dst": "JUN",
+      "combined_score_protein": 989.0,
+      "edge_weight_protein": 0.989
+    },
+    {
+      "protein_id_src": "9606.ENSP00000481380",
+      "protein_id_dst": "9606.ENSP00000385675",
+      "gene_name_src": "CCNA2",
+      "gene_name_dst": "IL6",
+      "combined_score_protein": 400.0,
+      "edge_weight_protein": 0.4
+    },
+    {
+      "protein_id_src": "9606.ENSP00000364210",
+      "protein_id_dst": "9606.ENSP00000287820",
+      "gene_name_src": "AGER",
+      "gene_name_dst": "PPARG",
+      "combined_score_protein": 441.0,
+      "edge_weight_protein": 0.441
+    },
+    {
+      "protein_id_src": "9606.ENSP00000320147",
+      "protein_id_dst": "9606.ENSP00000378356",
+      "gene_name_src": "EZH2",
+      "gene_name_dst": "KIF20A",
+      "combined_score_protein": 439.0,
+      "edge_weight_protein": 0.439
+    },
+    {
+      "protein_id_src": "9606.ENSP00000361366",
+      "protein_id_dst": "9606.ENSP00000316152",
+      "gene_name_src": "SFTPD",
+      "gene_name_dst": "SFTPC",
+      "combined_score_protein": 990.0,
+      "edge_weight_protein": 0.99
+    },
+    {
+      "protein_id_src": "9606.ENSP00000215743",
+      "protein_id_dst": "9606.ENSP00000225964",
+      "gene_name_src": "MMP11",
+      "gene_name_dst": "COL1A1",
+      "combined_score_protein": 692.0,
+      "edge_weight_protein": 0.692
+    },
+    {
+      "protein_id_src": "9606.ENSP00000411532",
+      "protein_id_dst": "9606.ENSP00000256442",
+      "gene_name_src": "TOP2A",
+      "gene_name_dst": "CCNB1",
+      "combined_score_protein": 989.0,
+      "edge_weight_protein": 0.989
+    },
+    {
+      "protein_id_src": "9606.ENSP00000360266",
+      "protein_id_dst": "9606.ENSP00000320147",
+      "gene_name_src": "JUN",
+      "gene_name_dst": "EZH2",
+      "combined_score_protein": 852.0,
+      "edge_weight_protein": 0.852
+    },
+    {
+      "protein_id_src": "9606.ENSP00000364210",
+      "protein_id_dst": "9606.ENSP00000397082",
+      "gene_name_src": "AGER",
+      "gene_name_dst": "SFTPA1",
+      "combined_score_protein": 722.0,
+      "edge_weight_protein": 0.722
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000416293",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "SLC2A1",
+      "combined_score_protein": 737.0,
+      "edge_weight_protein": 0.737
+    },
+    {
+      "protein_id_src": "9606.ENSP00000217026",
+      "protein_id_dst": "9606.ENSP00000313950",
+      "gene_name_src": "MYBL2",
+      "gene_name_dst": "AURKB",
+      "combined_score_protein": 704.0,
+      "edge_weight_protein": 0.704
+    },
+    {
+      "protein_id_src": "9606.ENSP00000360266",
+      "protein_id_dst": "9606.ENSP00000225474",
+      "gene_name_src": "JUN",
+      "gene_name_dst": "CSF3",
+      "combined_score_protein": 418.0,
+      "edge_weight_protein": 0.418
+    },
+    {
+      "protein_id_src": "9606.ENSP00000225964",
+      "protein_id_dst": "9606.ENSP00000378517",
+      "gene_name_src": "COL1A1",
+      "gene_name_dst": "SPP1",
+      "combined_score_protein": 747.0,
+      "edge_weight_protein": 0.747
+    },
+    {
+      "protein_id_src": "9606.ENSP00000301149",
+      "protein_id_dst": "9606.ENSP00000306606",
+      "gene_name_src": "GPD1",
+      "gene_name_dst": "ADH1B",
+      "combined_score_protein": 426.0,
+      "edge_weight_protein": 0.426
+    },
+    {
+      "protein_id_src": "9606.ENSP00000418915",
+      "protein_id_dst": "9606.ENSP00000286574",
+      "gene_name_src": "CDKN2A",
+      "gene_name_dst": "WIF1",
+      "combined_score_protein": 449.0,
+      "edge_weight_protein": 0.449
+    },
+    {
+      "protein_id_src": "9606.ENSP00000316152",
+      "protein_id_dst": "9606.ENSP00000360973",
+      "gene_name_src": "SFTPC",
+      "gene_name_dst": "AGTR2",
+      "combined_score_protein": 634.0,
+      "edge_weight_protein": 0.634
+    },
+    {
+      "protein_id_src": "9606.ENSP00000481380",
+      "protein_id_dst": "9606.ENSP00000320147",
+      "gene_name_src": "CCNA2",
+      "gene_name_dst": "EZH2",
+      "combined_score_protein": 649.0,
+      "edge_weight_protein": 0.649
+    },
+    {
+      "protein_id_src": "9606.ENSP00000366416",
+      "protein_id_dst": "9606.ENSP00000364210",
+      "gene_name_src": "EDNRB",
+      "gene_name_dst": "AGER",
+      "combined_score_protein": 449.0,
+      "edge_weight_protein": 0.449
+    },
+    {
+      "protein_id_src": "9606.ENSP00000361540",
+      "protein_id_dst": "9606.ENSP00000256442",
+      "gene_name_src": "CDC20",
+      "gene_name_dst": "CCNB1",
+      "combined_score_protein": 999.0,
+      "edge_weight_protein": 0.999
+    },
+    {
+      "protein_id_src": "9606.ENSP00000280187",
+      "protein_id_dst": "9606.ENSP00000419124",
+      "gene_name_src": "GPM6A",
+      "gene_name_dst": "FAM107A",
+      "combined_score_protein": 417.0,
+      "edge_weight_protein": 0.417
+    },
+    {
+      "protein_id_src": "9606.ENSP00000292408",
+      "protein_id_dst": "9606.ENSP00000297904",
+      "gene_name_src": "FGFR4",
+      "gene_name_dst": "VEGFD",
+      "combined_score_protein": 711.0,
+      "edge_weight_protein": 0.711
+    },
+    {
+      "protein_id_src": "9606.ENSP00000261405",
+      "protein_id_dst": "9606.ENSP00000378517",
+      "gene_name_src": "VWF",
+      "gene_name_dst": "SPP1",
+      "combined_score_protein": 807.0,
+      "edge_weight_protein": 0.807
+    },
+    {
+      "protein_id_src": "9606.ENSP00000261405",
+      "protein_id_dst": "9606.ENSP00000457421",
+      "gene_name_src": "VWF",
+      "gene_name_dst": "PECAM1",
+      "combined_score_protein": 918.0,
+      "edge_weight_protein": 0.918
+    },
+    {
+      "protein_id_src": "9606.ENSP00000256442",
+      "protein_id_dst": "9606.ENSP00000313950",
+      "gene_name_src": "CCNB1",
+      "gene_name_dst": "AURKB",
+      "combined_score_protein": 962.0,
+      "edge_weight_protein": 0.962
+    },
+    {
+      "protein_id_src": "9606.ENSP00000418915",
+      "protein_id_dst": "9606.ENSP00000385675",
+      "gene_name_src": "CDKN2A",
+      "gene_name_dst": "IL6",
+      "combined_score_protein": 621.0,
+      "edge_weight_protein": 0.621
+    },
+    {
+      "protein_id_src": "9606.ENSP00000329292",
+      "protein_id_dst": "9606.ENSP00000340939",
+      "gene_name_src": "GKN2",
+      "gene_name_dst": "CLDN18",
+      "combined_score_protein": 514.0,
+      "edge_weight_protein": 0.514
+    },
+    {
+      "protein_id_src": "9606.ENSP00000301149",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "GPD1",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 581.0,
+      "edge_weight_protein": 0.581
+    },
+    {
+      "protein_id_src": "9606.ENSP00000418915",
+      "protein_id_dst": "9606.ENSP00000320147",
+      "gene_name_src": "CDKN2A",
+      "gene_name_dst": "EZH2",
+      "combined_score_protein": 813.0,
+      "edge_weight_protein": 0.813
+    },
+    {
+      "protein_id_src": "9606.ENSP00000261405",
+      "protein_id_dst": "9606.ENSP00000369375",
+      "gene_name_src": "VWF",
+      "gene_name_dst": "TEK",
+      "combined_score_protein": 757.0,
+      "edge_weight_protein": 0.757
+    },
+    {
+      "protein_id_src": "9606.ENSP00000369375",
+      "protein_id_dst": "9606.ENSP00000457421",
+      "gene_name_src": "TEK",
+      "gene_name_dst": "PECAM1",
+      "combined_score_protein": 842.0,
+      "edge_weight_protein": 0.842
+    },
+    {
+      "protein_id_src": "9606.ENSP00000278282",
+      "protein_id_dst": "9606.ENSP00000378517",
+      "gene_name_src": "SCGB1A1",
+      "gene_name_dst": "SPP1",
+      "combined_score_protein": 463.0,
+      "edge_weight_protein": 0.463
+    },
+    {
+      "protein_id_src": "9606.ENSP00000327368",
+      "protein_id_dst": "9606.ENSP00000215743",
+      "gene_name_src": "COL10A1",
+      "gene_name_dst": "MMP11",
+      "combined_score_protein": 812.0,
+      "edge_weight_protein": 0.812
+    },
+    {
+      "protein_id_src": "9606.ENSP00000287820",
+      "protein_id_dst": "9606.ENSP00000385675",
+      "gene_name_src": "PPARG",
+      "gene_name_dst": "IL6",
+      "combined_score_protein": 820.0,
+      "edge_weight_protein": 0.82
+    },
+    {
+      "protein_id_src": "9606.ENSP00000415743",
+      "protein_id_dst": "9606.ENSP00000261405",
+      "gene_name_src": "CD36",
+      "gene_name_dst": "VWF",
+      "combined_score_protein": 803.0,
+      "edge_weight_protein": 0.803
+    },
+    {
+      "protein_id_src": "9606.ENSP00000300403",
+      "protein_id_dst": "9606.ENSP00000256442",
+      "gene_name_src": "TPX2",
+      "gene_name_dst": "CCNB1",
+      "combined_score_protein": 949.0,
+      "edge_weight_protein": 0.949
+    },
+    {
+      "protein_id_src": "9606.ENSP00000369375",
+      "protein_id_dst": "9606.ENSP00000385675",
+      "gene_name_src": "TEK",
+      "gene_name_dst": "IL6",
+      "combined_score_protein": 726.0,
+      "edge_weight_protein": 0.726
+    },
+    {
+      "protein_id_src": "9606.ENSP00000225474",
+      "protein_id_dst": "9606.ENSP00000360266",
+      "gene_name_src": "CSF3",
+      "gene_name_dst": "JUN",
+      "combined_score_protein": 418.0,
+      "edge_weight_protein": 0.418
+    },
+    {
+      "protein_id_src": "9606.ENSP00000481380",
+      "protein_id_dst": "9606.ENSP00000306245",
+      "gene_name_src": "CCNA2",
+      "gene_name_dst": "FOS",
+      "combined_score_protein": 533.0,
+      "edge_weight_protein": 0.533
+    },
+    {
+      "protein_id_src": "9606.ENSP00000481380",
+      "protein_id_dst": "9606.ENSP00000360266",
+      "gene_name_src": "CCNA2",
+      "gene_name_dst": "JUN",
+      "combined_score_protein": 553.0,
+      "edge_weight_protein": 0.553
+    },
+    {
+      "protein_id_src": "9606.ENSP00000313950",
+      "protein_id_dst": "9606.ENSP00000418915",
+      "gene_name_src": "AURKB",
+      "gene_name_dst": "CDKN2A",
+      "combined_score_protein": 733.0,
+      "edge_weight_protein": 0.733
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378356",
+      "protein_id_dst": "9606.ENSP00000361540",
+      "gene_name_src": "KIF20A",
+      "gene_name_dst": "CDC20",
+      "combined_score_protein": 981.0,
+      "edge_weight_protein": 0.981
+    },
+    {
+      "protein_id_src": "9606.ENSP00000364210",
+      "protein_id_dst": "9606.ENSP00000256104",
+      "gene_name_src": "AGER",
+      "gene_name_dst": "FABP4",
+      "combined_score_protein": 466.0,
+      "edge_weight_protein": 0.466
+    },
+    {
+      "protein_id_src": "9606.ENSP00000320147",
+      "protein_id_dst": "9606.ENSP00000217026",
+      "gene_name_src": "EZH2",
+      "gene_name_dst": "MYBL2",
+      "combined_score_protein": 568.0,
+      "edge_weight_protein": 0.568
+    },
+    {
+      "protein_id_src": "9606.ENSP00000340939",
+      "protein_id_dst": "9606.ENSP00000361400",
+      "gene_name_src": "CLDN18",
+      "gene_name_dst": "SFTPA2",
+      "combined_score_protein": 425.0,
+      "edge_weight_protein": 0.425
+    },
+    {
+      "protein_id_src": "9606.ENSP00000481380",
+      "protein_id_dst": "9606.ENSP00000313950",
+      "gene_name_src": "CCNA2",
+      "gene_name_dst": "AURKB",
+      "combined_score_protein": 991.0,
+      "edge_weight_protein": 0.991
+    },
+    {
+      "protein_id_src": "9606.ENSP00000287820",
+      "protein_id_dst": "9606.ENSP00000416293",
+      "gene_name_src": "PPARG",
+      "gene_name_dst": "SLC2A1",
+      "combined_score_protein": 575.0,
+      "edge_weight_protein": 0.575
+    },
+    {
+      "protein_id_src": "9606.ENSP00000339191",
+      "protein_id_dst": "9606.ENSP00000369375",
+      "gene_name_src": "CAV1",
+      "gene_name_dst": "TEK",
+      "combined_score_protein": 564.0,
+      "edge_weight_protein": 0.564
+    },
+    {
+      "protein_id_src": "9606.ENSP00000256442",
+      "protein_id_dst": "9606.ENSP00000320147",
+      "gene_name_src": "CCNB1",
+      "gene_name_dst": "EZH2",
+      "combined_score_protein": 595.0,
+      "edge_weight_protein": 0.595
+    },
+    {
+      "protein_id_src": "9606.ENSP00000411532",
+      "protein_id_dst": "9606.ENSP00000320147",
+      "gene_name_src": "TOP2A",
+      "gene_name_dst": "EZH2",
+      "combined_score_protein": 626.0,
+      "edge_weight_protein": 0.626
+    },
+    {
+      "protein_id_src": "9606.ENSP00000261405",
+      "protein_id_dst": "9606.ENSP00000300093",
+      "gene_name_src": "VWF",
+      "gene_name_dst": "PLK1",
+      "combined_score_protein": 419.0,
+      "edge_weight_protein": 0.419
+    },
+    {
+      "protein_id_src": "9606.ENSP00000339191",
+      "protein_id_dst": "9606.ENSP00000360266",
+      "gene_name_src": "CAV1",
+      "gene_name_dst": "JUN",
+      "combined_score_protein": 451.0,
+      "edge_weight_protein": 0.451
+    },
+    {
+      "protein_id_src": "9606.ENSP00000397082",
+      "protein_id_dst": "9606.ENSP00000361400",
+      "gene_name_src": "SFTPA1",
+      "gene_name_dst": "SFTPA2",
+      "combined_score_protein": 956.0,
+      "edge_weight_protein": 0.956
+    },
+    {
+      "protein_id_src": "9606.ENSP00000225474",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "CSF3",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 522.0,
+      "edge_weight_protein": 0.522
+    },
+    {
+      "protein_id_src": "9606.ENSP00000256104",
+      "protein_id_dst": "9606.ENSP00000378517",
+      "gene_name_src": "FABP4",
+      "gene_name_dst": "SPP1",
+      "combined_score_protein": 490.0,
+      "edge_weight_protein": 0.49
+    },
+    {
+      "protein_id_src": "9606.ENSP00000385675",
+      "protein_id_dst": "9606.ENSP00000364210",
+      "gene_name_src": "IL6",
+      "gene_name_dst": "AGER",
+      "combined_score_protein": 666.0,
+      "edge_weight_protein": 0.666
+    },
+    {
+      "protein_id_src": "9606.ENSP00000348838",
+      "protein_id_dst": "9606.ENSP00000481380",
+      "gene_name_src": "UBE2C",
+      "gene_name_dst": "CCNA2",
+      "combined_score_protein": 994.0,
+      "edge_weight_protein": 0.994
+    },
+    {
+      "protein_id_src": "9606.ENSP00000261405",
+      "protein_id_dst": "9606.ENSP00000225964",
+      "gene_name_src": "VWF",
+      "gene_name_dst": "COL1A1",
+      "combined_score_protein": 877.0,
+      "edge_weight_protein": 0.877
+    },
+    {
+      "protein_id_src": "9606.ENSP00000364210",
+      "protein_id_dst": "9606.ENSP00000360266",
+      "gene_name_src": "AGER",
+      "gene_name_dst": "JUN",
+      "combined_score_protein": 403.0,
+      "edge_weight_protein": 0.403
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378517",
+      "protein_id_dst": "9606.ENSP00000225474",
+      "gene_name_src": "SPP1",
+      "gene_name_dst": "CSF3",
+      "combined_score_protein": 500.0,
+      "edge_weight_protein": 0.5
+    },
+    {
+      "protein_id_src": "9606.ENSP00000306245",
+      "protein_id_dst": "9606.ENSP00000320147",
+      "gene_name_src": "FOS",
+      "gene_name_dst": "EZH2",
+      "combined_score_protein": 567.0,
+      "edge_weight_protein": 0.567
+    },
+    {
+      "protein_id_src": "9606.ENSP00000416293",
+      "protein_id_dst": "9606.ENSP00000360266",
+      "gene_name_src": "SLC2A1",
+      "gene_name_dst": "JUN",
+      "combined_score_protein": 409.0,
+      "edge_weight_protein": 0.409
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378699",
+      "protein_id_dst": "9606.ENSP00000418915",
+      "gene_name_src": "CDK1",
+      "gene_name_dst": "CDKN2A",
+      "combined_score_protein": 818.0,
+      "edge_weight_protein": 0.818
+    },
+    {
+      "protein_id_src": "9606.ENSP00000284523",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "WNT3A",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 626.0,
+      "edge_weight_protein": 0.626
+    },
+    {
+      "protein_id_src": "9606.ENSP00000305675",
+      "protein_id_dst": "9606.ENSP00000339191",
+      "gene_name_src": "CAVIN2",
+      "gene_name_dst": "CAV1",
+      "combined_score_protein": 946.0,
+      "edge_weight_protein": 0.946
+    },
+    {
+      "protein_id_src": "9606.ENSP00000385675",
+      "protein_id_dst": "9606.ENSP00000225474",
+      "gene_name_src": "IL6",
+      "gene_name_dst": "CSF3",
+      "combined_score_protein": 988.0,
+      "edge_weight_protein": 0.988
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378356",
+      "protein_id_dst": "9606.ENSP00000313950",
+      "gene_name_src": "KIF20A",
+      "gene_name_dst": "AURKB",
+      "combined_score_protein": 990.0,
+      "edge_weight_protein": 0.99
+    },
+    {
+      "protein_id_src": "9606.ENSP00000415743",
+      "protein_id_dst": "9606.ENSP00000256104",
+      "gene_name_src": "CD36",
+      "gene_name_dst": "FABP4",
+      "combined_score_protein": 969.0,
+      "edge_weight_protein": 0.969
+    },
+    {
+      "protein_id_src": "9606.ENSP00000278282",
+      "protein_id_dst": "9606.ENSP00000361366",
+      "gene_name_src": "SCGB1A1",
+      "gene_name_dst": "SFTPD",
+      "combined_score_protein": 837.0,
+      "edge_weight_protein": 0.837
+    },
+    {
+      "protein_id_src": "9606.ENSP00000457421",
+      "protein_id_dst": "9606.ENSP00000322788",
+      "gene_name_src": "PECAM1",
+      "gene_name_dst": "MMP1",
+      "combined_score_protein": 420.0,
+      "edge_weight_protein": 0.42
+    },
+    {
+      "protein_id_src": "9606.ENSP00000415743",
+      "protein_id_dst": "9606.ENSP00000287820",
+      "gene_name_src": "CD36",
+      "gene_name_dst": "PPARG",
+      "combined_score_protein": 942.0,
+      "edge_weight_protein": 0.942
+    },
+    {
+      "protein_id_src": "9606.ENSP00000313950",
+      "protein_id_dst": "9606.ENSP00000362146",
+      "gene_name_src": "AURKB",
+      "gene_name_dst": "CDCA8",
+      "combined_score_protein": 999.0,
+      "edge_weight_protein": 0.999
+    },
+    {
+      "protein_id_src": "9606.ENSP00000256442",
+      "protein_id_dst": "9606.ENSP00000306245",
+      "gene_name_src": "CCNB1",
+      "gene_name_dst": "FOS",
+      "combined_score_protein": 432.0,
+      "edge_weight_protein": 0.432
+    },
+    {
+      "protein_id_src": "9606.ENSP00000306245",
+      "protein_id_dst": "9606.ENSP00000313950",
+      "gene_name_src": "FOS",
+      "gene_name_dst": "AURKB",
+      "combined_score_protein": 461.0,
+      "edge_weight_protein": 0.461
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378699",
+      "protein_id_dst": "9606.ENSP00000481380",
+      "gene_name_src": "CDK1",
+      "gene_name_dst": "CCNA2",
+      "combined_score_protein": 999.0,
+      "edge_weight_protein": 0.999
+    },
+    {
+      "protein_id_src": "9606.ENSP00000362146",
+      "protein_id_dst": "9606.ENSP00000209929",
+      "gene_name_src": "CDCA8",
+      "gene_name_dst": "FMO2",
+      "combined_score_protein": 411.0,
+      "edge_weight_protein": 0.411
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378356",
+      "protein_id_dst": "9606.ENSP00000320147",
+      "gene_name_src": "KIF20A",
+      "gene_name_dst": "EZH2",
+      "combined_score_protein": 439.0,
+      "edge_weight_protein": 0.439
+    },
+    {
+      "protein_id_src": "9606.ENSP00000261405",
+      "protein_id_dst": "9606.ENSP00000225474",
+      "gene_name_src": "VWF",
+      "gene_name_dst": "CSF3",
+      "combined_score_protein": 463.0,
+      "edge_weight_protein": 0.463
+    },
+    {
+      "protein_id_src": "9606.ENSP00000305372",
+      "protein_id_dst": "9606.ENSP00000416293",
+      "gene_name_src": "ADRB2",
+      "gene_name_dst": "SLC2A1",
+      "combined_score_protein": 410.0,
+      "edge_weight_protein": 0.41
+    },
+    {
+      "protein_id_src": "9606.ENSP00000256104",
+      "protein_id_dst": "9606.ENSP00000497642",
+      "gene_name_src": "FABP4",
+      "gene_name_dst": "LPL",
+      "combined_score_protein": 965.0,
+      "edge_weight_protein": 0.965
+    },
+    {
+      "protein_id_src": "9606.ENSP00000329920",
+      "protein_id_dst": "9606.ENSP00000415743",
+      "gene_name_src": "MCEMP1",
+      "gene_name_dst": "CD36",
+      "combined_score_protein": 434.0,
+      "edge_weight_protein": 0.434
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000245919",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "FOSB",
+      "combined_score_protein": 432.0,
+      "edge_weight_protein": 0.432
+    },
+    {
+      "protein_id_src": "9606.ENSP00000362146",
+      "protein_id_dst": "9606.ENSP00000481380",
+      "gene_name_src": "CDCA8",
+      "gene_name_dst": "CCNA2",
+      "combined_score_protein": 952.0,
+      "edge_weight_protein": 0.952
+    },
+    {
+      "protein_id_src": "9606.ENSP00000415743",
+      "protein_id_dst": "9606.ENSP00000457421",
+      "gene_name_src": "CD36",
+      "gene_name_dst": "PECAM1",
+      "combined_score_protein": 851.0,
+      "edge_weight_protein": 0.851
+    },
+    {
+      "protein_id_src": "9606.ENSP00000320147",
+      "protein_id_dst": "9606.ENSP00000256442",
+      "gene_name_src": "EZH2",
+      "gene_name_dst": "CCNB1",
+      "combined_score_protein": 595.0,
+      "edge_weight_protein": 0.595
+    },
+    {
+      "protein_id_src": "9606.ENSP00000418915",
+      "protein_id_dst": "9606.ENSP00000322788",
+      "gene_name_src": "CDKN2A",
+      "gene_name_dst": "MMP1",
+      "combined_score_protein": 412.0,
+      "edge_weight_protein": 0.412
+    },
+    {
+      "protein_id_src": "9606.ENSP00000329292",
+      "protein_id_dst": "9606.ENSP00000362116",
+      "gene_name_src": "GKN2",
+      "gene_name_dst": "PGC",
+      "combined_score_protein": 569.0,
+      "edge_weight_protein": 0.569
+    },
+    {
+      "protein_id_src": "9606.ENSP00000481380",
+      "protein_id_dst": "9606.ENSP00000418915",
+      "gene_name_src": "CCNA2",
+      "gene_name_dst": "CDKN2A",
+      "combined_score_protein": 696.0,
+      "edge_weight_protein": 0.696
+    },
+    {
+      "protein_id_src": "9606.ENSP00000317997",
+      "protein_id_dst": "9606.ENSP00000360266",
+      "gene_name_src": "DUOX1",
+      "gene_name_dst": "JUN",
+      "combined_score_protein": 456.0,
+      "edge_weight_protein": 0.456
+    },
+    {
+      "protein_id_src": "9606.ENSP00000292408",
+      "protein_id_dst": "9606.ENSP00000418915",
+      "gene_name_src": "FGFR4",
+      "gene_name_dst": "CDKN2A",
+      "combined_score_protein": 451.0,
+      "edge_weight_protein": 0.451
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378356",
+      "protein_id_dst": "9606.ENSP00000411532",
+      "gene_name_src": "KIF20A",
+      "gene_name_dst": "TOP2A",
+      "combined_score_protein": 974.0,
+      "edge_weight_protein": 0.974
+    },
+    {
+      "protein_id_src": "9606.ENSP00000360762",
+      "protein_id_dst": "9606.ENSP00000232975",
+      "gene_name_src": "ANKRD1",
+      "gene_name_dst": "TNNC1",
+      "combined_score_protein": 425.0,
+      "edge_weight_protein": 0.425
+    },
+    {
+      "protein_id_src": "9606.ENSP00000225474",
+      "protein_id_dst": "9606.ENSP00000378517",
+      "gene_name_src": "CSF3",
+      "gene_name_dst": "SPP1",
+      "combined_score_protein": 500.0,
+      "edge_weight_protein": 0.5
+    },
+    {
+      "protein_id_src": "9606.ENSP00000217026",
+      "protein_id_dst": "9606.ENSP00000348838",
+      "gene_name_src": "MYBL2",
+      "gene_name_dst": "UBE2C",
+      "combined_score_protein": 773.0,
+      "edge_weight_protein": 0.773
+    },
+    {
+      "protein_id_src": "9606.ENSP00000339191",
+      "protein_id_dst": "9606.ENSP00000457421",
+      "gene_name_src": "CAV1",
+      "gene_name_dst": "PECAM1",
+      "combined_score_protein": 689.0,
+      "edge_weight_protein": 0.689
+    },
+    {
+      "protein_id_src": "9606.ENSP00000301633",
+      "protein_id_dst": "9606.ENSP00000300403",
+      "gene_name_src": "BIRC5",
+      "gene_name_dst": "TPX2",
+      "combined_score_protein": 952.0,
+      "edge_weight_protein": 0.952
+    },
+    {
+      "protein_id_src": "9606.ENSP00000415743",
+      "protein_id_dst": "9606.ENSP00000318916",
+      "gene_name_src": "CD36",
+      "gene_name_dst": "MARCO",
+      "combined_score_protein": 568.0,
+      "edge_weight_protein": 0.568
+    },
+    {
+      "protein_id_src": "9606.ENSP00000256442",
+      "protein_id_dst": "9606.ENSP00000300403",
+      "gene_name_src": "CCNB1",
+      "gene_name_dst": "TPX2",
+      "combined_score_protein": 949.0,
+      "edge_weight_protein": 0.949
+    },
+    {
+      "protein_id_src": "9606.ENSP00000361400",
+      "protein_id_dst": "9606.ENSP00000364210",
+      "gene_name_src": "SFTPA2",
+      "gene_name_dst": "AGER",
+      "combined_score_protein": 623.0,
+      "edge_weight_protein": 0.623
+    },
+    {
+      "protein_id_src": "9606.ENSP00000361540",
+      "protein_id_dst": "9606.ENSP00000320147",
+      "gene_name_src": "CDC20",
+      "gene_name_dst": "EZH2",
+      "combined_score_protein": 507.0,
+      "edge_weight_protein": 0.507
+    },
+    {
+      "protein_id_src": "9606.ENSP00000411532",
+      "protein_id_dst": "9606.ENSP00000301633",
+      "gene_name_src": "TOP2A",
+      "gene_name_dst": "BIRC5",
+      "combined_score_protein": 976.0,
+      "edge_weight_protein": 0.976
+    },
+    {
+      "protein_id_src": "9606.ENSP00000306245",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "FOS",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 722.0,
+      "edge_weight_protein": 0.722
+    },
+    {
+      "protein_id_src": "9606.ENSP00000457421",
+      "protein_id_dst": "9606.ENSP00000278282",
+      "gene_name_src": "PECAM1",
+      "gene_name_dst": "SCGB1A1",
+      "combined_score_protein": 432.0,
+      "edge_weight_protein": 0.432
+    },
+    {
+      "protein_id_src": "9606.ENSP00000363071",
+      "protein_id_dst": "9606.ENSP00000313950",
+      "gene_name_src": "DES",
+      "gene_name_dst": "AURKB",
+      "combined_score_protein": 619.0,
+      "edge_weight_protein": 0.619
+    },
+    {
+      "protein_id_src": "9606.ENSP00000360973",
+      "protein_id_dst": "9606.ENSP00000366416",
+      "gene_name_src": "AGTR2",
+      "gene_name_dst": "EDNRB",
+      "combined_score_protein": 676.0,
+      "edge_weight_protein": 0.676
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000363071",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "DES",
+      "combined_score_protein": 431.0,
+      "edge_weight_protein": 0.431
+    },
+    {
+      "protein_id_src": "9606.ENSP00000361540",
+      "protein_id_dst": "9606.ENSP00000348838",
+      "gene_name_src": "CDC20",
+      "gene_name_dst": "UBE2C",
+      "combined_score_protein": 999.0,
+      "edge_weight_protein": 0.999
+    },
+    {
+      "protein_id_src": "9606.ENSP00000339191",
+      "protein_id_dst": "9606.ENSP00000284523",
+      "gene_name_src": "CAV1",
+      "gene_name_dst": "WNT3A",
+      "combined_score_protein": 894.0,
+      "edge_weight_protein": 0.894
+    },
+    {
+      "protein_id_src": "9606.ENSP00000362146",
+      "protein_id_dst": "9606.ENSP00000320147",
+      "gene_name_src": "CDCA8",
+      "gene_name_dst": "EZH2",
+      "combined_score_protein": 537.0,
+      "edge_weight_protein": 0.537
+    },
+    {
+      "protein_id_src": "9606.ENSP00000298910",
+      "protein_id_dst": "9606.ENSP00000418915",
+      "gene_name_src": "LRRK2",
+      "gene_name_dst": "CDKN2A",
+      "combined_score_protein": 415.0,
+      "edge_weight_protein": 0.415
+    },
+    {
+      "protein_id_src": "9606.ENSP00000300900",
+      "protein_id_dst": "9606.ENSP00000216862",
+      "gene_name_src": "CA4",
+      "gene_name_dst": "CYP24A1",
+      "combined_score_protein": 770.0,
+      "edge_weight_protein": 0.77
+    },
+    {
+      "protein_id_src": "9606.ENSP00000225964",
+      "protein_id_dst": "9606.ENSP00000348838",
+      "gene_name_src": "COL1A1",
+      "gene_name_dst": "UBE2C",
+      "combined_score_protein": 426.0,
+      "edge_weight_protein": 0.426
+    },
+    {
+      "protein_id_src": "9606.ENSP00000457421",
+      "protein_id_dst": "9606.ENSP00000418915",
+      "gene_name_src": "PECAM1",
+      "gene_name_dst": "CDKN2A",
+      "combined_score_protein": 450.0,
+      "edge_weight_protein": 0.45
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000225474",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "CSF3",
+      "combined_score_protein": 522.0,
+      "edge_weight_protein": 0.522
+    },
+    {
+      "protein_id_src": "9606.ENSP00000217026",
+      "protein_id_dst": "9606.ENSP00000418915",
+      "gene_name_src": "MYBL2",
+      "gene_name_dst": "CDKN2A",
+      "combined_score_protein": 416.0,
+      "edge_weight_protein": 0.416
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378699",
+      "protein_id_dst": "9606.ENSP00000361540",
+      "gene_name_src": "CDK1",
+      "gene_name_dst": "CDC20",
+      "combined_score_protein": 999.0,
+      "edge_weight_protein": 0.999
+    },
+    {
+      "protein_id_src": "9606.ENSP00000300403",
+      "protein_id_dst": "9606.ENSP00000217026",
+      "gene_name_src": "TPX2",
+      "gene_name_dst": "MYBL2",
+      "combined_score_protein": 747.0,
+      "edge_weight_protein": 0.747
+    },
+    {
+      "protein_id_src": "9606.ENSP00000225964",
+      "protein_id_dst": "9606.ENSP00000457421",
+      "gene_name_src": "COL1A1",
+      "gene_name_dst": "PECAM1",
+      "combined_score_protein": 624.0,
+      "edge_weight_protein": 0.624
+    },
+    {
+      "protein_id_src": "9606.ENSP00000364210",
+      "protein_id_dst": "9606.ENSP00000385675",
+      "gene_name_src": "AGER",
+      "gene_name_dst": "IL6",
+      "combined_score_protein": 666.0,
+      "edge_weight_protein": 0.666
+    },
+    {
+      "protein_id_src": "9606.ENSP00000217182",
+      "protein_id_dst": "9606.ENSP00000482841",
+      "gene_name_src": "EEF1A2",
+      "gene_name_dst": "CRABP2",
+      "combined_score_protein": 424.0,
+      "edge_weight_protein": 0.424
+    },
+    {
+      "protein_id_src": "9606.ENSP00000306245",
+      "protein_id_dst": "9606.ENSP00000256442",
+      "gene_name_src": "FOS",
+      "gene_name_dst": "CCNB1",
+      "combined_score_protein": 432.0,
+      "edge_weight_protein": 0.432
+    },
+    {
+      "protein_id_src": "9606.ENSP00000261405",
+      "protein_id_dst": "9606.ENSP00000364210",
+      "gene_name_src": "VWF",
+      "gene_name_dst": "AGER",
+      "combined_score_protein": 486.0,
+      "edge_weight_protein": 0.486
+    },
+    {
+      "protein_id_src": "9606.ENSP00000322788",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "MMP1",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 575.0,
+      "edge_weight_protein": 0.575
+    },
+    {
+      "protein_id_src": "9606.ENSP00000261405",
+      "protein_id_dst": "9606.ENSP00000339191",
+      "gene_name_src": "VWF",
+      "gene_name_dst": "CAV1",
+      "combined_score_protein": 466.0,
+      "edge_weight_protein": 0.466
+    },
+    {
+      "protein_id_src": "9606.ENSP00000225964",
+      "protein_id_dst": "9606.ENSP00000360266",
+      "gene_name_src": "COL1A1",
+      "gene_name_dst": "JUN",
+      "combined_score_protein": 667.0,
+      "edge_weight_protein": 0.667
+    },
+    {
+      "protein_id_src": "9606.ENSP00000348838",
+      "protein_id_dst": "9606.ENSP00000362146",
+      "gene_name_src": "UBE2C",
+      "gene_name_dst": "CDCA8",
+      "combined_score_protein": 966.0,
+      "edge_weight_protein": 0.966
+    },
+    {
+      "protein_id_src": "9606.ENSP00000364210",
+      "protein_id_dst": "9606.ENSP00000278282",
+      "gene_name_src": "AGER",
+      "gene_name_dst": "SCGB1A1",
+      "combined_score_protein": 684.0,
+      "edge_weight_protein": 0.684
+    },
+    {
+      "protein_id_src": "9606.ENSP00000457421",
+      "protein_id_dst": "9606.ENSP00000261405",
+      "gene_name_src": "PECAM1",
+      "gene_name_dst": "VWF",
+      "combined_score_protein": 918.0,
+      "edge_weight_protein": 0.918
+    },
+    {
+      "protein_id_src": "9606.ENSP00000306245",
+      "protein_id_dst": "9606.ENSP00000385675",
+      "gene_name_src": "FOS",
+      "gene_name_dst": "IL6",
+      "combined_score_protein": 891.0,
+      "edge_weight_protein": 0.891
+    },
+    {
+      "protein_id_src": "9606.ENSP00000305372",
+      "protein_id_dst": "9606.ENSP00000358301",
+      "gene_name_src": "ADRB2",
+      "gene_name_dst": "ADRB1",
+      "combined_score_protein": 956.0,
+      "edge_weight_protein": 0.956
+    },
+    {
+      "protein_id_src": "9606.ENSP00000287820",
+      "protein_id_dst": "9606.ENSP00000320147",
+      "gene_name_src": "PPARG",
+      "gene_name_dst": "EZH2",
+      "combined_score_protein": 778.0,
+      "edge_weight_protein": 0.778
+    },
+    {
+      "protein_id_src": "9606.ENSP00000287820",
+      "protein_id_dst": "9606.ENSP00000378517",
+      "gene_name_src": "PPARG",
+      "gene_name_dst": "SPP1",
+      "combined_score_protein": 609.0,
+      "edge_weight_protein": 0.609
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378699",
+      "protein_id_dst": "9606.ENSP00000306245",
+      "gene_name_src": "CDK1",
+      "gene_name_dst": "FOS",
+      "combined_score_protein": 639.0,
+      "edge_weight_protein": 0.639
+    },
+    {
+      "protein_id_src": "9606.ENSP00000225964",
+      "protein_id_dst": "9606.ENSP00000306245",
+      "gene_name_src": "COL1A1",
+      "gene_name_dst": "FOS",
+      "combined_score_protein": 669.0,
+      "edge_weight_protein": 0.669
+    },
+    {
+      "protein_id_src": "9606.ENSP00000322788",
+      "protein_id_dst": "9606.ENSP00000378517",
+      "gene_name_src": "MMP1",
+      "gene_name_dst": "SPP1",
+      "combined_score_protein": 534.0,
+      "edge_weight_protein": 0.534
+    },
+    {
+      "protein_id_src": "9606.ENSP00000339191",
+      "protein_id_dst": "9606.ENSP00000305675",
+      "gene_name_src": "CAV1",
+      "gene_name_dst": "CAVIN2",
+      "combined_score_protein": 946.0,
+      "edge_weight_protein": 0.946
+    },
+    {
+      "protein_id_src": "9606.ENSP00000361540",
+      "protein_id_dst": "9606.ENSP00000411532",
+      "gene_name_src": "CDC20",
+      "gene_name_dst": "TOP2A",
+      "combined_score_protein": 980.0,
+      "edge_weight_protein": 0.98
+    },
+    {
+      "protein_id_src": "9606.ENSP00000300093",
+      "protein_id_dst": "9606.ENSP00000360266",
+      "gene_name_src": "PLK1",
+      "gene_name_dst": "JUN",
+      "combined_score_protein": 430.0,
+      "edge_weight_protein": 0.43
+    },
+    {
+      "protein_id_src": "9606.ENSP00000225964",
+      "protein_id_dst": "9606.ENSP00000385675",
+      "gene_name_src": "COL1A1",
+      "gene_name_dst": "IL6",
+      "combined_score_protein": 630.0,
+      "edge_weight_protein": 0.63
+    },
+    {
+      "protein_id_src": "9606.ENSP00000385675",
+      "protein_id_dst": "9606.ENSP00000416293",
+      "gene_name_src": "IL6",
+      "gene_name_dst": "SLC2A1",
+      "combined_score_protein": 506.0,
+      "edge_weight_protein": 0.506
+    },
+    {
+      "protein_id_src": "9606.ENSP00000322788",
+      "protein_id_dst": "9606.ENSP00000327368",
+      "gene_name_src": "MMP1",
+      "gene_name_dst": "COL10A1",
+      "combined_score_protein": 618.0,
+      "edge_weight_protein": 0.618
+    },
+    {
+      "protein_id_src": "9606.ENSP00000361540",
+      "protein_id_dst": "9606.ENSP00000418915",
+      "gene_name_src": "CDC20",
+      "gene_name_dst": "CDKN2A",
+      "combined_score_protein": 463.0,
+      "edge_weight_protein": 0.463
+    },
+    {
+      "protein_id_src": "9606.ENSP00000322788",
+      "protein_id_dst": "9606.ENSP00000261405",
+      "gene_name_src": "MMP1",
+      "gene_name_dst": "VWF",
+      "combined_score_protein": 551.0,
+      "edge_weight_protein": 0.551
+    },
+    {
+      "protein_id_src": "9606.ENSP00000256104",
+      "protein_id_dst": "9606.ENSP00000301149",
+      "gene_name_src": "FABP4",
+      "gene_name_dst": "GPD1",
+      "combined_score_protein": 439.0,
+      "edge_weight_protein": 0.439
+    },
+    {
+      "protein_id_src": "9606.ENSP00000418915",
+      "protein_id_dst": "9606.ENSP00000360266",
+      "gene_name_src": "CDKN2A",
+      "gene_name_dst": "JUN",
+      "combined_score_protein": 779.0,
+      "edge_weight_protein": 0.779
+    },
+    {
+      "protein_id_src": "9606.ENSP00000418915",
+      "protein_id_dst": "9606.ENSP00000298910",
+      "gene_name_src": "CDKN2A",
+      "gene_name_dst": "LRRK2",
+      "combined_score_protein": 415.0,
+      "edge_weight_protein": 0.415
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000327368",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "COL10A1",
+      "combined_score_protein": 490.0,
+      "edge_weight_protein": 0.49
+    },
+    {
+      "protein_id_src": "9606.ENSP00000416293",
+      "protein_id_dst": "9606.ENSP00000305372",
+      "gene_name_src": "SLC2A1",
+      "gene_name_dst": "ADRB2",
+      "combined_score_protein": 410.0,
+      "edge_weight_protein": 0.41
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000225964",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "COL1A1",
+      "combined_score_protein": 740.0,
+      "edge_weight_protein": 0.74
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378699",
+      "protein_id_dst": "9606.ENSP00000300403",
+      "gene_name_src": "CDK1",
+      "gene_name_dst": "TPX2",
+      "combined_score_protein": 952.0,
+      "edge_weight_protein": 0.952
+    },
+    {
+      "protein_id_src": "9606.ENSP00000245919",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "FOSB",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 432.0,
+      "edge_weight_protein": 0.432
+    },
+    {
+      "protein_id_src": "9606.ENSP00000339191",
+      "protein_id_dst": "9606.ENSP00000418915",
+      "gene_name_src": "CAV1",
+      "gene_name_dst": "CDKN2A",
+      "combined_score_protein": 406.0,
+      "edge_weight_protein": 0.406
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000411532",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "TOP2A",
+      "combined_score_protein": 564.0,
+      "edge_weight_protein": 0.564
+    },
+    {
+      "protein_id_src": "9606.ENSP00000245919",
+      "protein_id_dst": "9606.ENSP00000378699",
+      "gene_name_src": "FOSB",
+      "gene_name_dst": "CDK1",
+      "combined_score_protein": 475.0,
+      "edge_weight_protein": 0.475
+    },
+    {
+      "protein_id_src": "9606.ENSP00000339191",
+      "protein_id_dst": "9606.ENSP00000225964",
+      "gene_name_src": "CAV1",
+      "gene_name_dst": "COL1A1",
+      "combined_score_protein": 608.0,
+      "edge_weight_protein": 0.608
+    },
+    {
+      "protein_id_src": "9606.ENSP00000300403",
+      "protein_id_dst": "9606.ENSP00000362146",
+      "gene_name_src": "TPX2",
+      "gene_name_dst": "CDCA8",
+      "combined_score_protein": 919.0,
+      "edge_weight_protein": 0.919
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000306245",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "FOS",
+      "combined_score_protein": 722.0,
+      "edge_weight_protein": 0.722
+    },
+    {
+      "protein_id_src": "9606.ENSP00000225964",
+      "protein_id_dst": "9606.ENSP00000378699",
+      "gene_name_src": "COL1A1",
+      "gene_name_dst": "CDK1",
+      "combined_score_protein": 491.0,
+      "edge_weight_protein": 0.491
+    },
+    {
+      "protein_id_src": "9606.ENSP00000385675",
+      "protein_id_dst": "9606.ENSP00000256104",
+      "gene_name_src": "IL6",
+      "gene_name_dst": "FABP4",
+      "combined_score_protein": 584.0,
+      "edge_weight_protein": 0.584
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378356",
+      "protein_id_dst": "9606.ENSP00000378699",
+      "gene_name_src": "KIF20A",
+      "gene_name_dst": "CDK1",
+      "combined_score_protein": 958.0,
+      "edge_weight_protein": 0.958
+    },
+    {
+      "protein_id_src": "9606.ENSP00000457421",
+      "protein_id_dst": "9606.ENSP00000366416",
+      "gene_name_src": "PECAM1",
+      "gene_name_dst": "EDNRB",
+      "combined_score_protein": 408.0,
+      "edge_weight_protein": 0.408
+    },
+    {
+      "protein_id_src": "9606.ENSP00000361400",
+      "protein_id_dst": "9606.ENSP00000278282",
+      "gene_name_src": "SFTPA2",
+      "gene_name_dst": "SCGB1A1",
+      "combined_score_protein": 698.0,
+      "edge_weight_protein": 0.698
+    },
+    {
+      "protein_id_src": "9606.ENSP00000348838",
+      "protein_id_dst": "9606.ENSP00000256442",
+      "gene_name_src": "UBE2C",
+      "gene_name_dst": "CCNB1",
+      "combined_score_protein": 990.0,
+      "edge_weight_protein": 0.99
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000305372",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "ADRB2",
+      "combined_score_protein": 448.0,
+      "edge_weight_protein": 0.448
+    },
+    {
+      "protein_id_src": "9606.ENSP00000397082",
+      "protein_id_dst": "9606.ENSP00000364210",
+      "gene_name_src": "SFTPA1",
+      "gene_name_dst": "AGER",
+      "combined_score_protein": 722.0,
+      "edge_weight_protein": 0.722
+    },
+    {
+      "protein_id_src": "9606.ENSP00000301633",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "BIRC5",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 548.0,
+      "edge_weight_protein": 0.548
+    },
+    {
+      "protein_id_src": "9606.ENSP00000339191",
+      "protein_id_dst": "9606.ENSP00000366416",
+      "gene_name_src": "CAV1",
+      "gene_name_dst": "EDNRB",
+      "combined_score_protein": 660.0,
+      "edge_weight_protein": 0.66
+    },
+    {
+      "protein_id_src": "9606.ENSP00000225474",
+      "protein_id_dst": "9606.ENSP00000261405",
+      "gene_name_src": "CSF3",
+      "gene_name_dst": "VWF",
+      "combined_score_protein": 463.0,
+      "edge_weight_protein": 0.463
+    },
+    {
+      "protein_id_src": "9606.ENSP00000256104",
+      "protein_id_dst": "9606.ENSP00000457421",
+      "gene_name_src": "FABP4",
+      "gene_name_dst": "PECAM1",
+      "combined_score_protein": 526.0,
+      "edge_weight_protein": 0.526
+    },
+    {
+      "protein_id_src": "9606.ENSP00000256442",
+      "protein_id_dst": "9606.ENSP00000418915",
+      "gene_name_src": "CCNB1",
+      "gene_name_dst": "CDKN2A",
+      "combined_score_protein": 772.0,
+      "edge_weight_protein": 0.772
+    },
+    {
+      "protein_id_src": "9606.ENSP00000481380",
+      "protein_id_dst": "9606.ENSP00000411532",
+      "gene_name_src": "CCNA2",
+      "gene_name_dst": "TOP2A",
+      "combined_score_protein": 982.0,
+      "edge_weight_protein": 0.982
+    },
+    {
+      "protein_id_src": "9606.ENSP00000327368",
+      "protein_id_dst": "9606.ENSP00000378517",
+      "gene_name_src": "COL10A1",
+      "gene_name_dst": "SPP1",
+      "combined_score_protein": 549.0,
+      "edge_weight_protein": 0.549
+    },
+    {
+      "protein_id_src": "9606.ENSP00000364210",
+      "protein_id_dst": "9606.ENSP00000361366",
+      "gene_name_src": "AGER",
+      "gene_name_dst": "SFTPD",
+      "combined_score_protein": 776.0,
+      "edge_weight_protein": 0.776
+    },
+    {
+      "protein_id_src": "9606.ENSP00000278282",
+      "protein_id_dst": "9606.ENSP00000385675",
+      "gene_name_src": "SCGB1A1",
+      "gene_name_dst": "IL6",
+      "combined_score_protein": 447.0,
+      "edge_weight_protein": 0.447
+    },
+    {
+      "protein_id_src": "9606.ENSP00000298910",
+      "protein_id_dst": "9606.ENSP00000217182",
+      "gene_name_src": "LRRK2",
+      "gene_name_dst": "EEF1A2",
+      "combined_score_protein": 531.0,
+      "edge_weight_protein": 0.531
+    },
+    {
+      "protein_id_src": "9606.ENSP00000361540",
+      "protein_id_dst": "9606.ENSP00000217026",
+      "gene_name_src": "CDC20",
+      "gene_name_dst": "MYBL2",
+      "combined_score_protein": 865.0,
+      "edge_weight_protein": 0.865
+    },
+    {
+      "protein_id_src": "9606.ENSP00000385675",
+      "protein_id_dst": "9606.ENSP00000378699",
+      "gene_name_src": "IL6",
+      "gene_name_dst": "CDK1",
+      "combined_score_protein": 613.0,
+      "edge_weight_protein": 0.613
+    },
+    {
+      "protein_id_src": "9606.ENSP00000385675",
+      "protein_id_dst": "9606.ENSP00000348838",
+      "gene_name_src": "IL6",
+      "gene_name_dst": "UBE2C",
+      "combined_score_protein": 597.0,
+      "edge_weight_protein": 0.597
+    },
+    {
+      "protein_id_src": "9606.ENSP00000320147",
+      "protein_id_dst": "9606.ENSP00000361540",
+      "gene_name_src": "EZH2",
+      "gene_name_dst": "CDC20",
+      "combined_score_protein": 507.0,
+      "edge_weight_protein": 0.507
+    },
+    {
+      "protein_id_src": "9606.ENSP00000385675",
+      "protein_id_dst": "9606.ENSP00000339191",
+      "gene_name_src": "IL6",
+      "gene_name_dst": "CAV1",
+      "combined_score_protein": 714.0,
+      "edge_weight_protein": 0.714
+    },
+    {
+      "protein_id_src": "9606.ENSP00000481380",
+      "protein_id_dst": "9606.ENSP00000301633",
+      "gene_name_src": "CCNA2",
+      "gene_name_dst": "BIRC5",
+      "combined_score_protein": 956.0,
+      "edge_weight_protein": 0.956
+    },
+    {
+      "protein_id_src": "9606.ENSP00000251595",
+      "protein_id_dst": "9606.ENSP00000494175",
+      "gene_name_src": "HBA2",
+      "gene_name_dst": "HBB",
+      "combined_score_protein": 999.0,
+      "edge_weight_protein": 0.999
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000256104",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "FABP4",
+      "combined_score_protein": 605.0,
+      "edge_weight_protein": 0.605
+    },
+    {
+      "protein_id_src": "9606.ENSP00000340939",
+      "protein_id_dst": "9606.ENSP00000362116",
+      "gene_name_src": "CLDN18",
+      "gene_name_dst": "PGC",
+      "combined_score_protein": 489.0,
+      "edge_weight_protein": 0.489
+    },
+    {
+      "protein_id_src": "9606.ENSP00000300093",
+      "protein_id_dst": "9606.ENSP00000378699",
+      "gene_name_src": "PLK1",
+      "gene_name_dst": "CDK1",
+      "combined_score_protein": 993.0,
+      "edge_weight_protein": 0.993
+    },
+    {
+      "protein_id_src": "9606.ENSP00000256104",
+      "protein_id_dst": "9606.ENSP00000385675",
+      "gene_name_src": "FABP4",
+      "gene_name_dst": "IL6",
+      "combined_score_protein": 584.0,
+      "edge_weight_protein": 0.584
+    },
+    {
+      "protein_id_src": "9606.ENSP00000300093",
+      "protein_id_dst": "9606.ENSP00000411532",
+      "gene_name_src": "PLK1",
+      "gene_name_dst": "TOP2A",
+      "combined_score_protein": 931.0,
+      "edge_weight_protein": 0.931
+    },
+    {
+      "protein_id_src": "9606.ENSP00000385675",
+      "protein_id_dst": "9606.ENSP00000245919",
+      "gene_name_src": "IL6",
+      "gene_name_dst": "FOSB",
+      "combined_score_protein": 522.0,
+      "edge_weight_protein": 0.522
+    },
+    {
+      "protein_id_src": "9606.ENSP00000418915",
+      "protein_id_dst": "9606.ENSP00000416293",
+      "gene_name_src": "CDKN2A",
+      "gene_name_dst": "SLC2A1",
+      "combined_score_protein": 414.0,
+      "edge_weight_protein": 0.414
+    },
+    {
+      "protein_id_src": "9606.ENSP00000284523",
+      "protein_id_dst": "9606.ENSP00000385675",
+      "gene_name_src": "WNT3A",
+      "gene_name_dst": "IL6",
+      "combined_score_protein": 448.0,
+      "edge_weight_protein": 0.448
+    },
+    {
+      "protein_id_src": "9606.ENSP00000306245",
+      "protein_id_dst": "9606.ENSP00000261707",
+      "gene_name_src": "FOS",
+      "gene_name_dst": "SLC6A4",
+      "combined_score_protein": 519.0,
+      "edge_weight_protein": 0.519
+    },
+    {
+      "protein_id_src": "9606.ENSP00000481380",
+      "protein_id_dst": "9606.ENSP00000300093",
+      "gene_name_src": "CCNA2",
+      "gene_name_dst": "PLK1",
+      "combined_score_protein": 958.0,
+      "edge_weight_protein": 0.958
+    },
+    {
+      "protein_id_src": "9606.ENSP00000297904",
+      "protein_id_dst": "9606.ENSP00000457421",
+      "gene_name_src": "VEGFD",
+      "gene_name_dst": "PECAM1",
+      "combined_score_protein": 534.0,
+      "edge_weight_protein": 0.534
+    },
+    {
+      "protein_id_src": "9606.ENSP00000301633",
+      "protein_id_dst": "9606.ENSP00000313950",
+      "gene_name_src": "BIRC5",
+      "gene_name_dst": "AURKB",
+      "combined_score_protein": 999.0,
+      "edge_weight_protein": 0.999
+    },
+    {
+      "protein_id_src": "9606.ENSP00000497642",
+      "protein_id_dst": "9606.ENSP00000385675",
+      "gene_name_src": "LPL",
+      "gene_name_dst": "IL6",
+      "combined_score_protein": 707.0,
+      "edge_weight_protein": 0.707
+    },
+    {
+      "protein_id_src": "9606.ENSP00000340939",
+      "protein_id_dst": "9606.ENSP00000329292",
+      "gene_name_src": "CLDN18",
+      "gene_name_dst": "GKN2",
+      "combined_score_protein": 514.0,
+      "edge_weight_protein": 0.514
+    },
+    {
+      "protein_id_src": "9606.ENSP00000364210",
+      "protein_id_dst": "9606.ENSP00000316152",
+      "gene_name_src": "AGER",
+      "gene_name_dst": "SFTPC",
+      "combined_score_protein": 870.0,
+      "edge_weight_protein": 0.87
+    },
+    {
+      "protein_id_src": "9606.ENSP00000362146",
+      "protein_id_dst": "9606.ENSP00000313950",
+      "gene_name_src": "CDCA8",
+      "gene_name_dst": "AURKB",
+      "combined_score_protein": 999.0,
+      "edge_weight_protein": 0.999
+    },
+    {
+      "protein_id_src": "9606.ENSP00000416293",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "SLC2A1",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 737.0,
+      "edge_weight_protein": 0.737
+    },
+    {
+      "protein_id_src": "9606.ENSP00000385675",
+      "protein_id_dst": "9606.ENSP00000497642",
+      "gene_name_src": "IL6",
+      "gene_name_dst": "LPL",
+      "combined_score_protein": 707.0,
+      "edge_weight_protein": 0.707
+    },
+    {
+      "protein_id_src": "9606.ENSP00000360266",
+      "protein_id_dst": "9606.ENSP00000385675",
+      "gene_name_src": "JUN",
+      "gene_name_dst": "IL6",
+      "combined_score_protein": 989.0,
+      "edge_weight_protein": 0.989
+    },
+    {
+      "protein_id_src": "9606.ENSP00000316152",
+      "protein_id_dst": "9606.ENSP00000361400",
+      "gene_name_src": "SFTPC",
+      "gene_name_dst": "SFTPA2",
+      "combined_score_protein": 993.0,
+      "edge_weight_protein": 0.993
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378356",
+      "protein_id_dst": "9606.ENSP00000300093",
+      "gene_name_src": "KIF20A",
+      "gene_name_dst": "PLK1",
+      "combined_score_protein": 990.0,
+      "edge_weight_protein": 0.99
+    },
+    {
+      "protein_id_src": "9606.ENSP00000300093",
+      "protein_id_dst": "9606.ENSP00000378356",
+      "gene_name_src": "PLK1",
+      "gene_name_dst": "KIF20A",
+      "combined_score_protein": 990.0,
+      "edge_weight_protein": 0.99
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378517",
+      "protein_id_dst": "9606.ENSP00000327368",
+      "gene_name_src": "SPP1",
+      "gene_name_dst": "COL10A1",
+      "combined_score_protein": 549.0,
+      "edge_weight_protein": 0.549
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378356",
+      "protein_id_dst": "9606.ENSP00000348838",
+      "gene_name_src": "KIF20A",
+      "gene_name_dst": "UBE2C",
+      "combined_score_protein": 961.0,
+      "edge_weight_protein": 0.961
+    },
+    {
+      "protein_id_src": "9606.ENSP00000256104",
+      "protein_id_dst": "9606.ENSP00000306606",
+      "gene_name_src": "FABP4",
+      "gene_name_dst": "ADH1B",
+      "combined_score_protein": 418.0,
+      "edge_weight_protein": 0.418
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000317997",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "DUOX1",
+      "combined_score_protein": 412.0,
+      "edge_weight_protein": 0.412
+    },
+    {
+      "protein_id_src": "9606.ENSP00000301633",
+      "protein_id_dst": "9606.ENSP00000348838",
+      "gene_name_src": "BIRC5",
+      "gene_name_dst": "UBE2C",
+      "combined_score_protein": 992.0,
+      "edge_weight_protein": 0.992
+    },
+    {
+      "protein_id_src": "9606.ENSP00000385675",
+      "protein_id_dst": "9606.ENSP00000306245",
+      "gene_name_src": "IL6",
+      "gene_name_dst": "FOS",
+      "combined_score_protein": 891.0,
+      "edge_weight_protein": 0.891
+    },
+    {
+      "protein_id_src": "9606.ENSP00000362146",
+      "protein_id_dst": "9606.ENSP00000378356",
+      "gene_name_src": "CDCA8",
+      "gene_name_dst": "KIF20A",
+      "combined_score_protein": 980.0,
+      "edge_weight_protein": 0.98
+    },
+    {
+      "protein_id_src": "9606.ENSP00000301633",
+      "protein_id_dst": "9606.ENSP00000217026",
+      "gene_name_src": "BIRC5",
+      "gene_name_dst": "MYBL2",
+      "combined_score_protein": 844.0,
+      "edge_weight_protein": 0.844
+    },
+    {
+      "protein_id_src": "9606.ENSP00000457421",
+      "protein_id_dst": "9606.ENSP00000360266",
+      "gene_name_src": "PECAM1",
+      "gene_name_dst": "JUN",
+      "combined_score_protein": 438.0,
+      "edge_weight_protein": 0.438
+    },
+    {
+      "protein_id_src": "9606.ENSP00000361540",
+      "protein_id_dst": "9606.ENSP00000301633",
+      "gene_name_src": "CDC20",
+      "gene_name_dst": "BIRC5",
+      "combined_score_protein": 995.0,
+      "edge_weight_protein": 0.995
+    },
+    {
+      "protein_id_src": "9606.ENSP00000300403",
+      "protein_id_dst": "9606.ENSP00000411532",
+      "gene_name_src": "TPX2",
+      "gene_name_dst": "TOP2A",
+      "combined_score_protein": 942.0,
+      "edge_weight_protein": 0.942
+    },
+    {
+      "protein_id_src": "9606.ENSP00000215743",
+      "protein_id_dst": "9606.ENSP00000322788",
+      "gene_name_src": "MMP11",
+      "gene_name_dst": "MMP1",
+      "combined_score_protein": 772.0,
+      "edge_weight_protein": 0.772
+    },
+    {
+      "protein_id_src": "9606.ENSP00000287820",
+      "protein_id_dst": "9606.ENSP00000497642",
+      "gene_name_src": "PPARG",
+      "gene_name_dst": "LPL",
+      "combined_score_protein": 941.0,
+      "edge_weight_protein": 0.941
+    },
+    {
+      "protein_id_src": "9606.ENSP00000497642",
+      "protein_id_dst": "9606.ENSP00000301149",
+      "gene_name_src": "LPL",
+      "gene_name_dst": "GPD1",
+      "combined_score_protein": 416.0,
+      "edge_weight_protein": 0.416
+    },
+    {
+      "protein_id_src": "9606.ENSP00000316152",
+      "protein_id_dst": "9606.ENSP00000302297",
+      "gene_name_src": "SFTPC",
+      "gene_name_dst": "LGI3",
+      "combined_score_protein": 551.0,
+      "edge_weight_protein": 0.551
+    },
+    {
+      "protein_id_src": "9606.ENSP00000348838",
+      "protein_id_dst": "9606.ENSP00000300093",
+      "gene_name_src": "UBE2C",
+      "gene_name_dst": "PLK1",
+      "combined_score_protein": 927.0,
+      "edge_weight_protein": 0.927
+    },
+    {
+      "protein_id_src": "9606.ENSP00000287820",
+      "protein_id_dst": "9606.ENSP00000364210",
+      "gene_name_src": "PPARG",
+      "gene_name_dst": "AGER",
+      "combined_score_protein": 441.0,
+      "edge_weight_protein": 0.441
+    },
+    {
+      "protein_id_src": "9606.ENSP00000362146",
+      "protein_id_dst": "9606.ENSP00000300403",
+      "gene_name_src": "CDCA8",
+      "gene_name_dst": "TPX2",
+      "combined_score_protein": 919.0,
+      "edge_weight_protein": 0.919
+    },
+    {
+      "protein_id_src": "9606.ENSP00000415743",
+      "protein_id_dst": "9606.ENSP00000221515",
+      "gene_name_src": "CD36",
+      "gene_name_dst": "RETN",
+      "combined_score_protein": 625.0,
+      "edge_weight_protein": 0.625
+    },
+    {
+      "protein_id_src": "9606.ENSP00000385675",
+      "protein_id_dst": "9606.ENSP00000261707",
+      "gene_name_src": "IL6",
+      "gene_name_dst": "SLC6A4",
+      "combined_score_protein": 445.0,
+      "edge_weight_protein": 0.445
+    },
+    {
+      "protein_id_src": "9606.ENSP00000256104",
+      "protein_id_dst": "9606.ENSP00000415743",
+      "gene_name_src": "FABP4",
+      "gene_name_dst": "CD36",
+      "combined_score_protein": 969.0,
+      "edge_weight_protein": 0.969
+    },
+    {
+      "protein_id_src": "9606.ENSP00000284523",
+      "protein_id_dst": "9606.ENSP00000457421",
+      "gene_name_src": "WNT3A",
+      "gene_name_dst": "PECAM1",
+      "combined_score_protein": 428.0,
+      "edge_weight_protein": 0.428
+    },
+    {
+      "protein_id_src": "9606.ENSP00000313950",
+      "protein_id_dst": "9606.ENSP00000411532",
+      "gene_name_src": "AURKB",
+      "gene_name_dst": "TOP2A",
+      "combined_score_protein": 970.0,
+      "edge_weight_protein": 0.97
+    },
+    {
+      "protein_id_src": "9606.ENSP00000300403",
+      "protein_id_dst": "9606.ENSP00000301633",
+      "gene_name_src": "TPX2",
+      "gene_name_dst": "BIRC5",
+      "combined_score_protein": 952.0,
+      "edge_weight_protein": 0.952
+    },
+    {
+      "protein_id_src": "9606.ENSP00000348838",
+      "protein_id_dst": "9606.ENSP00000300403",
+      "gene_name_src": "UBE2C",
+      "gene_name_dst": "TPX2",
+      "combined_score_protein": 965.0,
+      "edge_weight_protein": 0.965
+    },
+    {
+      "protein_id_src": "9606.ENSP00000411532",
+      "protein_id_dst": "9606.ENSP00000300093",
+      "gene_name_src": "TOP2A",
+      "gene_name_dst": "PLK1",
+      "combined_score_protein": 931.0,
+      "edge_weight_protein": 0.931
+    },
+    {
+      "protein_id_src": "9606.ENSP00000362146",
+      "protein_id_dst": "9606.ENSP00000256442",
+      "gene_name_src": "CDCA8",
+      "gene_name_dst": "CCNB1",
+      "combined_score_protein": 987.0,
+      "edge_weight_protein": 0.987
+    },
+    {
+      "protein_id_src": "9606.ENSP00000256104",
+      "protein_id_dst": "9606.ENSP00000221515",
+      "gene_name_src": "FABP4",
+      "gene_name_dst": "RETN",
+      "combined_score_protein": 646.0,
+      "edge_weight_protein": 0.646
+    },
+    {
+      "protein_id_src": "9606.ENSP00000225474",
+      "protein_id_dst": "9606.ENSP00000385675",
+      "gene_name_src": "CSF3",
+      "gene_name_dst": "IL6",
+      "combined_score_protein": 988.0,
+      "edge_weight_protein": 0.988
+    },
+    {
+      "protein_id_src": "9606.ENSP00000360266",
+      "protein_id_dst": "9606.ENSP00000322788",
+      "gene_name_src": "JUN",
+      "gene_name_dst": "MMP1",
+      "combined_score_protein": 842.0,
+      "edge_weight_protein": 0.842
+    },
+    {
+      "protein_id_src": "9606.ENSP00000306245",
+      "protein_id_dst": "9606.ENSP00000301633",
+      "gene_name_src": "FOS",
+      "gene_name_dst": "BIRC5",
+      "combined_score_protein": 607.0,
+      "edge_weight_protein": 0.607
+    },
+    {
+      "protein_id_src": "9606.ENSP00000221515",
+      "protein_id_dst": "9606.ENSP00000287820",
+      "gene_name_src": "RETN",
+      "gene_name_dst": "PPARG",
+      "combined_score_protein": 858.0,
+      "edge_weight_protein": 0.858
+    },
+    {
+      "protein_id_src": "9606.ENSP00000457421",
+      "protein_id_dst": "9606.ENSP00000225964",
+      "gene_name_src": "PECAM1",
+      "gene_name_dst": "COL1A1",
+      "combined_score_protein": 624.0,
+      "edge_weight_protein": 0.624
+    },
+    {
+      "protein_id_src": "9606.ENSP00000256442",
+      "protein_id_dst": "9606.ENSP00000217026",
+      "gene_name_src": "CCNB1",
+      "gene_name_dst": "MYBL2",
+      "combined_score_protein": 931.0,
+      "edge_weight_protein": 0.931
+    },
+    {
+      "protein_id_src": "9606.ENSP00000245919",
+      "protein_id_dst": "9606.ENSP00000385675",
+      "gene_name_src": "FOSB",
+      "gene_name_dst": "IL6",
+      "combined_score_protein": 522.0,
+      "edge_weight_protein": 0.522
+    },
+    {
+      "protein_id_src": "9606.ENSP00000300403",
+      "protein_id_dst": "9606.ENSP00000378699",
+      "gene_name_src": "TPX2",
+      "gene_name_dst": "CDK1",
+      "combined_score_protein": 952.0,
+      "edge_weight_protein": 0.952
+    },
+    {
+      "protein_id_src": "9606.ENSP00000457421",
+      "protein_id_dst": "9606.ENSP00000385675",
+      "gene_name_src": "PECAM1",
+      "gene_name_dst": "IL6",
+      "combined_score_protein": 709.0,
+      "edge_weight_protein": 0.709
+    },
+    {
+      "protein_id_src": "9606.ENSP00000361400",
+      "protein_id_dst": "9606.ENSP00000361366",
+      "gene_name_src": "SFTPA2",
+      "gene_name_dst": "SFTPD",
+      "combined_score_protein": 831.0,
+      "edge_weight_protein": 0.831
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378699",
+      "protein_id_dst": "9606.ENSP00000362146",
+      "gene_name_src": "CDK1",
+      "gene_name_dst": "CDCA8",
+      "combined_score_protein": 990.0,
+      "edge_weight_protein": 0.99
+    },
+    {
+      "protein_id_src": "9606.ENSP00000297904",
+      "protein_id_dst": "9606.ENSP00000385675",
+      "gene_name_src": "VEGFD",
+      "gene_name_dst": "IL6",
+      "combined_score_protein": 520.0,
+      "edge_weight_protein": 0.52
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000360762",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "ANKRD1",
+      "combined_score_protein": 429.0,
+      "edge_weight_protein": 0.429
+    },
+    {
+      "protein_id_src": "9606.ENSP00000232975",
+      "protein_id_dst": "9606.ENSP00000360762",
+      "gene_name_src": "TNNC1",
+      "gene_name_dst": "ANKRD1",
+      "combined_score_protein": 425.0,
+      "edge_weight_protein": 0.425
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000287820",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "PPARG",
+      "combined_score_protein": 742.0,
+      "edge_weight_protein": 0.742
+    },
+    {
+      "protein_id_src": "9606.ENSP00000278282",
+      "protein_id_dst": "9606.ENSP00000360973",
+      "gene_name_src": "SCGB1A1",
+      "gene_name_dst": "AGTR2",
+      "combined_score_protein": 449.0,
+      "edge_weight_protein": 0.449
+    },
+    {
+      "protein_id_src": "9606.ENSP00000361400",
+      "protein_id_dst": "9606.ENSP00000316152",
+      "gene_name_src": "SFTPA2",
+      "gene_name_dst": "SFTPC",
+      "combined_score_protein": 993.0,
+      "edge_weight_protein": 0.993
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378517",
+      "protein_id_dst": "9606.ENSP00000369375",
+      "gene_name_src": "SPP1",
+      "gene_name_dst": "TEK",
+      "combined_score_protein": 620.0,
+      "edge_weight_protein": 0.62
+    },
+    {
+      "protein_id_src": "9606.ENSP00000366416",
+      "protein_id_dst": "9606.ENSP00000457421",
+      "gene_name_src": "EDNRB",
+      "gene_name_dst": "PECAM1",
+      "combined_score_protein": 408.0,
+      "edge_weight_protein": 0.408
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378699",
+      "protein_id_dst": "9606.ENSP00000385675",
+      "gene_name_src": "CDK1",
+      "gene_name_dst": "IL6",
+      "combined_score_protein": 613.0,
+      "edge_weight_protein": 0.613
+    },
+    {
+      "protein_id_src": "9606.ENSP00000340939",
+      "protein_id_dst": "9606.ENSP00000397082",
+      "gene_name_src": "CLDN18",
+      "gene_name_dst": "SFTPA1",
+      "combined_score_protein": 572.0,
+      "edge_weight_protein": 0.572
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000418915",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "CDKN2A",
+      "combined_score_protein": 698.0,
+      "edge_weight_protein": 0.698
+    },
+    {
+      "protein_id_src": "9606.ENSP00000221515",
+      "protein_id_dst": "9606.ENSP00000256104",
+      "gene_name_src": "RETN",
+      "gene_name_dst": "FABP4",
+      "combined_score_protein": 646.0,
+      "edge_weight_protein": 0.646
+    },
+    {
+      "protein_id_src": "9606.ENSP00000305372",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "ADRB2",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 448.0,
+      "edge_weight_protein": 0.448
+    },
+    {
+      "protein_id_src": "9606.ENSP00000465638",
+      "protein_id_dst": "9606.ENSP00000270879",
+      "gene_name_src": "TMEM100",
+      "gene_name_dst": "FCN3",
+      "combined_score_protein": 538.0,
+      "edge_weight_protein": 0.538
+    },
+    {
+      "protein_id_src": "9606.ENSP00000364210",
+      "protein_id_dst": "9606.ENSP00000415743",
+      "gene_name_src": "AGER",
+      "gene_name_dst": "CD36",
+      "combined_score_protein": 734.0,
+      "edge_weight_protein": 0.734
+    },
+    {
+      "protein_id_src": "9606.ENSP00000320147",
+      "protein_id_dst": "9606.ENSP00000313950",
+      "gene_name_src": "EZH2",
+      "gene_name_dst": "AURKB",
+      "combined_score_protein": 689.0,
+      "edge_weight_protein": 0.689
+    },
+    {
+      "protein_id_src": "9606.ENSP00000256442",
+      "protein_id_dst": "9606.ENSP00000361540",
+      "gene_name_src": "CCNB1",
+      "gene_name_dst": "CDC20",
+      "combined_score_protein": 999.0,
+      "edge_weight_protein": 0.999
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000378699",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "CDK1",
+      "combined_score_protein": 663.0,
+      "edge_weight_protein": 0.663
+    },
+    {
+      "protein_id_src": "9606.ENSP00000316152",
+      "protein_id_dst": "9606.ENSP00000278282",
+      "gene_name_src": "SFTPC",
+      "gene_name_dst": "SCGB1A1",
+      "combined_score_protein": 950.0,
+      "edge_weight_protein": 0.95
+    },
+    {
+      "protein_id_src": "9606.ENSP00000221515",
+      "protein_id_dst": "9606.ENSP00000385675",
+      "gene_name_src": "RETN",
+      "gene_name_dst": "IL6",
+      "combined_score_protein": 809.0,
+      "edge_weight_protein": 0.809
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000348838",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "UBE2C",
+      "combined_score_protein": 412.0,
+      "edge_weight_protein": 0.412
+    },
+    {
+      "protein_id_src": "9606.ENSP00000256442",
+      "protein_id_dst": "9606.ENSP00000301633",
+      "gene_name_src": "CCNB1",
+      "gene_name_dst": "BIRC5",
+      "combined_score_protein": 993.0,
+      "edge_weight_protein": 0.993
+    },
+    {
+      "protein_id_src": "9606.ENSP00000339191",
+      "protein_id_dst": "9606.ENSP00000385675",
+      "gene_name_src": "CAV1",
+      "gene_name_dst": "IL6",
+      "combined_score_protein": 714.0,
+      "edge_weight_protein": 0.714
+    },
+    {
+      "protein_id_src": "9606.ENSP00000339191",
+      "protein_id_dst": "9606.ENSP00000364210",
+      "gene_name_src": "CAV1",
+      "gene_name_dst": "AGER",
+      "combined_score_protein": 484.0,
+      "edge_weight_protein": 0.484
+    },
+    {
+      "protein_id_src": "9606.ENSP00000362116",
+      "protein_id_dst": "9606.ENSP00000329292",
+      "gene_name_src": "PGC",
+      "gene_name_dst": "GKN2",
+      "combined_score_protein": 569.0,
+      "edge_weight_protein": 0.569
+    },
+    {
+      "protein_id_src": "9606.ENSP00000300093",
+      "protein_id_dst": "9606.ENSP00000418915",
+      "gene_name_src": "PLK1",
+      "gene_name_dst": "CDKN2A",
+      "combined_score_protein": 480.0,
+      "edge_weight_protein": 0.48
+    },
+    {
+      "protein_id_src": "9606.ENSP00000313950",
+      "protein_id_dst": "9606.ENSP00000378699",
+      "gene_name_src": "AURKB",
+      "gene_name_dst": "CDK1",
+      "combined_score_protein": 997.0,
+      "edge_weight_protein": 0.997
+    },
+    {
+      "protein_id_src": "9606.ENSP00000482841",
+      "protein_id_dst": "9606.ENSP00000287820",
+      "gene_name_src": "CRABP2",
+      "gene_name_dst": "PPARG",
+      "combined_score_protein": 581.0,
+      "edge_weight_protein": 0.581
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378517",
+      "protein_id_dst": "9606.ENSP00000287820",
+      "gene_name_src": "SPP1",
+      "gene_name_dst": "PPARG",
+      "combined_score_protein": 609.0,
+      "edge_weight_protein": 0.609
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000378517",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "SPP1",
+      "combined_score_protein": 716.0,
+      "edge_weight_protein": 0.716
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378699",
+      "protein_id_dst": "9606.ENSP00000360266",
+      "gene_name_src": "CDK1",
+      "gene_name_dst": "JUN",
+      "combined_score_protein": 778.0,
+      "edge_weight_protein": 0.778
+    },
+    {
+      "protein_id_src": "9606.ENSP00000481380",
+      "protein_id_dst": "9606.ENSP00000256442",
+      "gene_name_src": "CCNA2",
+      "gene_name_dst": "CCNB1",
+      "combined_score_protein": 995.0,
+      "edge_weight_protein": 0.995
+    },
+    {
+      "protein_id_src": "9606.ENSP00000217026",
+      "protein_id_dst": "9606.ENSP00000378699",
+      "gene_name_src": "MYBL2",
+      "gene_name_dst": "CDK1",
+      "combined_score_protein": 743.0,
+      "edge_weight_protein": 0.743
+    },
+    {
+      "protein_id_src": "9606.ENSP00000348838",
+      "protein_id_dst": "9606.ENSP00000225964",
+      "gene_name_src": "UBE2C",
+      "gene_name_dst": "COL1A1",
+      "combined_score_protein": 426.0,
+      "edge_weight_protein": 0.426
+    },
+    {
+      "protein_id_src": "9606.ENSP00000301633",
+      "protein_id_dst": "9606.ENSP00000481380",
+      "gene_name_src": "BIRC5",
+      "gene_name_dst": "CCNA2",
+      "combined_score_protein": 956.0,
+      "edge_weight_protein": 0.956
+    },
+    {
+      "protein_id_src": "9606.ENSP00000302297",
+      "protein_id_dst": "9606.ENSP00000316152",
+      "gene_name_src": "LGI3",
+      "gene_name_dst": "SFTPC",
+      "combined_score_protein": 551.0,
+      "edge_weight_protein": 0.551
+    },
+    {
+      "protein_id_src": "9606.ENSP00000256442",
+      "protein_id_dst": "9606.ENSP00000378699",
+      "gene_name_src": "CCNB1",
+      "gene_name_dst": "CDK1",
+      "combined_score_protein": 999.0,
+      "edge_weight_protein": 0.999
+    },
+    {
+      "protein_id_src": "9606.ENSP00000270879",
+      "protein_id_dst": "9606.ENSP00000296130",
+      "gene_name_src": "FCN3",
+      "gene_name_dst": "CLEC3B",
+      "combined_score_protein": 580.0,
+      "edge_weight_protein": 0.58
+    },
+    {
+      "protein_id_src": "9606.ENSP00000284523",
+      "protein_id_dst": "9606.ENSP00000416293",
+      "gene_name_src": "WNT3A",
+      "gene_name_dst": "SLC2A1",
+      "combined_score_protein": 555.0,
+      "edge_weight_protein": 0.555
+    },
+    {
+      "protein_id_src": "9606.ENSP00000369375",
+      "protein_id_dst": "9606.ENSP00000378517",
+      "gene_name_src": "TEK",
+      "gene_name_dst": "SPP1",
+      "combined_score_protein": 620.0,
+      "edge_weight_protein": 0.62
+    },
+    {
+      "protein_id_src": "9606.ENSP00000361540",
+      "protein_id_dst": "9606.ENSP00000261405",
+      "gene_name_src": "CDC20",
+      "gene_name_dst": "VWF",
+      "combined_score_protein": 457.0,
+      "edge_weight_protein": 0.457
+    },
+    {
+      "protein_id_src": "9606.ENSP00000317997",
+      "protein_id_dst": "9606.ENSP00000339191",
+      "gene_name_src": "DUOX1",
+      "gene_name_dst": "CAV1",
+      "combined_score_protein": 564.0,
+      "edge_weight_protein": 0.564
+    },
+    {
+      "protein_id_src": "9606.ENSP00000286574",
+      "protein_id_dst": "9606.ENSP00000418915",
+      "gene_name_src": "WIF1",
+      "gene_name_dst": "CDKN2A",
+      "combined_score_protein": 449.0,
+      "edge_weight_protein": 0.449
+    },
+    {
+      "protein_id_src": "9606.ENSP00000457421",
+      "protein_id_dst": "9606.ENSP00000481380",
+      "gene_name_src": "PECAM1",
+      "gene_name_dst": "CCNA2",
+      "combined_score_protein": 407.0,
+      "edge_weight_protein": 0.407
+    },
+    {
+      "protein_id_src": "9606.ENSP00000360266",
+      "protein_id_dst": "9606.ENSP00000364210",
+      "gene_name_src": "JUN",
+      "gene_name_dst": "AGER",
+      "combined_score_protein": 403.0,
+      "edge_weight_protein": 0.403
+    },
+    {
+      "protein_id_src": "9606.ENSP00000457421",
+      "protein_id_dst": "9606.ENSP00000287820",
+      "gene_name_src": "PECAM1",
+      "gene_name_dst": "PPARG",
+      "combined_score_protein": 654.0,
+      "edge_weight_protein": 0.654
+    },
+    {
+      "protein_id_src": "9606.ENSP00000360266",
+      "protein_id_dst": "9606.ENSP00000256442",
+      "gene_name_src": "JUN",
+      "gene_name_dst": "CCNB1",
+      "combined_score_protein": 561.0,
+      "edge_weight_protein": 0.561
+    },
+    {
+      "protein_id_src": "9606.ENSP00000209929",
+      "protein_id_dst": "9606.ENSP00000306606",
+      "gene_name_src": "FMO2",
+      "gene_name_dst": "ADH1B",
+      "combined_score_protein": 542.0,
+      "edge_weight_protein": 0.542
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000362116",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "PGC",
+      "combined_score_protein": 404.0,
+      "edge_weight_protein": 0.404
+    },
+    {
+      "protein_id_src": "9606.ENSP00000300403",
+      "protein_id_dst": "9606.ENSP00000313950",
+      "gene_name_src": "TPX2",
+      "gene_name_dst": "AURKB",
+      "combined_score_protein": 940.0,
+      "edge_weight_protein": 0.94
+    },
+    {
+      "protein_id_src": "9606.ENSP00000298910",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "LRRK2",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 496.0,
+      "edge_weight_protein": 0.496
+    },
+    {
+      "protein_id_src": "9606.ENSP00000217026",
+      "protein_id_dst": "9606.ENSP00000225964",
+      "gene_name_src": "MYBL2",
+      "gene_name_dst": "COL1A1",
+      "combined_score_protein": 456.0,
+      "edge_weight_protein": 0.456
+    },
+    {
+      "protein_id_src": "9606.ENSP00000225964",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "COL1A1",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 740.0,
+      "edge_weight_protein": 0.74
+    },
+    {
+      "protein_id_src": "9606.ENSP00000457421",
+      "protein_id_dst": "9606.ENSP00000297904",
+      "gene_name_src": "PECAM1",
+      "gene_name_dst": "VEGFD",
+      "combined_score_protein": 534.0,
+      "edge_weight_protein": 0.534
+    },
+    {
+      "protein_id_src": "9606.ENSP00000217026",
+      "protein_id_dst": "9606.ENSP00000361540",
+      "gene_name_src": "MYBL2",
+      "gene_name_dst": "CDC20",
+      "combined_score_protein": 865.0,
+      "edge_weight_protein": 0.865
+    },
+    {
+      "protein_id_src": "9606.ENSP00000256104",
+      "protein_id_dst": "9606.ENSP00000418915",
+      "gene_name_src": "FABP4",
+      "gene_name_dst": "CDKN2A",
+      "combined_score_protein": 463.0,
+      "edge_weight_protein": 0.463
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000360266",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "JUN",
+      "combined_score_protein": 781.0,
+      "edge_weight_protein": 0.781
+    },
+    {
+      "protein_id_src": "9606.ENSP00000481380",
+      "protein_id_dst": "9606.ENSP00000300403",
+      "gene_name_src": "CCNA2",
+      "gene_name_dst": "TPX2",
+      "combined_score_protein": 954.0,
+      "edge_weight_protein": 0.954
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378517",
+      "protein_id_dst": "9606.ENSP00000225964",
+      "gene_name_src": "SPP1",
+      "gene_name_dst": "COL1A1",
+      "combined_score_protein": 747.0,
+      "edge_weight_protein": 0.747
+    },
+    {
+      "protein_id_src": "9606.ENSP00000270879",
+      "protein_id_dst": "9606.ENSP00000465638",
+      "gene_name_src": "FCN3",
+      "gene_name_dst": "TMEM100",
+      "combined_score_protein": 538.0,
+      "edge_weight_protein": 0.538
+    },
+    {
+      "protein_id_src": "9606.ENSP00000301633",
+      "protein_id_dst": "9606.ENSP00000362146",
+      "gene_name_src": "BIRC5",
+      "gene_name_dst": "CDCA8",
+      "combined_score_protein": 999.0,
+      "edge_weight_protein": 0.999
+    },
+    {
+      "protein_id_src": "9606.ENSP00000411532",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "TOP2A",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 564.0,
+      "edge_weight_protein": 0.564
+    },
+    {
+      "protein_id_src": "9606.ENSP00000313950",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "AURKB",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 516.0,
+      "edge_weight_protein": 0.516
+    },
+    {
+      "protein_id_src": "9606.ENSP00000316152",
+      "protein_id_dst": "9606.ENSP00000361366",
+      "gene_name_src": "SFTPC",
+      "gene_name_dst": "SFTPD",
+      "combined_score_protein": 990.0,
+      "edge_weight_protein": 0.99
+    },
+    {
+      "protein_id_src": "9606.ENSP00000278282",
+      "protein_id_dst": "9606.ENSP00000316152",
+      "gene_name_src": "SCGB1A1",
+      "gene_name_dst": "SFTPC",
+      "combined_score_protein": 950.0,
+      "edge_weight_protein": 0.95
+    },
+    {
+      "protein_id_src": "9606.ENSP00000411532",
+      "protein_id_dst": "9606.ENSP00000300403",
+      "gene_name_src": "TOP2A",
+      "gene_name_dst": "TPX2",
+      "combined_score_protein": 942.0,
+      "edge_weight_protein": 0.942
+    },
+    {
+      "protein_id_src": "9606.ENSP00000418915",
+      "protein_id_dst": "9606.ENSP00000411532",
+      "gene_name_src": "CDKN2A",
+      "gene_name_dst": "TOP2A",
+      "combined_score_protein": 661.0,
+      "edge_weight_protein": 0.661
+    },
+    {
+      "protein_id_src": "9606.ENSP00000297904",
+      "protein_id_dst": "9606.ENSP00000292408",
+      "gene_name_src": "VEGFD",
+      "gene_name_dst": "FGFR4",
+      "combined_score_protein": 711.0,
+      "edge_weight_protein": 0.711
+    },
+    {
+      "protein_id_src": "9606.ENSP00000284523",
+      "protein_id_dst": "9606.ENSP00000378517",
+      "gene_name_src": "WNT3A",
+      "gene_name_dst": "SPP1",
+      "combined_score_protein": 418.0,
+      "edge_weight_protein": 0.418
+    },
+    {
+      "protein_id_src": "9606.ENSP00000287820",
+      "protein_id_dst": "9606.ENSP00000339191",
+      "gene_name_src": "PPARG",
+      "gene_name_dst": "CAV1",
+      "combined_score_protein": 765.0,
+      "edge_weight_protein": 0.765
+    },
+    {
+      "protein_id_src": "9606.ENSP00000320147",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "EZH2",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 655.0,
+      "edge_weight_protein": 0.655
+    },
+    {
+      "protein_id_src": "9606.ENSP00000313950",
+      "protein_id_dst": "9606.ENSP00000378356",
+      "gene_name_src": "AURKB",
+      "gene_name_dst": "KIF20A",
+      "combined_score_protein": 990.0,
+      "edge_weight_protein": 0.99
+    },
+    {
+      "protein_id_src": "9606.ENSP00000481380",
+      "protein_id_dst": "9606.ENSP00000217182",
+      "gene_name_src": "CCNA2",
+      "gene_name_dst": "EEF1A2",
+      "combined_score_protein": 449.0,
+      "edge_weight_protein": 0.449
+    },
+    {
+      "protein_id_src": "9606.ENSP00000497642",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "LPL",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 638.0,
+      "edge_weight_protein": 0.638
+    },
+    {
+      "protein_id_src": "9606.ENSP00000411532",
+      "protein_id_dst": "9606.ENSP00000361540",
+      "gene_name_src": "TOP2A",
+      "gene_name_dst": "CDC20",
+      "combined_score_protein": 980.0,
+      "edge_weight_protein": 0.98
+    },
+    {
+      "protein_id_src": "9606.ENSP00000348838",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "UBE2C",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 412.0,
+      "edge_weight_protein": 0.412
+    },
+    {
+      "protein_id_src": "9606.ENSP00000287820",
+      "protein_id_dst": "9606.ENSP00000415743",
+      "gene_name_src": "PPARG",
+      "gene_name_dst": "CD36",
+      "combined_score_protein": 942.0,
+      "edge_weight_protein": 0.942
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000322788",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "MMP1",
+      "combined_score_protein": 575.0,
+      "edge_weight_protein": 0.575
+    },
+    {
+      "protein_id_src": "9606.ENSP00000362146",
+      "protein_id_dst": "9606.ENSP00000217026",
+      "gene_name_src": "CDCA8",
+      "gene_name_dst": "MYBL2",
+      "combined_score_protein": 683.0,
+      "edge_weight_protein": 0.683
+    },
+    {
+      "protein_id_src": "9606.ENSP00000261405",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "VWF",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 568.0,
+      "edge_weight_protein": 0.568
+    },
+    {
+      "protein_id_src": "9606.ENSP00000360266",
+      "protein_id_dst": "9606.ENSP00000481380",
+      "gene_name_src": "JUN",
+      "gene_name_dst": "CCNA2",
+      "combined_score_protein": 553.0,
+      "edge_weight_protein": 0.553
+    },
+    {
+      "protein_id_src": "9606.ENSP00000304930",
+      "protein_id_dst": "9606.ENSP00000286574",
+      "gene_name_src": "SOSTDC1",
+      "gene_name_dst": "WIF1",
+      "combined_score_protein": 451.0,
+      "edge_weight_protein": 0.451
+    },
+    {
+      "protein_id_src": "9606.ENSP00000497642",
+      "protein_id_dst": "9606.ENSP00000378517",
+      "gene_name_src": "LPL",
+      "gene_name_dst": "SPP1",
+      "combined_score_protein": 463.0,
+      "edge_weight_protein": 0.463
+    },
+    {
+      "protein_id_src": "9606.ENSP00000297904",
+      "protein_id_dst": "9606.ENSP00000369375",
+      "gene_name_src": "VEGFD",
+      "gene_name_dst": "TEK",
+      "combined_score_protein": 865.0,
+      "edge_weight_protein": 0.865
+    },
+    {
+      "protein_id_src": "9606.ENSP00000480053",
+      "protein_id_dst": "9606.ENSP00000415743",
+      "gene_name_src": "GPIHBP1",
+      "gene_name_dst": "CD36",
+      "combined_score_protein": 463.0,
+      "edge_weight_protein": 0.463
+    },
+    {
+      "protein_id_src": "9606.ENSP00000286574",
+      "protein_id_dst": "9606.ENSP00000304930",
+      "gene_name_src": "WIF1",
+      "gene_name_dst": "SOSTDC1",
+      "combined_score_protein": 451.0,
+      "edge_weight_protein": 0.451
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000497642",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "LPL",
+      "combined_score_protein": 638.0,
+      "edge_weight_protein": 0.638
+    },
+    {
+      "protein_id_src": "9606.ENSP00000327368",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "COL10A1",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 490.0,
+      "edge_weight_protein": 0.49
+    },
+    {
+      "protein_id_src": "9606.ENSP00000418915",
+      "protein_id_dst": "9606.ENSP00000361540",
+      "gene_name_src": "CDKN2A",
+      "gene_name_dst": "CDC20",
+      "combined_score_protein": 463.0,
+      "edge_weight_protein": 0.463
+    },
+    {
+      "protein_id_src": "9606.ENSP00000362146",
+      "protein_id_dst": "9606.ENSP00000348838",
+      "gene_name_src": "CDCA8",
+      "gene_name_dst": "UBE2C",
+      "combined_score_protein": 966.0,
+      "edge_weight_protein": 0.966
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000481380",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "CCNA2",
+      "combined_score_protein": 664.0,
+      "edge_weight_protein": 0.664
+    },
+    {
+      "protein_id_src": "9606.ENSP00000457421",
+      "protein_id_dst": "9606.ENSP00000225474",
+      "gene_name_src": "PECAM1",
+      "gene_name_dst": "CSF3",
+      "combined_score_protein": 570.0,
+      "edge_weight_protein": 0.57
+    },
+    {
+      "protein_id_src": "9606.ENSP00000397082",
+      "protein_id_dst": "9606.ENSP00000316152",
+      "gene_name_src": "SFTPA1",
+      "gene_name_dst": "SFTPC",
+      "combined_score_protein": 999.0,
+      "edge_weight_protein": 0.999
+    },
+    {
+      "protein_id_src": "9606.ENSP00000320147",
+      "protein_id_dst": "9606.ENSP00000287820",
+      "gene_name_src": "EZH2",
+      "gene_name_dst": "PPARG",
+      "combined_score_protein": 778.0,
+      "edge_weight_protein": 0.778
+    },
+    {
+      "protein_id_src": "9606.ENSP00000366416",
+      "protein_id_dst": "9606.ENSP00000287820",
+      "gene_name_src": "EDNRB",
+      "gene_name_dst": "PPARG",
+      "combined_score_protein": 441.0,
+      "edge_weight_protein": 0.441
+    },
+    {
+      "protein_id_src": "9606.ENSP00000360266",
+      "protein_id_dst": "9606.ENSP00000301633",
+      "gene_name_src": "JUN",
+      "gene_name_dst": "BIRC5",
+      "combined_score_protein": 510.0,
+      "edge_weight_protein": 0.51
+    },
+    {
+      "protein_id_src": "9606.ENSP00000480053",
+      "protein_id_dst": "9606.ENSP00000221992",
+      "gene_name_src": "GPIHBP1",
+      "gene_name_dst": "CEACAM5",
+      "combined_score_protein": 400.0,
+      "edge_weight_protein": 0.4
+    },
+    {
+      "protein_id_src": "9606.ENSP00000385675",
+      "protein_id_dst": "9606.ENSP00000481380",
+      "gene_name_src": "IL6",
+      "gene_name_dst": "CCNA2",
+      "combined_score_protein": 400.0,
+      "edge_weight_protein": 0.4
+    },
+    {
+      "protein_id_src": "9606.ENSP00000457421",
+      "protein_id_dst": "9606.ENSP00000369375",
+      "gene_name_src": "PECAM1",
+      "gene_name_dst": "TEK",
+      "combined_score_protein": 842.0,
+      "edge_weight_protein": 0.842
+    },
+    {
+      "protein_id_src": "9606.ENSP00000348838",
+      "protein_id_dst": "9606.ENSP00000313950",
+      "gene_name_src": "UBE2C",
+      "gene_name_dst": "AURKB",
+      "combined_score_protein": 955.0,
+      "edge_weight_protein": 0.955
+    },
+    {
+      "protein_id_src": "9606.ENSP00000245919",
+      "protein_id_dst": "9606.ENSP00000360266",
+      "gene_name_src": "FOSB",
+      "gene_name_dst": "JUN",
+      "combined_score_protein": 999.0,
+      "edge_weight_protein": 0.999
+    },
+    {
+      "protein_id_src": "9606.ENSP00000313950",
+      "protein_id_dst": "9606.ENSP00000300093",
+      "gene_name_src": "AURKB",
+      "gene_name_dst": "PLK1",
+      "combined_score_protein": 939.0,
+      "edge_weight_protein": 0.939
+    },
+    {
+      "protein_id_src": "9606.ENSP00000313950",
+      "protein_id_dst": "9606.ENSP00000306245",
+      "gene_name_src": "AURKB",
+      "gene_name_dst": "FOS",
+      "combined_score_protein": 461.0,
+      "edge_weight_protein": 0.461
+    },
+    {
+      "protein_id_src": "9606.ENSP00000418915",
+      "protein_id_dst": "9606.ENSP00000256442",
+      "gene_name_src": "CDKN2A",
+      "gene_name_dst": "CCNB1",
+      "combined_score_protein": 772.0,
+      "edge_weight_protein": 0.772
+    },
+    {
+      "protein_id_src": "9606.ENSP00000385675",
+      "protein_id_dst": "9606.ENSP00000361366",
+      "gene_name_src": "IL6",
+      "gene_name_dst": "SFTPD",
+      "combined_score_protein": 541.0,
+      "edge_weight_protein": 0.541
+    },
+    {
+      "protein_id_src": "9606.ENSP00000327368",
+      "protein_id_dst": "9606.ENSP00000225964",
+      "gene_name_src": "COL10A1",
+      "gene_name_dst": "COL1A1",
+      "combined_score_protein": 781.0,
+      "edge_weight_protein": 0.781
+    },
+    {
+      "protein_id_src": "9606.ENSP00000320147",
+      "protein_id_dst": "9606.ENSP00000300093",
+      "gene_name_src": "EZH2",
+      "gene_name_dst": "PLK1",
+      "combined_score_protein": 508.0,
+      "edge_weight_protein": 0.508
+    },
+    {
+      "protein_id_src": "9606.ENSP00000416293",
+      "protein_id_dst": "9606.ENSP00000415743",
+      "gene_name_src": "SLC2A1",
+      "gene_name_dst": "CD36",
+      "combined_score_protein": 517.0,
+      "edge_weight_protein": 0.517
+    },
+    {
+      "protein_id_src": "9606.ENSP00000415743",
+      "protein_id_dst": "9606.ENSP00000385675",
+      "gene_name_src": "CD36",
+      "gene_name_dst": "IL6",
+      "combined_score_protein": 730.0,
+      "edge_weight_protein": 0.73
+    },
+    {
+      "protein_id_src": "9606.ENSP00000320147",
+      "protein_id_dst": "9606.ENSP00000362146",
+      "gene_name_src": "EZH2",
+      "gene_name_dst": "CDCA8",
+      "combined_score_protein": 537.0,
+      "edge_weight_protein": 0.537
+    },
+    {
+      "protein_id_src": "9606.ENSP00000480053",
+      "protein_id_dst": "9606.ENSP00000497642",
+      "gene_name_src": "GPIHBP1",
+      "gene_name_dst": "LPL",
+      "combined_score_protein": 999.0,
+      "edge_weight_protein": 0.999
+    },
+    {
+      "protein_id_src": "9606.ENSP00000261707",
+      "protein_id_dst": "9606.ENSP00000306606",
+      "gene_name_src": "SLC6A4",
+      "gene_name_dst": "ADH1B",
+      "combined_score_protein": 580.0,
+      "edge_weight_protein": 0.58
+    },
+    {
+      "protein_id_src": "9606.ENSP00000360266",
+      "protein_id_dst": "9606.ENSP00000306245",
+      "gene_name_src": "JUN",
+      "gene_name_dst": "FOS",
+      "combined_score_protein": 999.0,
+      "edge_weight_protein": 0.999
+    },
+    {
+      "protein_id_src": "9606.ENSP00000287820",
+      "protein_id_dst": "9606.ENSP00000284523",
+      "gene_name_src": "PPARG",
+      "gene_name_dst": "WNT3A",
+      "combined_score_protein": 436.0,
+      "edge_weight_protein": 0.436
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000313950",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "AURKB",
+      "combined_score_protein": 516.0,
+      "edge_weight_protein": 0.516
+    },
+    {
+      "protein_id_src": "9606.ENSP00000286574",
+      "protein_id_dst": "9606.ENSP00000284523",
+      "gene_name_src": "WIF1",
+      "gene_name_dst": "WNT3A",
+      "combined_score_protein": 989.0,
+      "edge_weight_protein": 0.989
+    },
+    {
+      "protein_id_src": "9606.ENSP00000306245",
+      "protein_id_dst": "9606.ENSP00000225474",
+      "gene_name_src": "FOS",
+      "gene_name_dst": "CSF3",
+      "combined_score_protein": 416.0,
+      "edge_weight_protein": 0.416
+    },
+    {
+      "protein_id_src": "9606.ENSP00000261405",
+      "protein_id_dst": "9606.ENSP00000361540",
+      "gene_name_src": "VWF",
+      "gene_name_dst": "CDC20",
+      "combined_score_protein": 457.0,
+      "edge_weight_protein": 0.457
+    },
+    {
+      "protein_id_src": "9606.ENSP00000261707",
+      "protein_id_dst": "9606.ENSP00000385675",
+      "gene_name_src": "SLC6A4",
+      "gene_name_dst": "IL6",
+      "combined_score_protein": 445.0,
+      "edge_weight_protein": 0.445
+    },
+    {
+      "protein_id_src": "9606.ENSP00000362146",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "CDCA8",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 467.0,
+      "edge_weight_protein": 0.467
+    },
+    {
+      "protein_id_src": "9606.ENSP00000481380",
+      "protein_id_dst": "9606.ENSP00000378356",
+      "gene_name_src": "CCNA2",
+      "gene_name_dst": "KIF20A",
+      "combined_score_protein": 974.0,
+      "edge_weight_protein": 0.974
+    },
+    {
+      "protein_id_src": "9606.ENSP00000245919",
+      "protein_id_dst": "9606.ENSP00000306245",
+      "gene_name_src": "FOSB",
+      "gene_name_dst": "FOS",
+      "combined_score_protein": 999.0,
+      "edge_weight_protein": 0.999
+    },
+    {
+      "protein_id_src": "9606.ENSP00000322788",
+      "protein_id_dst": "9606.ENSP00000306245",
+      "gene_name_src": "MMP1",
+      "gene_name_dst": "FOS",
+      "combined_score_protein": 687.0,
+      "edge_weight_protein": 0.687
+    },
+    {
+      "protein_id_src": "9606.ENSP00000306245",
+      "protein_id_dst": "9606.ENSP00000322788",
+      "gene_name_src": "FOS",
+      "gene_name_dst": "MMP1",
+      "combined_score_protein": 687.0,
+      "edge_weight_protein": 0.687
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000385675",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "IL6",
+      "combined_score_protein": 879.0,
+      "edge_weight_protein": 0.879
+    },
+    {
+      "protein_id_src": "9606.ENSP00000411532",
+      "protein_id_dst": "9606.ENSP00000313950",
+      "gene_name_src": "TOP2A",
+      "gene_name_dst": "AURKB",
+      "combined_score_protein": 970.0,
+      "edge_weight_protein": 0.97
+    },
+    {
+      "protein_id_src": "9606.ENSP00000280187",
+      "protein_id_dst": "9606.ENSP00000334938",
+      "gene_name_src": "GPM6A",
+      "gene_name_dst": "UPK3B",
+      "combined_score_protein": 515.0,
+      "edge_weight_protein": 0.515
+    },
+    {
+      "protein_id_src": "9606.ENSP00000300403",
+      "protein_id_dst": "9606.ENSP00000481380",
+      "gene_name_src": "TPX2",
+      "gene_name_dst": "CCNA2",
+      "combined_score_protein": 954.0,
+      "edge_weight_protein": 0.954
+    },
+    {
+      "protein_id_src": "9606.ENSP00000360973",
+      "protein_id_dst": "9606.ENSP00000397082",
+      "gene_name_src": "AGTR2",
+      "gene_name_dst": "SFTPA1",
+      "combined_score_protein": 464.0,
+      "edge_weight_protein": 0.464
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000300403",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "TPX2",
+      "combined_score_protein": 534.0,
+      "edge_weight_protein": 0.534
+    },
+    {
+      "protein_id_src": "9606.ENSP00000316152",
+      "protein_id_dst": "9606.ENSP00000340939",
+      "gene_name_src": "SFTPC",
+      "gene_name_dst": "CLDN18",
+      "combined_score_protein": 621.0,
+      "edge_weight_protein": 0.621
+    },
+    {
+      "protein_id_src": "9606.ENSP00000418915",
+      "protein_id_dst": "9606.ENSP00000313950",
+      "gene_name_src": "CDKN2A",
+      "gene_name_dst": "AURKB",
+      "combined_score_protein": 733.0,
+      "edge_weight_protein": 0.733
+    },
+    {
+      "protein_id_src": "9606.ENSP00000278282",
+      "protein_id_dst": "9606.ENSP00000457421",
+      "gene_name_src": "SCGB1A1",
+      "gene_name_dst": "PECAM1",
+      "combined_score_protein": 432.0,
+      "edge_weight_protein": 0.432
+    },
+    {
+      "protein_id_src": "9606.ENSP00000305372",
+      "protein_id_dst": "9606.ENSP00000287820",
+      "gene_name_src": "ADRB2",
+      "gene_name_dst": "PPARG",
+      "combined_score_protein": 486.0,
+      "edge_weight_protein": 0.486
+    },
+    {
+      "protein_id_src": "9606.ENSP00000313950",
+      "protein_id_dst": "9606.ENSP00000301633",
+      "gene_name_src": "AURKB",
+      "gene_name_dst": "BIRC5",
+      "combined_score_protein": 999.0,
+      "edge_weight_protein": 0.999
+    },
+    {
+      "protein_id_src": "9606.ENSP00000300093",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "PLK1",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 566.0,
+      "edge_weight_protein": 0.566
+    },
+    {
+      "protein_id_src": "9606.ENSP00000397082",
+      "protein_id_dst": "9606.ENSP00000340939",
+      "gene_name_src": "SFTPA1",
+      "gene_name_dst": "CLDN18",
+      "combined_score_protein": 572.0,
+      "edge_weight_protein": 0.572
+    },
+    {
+      "protein_id_src": "9606.ENSP00000306606",
+      "protein_id_dst": "9606.ENSP00000209929",
+      "gene_name_src": "ADH1B",
+      "gene_name_dst": "FMO2",
+      "combined_score_protein": 542.0,
+      "edge_weight_protein": 0.542
+    },
+    {
+      "protein_id_src": "9606.ENSP00000296130",
+      "protein_id_dst": "9606.ENSP00000270879",
+      "gene_name_src": "CLEC3B",
+      "gene_name_dst": "FCN3",
+      "combined_score_protein": 580.0,
+      "edge_weight_protein": 0.58
+    },
+    {
+      "protein_id_src": "9606.ENSP00000316152",
+      "protein_id_dst": "9606.ENSP00000397082",
+      "gene_name_src": "SFTPC",
+      "gene_name_dst": "SFTPA1",
+      "combined_score_protein": 999.0,
+      "edge_weight_protein": 0.999
+    },
+    {
+      "protein_id_src": "9606.ENSP00000362116",
+      "protein_id_dst": "9606.ENSP00000340939",
+      "gene_name_src": "PGC",
+      "gene_name_dst": "CLDN18",
+      "combined_score_protein": 489.0,
+      "edge_weight_protein": 0.489
+    },
+    {
+      "protein_id_src": "9606.ENSP00000322788",
+      "protein_id_dst": "9606.ENSP00000385675",
+      "gene_name_src": "MMP1",
+      "gene_name_dst": "IL6",
+      "combined_score_protein": 854.0,
+      "edge_weight_protein": 0.854
+    },
+    {
+      "protein_id_src": "9606.ENSP00000415743",
+      "protein_id_dst": "9606.ENSP00000480053",
+      "gene_name_src": "CD36",
+      "gene_name_dst": "GPIHBP1",
+      "combined_score_protein": 463.0,
+      "edge_weight_protein": 0.463
+    },
+    {
+      "protein_id_src": "9606.ENSP00000313950",
+      "protein_id_dst": "9606.ENSP00000361540",
+      "gene_name_src": "AURKB",
+      "gene_name_dst": "CDC20",
+      "combined_score_protein": 998.0,
+      "edge_weight_protein": 0.998
+    },
+    {
+      "protein_id_src": "9606.ENSP00000366416",
+      "protein_id_dst": "9606.ENSP00000339191",
+      "gene_name_src": "EDNRB",
+      "gene_name_dst": "CAV1",
+      "combined_score_protein": 660.0,
+      "edge_weight_protein": 0.66
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000301633",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "BIRC5",
+      "combined_score_protein": 548.0,
+      "edge_weight_protein": 0.548
+    },
+    {
+      "protein_id_src": "9606.ENSP00000361366",
+      "protein_id_dst": "9606.ENSP00000364210",
+      "gene_name_src": "SFTPD",
+      "gene_name_dst": "AGER",
+      "combined_score_protein": 776.0,
+      "edge_weight_protein": 0.776
+    },
+    {
+      "protein_id_src": "9606.ENSP00000300403",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "TPX2",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 534.0,
+      "edge_weight_protein": 0.534
+    },
+    {
+      "protein_id_src": "9606.ENSP00000320147",
+      "protein_id_dst": "9606.ENSP00000481380",
+      "gene_name_src": "EZH2",
+      "gene_name_dst": "CCNA2",
+      "combined_score_protein": 649.0,
+      "edge_weight_protein": 0.649
+    },
+    {
+      "protein_id_src": "9606.ENSP00000497642",
+      "protein_id_dst": "9606.ENSP00000480053",
+      "gene_name_src": "LPL",
+      "gene_name_dst": "GPIHBP1",
+      "combined_score_protein": 999.0,
+      "edge_weight_protein": 0.999
+    },
+    {
+      "protein_id_src": "9606.ENSP00000256442",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "CCNB1",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 828.0,
+      "edge_weight_protein": 0.828
+    },
+    {
+      "protein_id_src": "9606.ENSP00000418915",
+      "protein_id_dst": "9606.ENSP00000221992",
+      "gene_name_src": "CDKN2A",
+      "gene_name_dst": "CEACAM5",
+      "combined_score_protein": 506.0,
+      "edge_weight_protein": 0.506
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378699",
+      "protein_id_dst": "9606.ENSP00000378356",
+      "gene_name_src": "CDK1",
+      "gene_name_dst": "KIF20A",
+      "combined_score_protein": 958.0,
+      "edge_weight_protein": 0.958
+    },
+    {
+      "protein_id_src": "9606.ENSP00000418915",
+      "protein_id_dst": "9606.ENSP00000287820",
+      "gene_name_src": "CDKN2A",
+      "gene_name_dst": "PPARG",
+      "combined_score_protein": 508.0,
+      "edge_weight_protein": 0.508
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000361540",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "CDC20",
+      "combined_score_protein": 474.0,
+      "edge_weight_protein": 0.474
+    },
+    {
+      "protein_id_src": "9606.ENSP00000361540",
+      "protein_id_dst": "9606.ENSP00000300403",
+      "gene_name_src": "CDC20",
+      "gene_name_dst": "TPX2",
+      "combined_score_protein": 961.0,
+      "edge_weight_protein": 0.961
+    },
+    {
+      "protein_id_src": "9606.ENSP00000221515",
+      "protein_id_dst": "9606.ENSP00000329920",
+      "gene_name_src": "RETN",
+      "gene_name_dst": "MCEMP1",
+      "combined_score_protein": 568.0,
+      "edge_weight_protein": 0.568
+    },
+    {
+      "protein_id_src": "9606.ENSP00000329920",
+      "protein_id_dst": "9606.ENSP00000221515",
+      "gene_name_src": "MCEMP1",
+      "gene_name_dst": "RETN",
+      "combined_score_protein": 568.0,
+      "edge_weight_protein": 0.568
+    },
+    {
+      "protein_id_src": "9606.ENSP00000217026",
+      "protein_id_dst": "9606.ENSP00000300093",
+      "gene_name_src": "MYBL2",
+      "gene_name_dst": "PLK1",
+      "combined_score_protein": 877.0,
+      "edge_weight_protein": 0.877
+    },
+    {
+      "protein_id_src": "9606.ENSP00000385675",
+      "protein_id_dst": "9606.ENSP00000297904",
+      "gene_name_src": "IL6",
+      "gene_name_dst": "VEGFD",
+      "combined_score_protein": 520.0,
+      "edge_weight_protein": 0.52
+    },
+    {
+      "protein_id_src": "9606.ENSP00000287820",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "PPARG",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 742.0,
+      "edge_weight_protein": 0.742
+    },
+    {
+      "protein_id_src": "9606.ENSP00000300403",
+      "protein_id_dst": "9606.ENSP00000378356",
+      "gene_name_src": "TPX2",
+      "gene_name_dst": "KIF20A",
+      "combined_score_protein": 972.0,
+      "edge_weight_protein": 0.972
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378356",
+      "protein_id_dst": "9606.ENSP00000362146",
+      "gene_name_src": "KIF20A",
+      "gene_name_dst": "CDCA8",
+      "combined_score_protein": 980.0,
+      "edge_weight_protein": 0.98
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378699",
+      "protein_id_dst": "9606.ENSP00000300093",
+      "gene_name_src": "CDK1",
+      "gene_name_dst": "PLK1",
+      "combined_score_protein": 993.0,
+      "edge_weight_protein": 0.993
+    },
+    {
+      "protein_id_src": "9606.ENSP00000256442",
+      "protein_id_dst": "9606.ENSP00000378356",
+      "gene_name_src": "CCNB1",
+      "gene_name_dst": "KIF20A",
+      "combined_score_protein": 954.0,
+      "edge_weight_protein": 0.954
+    },
+    {
+      "protein_id_src": "9606.ENSP00000385675",
+      "protein_id_dst": "9606.ENSP00000261405",
+      "gene_name_src": "IL6",
+      "gene_name_dst": "VWF",
+      "combined_score_protein": 716.0,
+      "edge_weight_protein": 0.716
+    },
+    {
+      "protein_id_src": "9606.ENSP00000385675",
+      "protein_id_dst": "9606.ENSP00000284523",
+      "gene_name_src": "IL6",
+      "gene_name_dst": "WNT3A",
+      "combined_score_protein": 448.0,
+      "edge_weight_protein": 0.448
+    },
+    {
+      "protein_id_src": "9606.ENSP00000301633",
+      "protein_id_dst": "9606.ENSP00000411532",
+      "gene_name_src": "BIRC5",
+      "gene_name_dst": "TOP2A",
+      "combined_score_protein": 976.0,
+      "edge_weight_protein": 0.976
+    },
+    {
+      "protein_id_src": "9606.ENSP00000301633",
+      "protein_id_dst": "9606.ENSP00000418915",
+      "gene_name_src": "BIRC5",
+      "gene_name_dst": "CDKN2A",
+      "combined_score_protein": 472.0,
+      "edge_weight_protein": 0.472
+    },
+    {
+      "protein_id_src": "9606.ENSP00000418915",
+      "protein_id_dst": "9606.ENSP00000457421",
+      "gene_name_src": "CDKN2A",
+      "gene_name_dst": "PECAM1",
+      "combined_score_protein": 450.0,
+      "edge_weight_protein": 0.45
+    },
+    {
+      "protein_id_src": "9606.ENSP00000256442",
+      "protein_id_dst": "9606.ENSP00000348838",
+      "gene_name_src": "CCNB1",
+      "gene_name_dst": "UBE2C",
+      "combined_score_protein": 990.0,
+      "edge_weight_protein": 0.99
+    },
+    {
+      "protein_id_src": "9606.ENSP00000300093",
+      "protein_id_dst": "9606.ENSP00000362146",
+      "gene_name_src": "PLK1",
+      "gene_name_dst": "CDCA8",
+      "combined_score_protein": 974.0,
+      "edge_weight_protein": 0.974
+    },
+    {
+      "protein_id_src": "9606.ENSP00000497642",
+      "protein_id_dst": "9606.ENSP00000256104",
+      "gene_name_src": "LPL",
+      "gene_name_dst": "FABP4",
+      "combined_score_protein": 965.0,
+      "edge_weight_protein": 0.965
+    },
+    {
+      "protein_id_src": "9606.ENSP00000457421",
+      "protein_id_dst": "9606.ENSP00000339191",
+      "gene_name_src": "PECAM1",
+      "gene_name_dst": "CAV1",
+      "combined_score_protein": 689.0,
+      "edge_weight_protein": 0.689
+    },
+    {
+      "protein_id_src": "9606.ENSP00000322788",
+      "protein_id_dst": "9606.ENSP00000225964",
+      "gene_name_src": "MMP1",
+      "gene_name_dst": "COL1A1",
+      "combined_score_protein": 767.0,
+      "edge_weight_protein": 0.767
+    },
+    {
+      "protein_id_src": "9606.ENSP00000320147",
+      "protein_id_dst": "9606.ENSP00000301633",
+      "gene_name_src": "EZH2",
+      "gene_name_dst": "BIRC5",
+      "combined_score_protein": 567.0,
+      "edge_weight_protein": 0.567
+    },
+    {
+      "protein_id_src": "9606.ENSP00000225964",
+      "protein_id_dst": "9606.ENSP00000415743",
+      "gene_name_src": "COL1A1",
+      "gene_name_dst": "CD36",
+      "combined_score_protein": 720.0,
+      "edge_weight_protein": 0.72
+    },
+    {
+      "protein_id_src": "9606.ENSP00000306245",
+      "protein_id_dst": "9606.ENSP00000481380",
+      "gene_name_src": "FOS",
+      "gene_name_dst": "CCNA2",
+      "combined_score_protein": 533.0,
+      "edge_weight_protein": 0.533
+    },
+    {
+      "protein_id_src": "9606.ENSP00000385675",
+      "protein_id_dst": "9606.ENSP00000320147",
+      "gene_name_src": "IL6",
+      "gene_name_dst": "EZH2",
+      "combined_score_protein": 666.0,
+      "edge_weight_protein": 0.666
+    },
+    {
+      "protein_id_src": "9606.ENSP00000300093",
+      "protein_id_dst": "9606.ENSP00000301633",
+      "gene_name_src": "PLK1",
+      "gene_name_dst": "BIRC5",
+      "combined_score_protein": 980.0,
+      "edge_weight_protein": 0.98
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378699",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "CDK1",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 663.0,
+      "edge_weight_protein": 0.663
+    },
+    {
+      "protein_id_src": "9606.ENSP00000216862",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "CYP24A1",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 427.0,
+      "edge_weight_protein": 0.427
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000320147",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "EZH2",
+      "combined_score_protein": 655.0,
+      "edge_weight_protein": 0.655
+    },
+    {
+      "protein_id_src": "9606.ENSP00000360991",
+      "protein_id_dst": "9606.ENSP00000209929",
+      "gene_name_src": "CYP4B1",
+      "gene_name_dst": "FMO2",
+      "combined_score_protein": 400.0,
+      "edge_weight_protein": 0.4
+    },
+    {
+      "protein_id_src": "9606.ENSP00000305372",
+      "protein_id_dst": "9606.ENSP00000261707",
+      "gene_name_src": "ADRB2",
+      "gene_name_dst": "SLC6A4",
+      "combined_score_protein": 469.0,
+      "edge_weight_protein": 0.469
+    },
+    {
+      "protein_id_src": "9606.ENSP00000415743",
+      "protein_id_dst": "9606.ENSP00000225964",
+      "gene_name_src": "CD36",
+      "gene_name_dst": "COL1A1",
+      "combined_score_protein": 720.0,
+      "edge_weight_protein": 0.72
+    },
+    {
+      "protein_id_src": "9606.ENSP00000225964",
+      "protein_id_dst": "9606.ENSP00000261405",
+      "gene_name_src": "COL1A1",
+      "gene_name_dst": "VWF",
+      "combined_score_protein": 877.0,
+      "edge_weight_protein": 0.877
+    },
+    {
+      "protein_id_src": "9606.ENSP00000416293",
+      "protein_id_dst": "9606.ENSP00000457421",
+      "gene_name_src": "SLC2A1",
+      "gene_name_dst": "PECAM1",
+      "combined_score_protein": 512.0,
+      "edge_weight_protein": 0.512
+    },
+    {
+      "protein_id_src": "9606.ENSP00000225964",
+      "protein_id_dst": "9606.ENSP00000217026",
+      "gene_name_src": "COL1A1",
+      "gene_name_dst": "MYBL2",
+      "combined_score_protein": 456.0,
+      "edge_weight_protein": 0.456
+    },
+    {
+      "protein_id_src": "9606.ENSP00000369375",
+      "protein_id_dst": "9606.ENSP00000261405",
+      "gene_name_src": "TEK",
+      "gene_name_dst": "VWF",
+      "combined_score_protein": 757.0,
+      "edge_weight_protein": 0.757
+    },
+    {
+      "protein_id_src": "9606.ENSP00000358301",
+      "protein_id_dst": "9606.ENSP00000305372",
+      "gene_name_src": "ADRB1",
+      "gene_name_dst": "ADRB2",
+      "combined_score_protein": 956.0,
+      "edge_weight_protein": 0.956
+    },
+    {
+      "protein_id_src": "9606.ENSP00000360266",
+      "protein_id_dst": "9606.ENSP00000225964",
+      "gene_name_src": "JUN",
+      "gene_name_dst": "COL1A1",
+      "combined_score_protein": 667.0,
+      "edge_weight_protein": 0.667
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378699",
+      "protein_id_dst": "9606.ENSP00000225964",
+      "gene_name_src": "CDK1",
+      "gene_name_dst": "COL1A1",
+      "combined_score_protein": 491.0,
+      "edge_weight_protein": 0.491
+    },
+    {
+      "protein_id_src": "9606.ENSP00000256442",
+      "protein_id_dst": "9606.ENSP00000385675",
+      "gene_name_src": "CCNB1",
+      "gene_name_dst": "IL6",
+      "combined_score_protein": 609.0,
+      "edge_weight_protein": 0.609
+    },
+    {
+      "protein_id_src": "9606.ENSP00000306245",
+      "protein_id_dst": "9606.ENSP00000287820",
+      "gene_name_src": "FOS",
+      "gene_name_dst": "PPARG",
+      "combined_score_protein": 612.0,
+      "edge_weight_protein": 0.612
+    },
+    {
+      "protein_id_src": "9606.ENSP00000494175",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "HBB",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 472.0,
+      "edge_weight_protein": 0.472
+    },
+    {
+      "protein_id_src": "9606.ENSP00000300093",
+      "protein_id_dst": "9606.ENSP00000217026",
+      "gene_name_src": "PLK1",
+      "gene_name_dst": "MYBL2",
+      "combined_score_protein": 877.0,
+      "edge_weight_protein": 0.877
+    },
+    {
+      "protein_id_src": "9606.ENSP00000287820",
+      "protein_id_dst": "9606.ENSP00000256104",
+      "gene_name_src": "PPARG",
+      "gene_name_dst": "FABP4",
+      "combined_score_protein": 993.0,
+      "edge_weight_protein": 0.993
+    },
+    {
+      "protein_id_src": "9606.ENSP00000418915",
+      "protein_id_dst": "9606.ENSP00000339191",
+      "gene_name_src": "CDKN2A",
+      "gene_name_dst": "CAV1",
+      "combined_score_protein": 406.0,
+      "edge_weight_protein": 0.406
+    },
+    {
+      "protein_id_src": "9606.ENSP00000411532",
+      "protein_id_dst": "9606.ENSP00000362146",
+      "gene_name_src": "TOP2A",
+      "gene_name_dst": "CDCA8",
+      "combined_score_protein": 920.0,
+      "edge_weight_protein": 0.92
+    },
+    {
+      "protein_id_src": "9606.ENSP00000340939",
+      "protein_id_dst": "9606.ENSP00000364210",
+      "gene_name_src": "CLDN18",
+      "gene_name_dst": "AGER",
+      "combined_score_protein": 509.0,
+      "edge_weight_protein": 0.509
+    },
+    {
+      "protein_id_src": "9606.ENSP00000494175",
+      "protein_id_dst": "9606.ENSP00000251595",
+      "gene_name_src": "HBB",
+      "gene_name_dst": "HBA2",
+      "combined_score_protein": 999.0,
+      "edge_weight_protein": 0.999
+    },
+    {
+      "protein_id_src": "9606.ENSP00000322788",
+      "protein_id_dst": "9606.ENSP00000457421",
+      "gene_name_src": "MMP1",
+      "gene_name_dst": "PECAM1",
+      "combined_score_protein": 420.0,
+      "edge_weight_protein": 0.42
+    },
+    {
+      "protein_id_src": "9606.ENSP00000480053",
+      "protein_id_dst": "9606.ENSP00000261405",
+      "gene_name_src": "GPIHBP1",
+      "gene_name_dst": "VWF",
+      "combined_score_protein": 460.0,
+      "edge_weight_protein": 0.46
+    },
+    {
+      "protein_id_src": "9606.ENSP00000300093",
+      "protein_id_dst": "9606.ENSP00000481380",
+      "gene_name_src": "PLK1",
+      "gene_name_dst": "CCNA2",
+      "combined_score_protein": 958.0,
+      "edge_weight_protein": 0.958
+    },
+    {
+      "protein_id_src": "9606.ENSP00000361366",
+      "protein_id_dst": "9606.ENSP00000397082",
+      "gene_name_src": "SFTPD",
+      "gene_name_dst": "SFTPA1",
+      "combined_score_protein": 851.0,
+      "edge_weight_protein": 0.851
+    },
+    {
+      "protein_id_src": "9606.ENSP00000339191",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "CAV1",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 631.0,
+      "edge_weight_protein": 0.631
+    },
+    {
+      "protein_id_src": "9606.ENSP00000411532",
+      "protein_id_dst": "9606.ENSP00000481380",
+      "gene_name_src": "TOP2A",
+      "gene_name_dst": "CCNA2",
+      "combined_score_protein": 982.0,
+      "edge_weight_protein": 0.982
+    },
+    {
+      "protein_id_src": "9606.ENSP00000287820",
+      "protein_id_dst": "9606.ENSP00000225964",
+      "gene_name_src": "PPARG",
+      "gene_name_dst": "COL1A1",
+      "combined_score_protein": 604.0,
+      "edge_weight_protein": 0.604
+    },
+    {
+      "protein_id_src": "9606.ENSP00000418915",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "CDKN2A",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 698.0,
+      "edge_weight_protein": 0.698
+    },
+    {
+      "protein_id_src": "9606.ENSP00000457421",
+      "protein_id_dst": "9606.ENSP00000363071",
+      "gene_name_src": "PECAM1",
+      "gene_name_dst": "DES",
+      "combined_score_protein": 403.0,
+      "edge_weight_protein": 0.403
+    },
+    {
+      "protein_id_src": "9606.ENSP00000221992",
+      "protein_id_dst": "9606.ENSP00000418915",
+      "gene_name_src": "CEACAM5",
+      "gene_name_dst": "CDKN2A",
+      "combined_score_protein": 506.0,
+      "edge_weight_protein": 0.506
+    },
+    {
+      "protein_id_src": "9606.ENSP00000481380",
+      "protein_id_dst": "9606.ENSP00000348838",
+      "gene_name_src": "CCNA2",
+      "gene_name_dst": "UBE2C",
+      "combined_score_protein": 994.0,
+      "edge_weight_protein": 0.994
+    },
+    {
+      "protein_id_src": "9606.ENSP00000287820",
+      "protein_id_dst": "9606.ENSP00000418915",
+      "gene_name_src": "PPARG",
+      "gene_name_dst": "CDKN2A",
+      "combined_score_protein": 508.0,
+      "edge_weight_protein": 0.508
+    },
+    {
+      "protein_id_src": "9606.ENSP00000217182",
+      "protein_id_dst": "9606.ENSP00000481380",
+      "gene_name_src": "EEF1A2",
+      "gene_name_dst": "CCNA2",
+      "combined_score_protein": 449.0,
+      "edge_weight_protein": 0.449
+    },
+    {
+      "protein_id_src": "9606.ENSP00000225964",
+      "protein_id_dst": "9606.ENSP00000287820",
+      "gene_name_src": "COL1A1",
+      "gene_name_dst": "PPARG",
+      "combined_score_protein": 604.0,
+      "edge_weight_protein": 0.604
+    },
+    {
+      "protein_id_src": "9606.ENSP00000369375",
+      "protein_id_dst": "9606.ENSP00000225474",
+      "gene_name_src": "TEK",
+      "gene_name_dst": "CSF3",
+      "combined_score_protein": 446.0,
+      "edge_weight_protein": 0.446
+    },
+    {
+      "protein_id_src": "9606.ENSP00000313950",
+      "protein_id_dst": "9606.ENSP00000320147",
+      "gene_name_src": "AURKB",
+      "gene_name_dst": "EZH2",
+      "combined_score_protein": 689.0,
+      "edge_weight_protein": 0.689
+    },
+    {
+      "protein_id_src": "9606.ENSP00000317997",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "DUOX1",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 412.0,
+      "edge_weight_protein": 0.412
+    },
+    {
+      "protein_id_src": "9606.ENSP00000339191",
+      "protein_id_dst": "9606.ENSP00000261405",
+      "gene_name_src": "CAV1",
+      "gene_name_dst": "VWF",
+      "combined_score_protein": 466.0,
+      "edge_weight_protein": 0.466
+    },
+    {
+      "protein_id_src": "9606.ENSP00000360266",
+      "protein_id_dst": "9606.ENSP00000378699",
+      "gene_name_src": "JUN",
+      "gene_name_dst": "CDK1",
+      "combined_score_protein": 778.0,
+      "edge_weight_protein": 0.778
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378517",
+      "protein_id_dst": "9606.ENSP00000385675",
+      "gene_name_src": "SPP1",
+      "gene_name_dst": "IL6",
+      "combined_score_protein": 748.0,
+      "edge_weight_protein": 0.748
+    },
+    {
+      "protein_id_src": "9606.ENSP00000306245",
+      "protein_id_dst": "9606.ENSP00000378517",
+      "gene_name_src": "FOS",
+      "gene_name_dst": "SPP1",
+      "combined_score_protein": 479.0,
+      "edge_weight_protein": 0.479
+    },
+    {
+      "protein_id_src": "9606.ENSP00000369375",
+      "protein_id_dst": "9606.ENSP00000339191",
+      "gene_name_src": "TEK",
+      "gene_name_dst": "CAV1",
+      "combined_score_protein": 564.0,
+      "edge_weight_protein": 0.564
+    },
+    {
+      "protein_id_src": "9606.ENSP00000306245",
+      "protein_id_dst": "9606.ENSP00000245919",
+      "gene_name_src": "FOS",
+      "gene_name_dst": "FOSB",
+      "combined_score_protein": 999.0,
+      "edge_weight_protein": 0.999
+    },
+    {
+      "protein_id_src": "9606.ENSP00000287820",
+      "protein_id_dst": "9606.ENSP00000360266",
+      "gene_name_src": "PPARG",
+      "gene_name_dst": "JUN",
+      "combined_score_protein": 849.0,
+      "edge_weight_protein": 0.849
+    },
+    {
+      "protein_id_src": "9606.ENSP00000366416",
+      "protein_id_dst": "9606.ENSP00000415743",
+      "gene_name_src": "EDNRB",
+      "gene_name_dst": "CD36",
+      "combined_score_protein": 491.0,
+      "edge_weight_protein": 0.491
+    },
+    {
+      "protein_id_src": "9606.ENSP00000300093",
+      "protein_id_dst": "9606.ENSP00000361540",
+      "gene_name_src": "PLK1",
+      "gene_name_dst": "CDC20",
+      "combined_score_protein": 999.0,
+      "edge_weight_protein": 0.999
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378356",
+      "protein_id_dst": "9606.ENSP00000217026",
+      "gene_name_src": "KIF20A",
+      "gene_name_dst": "MYBL2",
+      "combined_score_protein": 612.0,
+      "edge_weight_protein": 0.612
+    },
+    {
+      "protein_id_src": "9606.ENSP00000225474",
+      "protein_id_dst": "9606.ENSP00000322788",
+      "gene_name_src": "CSF3",
+      "gene_name_dst": "MMP1",
+      "combined_score_protein": 421.0,
+      "edge_weight_protein": 0.421
+    },
+    {
+      "protein_id_src": "9606.ENSP00000225964",
+      "protein_id_dst": "9606.ENSP00000322788",
+      "gene_name_src": "COL1A1",
+      "gene_name_dst": "MMP1",
+      "combined_score_protein": 767.0,
+      "edge_weight_protein": 0.767
+    },
+    {
+      "protein_id_src": "9606.ENSP00000284523",
+      "protein_id_dst": "9606.ENSP00000286574",
+      "gene_name_src": "WNT3A",
+      "gene_name_dst": "WIF1",
+      "combined_score_protein": 989.0,
+      "edge_weight_protein": 0.989
+    },
+    {
+      "protein_id_src": "9606.ENSP00000362146",
+      "protein_id_dst": "9606.ENSP00000301633",
+      "gene_name_src": "CDCA8",
+      "gene_name_dst": "BIRC5",
+      "combined_score_protein": 999.0,
+      "edge_weight_protein": 0.999
+    },
+    {
+      "protein_id_src": "9606.ENSP00000360266",
+      "protein_id_dst": "9606.ENSP00000411532",
+      "gene_name_src": "JUN",
+      "gene_name_dst": "TOP2A",
+      "combined_score_protein": 525.0,
+      "edge_weight_protein": 0.525
+    },
+    {
+      "protein_id_src": "9606.ENSP00000306245",
+      "protein_id_dst": "9606.ENSP00000418915",
+      "gene_name_src": "FOS",
+      "gene_name_dst": "CDKN2A",
+      "combined_score_protein": 489.0,
+      "edge_weight_protein": 0.489
+    },
+    {
+      "protein_id_src": "9606.ENSP00000301633",
+      "protein_id_dst": "9606.ENSP00000378699",
+      "gene_name_src": "BIRC5",
+      "gene_name_dst": "CDK1",
+      "combined_score_protein": 997.0,
+      "edge_weight_protein": 0.997
+    },
+    {
+      "protein_id_src": "9606.ENSP00000217026",
+      "protein_id_dst": "9606.ENSP00000481380",
+      "gene_name_src": "MYBL2",
+      "gene_name_dst": "CCNA2",
+      "combined_score_protein": 991.0,
+      "edge_weight_protein": 0.991
+    },
+    {
+      "protein_id_src": "9606.ENSP00000313950",
+      "protein_id_dst": "9606.ENSP00000217026",
+      "gene_name_src": "AURKB",
+      "gene_name_dst": "MYBL2",
+      "combined_score_protein": 704.0,
+      "edge_weight_protein": 0.704
+    },
+    {
+      "protein_id_src": "9606.ENSP00000457421",
+      "protein_id_dst": "9606.ENSP00000416293",
+      "gene_name_src": "PECAM1",
+      "gene_name_dst": "SLC2A1",
+      "combined_score_protein": 512.0,
+      "edge_weight_protein": 0.512
+    },
+    {
+      "protein_id_src": "9606.ENSP00000320147",
+      "protein_id_dst": "9606.ENSP00000418915",
+      "gene_name_src": "EZH2",
+      "gene_name_dst": "CDKN2A",
+      "combined_score_protein": 813.0,
+      "edge_weight_protein": 0.813
+    },
+    {
+      "protein_id_src": "9606.ENSP00000481380",
+      "protein_id_dst": "9606.ENSP00000362146",
+      "gene_name_src": "CCNA2",
+      "gene_name_dst": "CDCA8",
+      "combined_score_protein": 952.0,
+      "edge_weight_protein": 0.952
+    },
+    {
+      "protein_id_src": "9606.ENSP00000256442",
+      "protein_id_dst": "9606.ENSP00000360266",
+      "gene_name_src": "CCNB1",
+      "gene_name_dst": "JUN",
+      "combined_score_protein": 561.0,
+      "edge_weight_protein": 0.561
+    },
+    {
+      "protein_id_src": "9606.ENSP00000340939",
+      "protein_id_dst": "9606.ENSP00000316152",
+      "gene_name_src": "CLDN18",
+      "gene_name_dst": "SFTPC",
+      "combined_score_protein": 621.0,
+      "edge_weight_protein": 0.621
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378699",
+      "protein_id_dst": "9606.ENSP00000245919",
+      "gene_name_src": "CDK1",
+      "gene_name_dst": "FOSB",
+      "combined_score_protein": 475.0,
+      "edge_weight_protein": 0.475
+    },
+    {
+      "protein_id_src": "9606.ENSP00000209929",
+      "protein_id_dst": "9606.ENSP00000362146",
+      "gene_name_src": "FMO2",
+      "gene_name_dst": "CDCA8",
+      "combined_score_protein": 411.0,
+      "edge_weight_protein": 0.411
+    },
+    {
+      "protein_id_src": "9606.ENSP00000362146",
+      "protein_id_dst": "9606.ENSP00000361540",
+      "gene_name_src": "CDCA8",
+      "gene_name_dst": "CDC20",
+      "combined_score_protein": 992.0,
+      "edge_weight_protein": 0.992
+    },
+    {
+      "protein_id_src": "9606.ENSP00000217026",
+      "protein_id_dst": "9606.ENSP00000378356",
+      "gene_name_src": "MYBL2",
+      "gene_name_dst": "KIF20A",
+      "combined_score_protein": 612.0,
+      "edge_weight_protein": 0.612
+    },
+    {
+      "protein_id_src": "9606.ENSP00000361540",
+      "protein_id_dst": "9606.ENSP00000378699",
+      "gene_name_src": "CDC20",
+      "gene_name_dst": "CDK1",
+      "combined_score_protein": 999.0,
+      "edge_weight_protein": 0.999
+    },
+    {
+      "protein_id_src": "9606.ENSP00000360266",
+      "protein_id_dst": "9606.ENSP00000378517",
+      "gene_name_src": "JUN",
+      "gene_name_dst": "SPP1",
+      "combined_score_protein": 515.0,
+      "edge_weight_protein": 0.515
+    },
+    {
+      "protein_id_src": "9606.ENSP00000361366",
+      "protein_id_dst": "9606.ENSP00000361400",
+      "gene_name_src": "SFTPD",
+      "gene_name_dst": "SFTPA2",
+      "combined_score_protein": 831.0,
+      "edge_weight_protein": 0.831
+    },
+    {
+      "protein_id_src": "9606.ENSP00000360266",
+      "protein_id_dst": "9606.ENSP00000245919",
+      "gene_name_src": "JUN",
+      "gene_name_dst": "FOSB",
+      "combined_score_protein": 999.0,
+      "edge_weight_protein": 0.999
+    },
+    {
+      "protein_id_src": "9606.ENSP00000305372",
+      "protein_id_dst": "9606.ENSP00000385675",
+      "gene_name_src": "ADRB2",
+      "gene_name_dst": "IL6",
+      "combined_score_protein": 520.0,
+      "edge_weight_protein": 0.52
+    },
+    {
+      "protein_id_src": "9606.ENSP00000411532",
+      "protein_id_dst": "9606.ENSP00000217026",
+      "gene_name_src": "TOP2A",
+      "gene_name_dst": "MYBL2",
+      "combined_score_protein": 718.0,
+      "edge_weight_protein": 0.718
+    },
+    {
+      "protein_id_src": "9606.ENSP00000318916",
+      "protein_id_dst": "9606.ENSP00000415743",
+      "gene_name_src": "MARCO",
+      "gene_name_dst": "CD36",
+      "combined_score_protein": 568.0,
+      "edge_weight_protein": 0.568
+    },
+    {
+      "protein_id_src": "9606.ENSP00000300093",
+      "protein_id_dst": "9606.ENSP00000320147",
+      "gene_name_src": "PLK1",
+      "gene_name_dst": "EZH2",
+      "combined_score_protein": 508.0,
+      "edge_weight_protein": 0.508
+    },
+    {
+      "protein_id_src": "9606.ENSP00000361540",
+      "protein_id_dst": "9606.ENSP00000378356",
+      "gene_name_src": "CDC20",
+      "gene_name_dst": "KIF20A",
+      "combined_score_protein": 981.0,
+      "edge_weight_protein": 0.981
+    },
+    {
+      "protein_id_src": "9606.ENSP00000261707",
+      "protein_id_dst": "9606.ENSP00000305372",
+      "gene_name_src": "SLC6A4",
+      "gene_name_dst": "ADRB2",
+      "combined_score_protein": 469.0,
+      "edge_weight_protein": 0.469
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000415743",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "CD36",
+      "combined_score_protein": 593.0,
+      "edge_weight_protein": 0.593
+    },
+    {
+      "protein_id_src": "9606.ENSP00000385675",
+      "protein_id_dst": "9606.ENSP00000322788",
+      "gene_name_src": "IL6",
+      "gene_name_dst": "MMP1",
+      "combined_score_protein": 854.0,
+      "edge_weight_protein": 0.854
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000339191",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "CAV1",
+      "combined_score_protein": 631.0,
+      "edge_weight_protein": 0.631
+    },
+    {
+      "protein_id_src": "9606.ENSP00000313950",
+      "protein_id_dst": "9606.ENSP00000300403",
+      "gene_name_src": "AURKB",
+      "gene_name_dst": "TPX2",
+      "combined_score_protein": 940.0,
+      "edge_weight_protein": 0.94
+    },
+    {
+      "protein_id_src": "9606.ENSP00000364210",
+      "protein_id_dst": "9606.ENSP00000361400",
+      "gene_name_src": "AGER",
+      "gene_name_dst": "SFTPA2",
+      "combined_score_protein": 623.0,
+      "edge_weight_protein": 0.623
+    },
+    {
+      "protein_id_src": "9606.ENSP00000301149",
+      "protein_id_dst": "9606.ENSP00000497642",
+      "gene_name_src": "GPD1",
+      "gene_name_dst": "LPL",
+      "combined_score_protein": 416.0,
+      "edge_weight_protein": 0.416
+    },
+    {
+      "protein_id_src": "9606.ENSP00000301633",
+      "protein_id_dst": "9606.ENSP00000256442",
+      "gene_name_src": "BIRC5",
+      "gene_name_dst": "CCNB1",
+      "combined_score_protein": 993.0,
+      "edge_weight_protein": 0.993
+    },
+    {
+      "protein_id_src": "9606.ENSP00000369375",
+      "protein_id_dst": "9606.ENSP00000297904",
+      "gene_name_src": "TEK",
+      "gene_name_dst": "VEGFD",
+      "combined_score_protein": 865.0,
+      "edge_weight_protein": 0.865
+    },
+    {
+      "protein_id_src": "9606.ENSP00000385675",
+      "protein_id_dst": "9606.ENSP00000378517",
+      "gene_name_src": "IL6",
+      "gene_name_dst": "SPP1",
+      "combined_score_protein": 748.0,
+      "edge_weight_protein": 0.748
+    },
+    {
+      "protein_id_src": "9606.ENSP00000416293",
+      "protein_id_dst": "9606.ENSP00000385675",
+      "gene_name_src": "SLC2A1",
+      "gene_name_dst": "IL6",
+      "combined_score_protein": 506.0,
+      "edge_weight_protein": 0.506
+    },
+    {
+      "protein_id_src": "9606.ENSP00000278282",
+      "protein_id_dst": "9606.ENSP00000397082",
+      "gene_name_src": "SCGB1A1",
+      "gene_name_dst": "SFTPA1",
+      "combined_score_protein": 826.0,
+      "edge_weight_protein": 0.826
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378699",
+      "protein_id_dst": "9606.ENSP00000256442",
+      "gene_name_src": "CDK1",
+      "gene_name_dst": "CCNB1",
+      "combined_score_protein": 999.0,
+      "edge_weight_protein": 0.999
+    },
+    {
+      "protein_id_src": "9606.ENSP00000320147",
+      "protein_id_dst": "9606.ENSP00000385675",
+      "gene_name_src": "EZH2",
+      "gene_name_dst": "IL6",
+      "combined_score_protein": 666.0,
+      "edge_weight_protein": 0.666
+    },
+    {
+      "protein_id_src": "9606.ENSP00000481380",
+      "protein_id_dst": "9606.ENSP00000378699",
+      "gene_name_src": "CCNA2",
+      "gene_name_dst": "CDK1",
+      "combined_score_protein": 999.0,
+      "edge_weight_protein": 0.999
+    },
+    {
+      "protein_id_src": "9606.ENSP00000348838",
+      "protein_id_dst": "9606.ENSP00000385675",
+      "gene_name_src": "UBE2C",
+      "gene_name_dst": "IL6",
+      "combined_score_protein": 597.0,
+      "edge_weight_protein": 0.597
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000362146",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "CDCA8",
+      "combined_score_protein": 467.0,
+      "edge_weight_protein": 0.467
+    },
+    {
+      "protein_id_src": "9606.ENSP00000278282",
+      "protein_id_dst": "9606.ENSP00000364210",
+      "gene_name_src": "SCGB1A1",
+      "gene_name_dst": "AGER",
+      "combined_score_protein": 684.0,
+      "edge_weight_protein": 0.684
+    },
+    {
+      "protein_id_src": "9606.ENSP00000411532",
+      "protein_id_dst": "9606.ENSP00000378699",
+      "gene_name_src": "TOP2A",
+      "gene_name_dst": "CDK1",
+      "combined_score_protein": 997.0,
+      "edge_weight_protein": 0.997
+    },
+    {
+      "protein_id_src": "9606.ENSP00000457421",
+      "protein_id_dst": "9606.ENSP00000378517",
+      "gene_name_src": "PECAM1",
+      "gene_name_dst": "SPP1",
+      "combined_score_protein": 595.0,
+      "edge_weight_protein": 0.595
+    },
+    {
+      "protein_id_src": "9606.ENSP00000348838",
+      "protein_id_dst": "9606.ENSP00000217026",
+      "gene_name_src": "UBE2C",
+      "gene_name_dst": "MYBL2",
+      "combined_score_protein": 773.0,
+      "edge_weight_protein": 0.773
+    },
+    {
+      "protein_id_src": "9606.ENSP00000287820",
+      "protein_id_dst": "9606.ENSP00000457421",
+      "gene_name_src": "PPARG",
+      "gene_name_dst": "PECAM1",
+      "combined_score_protein": 654.0,
+      "edge_weight_protein": 0.654
+    },
+    {
+      "protein_id_src": "9606.ENSP00000361540",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "CDC20",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 474.0,
+      "edge_weight_protein": 0.474
+    },
+    {
+      "protein_id_src": "9606.ENSP00000418915",
+      "protein_id_dst": "9606.ENSP00000306245",
+      "gene_name_src": "CDKN2A",
+      "gene_name_dst": "FOS",
+      "combined_score_protein": 489.0,
+      "edge_weight_protein": 0.489
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378517",
+      "protein_id_dst": "9606.ENSP00000284523",
+      "gene_name_src": "SPP1",
+      "gene_name_dst": "WNT3A",
+      "combined_score_protein": 418.0,
+      "edge_weight_protein": 0.418
+    },
+    {
+      "protein_id_src": "9606.ENSP00000320147",
+      "protein_id_dst": "9606.ENSP00000348838",
+      "gene_name_src": "EZH2",
+      "gene_name_dst": "UBE2C",
+      "combined_score_protein": 550.0,
+      "edge_weight_protein": 0.55
+    },
+    {
+      "protein_id_src": "9606.ENSP00000225964",
+      "protein_id_dst": "9606.ENSP00000256104",
+      "gene_name_src": "COL1A1",
+      "gene_name_dst": "FABP4",
+      "combined_score_protein": 456.0,
+      "edge_weight_protein": 0.456
+    },
+    {
+      "protein_id_src": "9606.ENSP00000339191",
+      "protein_id_dst": "9606.ENSP00000287820",
+      "gene_name_src": "CAV1",
+      "gene_name_dst": "PPARG",
+      "combined_score_protein": 765.0,
+      "edge_weight_protein": 0.765
+    },
+    {
+      "protein_id_src": "9606.ENSP00000361366",
+      "protein_id_dst": "9606.ENSP00000270879",
+      "gene_name_src": "SFTPD",
+      "gene_name_dst": "FCN3",
+      "combined_score_protein": 558.0,
+      "edge_weight_protein": 0.558
+    },
+    {
+      "protein_id_src": "9606.ENSP00000415743",
+      "protein_id_dst": "9606.ENSP00000360266",
+      "gene_name_src": "CD36",
+      "gene_name_dst": "JUN",
+      "combined_score_protein": 447.0,
+      "edge_weight_protein": 0.447
+    },
+    {
+      "protein_id_src": "9606.ENSP00000360266",
+      "protein_id_dst": "9606.ENSP00000416293",
+      "gene_name_src": "JUN",
+      "gene_name_dst": "SLC2A1",
+      "combined_score_protein": 409.0,
+      "edge_weight_protein": 0.409
+    },
+    {
+      "protein_id_src": "9606.ENSP00000225474",
+      "protein_id_dst": "9606.ENSP00000306245",
+      "gene_name_src": "CSF3",
+      "gene_name_dst": "FOS",
+      "combined_score_protein": 416.0,
+      "edge_weight_protein": 0.416
+    },
+    {
+      "protein_id_src": "9606.ENSP00000482841",
+      "protein_id_dst": "9606.ENSP00000217182",
+      "gene_name_src": "CRABP2",
+      "gene_name_dst": "EEF1A2",
+      "combined_score_protein": 424.0,
+      "edge_weight_protein": 0.424
+    },
+    {
+      "protein_id_src": "9606.ENSP00000361540",
+      "protein_id_dst": "9606.ENSP00000362146",
+      "gene_name_src": "CDC20",
+      "gene_name_dst": "CDCA8",
+      "combined_score_protein": 992.0,
+      "edge_weight_protein": 0.992
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378356",
+      "protein_id_dst": "9606.ENSP00000300403",
+      "gene_name_src": "KIF20A",
+      "gene_name_dst": "TPX2",
+      "combined_score_protein": 972.0,
+      "edge_weight_protein": 0.972
+    },
+    {
+      "protein_id_src": "9606.ENSP00000301149",
+      "protein_id_dst": "9606.ENSP00000256104",
+      "gene_name_src": "GPD1",
+      "gene_name_dst": "FABP4",
+      "combined_score_protein": 439.0,
+      "edge_weight_protein": 0.439
+    },
+    {
+      "protein_id_src": "9606.ENSP00000306606",
+      "protein_id_dst": "9606.ENSP00000256104",
+      "gene_name_src": "ADH1B",
+      "gene_name_dst": "FABP4",
+      "combined_score_protein": 418.0,
+      "edge_weight_protein": 0.418
+    },
+    {
+      "protein_id_src": "9606.ENSP00000284523",
+      "protein_id_dst": "9606.ENSP00000360266",
+      "gene_name_src": "WNT3A",
+      "gene_name_dst": "JUN",
+      "combined_score_protein": 484.0,
+      "edge_weight_protein": 0.484
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378517",
+      "protein_id_dst": "9606.ENSP00000497642",
+      "gene_name_src": "SPP1",
+      "gene_name_dst": "LPL",
+      "combined_score_protein": 463.0,
+      "edge_weight_protein": 0.463
+    },
+    {
+      "protein_id_src": "9606.ENSP00000261405",
+      "protein_id_dst": "9606.ENSP00000361366",
+      "gene_name_src": "VWF",
+      "gene_name_dst": "SFTPD",
+      "combined_score_protein": 452.0,
+      "edge_weight_protein": 0.452
+    },
+    {
+      "protein_id_src": "9606.ENSP00000327368",
+      "protein_id_dst": "9606.ENSP00000322788",
+      "gene_name_src": "COL10A1",
+      "gene_name_dst": "MMP1",
+      "combined_score_protein": 618.0,
+      "edge_weight_protein": 0.618
+    },
+    {
+      "protein_id_src": "9606.ENSP00000256442",
+      "protein_id_dst": "9606.ENSP00000481380",
+      "gene_name_src": "CCNB1",
+      "gene_name_dst": "CCNA2",
+      "combined_score_protein": 995.0,
+      "edge_weight_protein": 0.995
+    },
+    {
+      "protein_id_src": "9606.ENSP00000216862",
+      "protein_id_dst": "9606.ENSP00000300900",
+      "gene_name_src": "CYP24A1",
+      "gene_name_dst": "CA4",
+      "combined_score_protein": 770.0,
+      "edge_weight_protein": 0.77
+    },
+    {
+      "protein_id_src": "9606.ENSP00000481380",
+      "protein_id_dst": "9606.ENSP00000457421",
+      "gene_name_src": "CCNA2",
+      "gene_name_dst": "PECAM1",
+      "combined_score_protein": 407.0,
+      "edge_weight_protein": 0.407
+    },
+    {
+      "protein_id_src": "9606.ENSP00000457421",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "PECAM1",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 740.0,
+      "edge_weight_protein": 0.74
+    },
+    {
+      "protein_id_src": "9606.ENSP00000480053",
+      "protein_id_dst": "9606.ENSP00000301149",
+      "gene_name_src": "GPIHBP1",
+      "gene_name_dst": "GPD1",
+      "combined_score_protein": 556.0,
+      "edge_weight_protein": 0.556
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000217182",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "EEF1A2",
+      "combined_score_protein": 731.0,
+      "edge_weight_protein": 0.731
+    },
+    {
+      "protein_id_src": "9606.ENSP00000300403",
+      "protein_id_dst": "9606.ENSP00000348838",
+      "gene_name_src": "TPX2",
+      "gene_name_dst": "UBE2C",
+      "combined_score_protein": 965.0,
+      "edge_weight_protein": 0.965
+    },
+    {
+      "protein_id_src": "9606.ENSP00000363071",
+      "protein_id_dst": "9606.ENSP00000457421",
+      "gene_name_src": "DES",
+      "gene_name_dst": "PECAM1",
+      "combined_score_protein": 403.0,
+      "edge_weight_protein": 0.403
+    },
+    {
+      "protein_id_src": "9606.ENSP00000261405",
+      "protein_id_dst": "9606.ENSP00000415743",
+      "gene_name_src": "VWF",
+      "gene_name_dst": "CD36",
+      "combined_score_protein": 803.0,
+      "edge_weight_protein": 0.803
+    },
+    {
+      "protein_id_src": "9606.ENSP00000287820",
+      "protein_id_dst": "9606.ENSP00000306245",
+      "gene_name_src": "PPARG",
+      "gene_name_dst": "FOS",
+      "combined_score_protein": 612.0,
+      "edge_weight_protein": 0.612
+    },
+    {
+      "protein_id_src": "9606.ENSP00000348838",
+      "protein_id_dst": "9606.ENSP00000320147",
+      "gene_name_src": "UBE2C",
+      "gene_name_dst": "EZH2",
+      "combined_score_protein": 550.0,
+      "edge_weight_protein": 0.55
+    },
+    {
+      "protein_id_src": "9606.ENSP00000256104",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "FABP4",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 605.0,
+      "edge_weight_protein": 0.605
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378699",
+      "protein_id_dst": "9606.ENSP00000320147",
+      "gene_name_src": "CDK1",
+      "gene_name_dst": "EZH2",
+      "combined_score_protein": 965.0,
+      "edge_weight_protein": 0.965
+    },
+    {
+      "protein_id_src": "9606.ENSP00000385675",
+      "protein_id_dst": "9606.ENSP00000221515",
+      "gene_name_src": "IL6",
+      "gene_name_dst": "RETN",
+      "combined_score_protein": 809.0,
+      "edge_weight_protein": 0.809
+    },
+    {
+      "protein_id_src": "9606.ENSP00000217026",
+      "protein_id_dst": "9606.ENSP00000411532",
+      "gene_name_src": "MYBL2",
+      "gene_name_dst": "TOP2A",
+      "combined_score_protein": 718.0,
+      "edge_weight_protein": 0.718
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000284523",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "WNT3A",
+      "combined_score_protein": 626.0,
+      "edge_weight_protein": 0.626
+    },
+    {
+      "protein_id_src": "9606.ENSP00000419124",
+      "protein_id_dst": "9606.ENSP00000280187",
+      "gene_name_src": "FAM107A",
+      "gene_name_dst": "GPM6A",
+      "combined_score_protein": 417.0,
+      "edge_weight_protein": 0.417
+    },
+    {
+      "protein_id_src": "9606.ENSP00000362146",
+      "protein_id_dst": "9606.ENSP00000300093",
+      "gene_name_src": "CDCA8",
+      "gene_name_dst": "PLK1",
+      "combined_score_protein": 974.0,
+      "edge_weight_protein": 0.974
+    },
+    {
+      "protein_id_src": "9606.ENSP00000221515",
+      "protein_id_dst": "9606.ENSP00000497642",
+      "gene_name_src": "RETN",
+      "gene_name_dst": "LPL",
+      "combined_score_protein": 578.0,
+      "edge_weight_protein": 0.578
+    },
+    {
+      "protein_id_src": "9606.ENSP00000360266",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "JUN",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 781.0,
+      "edge_weight_protein": 0.781
+    },
+    {
+      "protein_id_src": "9606.ENSP00000362116",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "PGC",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 404.0,
+      "edge_weight_protein": 0.404
+    },
+    {
+      "protein_id_src": "9606.ENSP00000411532",
+      "protein_id_dst": "9606.ENSP00000360266",
+      "gene_name_src": "TOP2A",
+      "gene_name_dst": "JUN",
+      "combined_score_protein": 525.0,
+      "edge_weight_protein": 0.525
+    },
+    {
+      "protein_id_src": "9606.ENSP00000348838",
+      "protein_id_dst": "9606.ENSP00000378356",
+      "gene_name_src": "UBE2C",
+      "gene_name_dst": "KIF20A",
+      "combined_score_protein": 961.0,
+      "edge_weight_protein": 0.961
+    },
+    {
+      "protein_id_src": "9606.ENSP00000457421",
+      "protein_id_dst": "9606.ENSP00000256104",
+      "gene_name_src": "PECAM1",
+      "gene_name_dst": "FABP4",
+      "combined_score_protein": 526.0,
+      "edge_weight_protein": 0.526
+    },
+    {
+      "protein_id_src": "9606.ENSP00000261707",
+      "protein_id_dst": "9606.ENSP00000306245",
+      "gene_name_src": "SLC6A4",
+      "gene_name_dst": "FOS",
+      "combined_score_protein": 519.0,
+      "edge_weight_protein": 0.519
+    },
+    {
+      "protein_id_src": "9606.ENSP00000415743",
+      "protein_id_dst": "9606.ENSP00000366416",
+      "gene_name_src": "CD36",
+      "gene_name_dst": "EDNRB",
+      "combined_score_protein": 491.0,
+      "edge_weight_protein": 0.491
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378517",
+      "protein_id_dst": "9606.ENSP00000360266",
+      "gene_name_src": "SPP1",
+      "gene_name_dst": "JUN",
+      "combined_score_protein": 515.0,
+      "edge_weight_protein": 0.515
+    },
+    {
+      "protein_id_src": "9606.ENSP00000217026",
+      "protein_id_dst": "9606.ENSP00000320147",
+      "gene_name_src": "MYBL2",
+      "gene_name_dst": "EZH2",
+      "combined_score_protein": 568.0,
+      "edge_weight_protein": 0.568
+    },
+    {
+      "protein_id_src": "9606.ENSP00000481380",
+      "protein_id_dst": "9606.ENSP00000217026",
+      "gene_name_src": "CCNA2",
+      "gene_name_dst": "MYBL2",
+      "combined_score_protein": 991.0,
+      "edge_weight_protein": 0.991
+    },
+    {
+      "protein_id_src": "9606.ENSP00000209929",
+      "protein_id_dst": "9606.ENSP00000360991",
+      "gene_name_src": "FMO2",
+      "gene_name_dst": "CYP4B1",
+      "combined_score_protein": 400.0,
+      "edge_weight_protein": 0.4
+    },
+    {
+      "protein_id_src": "9606.ENSP00000278282",
+      "protein_id_dst": "9606.ENSP00000361400",
+      "gene_name_src": "SCGB1A1",
+      "gene_name_dst": "SFTPA2",
+      "combined_score_protein": 698.0,
+      "edge_weight_protein": 0.698
+    },
+    {
+      "protein_id_src": "9606.ENSP00000306245",
+      "protein_id_dst": "9606.ENSP00000225964",
+      "gene_name_src": "FOS",
+      "gene_name_dst": "COL1A1",
+      "combined_score_protein": 669.0,
+      "edge_weight_protein": 0.669
+    },
+    {
+      "protein_id_src": "9606.ENSP00000497642",
+      "protein_id_dst": "9606.ENSP00000221515",
+      "gene_name_src": "LPL",
+      "gene_name_dst": "RETN",
+      "combined_score_protein": 578.0,
+      "edge_weight_protein": 0.578
+    },
+    {
+      "protein_id_src": "9606.ENSP00000300093",
+      "protein_id_dst": "9606.ENSP00000256442",
+      "gene_name_src": "PLK1",
+      "gene_name_dst": "CCNB1",
+      "combined_score_protein": 999.0,
+      "edge_weight_protein": 0.999
+    },
+    {
+      "protein_id_src": "9606.ENSP00000221992",
+      "protein_id_dst": "9606.ENSP00000385675",
+      "gene_name_src": "CEACAM5",
+      "gene_name_dst": "IL6",
+      "combined_score_protein": 525.0,
+      "edge_weight_protein": 0.525
+    },
+    {
+      "protein_id_src": "9606.ENSP00000360266",
+      "protein_id_dst": "9606.ENSP00000217026",
+      "gene_name_src": "JUN",
+      "gene_name_dst": "MYBL2",
+      "combined_score_protein": 543.0,
+      "edge_weight_protein": 0.543
+    },
+    {
+      "protein_id_src": "9606.ENSP00000397082",
+      "protein_id_dst": "9606.ENSP00000360973",
+      "gene_name_src": "SFTPA1",
+      "gene_name_dst": "AGTR2",
+      "combined_score_protein": 464.0,
+      "edge_weight_protein": 0.464
+    },
+    {
+      "protein_id_src": "9606.ENSP00000322788",
+      "protein_id_dst": "9606.ENSP00000360266",
+      "gene_name_src": "MMP1",
+      "gene_name_dst": "JUN",
+      "combined_score_protein": 842.0,
+      "edge_weight_protein": 0.842
+    },
+    {
+      "protein_id_src": "9606.ENSP00000256104",
+      "protein_id_dst": "9606.ENSP00000287820",
+      "gene_name_src": "FABP4",
+      "gene_name_dst": "PPARG",
+      "combined_score_protein": 993.0,
+      "edge_weight_protein": 0.993
+    },
+    {
+      "protein_id_src": "9606.ENSP00000364210",
+      "protein_id_dst": "9606.ENSP00000340939",
+      "gene_name_src": "AGER",
+      "gene_name_dst": "CLDN18",
+      "combined_score_protein": 509.0,
+      "edge_weight_protein": 0.509
+    },
+    {
+      "protein_id_src": "9606.ENSP00000361400",
+      "protein_id_dst": "9606.ENSP00000397082",
+      "gene_name_src": "SFTPA2",
+      "gene_name_dst": "SFTPA1",
+      "combined_score_protein": 956.0,
+      "edge_weight_protein": 0.956
+    },
+    {
+      "protein_id_src": "9606.ENSP00000366416",
+      "protein_id_dst": "9606.ENSP00000256104",
+      "gene_name_src": "EDNRB",
+      "gene_name_dst": "FABP4",
+      "combined_score_protein": 485.0,
+      "edge_weight_protein": 0.485
+    },
+    {
+      "protein_id_src": "9606.ENSP00000360266",
+      "protein_id_dst": "9606.ENSP00000339191",
+      "gene_name_src": "JUN",
+      "gene_name_dst": "CAV1",
+      "combined_score_protein": 451.0,
+      "edge_weight_protein": 0.451
+    },
+    {
+      "protein_id_src": "9606.ENSP00000256104",
+      "protein_id_dst": "9606.ENSP00000366416",
+      "gene_name_src": "FABP4",
+      "gene_name_dst": "EDNRB",
+      "combined_score_protein": 485.0,
+      "edge_weight_protein": 0.485
+    },
+    {
+      "protein_id_src": "9606.ENSP00000385675",
+      "protein_id_dst": "9606.ENSP00000418915",
+      "gene_name_src": "IL6",
+      "gene_name_dst": "CDKN2A",
+      "combined_score_protein": 621.0,
+      "edge_weight_protein": 0.621
+    },
+    {
+      "protein_id_src": "9606.ENSP00000225964",
+      "protein_id_dst": "9606.ENSP00000215743",
+      "gene_name_src": "COL1A1",
+      "gene_name_dst": "MMP11",
+      "combined_score_protein": 692.0,
+      "edge_weight_protein": 0.692
+    },
+    {
+      "protein_id_src": "9606.ENSP00000457421",
+      "protein_id_dst": "9606.ENSP00000415743",
+      "gene_name_src": "PECAM1",
+      "gene_name_dst": "CD36",
+      "combined_score_protein": 851.0,
+      "edge_weight_protein": 0.851
+    },
+    {
+      "protein_id_src": "9606.ENSP00000270879",
+      "protein_id_dst": "9606.ENSP00000361366",
+      "gene_name_src": "FCN3",
+      "gene_name_dst": "SFTPD",
+      "combined_score_protein": 558.0,
+      "edge_weight_protein": 0.558
+    },
+    {
+      "protein_id_src": "9606.ENSP00000457421",
+      "protein_id_dst": "9606.ENSP00000316152",
+      "gene_name_src": "PECAM1",
+      "gene_name_dst": "SFTPC",
+      "combined_score_protein": 468.0,
+      "edge_weight_protein": 0.468
+    },
+    {
+      "protein_id_src": "9606.ENSP00000301633",
+      "protein_id_dst": "9606.ENSP00000300093",
+      "gene_name_src": "BIRC5",
+      "gene_name_dst": "PLK1",
+      "combined_score_protein": 980.0,
+      "edge_weight_protein": 0.98
+    },
+    {
+      "protein_id_src": "9606.ENSP00000348838",
+      "protein_id_dst": "9606.ENSP00000361540",
+      "gene_name_src": "UBE2C",
+      "gene_name_dst": "CDC20",
+      "combined_score_protein": 999.0,
+      "edge_weight_protein": 0.999
+    },
+    {
+      "protein_id_src": "9606.ENSP00000300403",
+      "protein_id_dst": "9606.ENSP00000300093",
+      "gene_name_src": "TPX2",
+      "gene_name_dst": "PLK1",
+      "combined_score_protein": 944.0,
+      "edge_weight_protein": 0.944
+    },
+    {
+      "protein_id_src": "9606.ENSP00000334938",
+      "protein_id_dst": "9606.ENSP00000280187",
+      "gene_name_src": "UPK3B",
+      "gene_name_dst": "GPM6A",
+      "combined_score_protein": 515.0,
+      "edge_weight_protein": 0.515
+    },
+    {
+      "protein_id_src": "9606.ENSP00000385675",
+      "protein_id_dst": "9606.ENSP00000415743",
+      "gene_name_src": "IL6",
+      "gene_name_dst": "CD36",
+      "combined_score_protein": 730.0,
+      "edge_weight_protein": 0.73
+    },
+    {
+      "protein_id_src": "9606.ENSP00000217026",
+      "protein_id_dst": "9606.ENSP00000215743",
+      "gene_name_src": "MYBL2",
+      "gene_name_dst": "MMP11",
+      "combined_score_protein": 439.0,
+      "edge_weight_protein": 0.439
+    },
+    {
+      "protein_id_src": "9606.ENSP00000411532",
+      "protein_id_dst": "9606.ENSP00000348838",
+      "gene_name_src": "TOP2A",
+      "gene_name_dst": "UBE2C",
+      "combined_score_protein": 973.0,
+      "edge_weight_protein": 0.973
+    },
+    {
+      "protein_id_src": "9606.ENSP00000418915",
+      "protein_id_dst": "9606.ENSP00000300093",
+      "gene_name_src": "CDKN2A",
+      "gene_name_dst": "PLK1",
+      "combined_score_protein": 480.0,
+      "edge_weight_protein": 0.48
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378517",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "SPP1",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 716.0,
+      "edge_weight_protein": 0.716
+    },
+    {
+      "protein_id_src": "9606.ENSP00000360973",
+      "protein_id_dst": "9606.ENSP00000385675",
+      "gene_name_src": "AGTR2",
+      "gene_name_dst": "IL6",
+      "combined_score_protein": 529.0,
+      "edge_weight_protein": 0.529
+    },
+    {
+      "protein_id_src": "9606.ENSP00000300093",
+      "protein_id_dst": "9606.ENSP00000313950",
+      "gene_name_src": "PLK1",
+      "gene_name_dst": "AURKB",
+      "combined_score_protein": 939.0,
+      "edge_weight_protein": 0.939
+    },
+    {
+      "protein_id_src": "9606.ENSP00000306245",
+      "protein_id_dst": "9606.ENSP00000457421",
+      "gene_name_src": "FOS",
+      "gene_name_dst": "PECAM1",
+      "combined_score_protein": 409.0,
+      "edge_weight_protein": 0.409
+    },
+    {
+      "protein_id_src": "9606.ENSP00000261405",
+      "protein_id_dst": "9606.ENSP00000322788",
+      "gene_name_src": "VWF",
+      "gene_name_dst": "MMP1",
+      "combined_score_protein": 551.0,
+      "edge_weight_protein": 0.551
+    },
+    {
+      "protein_id_src": "9606.ENSP00000369375",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "TEK",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 477.0,
+      "edge_weight_protein": 0.477
+    },
+    {
+      "protein_id_src": "9606.ENSP00000292408",
+      "protein_id_dst": "9606.ENSP00000416293",
+      "gene_name_src": "FGFR4",
+      "gene_name_dst": "SLC2A1",
+      "combined_score_protein": 559.0,
+      "edge_weight_protein": 0.559
+    },
+    {
+      "protein_id_src": "9606.ENSP00000360266",
+      "protein_id_dst": "9606.ENSP00000287820",
+      "gene_name_src": "JUN",
+      "gene_name_dst": "PPARG",
+      "combined_score_protein": 849.0,
+      "edge_weight_protein": 0.849
+    },
+    {
+      "protein_id_src": "9606.ENSP00000415743",
+      "protein_id_dst": "9606.ENSP00000339191",
+      "gene_name_src": "CD36",
+      "gene_name_dst": "CAV1",
+      "combined_score_protein": 956.0,
+      "edge_weight_protein": 0.956
+    },
+    {
+      "protein_id_src": "9606.ENSP00000385675",
+      "protein_id_dst": "9606.ENSP00000457421",
+      "gene_name_src": "IL6",
+      "gene_name_dst": "PECAM1",
+      "combined_score_protein": 709.0,
+      "edge_weight_protein": 0.709
+    },
+    {
+      "protein_id_src": "9606.ENSP00000481380",
+      "protein_id_dst": "9606.ENSP00000361540",
+      "gene_name_src": "CCNA2",
+      "gene_name_dst": "CDC20",
+      "combined_score_protein": 999.0,
+      "edge_weight_protein": 0.999
+    },
+    {
+      "protein_id_src": "9606.ENSP00000322788",
+      "protein_id_dst": "9606.ENSP00000225474",
+      "gene_name_src": "MMP1",
+      "gene_name_dst": "CSF3",
+      "combined_score_protein": 421.0,
+      "edge_weight_protein": 0.421
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378699",
+      "protein_id_dst": "9606.ENSP00000217026",
+      "gene_name_src": "CDK1",
+      "gene_name_dst": "MYBL2",
+      "combined_score_protein": 743.0,
+      "edge_weight_protein": 0.743
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378699",
+      "protein_id_dst": "9606.ENSP00000411532",
+      "gene_name_src": "CDK1",
+      "gene_name_dst": "TOP2A",
+      "combined_score_protein": 997.0,
+      "edge_weight_protein": 0.997
+    },
+    {
+      "protein_id_src": "9606.ENSP00000320147",
+      "protein_id_dst": "9606.ENSP00000306245",
+      "gene_name_src": "EZH2",
+      "gene_name_dst": "FOS",
+      "combined_score_protein": 567.0,
+      "edge_weight_protein": 0.567
+    },
+    {
+      "protein_id_src": "9606.ENSP00000256442",
+      "protein_id_dst": "9606.ENSP00000362146",
+      "gene_name_src": "CCNB1",
+      "gene_name_dst": "CDCA8",
+      "combined_score_protein": 987.0,
+      "edge_weight_protein": 0.987
+    },
+    {
+      "protein_id_src": "9606.ENSP00000301633",
+      "protein_id_dst": "9606.ENSP00000361540",
+      "gene_name_src": "BIRC5",
+      "gene_name_dst": "CDC20",
+      "combined_score_protein": 995.0,
+      "edge_weight_protein": 0.995
+    },
+    {
+      "protein_id_src": "9606.ENSP00000284523",
+      "protein_id_dst": "9606.ENSP00000287820",
+      "gene_name_src": "WNT3A",
+      "gene_name_dst": "PPARG",
+      "combined_score_protein": 436.0,
+      "edge_weight_protein": 0.436
+    },
+    {
+      "protein_id_src": "9606.ENSP00000306606",
+      "protein_id_dst": "9606.ENSP00000261707",
+      "gene_name_src": "ADH1B",
+      "gene_name_dst": "SLC6A4",
+      "combined_score_protein": 580.0,
+      "edge_weight_protein": 0.58
+    },
+    {
+      "protein_id_src": "9606.ENSP00000411532",
+      "protein_id_dst": "9606.ENSP00000378356",
+      "gene_name_src": "TOP2A",
+      "gene_name_dst": "KIF20A",
+      "combined_score_protein": 974.0,
+      "edge_weight_protein": 0.974
+    },
+    {
+      "protein_id_src": "9606.ENSP00000361366",
+      "protein_id_dst": "9606.ENSP00000385675",
+      "gene_name_src": "SFTPD",
+      "gene_name_dst": "IL6",
+      "combined_score_protein": 541.0,
+      "edge_weight_protein": 0.541
+    },
+    {
+      "protein_id_src": "9606.ENSP00000300093",
+      "protein_id_dst": "9606.ENSP00000300403",
+      "gene_name_src": "PLK1",
+      "gene_name_dst": "TPX2",
+      "combined_score_protein": 944.0,
+      "edge_weight_protein": 0.944
+    },
+    {
+      "protein_id_src": "9606.ENSP00000301633",
+      "protein_id_dst": "9606.ENSP00000320147",
+      "gene_name_src": "BIRC5",
+      "gene_name_dst": "EZH2",
+      "combined_score_protein": 567.0,
+      "edge_weight_protein": 0.567
+    },
+    {
+      "protein_id_src": "9606.ENSP00000261405",
+      "protein_id_dst": "9606.ENSP00000287820",
+      "gene_name_src": "VWF",
+      "gene_name_dst": "PPARG",
+      "combined_score_protein": 454.0,
+      "edge_weight_protein": 0.454
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000369375",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "TEK",
+      "combined_score_protein": 477.0,
+      "edge_weight_protein": 0.477
+    },
+    {
+      "protein_id_src": "9606.ENSP00000221515",
+      "protein_id_dst": "9606.ENSP00000415743",
+      "gene_name_src": "RETN",
+      "gene_name_dst": "CD36",
+      "combined_score_protein": 625.0,
+      "edge_weight_protein": 0.625
+    },
+    {
+      "protein_id_src": "9606.ENSP00000385675",
+      "protein_id_dst": "9606.ENSP00000317997",
+      "gene_name_src": "IL6",
+      "gene_name_dst": "DUOX1",
+      "combined_score_protein": 531.0,
+      "edge_weight_protein": 0.531
+    },
+    {
+      "protein_id_src": "9606.ENSP00000313950",
+      "protein_id_dst": "9606.ENSP00000348838",
+      "gene_name_src": "AURKB",
+      "gene_name_dst": "UBE2C",
+      "combined_score_protein": 955.0,
+      "edge_weight_protein": 0.955
+    },
+    {
+      "protein_id_src": "9606.ENSP00000313950",
+      "protein_id_dst": "9606.ENSP00000363071",
+      "gene_name_src": "AURKB",
+      "gene_name_dst": "DES",
+      "combined_score_protein": 619.0,
+      "edge_weight_protein": 0.619
+    },
+    {
+      "protein_id_src": "9606.ENSP00000418915",
+      "protein_id_dst": "9606.ENSP00000217026",
+      "gene_name_src": "CDKN2A",
+      "gene_name_dst": "MYBL2",
+      "combined_score_protein": 416.0,
+      "edge_weight_protein": 0.416
+    },
+    {
+      "protein_id_src": "9606.ENSP00000411532",
+      "protein_id_dst": "9606.ENSP00000418915",
+      "gene_name_src": "TOP2A",
+      "gene_name_dst": "CDKN2A",
+      "combined_score_protein": 661.0,
+      "edge_weight_protein": 0.661
+    },
+    {
+      "protein_id_src": "9606.ENSP00000217182",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "EEF1A2",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 731.0,
+      "edge_weight_protein": 0.731
+    },
+    {
+      "protein_id_src": "9606.ENSP00000287820",
+      "protein_id_dst": "9606.ENSP00000305372",
+      "gene_name_src": "PPARG",
+      "gene_name_dst": "ADRB2",
+      "combined_score_protein": 486.0,
+      "edge_weight_protein": 0.486
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378517",
+      "protein_id_dst": "9606.ENSP00000306245",
+      "gene_name_src": "SPP1",
+      "gene_name_dst": "FOS",
+      "combined_score_protein": 479.0,
+      "edge_weight_protein": 0.479
+    },
+    {
+      "protein_id_src": "9606.ENSP00000497642",
+      "protein_id_dst": "9606.ENSP00000415743",
+      "gene_name_src": "LPL",
+      "gene_name_dst": "CD36",
+      "combined_score_protein": 877.0,
+      "edge_weight_protein": 0.877
+    },
+    {
+      "protein_id_src": "9606.ENSP00000287820",
+      "protein_id_dst": "9606.ENSP00000261405",
+      "gene_name_src": "PPARG",
+      "gene_name_dst": "VWF",
+      "combined_score_protein": 454.0,
+      "edge_weight_protein": 0.454
+    },
+    {
+      "protein_id_src": "9606.ENSP00000225474",
+      "protein_id_dst": "9606.ENSP00000457421",
+      "gene_name_src": "CSF3",
+      "gene_name_dst": "PECAM1",
+      "combined_score_protein": 570.0,
+      "edge_weight_protein": 0.57
+    },
+    {
+      "protein_id_src": "9606.ENSP00000497642",
+      "protein_id_dst": "9606.ENSP00000287820",
+      "gene_name_src": "LPL",
+      "gene_name_dst": "PPARG",
+      "combined_score_protein": 941.0,
+      "edge_weight_protein": 0.941
+    },
+    {
+      "protein_id_src": "9606.ENSP00000361540",
+      "protein_id_dst": "9606.ENSP00000481380",
+      "gene_name_src": "CDC20",
+      "gene_name_dst": "CCNA2",
+      "combined_score_protein": 999.0,
+      "edge_weight_protein": 0.999
+    },
+    {
+      "protein_id_src": "9606.ENSP00000348838",
+      "protein_id_dst": "9606.ENSP00000378699",
+      "gene_name_src": "UBE2C",
+      "gene_name_dst": "CDK1",
+      "combined_score_protein": 982.0,
+      "edge_weight_protein": 0.982
+    },
+    {
+      "protein_id_src": "9606.ENSP00000418915",
+      "protein_id_dst": "9606.ENSP00000301633",
+      "gene_name_src": "CDKN2A",
+      "gene_name_dst": "BIRC5",
+      "combined_score_protein": 472.0,
+      "edge_weight_protein": 0.472
+    },
+    {
+      "protein_id_src": "9606.ENSP00000256442",
+      "protein_id_dst": "9606.ENSP00000411532",
+      "gene_name_src": "CCNB1",
+      "gene_name_dst": "TOP2A",
+      "combined_score_protein": 989.0,
+      "edge_weight_protein": 0.989
+    },
+    {
+      "protein_id_src": "9606.ENSP00000278282",
+      "protein_id_dst": "9606.ENSP00000340939",
+      "gene_name_src": "SCGB1A1",
+      "gene_name_dst": "CLDN18",
+      "combined_score_protein": 428.0,
+      "edge_weight_protein": 0.428
+    },
+    {
+      "protein_id_src": "9606.ENSP00000362146",
+      "protein_id_dst": "9606.ENSP00000378699",
+      "gene_name_src": "CDCA8",
+      "gene_name_dst": "CDK1",
+      "combined_score_protein": 990.0,
+      "edge_weight_protein": 0.99
+    },
+    {
+      "protein_id_src": "9606.ENSP00000301633",
+      "protein_id_dst": "9606.ENSP00000378356",
+      "gene_name_src": "BIRC5",
+      "gene_name_dst": "KIF20A",
+      "combined_score_protein": 973.0,
+      "edge_weight_protein": 0.973
+    },
+    {
+      "protein_id_src": "9606.ENSP00000284523",
+      "protein_id_dst": "9606.ENSP00000339191",
+      "gene_name_src": "WNT3A",
+      "gene_name_dst": "CAV1",
+      "combined_score_protein": 894.0,
+      "edge_weight_protein": 0.894
+    },
+    {
+      "protein_id_src": "9606.ENSP00000215743",
+      "protein_id_dst": "9606.ENSP00000217026",
+      "gene_name_src": "MMP11",
+      "gene_name_dst": "MYBL2",
+      "combined_score_protein": 439.0,
+      "edge_weight_protein": 0.439
+    },
+    {
+      "protein_id_src": "9606.ENSP00000385675",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "IL6",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 879.0,
+      "edge_weight_protein": 0.879
+    },
+    {
+      "protein_id_src": "9606.ENSP00000287820",
+      "protein_id_dst": "9606.ENSP00000482841",
+      "gene_name_src": "PPARG",
+      "gene_name_dst": "CRABP2",
+      "combined_score_protein": 581.0,
+      "edge_weight_protein": 0.581
+    },
+    {
+      "protein_id_src": "9606.ENSP00000360266",
+      "protein_id_dst": "9606.ENSP00000457421",
+      "gene_name_src": "JUN",
+      "gene_name_dst": "PECAM1",
+      "combined_score_protein": 438.0,
+      "edge_weight_protein": 0.438
+    },
+    {
+      "protein_id_src": "9606.ENSP00000217026",
+      "protein_id_dst": "9606.ENSP00000301633",
+      "gene_name_src": "MYBL2",
+      "gene_name_dst": "BIRC5",
+      "combined_score_protein": 844.0,
+      "edge_weight_protein": 0.844
+    },
+    {
+      "protein_id_src": "9606.ENSP00000385675",
+      "protein_id_dst": "9606.ENSP00000278282",
+      "gene_name_src": "IL6",
+      "gene_name_dst": "SCGB1A1",
+      "combined_score_protein": 447.0,
+      "edge_weight_protein": 0.447
+    },
+    {
+      "protein_id_src": "9606.ENSP00000361366",
+      "protein_id_dst": "9606.ENSP00000278282",
+      "gene_name_src": "SFTPD",
+      "gene_name_dst": "SCGB1A1",
+      "combined_score_protein": 837.0,
+      "edge_weight_protein": 0.837
+    },
+    {
+      "protein_id_src": "9606.ENSP00000415743",
+      "protein_id_dst": "9606.ENSP00000416293",
+      "gene_name_src": "CD36",
+      "gene_name_dst": "SLC2A1",
+      "combined_score_protein": 517.0,
+      "edge_weight_protein": 0.517
+    },
+    {
+      "protein_id_src": "9606.ENSP00000261405",
+      "protein_id_dst": "9606.ENSP00000385675",
+      "gene_name_src": "VWF",
+      "gene_name_dst": "IL6",
+      "combined_score_protein": 716.0,
+      "edge_weight_protein": 0.716
+    },
+    {
+      "protein_id_src": "9606.ENSP00000366416",
+      "protein_id_dst": "9606.ENSP00000360973",
+      "gene_name_src": "EDNRB",
+      "gene_name_dst": "AGTR2",
+      "combined_score_protein": 676.0,
+      "edge_weight_protein": 0.676
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378517",
+      "protein_id_dst": "9606.ENSP00000261405",
+      "gene_name_src": "SPP1",
+      "gene_name_dst": "VWF",
+      "combined_score_protein": 807.0,
+      "edge_weight_protein": 0.807
+    },
+    {
+      "protein_id_src": "9606.ENSP00000360266",
+      "protein_id_dst": "9606.ENSP00000300093",
+      "gene_name_src": "JUN",
+      "gene_name_dst": "PLK1",
+      "combined_score_protein": 430.0,
+      "edge_weight_protein": 0.43
+    },
+    {
+      "protein_id_src": "9606.ENSP00000217182",
+      "protein_id_dst": "9606.ENSP00000298910",
+      "gene_name_src": "EEF1A2",
+      "gene_name_dst": "LRRK2",
+      "combined_score_protein": 531.0,
+      "edge_weight_protein": 0.531
+    },
+    {
+      "protein_id_src": "9606.ENSP00000457421",
+      "protein_id_dst": "9606.ENSP00000284523",
+      "gene_name_src": "PECAM1",
+      "gene_name_dst": "WNT3A",
+      "combined_score_protein": 428.0,
+      "edge_weight_protein": 0.428
+    },
+    {
+      "protein_id_src": "9606.ENSP00000221992",
+      "protein_id_dst": "9606.ENSP00000480053",
+      "gene_name_src": "CEACAM5",
+      "gene_name_dst": "GPIHBP1",
+      "combined_score_protein": 400.0,
+      "edge_weight_protein": 0.4
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000301149",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "GPD1",
+      "combined_score_protein": 581.0,
+      "edge_weight_protein": 0.581
+    },
+    {
+      "protein_id_src": "9606.ENSP00000225964",
+      "protein_id_dst": "9606.ENSP00000327368",
+      "gene_name_src": "COL1A1",
+      "gene_name_dst": "COL10A1",
+      "combined_score_protein": 781.0,
+      "edge_weight_protein": 0.781
+    },
+    {
+      "protein_id_src": "9606.ENSP00000360266",
+      "protein_id_dst": "9606.ENSP00000317997",
+      "gene_name_src": "JUN",
+      "gene_name_dst": "DUOX1",
+      "combined_score_protein": 456.0,
+      "edge_weight_protein": 0.456
+    },
+    {
+      "protein_id_src": "9606.ENSP00000362146",
+      "protein_id_dst": "9606.ENSP00000411532",
+      "gene_name_src": "CDCA8",
+      "gene_name_dst": "TOP2A",
+      "combined_score_protein": 920.0,
+      "edge_weight_protein": 0.92
+    },
+    {
+      "protein_id_src": "9606.ENSP00000416293",
+      "protein_id_dst": "9606.ENSP00000287820",
+      "gene_name_src": "SLC2A1",
+      "gene_name_dst": "PPARG",
+      "combined_score_protein": 575.0,
+      "edge_weight_protein": 0.575
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378356",
+      "protein_id_dst": "9606.ENSP00000301633",
+      "gene_name_src": "KIF20A",
+      "gene_name_dst": "BIRC5",
+      "combined_score_protein": 973.0,
+      "edge_weight_protein": 0.973
+    },
+    {
+      "protein_id_src": "9606.ENSP00000397082",
+      "protein_id_dst": "9606.ENSP00000278282",
+      "gene_name_src": "SFTPA1",
+      "gene_name_dst": "SCGB1A1",
+      "combined_score_protein": 826.0,
+      "edge_weight_protein": 0.826
+    },
+    {
+      "protein_id_src": "9606.ENSP00000360266",
+      "protein_id_dst": "9606.ENSP00000418915",
+      "gene_name_src": "JUN",
+      "gene_name_dst": "CDKN2A",
+      "combined_score_protein": 779.0,
+      "edge_weight_protein": 0.779
+    },
+    {
+      "protein_id_src": "9606.ENSP00000361400",
+      "protein_id_dst": "9606.ENSP00000340939",
+      "gene_name_src": "SFTPA2",
+      "gene_name_dst": "CLDN18",
+      "combined_score_protein": 425.0,
+      "edge_weight_protein": 0.425
+    },
+    {
+      "protein_id_src": "9606.ENSP00000300093",
+      "protein_id_dst": "9606.ENSP00000261405",
+      "gene_name_src": "PLK1",
+      "gene_name_dst": "VWF",
+      "combined_score_protein": 419.0,
+      "edge_weight_protein": 0.419
+    },
+    {
+      "protein_id_src": "9606.ENSP00000317997",
+      "protein_id_dst": "9606.ENSP00000385675",
+      "gene_name_src": "DUOX1",
+      "gene_name_dst": "IL6",
+      "combined_score_protein": 531.0,
+      "edge_weight_protein": 0.531
+    },
+    {
+      "protein_id_src": "9606.ENSP00000320147",
+      "protein_id_dst": "9606.ENSP00000378699",
+      "gene_name_src": "EZH2",
+      "gene_name_dst": "CDK1",
+      "combined_score_protein": 965.0,
+      "edge_weight_protein": 0.965
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378356",
+      "protein_id_dst": "9606.ENSP00000481380",
+      "gene_name_src": "KIF20A",
+      "gene_name_dst": "CCNA2",
+      "combined_score_protein": 974.0,
+      "edge_weight_protein": 0.974
+    },
+    {
+      "protein_id_src": "9606.ENSP00000225964",
+      "protein_id_dst": "9606.ENSP00000339191",
+      "gene_name_src": "COL1A1",
+      "gene_name_dst": "CAV1",
+      "combined_score_protein": 608.0,
+      "edge_weight_protein": 0.608
+    },
+    {
+      "protein_id_src": "9606.ENSP00000320147",
+      "protein_id_dst": "9606.ENSP00000360266",
+      "gene_name_src": "EZH2",
+      "gene_name_dst": "JUN",
+      "combined_score_protein": 852.0,
+      "edge_weight_protein": 0.852
+    },
+    {
+      "protein_id_src": "9606.ENSP00000313950",
+      "protein_id_dst": "9606.ENSP00000256442",
+      "gene_name_src": "AURKB",
+      "gene_name_dst": "CCNB1",
+      "combined_score_protein": 962.0,
+      "edge_weight_protein": 0.962
+    },
+    {
+      "protein_id_src": "9606.ENSP00000225474",
+      "protein_id_dst": "9606.ENSP00000369375",
+      "gene_name_src": "CSF3",
+      "gene_name_dst": "TEK",
+      "combined_score_protein": 446.0,
+      "edge_weight_protein": 0.446
+    },
+    {
+      "protein_id_src": "9606.ENSP00000300093",
+      "protein_id_dst": "9606.ENSP00000348838",
+      "gene_name_src": "PLK1",
+      "gene_name_dst": "UBE2C",
+      "combined_score_protein": 927.0,
+      "edge_weight_protein": 0.927
+    },
+    {
+      "protein_id_src": "9606.ENSP00000322788",
+      "protein_id_dst": "9606.ENSP00000215743",
+      "gene_name_src": "MMP1",
+      "gene_name_dst": "MMP11",
+      "combined_score_protein": 772.0,
+      "edge_weight_protein": 0.772
+    },
+    {
+      "protein_id_src": "9606.ENSP00000287820",
+      "protein_id_dst": "9606.ENSP00000366416",
+      "gene_name_src": "PPARG",
+      "gene_name_dst": "EDNRB",
+      "combined_score_protein": 441.0,
+      "edge_weight_protein": 0.441
+    },
+    {
+      "protein_id_src": "9606.ENSP00000385675",
+      "protein_id_dst": "9606.ENSP00000221992",
+      "gene_name_src": "IL6",
+      "gene_name_dst": "CEACAM5",
+      "combined_score_protein": 525.0,
+      "edge_weight_protein": 0.525
+    },
+    {
+      "protein_id_src": "9606.ENSP00000217182",
+      "protein_id_dst": "9606.ENSP00000362146",
+      "gene_name_src": "EEF1A2",
+      "gene_name_dst": "CDCA8",
+      "combined_score_protein": 447.0,
+      "edge_weight_protein": 0.447
+    },
+    {
+      "protein_id_src": "9606.ENSP00000217026",
+      "protein_id_dst": "9606.ENSP00000256442",
+      "gene_name_src": "MYBL2",
+      "gene_name_dst": "CCNB1",
+      "combined_score_protein": 931.0,
+      "edge_weight_protein": 0.931
+    },
+    {
+      "protein_id_src": "9606.ENSP00000316152",
+      "protein_id_dst": "9606.ENSP00000364210",
+      "gene_name_src": "SFTPC",
+      "gene_name_dst": "AGER",
+      "combined_score_protein": 870.0,
+      "edge_weight_protein": 0.87
+    },
+    {
+      "protein_id_src": "9606.ENSP00000362146",
+      "protein_id_dst": "9606.ENSP00000217182",
+      "gene_name_src": "CDCA8",
+      "gene_name_dst": "EEF1A2",
+      "combined_score_protein": 447.0,
+      "edge_weight_protein": 0.447
+    },
+    {
+      "protein_id_src": "9606.ENSP00000364210",
+      "protein_id_dst": "9606.ENSP00000366416",
+      "gene_name_src": "AGER",
+      "gene_name_dst": "EDNRB",
+      "combined_score_protein": 449.0,
+      "edge_weight_protein": 0.449
+    },
+    {
+      "protein_id_src": "9606.ENSP00000256104",
+      "protein_id_dst": "9606.ENSP00000225964",
+      "gene_name_src": "FABP4",
+      "gene_name_dst": "COL1A1",
+      "combined_score_protein": 456.0,
+      "edge_weight_protein": 0.456
+    },
+    {
+      "protein_id_src": "9606.ENSP00000385675",
+      "protein_id_dst": "9606.ENSP00000256442",
+      "gene_name_src": "IL6",
+      "gene_name_dst": "CCNB1",
+      "combined_score_protein": 609.0,
+      "edge_weight_protein": 0.609
+    },
+    {
+      "protein_id_src": "9606.ENSP00000301633",
+      "protein_id_dst": "9606.ENSP00000360266",
+      "gene_name_src": "BIRC5",
+      "gene_name_dst": "JUN",
+      "combined_score_protein": 510.0,
+      "edge_weight_protein": 0.51
+    },
+    {
+      "protein_id_src": "9606.ENSP00000348838",
+      "protein_id_dst": "9606.ENSP00000301633",
+      "gene_name_src": "UBE2C",
+      "gene_name_dst": "BIRC5",
+      "combined_score_protein": 992.0,
+      "edge_weight_protein": 0.992
+    },
+    {
+      "protein_id_src": "9606.ENSP00000339191",
+      "protein_id_dst": "9606.ENSP00000415743",
+      "gene_name_src": "CAV1",
+      "gene_name_dst": "CD36",
+      "combined_score_protein": 956.0,
+      "edge_weight_protein": 0.956
+    },
+    {
+      "protein_id_src": "9606.ENSP00000348838",
+      "protein_id_dst": "9606.ENSP00000411532",
+      "gene_name_src": "UBE2C",
+      "gene_name_dst": "TOP2A",
+      "combined_score_protein": 973.0,
+      "edge_weight_protein": 0.973
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000298910",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "LRRK2",
+      "combined_score_protein": 496.0,
+      "edge_weight_protein": 0.496
+    },
+    {
+      "protein_id_src": "9606.ENSP00000363071",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "DES",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 431.0,
+      "edge_weight_protein": 0.431
+    },
+    {
+      "protein_id_src": "9606.ENSP00000416293",
+      "protein_id_dst": "9606.ENSP00000292408",
+      "gene_name_src": "SLC2A1",
+      "gene_name_dst": "FGFR4",
+      "combined_score_protein": 559.0,
+      "edge_weight_protein": 0.559
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378517",
+      "protein_id_dst": "9606.ENSP00000256104",
+      "gene_name_src": "SPP1",
+      "gene_name_dst": "FABP4",
+      "combined_score_protein": 490.0,
+      "edge_weight_protein": 0.49
+    },
+    {
+      "protein_id_src": "9606.ENSP00000361540",
+      "protein_id_dst": "9606.ENSP00000313950",
+      "gene_name_src": "CDC20",
+      "gene_name_dst": "AURKB",
+      "combined_score_protein": 998.0,
+      "edge_weight_protein": 0.998
+    },
+    {
+      "protein_id_src": "9606.ENSP00000385675",
+      "protein_id_dst": "9606.ENSP00000225964",
+      "gene_name_src": "IL6",
+      "gene_name_dst": "COL1A1",
+      "combined_score_protein": 630.0,
+      "edge_weight_protein": 0.63
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000261405",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "VWF",
+      "combined_score_protein": 568.0,
+      "edge_weight_protein": 0.568
+    },
+    {
+      "protein_id_src": "9606.ENSP00000360762",
+      "protein_id_dst": "9606.ENSP00000380070",
+      "gene_name_src": "ANKRD1",
+      "gene_name_dst": "GAPDH",
+      "combined_score_protein": 429.0,
+      "edge_weight_protein": 0.429
+    },
+    {
+      "protein_id_src": "9606.ENSP00000217026",
+      "protein_id_dst": "9606.ENSP00000360266",
+      "gene_name_src": "MYBL2",
+      "gene_name_dst": "JUN",
+      "combined_score_protein": 543.0,
+      "edge_weight_protein": 0.543
+    },
+    {
+      "protein_id_src": "9606.ENSP00000416293",
+      "protein_id_dst": "9606.ENSP00000284523",
+      "gene_name_src": "SLC2A1",
+      "gene_name_dst": "WNT3A",
+      "combined_score_protein": 555.0,
+      "edge_weight_protein": 0.555
+    },
+    {
+      "protein_id_src": "9606.ENSP00000361366",
+      "protein_id_dst": "9606.ENSP00000340939",
+      "gene_name_src": "SFTPD",
+      "gene_name_dst": "CLDN18",
+      "combined_score_protein": 486.0,
+      "edge_weight_protein": 0.486
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378356",
+      "protein_id_dst": "9606.ENSP00000256442",
+      "gene_name_src": "KIF20A",
+      "gene_name_dst": "CCNB1",
+      "combined_score_protein": 954.0,
+      "edge_weight_protein": 0.954
+    },
+    {
+      "protein_id_src": "9606.ENSP00000360973",
+      "protein_id_dst": "9606.ENSP00000278282",
+      "gene_name_src": "AGTR2",
+      "gene_name_dst": "SCGB1A1",
+      "combined_score_protein": 449.0,
+      "edge_weight_protein": 0.449
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378517",
+      "protein_id_dst": "9606.ENSP00000457421",
+      "gene_name_src": "SPP1",
+      "gene_name_dst": "PECAM1",
+      "combined_score_protein": 595.0,
+      "edge_weight_protein": 0.595
+    },
+    {
+      "protein_id_src": "9606.ENSP00000415743",
+      "protein_id_dst": "9606.ENSP00000364210",
+      "gene_name_src": "CD36",
+      "gene_name_dst": "AGER",
+      "combined_score_protein": 734.0,
+      "edge_weight_protein": 0.734
+    },
+    {
+      "protein_id_src": "9606.ENSP00000378517",
+      "protein_id_dst": "9606.ENSP00000278282",
+      "gene_name_src": "SPP1",
+      "gene_name_dst": "SCGB1A1",
+      "combined_score_protein": 463.0,
+      "edge_weight_protein": 0.463
+    },
+    {
+      "protein_id_src": "9606.ENSP00000217026",
+      "protein_id_dst": "9606.ENSP00000362146",
+      "gene_name_src": "MYBL2",
+      "gene_name_dst": "CDCA8",
+      "combined_score_protein": 683.0,
+      "edge_weight_protein": 0.683
+    },
+    {
+      "protein_id_src": "9606.ENSP00000360973",
+      "protein_id_dst": "9606.ENSP00000316152",
+      "gene_name_src": "AGTR2",
+      "gene_name_dst": "SFTPC",
+      "combined_score_protein": 634.0,
+      "edge_weight_protein": 0.634
+    },
+    {
+      "protein_id_src": "9606.ENSP00000360266",
+      "protein_id_dst": "9606.ENSP00000415743",
+      "gene_name_src": "JUN",
+      "gene_name_dst": "CD36",
+      "combined_score_protein": 447.0,
+      "edge_weight_protein": 0.447
+    },
+    {
+      "protein_id_src": "9606.ENSP00000306245",
+      "protein_id_dst": "9606.ENSP00000378699",
+      "gene_name_src": "FOS",
+      "gene_name_dst": "CDK1",
+      "combined_score_protein": 639.0,
+      "edge_weight_protein": 0.639
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000457421",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "PECAM1",
+      "combined_score_protein": 740.0,
+      "edge_weight_protein": 0.74
+    },
+    {
+      "protein_id_src": "9606.ENSP00000418915",
+      "protein_id_dst": "9606.ENSP00000481380",
+      "gene_name_src": "CDKN2A",
+      "gene_name_dst": "CCNA2",
+      "combined_score_protein": 696.0,
+      "edge_weight_protein": 0.696
+    },
+    {
+      "protein_id_src": "9606.ENSP00000418915",
+      "protein_id_dst": "9606.ENSP00000378699",
+      "gene_name_src": "CDKN2A",
+      "gene_name_dst": "CDK1",
+      "combined_score_protein": 818.0,
+      "edge_weight_protein": 0.818
+    },
+    {
+      "protein_id_src": "9606.ENSP00000217026",
+      "protein_id_dst": "9606.ENSP00000300403",
+      "gene_name_src": "MYBL2",
+      "gene_name_dst": "TPX2",
+      "combined_score_protein": 747.0,
+      "edge_weight_protein": 0.747
+    },
+    {
+      "protein_id_src": "9606.ENSP00000348838",
+      "protein_id_dst": "9606.ENSP00000306245",
+      "gene_name_src": "UBE2C",
+      "gene_name_dst": "FOS",
+      "combined_score_protein": 476.0,
+      "edge_weight_protein": 0.476
+    },
+    {
+      "protein_id_src": "9606.ENSP00000380070",
+      "protein_id_dst": "9606.ENSP00000300093",
+      "gene_name_src": "GAPDH",
+      "gene_name_dst": "PLK1",
+      "combined_score_protein": 566.0,
+      "edge_weight_protein": 0.566
+    }
+  ],
+  "source": "hdfs://master11:9000/drugtarget/data/refined/STRING/edges_protein",
+  "edge_filter": "edge_weight_protein >= 0.4 and both proteins are in top_candidate_targets_enriched"
+}

@@ -1,0 +1,112 @@
+{
+  "metrics": [
+    {
+      "metric_name": "GDC samples before QC",
+      "metric_value": 601,
+      "metric_unit": "samples",
+      "phase_name": "Overview",
+      "description": "Rows in refined GDC quality_check before removing QC outliers."
+    },
+    {
+      "metric_name": "GDC samples after QC",
+      "metric_value": 590,
+      "metric_unit": "samples",
+      "phase_name": "Phase 1",
+      "description": "Samples passing library-size and detected-gene QC flags."
+    },
+    {
+      "metric_name": "Tumor samples",
+      "metric_value": 531,
+      "metric_unit": "samples",
+      "phase_name": "Phase 1",
+      "description": "Tumor samples retained after QC."
+    },
+    {
+      "metric_name": "Normal samples",
+      "metric_value": 59,
+      "metric_unit": "samples",
+      "phase_name": "Phase 1",
+      "description": "Normal samples retained after QC."
+    },
+    {
+      "metric_name": "Differentially expressed genes",
+      "metric_value": 2598,
+      "metric_unit": "genes",
+      "phase_name": "Phase 2",
+      "description": "Genes where Phase 2 is_deg is true."
+    },
+    {
+      "metric_name": "DEG mapped to proteins",
+      "metric_value": 2579,
+      "metric_unit": "genes",
+      "phase_name": "Phase 3",
+      "description": "Distinct DEG genes with STRING protein_id mapping."
+    },
+    {
+      "metric_name": "Protein candidates",
+      "metric_value": 2579,
+      "metric_unit": "proteins",
+      "phase_name": "Phase 5",
+      "description": "Candidate protein rows scored by Phase 5."
+    },
+    {
+      "metric_name": "PPI edges in top-target graph",
+      "metric_value": 760,
+      "metric_unit": "edges",
+      "phase_name": "Phase 4",
+      "description": "STRING edges among top targets with edge_weight_protein >= 0.4."
+    },
+    {
+      "metric_name": "Top candidate targets",
+      "metric_value": 100,
+      "metric_unit": "targets",
+      "phase_name": "Phase 5",
+      "description": "Rows in HDFS mart/top_candidate_targets_enriched."
+    },
+    {
+      "metric_name": "Candidates with GEO support",
+      "metric_value": 82,
+      "metric_unit": "targets",
+      "phase_name": "Phase 6",
+      "description": "Top targets with GEO tumor-cohort expression support metrics."
+    },
+    {
+      "metric_name": "ML clusters",
+      "metric_value": 3,
+      "metric_unit": "clusters",
+      "phase_name": "Phase 7",
+      "description": "Clusters in analysis/ml_cluster_summary."
+    }
+  ],
+  "pipeline": [
+    "GDC samples",
+    "QC",
+    "Protein-coding expression",
+    "DEG",
+    "Differentially expressed genes",
+    "Gene to STRING protein mapping",
+    "STRING PPI edges",
+    "Network features",
+    "Scoring",
+    "Top candidate targets",
+    "GEO tumor-cohort support + ML clustering"
+  ],
+  "summary": "Dashboard built from real HDFS phase outputs. Overview is a navigation summary, not an analysis phase.",
+  "source": {
+    "qc": "hdfs://master11:9000/drugtarget/data/refined/gdc/quality_check",
+    "expr": "hdfs://master11:9000/drugtarget/data/analysis/gdc_qc_pass_expression",
+    "deg": "hdfs://master11:9000/drugtarget/data/analysis/gdc_deg_result",
+    "mapped": "hdfs://master11:9000/drugtarget/data/analysis/deg_mapped_proteins",
+    "network_features": "hdfs://master11:9000/drugtarget/data/analysis/protein_network_features",
+    "candidate_features": "hdfs://master11:9000/drugtarget/data/analysis/candidate_target_features",
+    "top_targets": "hdfs://master11:9000/drugtarget/data/mart/top_candidate_targets",
+    "top_enriched": "hdfs://master11:9000/drugtarget/data/mart/top_candidate_targets_enriched",
+    "geo_result": "hdfs://master11:9000/drugtarget/data/analysis/geo_validation_result",
+    "geo_summary": "hdfs://master11:9000/drugtarget/data/analysis/geo_validation_summary",
+    "geo_supported": "hdfs://master11:9000/drugtarget/data/analysis/geo_supported_top_candidates",
+    "candidate_clusters": "hdfs://master11:9000/drugtarget/data/analysis/candidate_clusters",
+    "ml_k": "hdfs://master11:9000/drugtarget/data/analysis/ml_k_selection",
+    "ml_summary": "hdfs://master11:9000/drugtarget/data/analysis/ml_cluster_summary",
+    "edges": "hdfs://master11:9000/drugtarget/data/refined/STRING/edges_protein"
+  }
+}

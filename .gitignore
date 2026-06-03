@@ -140,6 +140,11 @@ celerybeat.pid
 mnesia/
 rabbitmq/
 rabbitmq-data/
+!data/
+data/*
+!data/mart/
+data/mart/*
+!data/mart/*.json
 
 # ActiveMQ
 activemq-data/
@@ -221,6 +226,11 @@ __pycache__/
 .env
 .venv/
 data/
+!data/
+data/*
+!data/mart/
+data/mart/*
+!data/mart/*.json
 *.csv
 *.tsv
 *.gz

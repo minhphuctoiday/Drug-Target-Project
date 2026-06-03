@@ -1,0 +1,160 @@
+{
+  "items": [
+    {
+      "gene_name": "AQP4",
+      "gene_id_base": "ENSG00000171885",
+      "log2FC": -4.257674353690079,
+      "p_value": 1.050094893486e-312,
+      "mapping_status": "Not mapped",
+      "mapping_reason": "No matching STRING protein_id in refined STRING gene_map for this DEG."
+    },
+    {
+      "gene_name": "MS4A7",
+      "gene_id_base": "ENSG00000166927",
+      "log2FC": -2.361312517451367,
+      "p_value": 1.6916127133400453e-178,
+      "mapping_status": "Not mapped",
+      "mapping_reason": "No matching STRING protein_id in refined STRING gene_map for this DEG."
+    },
+    {
+      "gene_name": "TAMALIN",
+      "gene_id_base": "ENSG00000161835",
+      "log2FC": -2.313552062116035,
+      "p_value": 8.142720251566612e-91,
+      "mapping_status": "Not mapped",
+      "mapping_reason": "No matching STRING protein_id in refined STRING gene_map for this DEG."
+    },
+    {
+      "gene_name": "ELAPOR2",
+      "gene_id_base": "ENSG00000164659",
+      "log2FC": -2.1848258487107515,
+      "p_value": 4.638481590492999e-143,
+      "mapping_status": "Not mapped",
+      "mapping_reason": "No matching STRING protein_id in refined STRING gene_map for this DEG."
+    },
+    {
+      "gene_name": "CIBAR2",
+      "gene_id_base": "ENSG00000153789",
+      "log2FC": -1.84228353454417,
+      "p_value": 2.1273090390511846e-12,
+      "mapping_status": "Not mapped",
+      "mapping_reason": "No matching STRING protein_id in refined STRING gene_map for this DEG."
+    },
+    {
+      "gene_name": "CCNP",
+      "gene_id_base": "ENSG00000105219",
+      "log2FC": 1.7586147356428885,
+      "p_value": 1.608640764988066e-134,
+      "mapping_status": "Not mapped",
+      "mapping_reason": "No matching STRING protein_id in refined STRING gene_map for this DEG."
+    },
+    {
+      "gene_name": "MTARC2",
+      "gene_id_base": "ENSG00000117791",
+      "log2FC": -1.6887325836153355,
+      "p_value": 4.177958086731724e-185,
+      "mapping_status": "Not mapped",
+      "mapping_reason": "No matching STRING protein_id in refined STRING gene_map for this DEG."
+    },
+    {
+      "gene_name": "FO681492.1",
+      "gene_id_base": "ENSG00000277758",
+      "log2FC": -1.6846782444082418,
+      "p_value": 6.044744022374055e-110,
+      "mapping_status": "Not mapped",
+      "mapping_reason": "No matching STRING protein_id in refined STRING gene_map for this DEG."
+    },
+    {
+      "gene_name": "AC007906.2",
+      "gene_id_base": "ENSG00000277639",
+      "log2FC": -1.6664635964594785,
+      "p_value": 2.8877573809640525e-11,
+      "mapping_status": "Not mapped",
+      "mapping_reason": "No matching STRING protein_id in refined STRING gene_map for this DEG."
+    },
+    {
+      "gene_name": "HOATZ",
+      "gene_id_base": "ENSG00000183644",
+      "log2FC": -1.6593717791542204,
+      "p_value": 1.533019853179094e-15,
+      "mapping_status": "Not mapped",
+      "mapping_reason": "No matching STRING protein_id in refined STRING gene_map for this DEG."
+    },
+    {
+      "gene_name": "CYRIA",
+      "gene_id_base": "ENSG00000197872",
+      "log2FC": -1.5287554104418493,
+      "p_value": 3.879059045092688e-152,
+      "mapping_status": "Not mapped",
+      "mapping_reason": "No matching STRING protein_id in refined STRING gene_map for this DEG."
+    },
+    {
+      "gene_name": "GGTA1",
+      "gene_id_base": "ENSG00000204136",
+      "log2FC": -1.409003569140741,
+      "p_value": 9.873960371985781e-144,
+      "mapping_status": "Not mapped",
+      "mapping_reason": "No matching STRING protein_id in refined STRING gene_map for this DEG."
+    },
+    {
+      "gene_name": "DNAAF6",
+      "gene_id_base": "ENSG00000080572",
+      "log2FC": -1.3140536853475717,
+      "p_value": 8.828787404803497e-12,
+      "mapping_status": "Not mapped",
+      "mapping_reason": "No matching STRING protein_id in refined STRING gene_map for this DEG."
+    },
+    {
+      "gene_name": "AC136428.1",
+      "gene_id_base": "ENSG00000259680",
+      "log2FC": 1.2367468249096059,
+      "p_value": 1.346450052568838e-22,
+      "mapping_status": "Not mapped",
+      "mapping_reason": "No matching STRING protein_id in refined STRING gene_map for this DEG."
+    },
+    {
+      "gene_name": "GAS7",
+      "gene_id_base": "ENSG00000007237",
+      "log2FC": -1.2179672199209812,
+      "p_value": 4.0554675591492694e-45,
+      "mapping_status": "Not mapped",
+      "mapping_reason": "No matching STRING protein_id in refined STRING gene_map for this DEG."
+    },
+    {
+      "gene_name": "SPRING1",
+      "gene_id_base": "ENSG00000111412",
+      "log2FC": -1.1755767080706097,
+      "p_value": 1.2239623116436822e-77,
+      "mapping_status": "Not mapped",
+      "mapping_reason": "No matching STRING protein_id in refined STRING gene_map for this DEG."
+    },
+    {
+      "gene_name": "GFUS",
+      "gene_id_base": "ENSG00000104522",
+      "log2FC": 1.1752016774278768,
+      "p_value": 1.621496245120809e-118,
+      "mapping_status": "Not mapped",
+      "mapping_reason": "No matching STRING protein_id in refined STRING gene_map for this DEG."
+    },
+    {
+      "gene_name": "DNAI3",
+      "gene_id_base": "ENSG00000162643",
+      "log2FC": -1.121253305673456,
+      "p_value": 1.0038811500019622e-11,
+      "mapping_status": "Not mapped",
+      "mapping_reason": "No matching STRING protein_id in refined STRING gene_map for this DEG."
+    },
+    {
+      "gene_name": "ERN2",
+      "gene_id_base": "ENSG00000134398",
+      "log2FC": 1.085703125455057,
+      "p_value": 4.895410697158607e-13,
+      "mapping_status": "Not mapped",
+      "mapping_reason": "No matching STRING protein_id in refined STRING gene_map for this DEG."
+    }
+  ],
+  "source": {
+    "deg": "hdfs://master11:9000/drugtarget/data/analysis/gdc_deg_result",
+    "mapped": "hdfs://master11:9000/drugtarget/data/analysis/deg_mapped_proteins"
+  }
+}

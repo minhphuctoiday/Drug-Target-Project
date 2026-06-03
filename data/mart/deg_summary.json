@@ -1,0 +1,19 @@
+{
+  "items": [
+    {
+      "deg_direction": "Upregulated",
+      "gene_count": 906
+    },
+    {
+      "deg_direction": "Not significant",
+      "gene_count": 17346
+    },
+    {
+      "deg_direction": "Downregulated",
+      "gene_count": 1692
+    }
+  ],
+  "source": "hdfs://master11:9000/drugtarget/data/analysis/gdc_deg_result",
+  "x_axis": "DEG status",
+  "y_axis": "number of genes"
+}

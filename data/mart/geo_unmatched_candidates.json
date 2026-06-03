@@ -1,0 +1,167 @@
+{
+  "items": [
+    {
+      "rank": 11,
+      "gene_name": "HBA2",
+      "protein_id": "9606.ENSP00000251595",
+      "final_score": 0.4367090473512816,
+      "geo_validation_mode": "tumor_cohort_expression_support",
+      "geo_match_status": "Not Found",
+      "geo_support_level": "Not Found"
+    },
+    {
+      "rank": 13,
+      "gene_name": "SFTPA1",
+      "protein_id": "9606.ENSP00000397082",
+      "final_score": 0.4297977667865981,
+      "geo_validation_mode": "tumor_cohort_expression_support",
+      "geo_match_status": "Not Found",
+      "geo_support_level": "Not Found"
+    },
+    {
+      "rank": 15,
+      "gene_name": "ITLN2",
+      "protein_id": "9606.ENSP00000357008",
+      "final_score": 0.4232682405622134,
+      "geo_validation_mode": "tumor_cohort_expression_support",
+      "geo_match_status": "Not Found",
+      "geo_support_level": "Not Found"
+    },
+    {
+      "rank": 16,
+      "gene_name": "LGI3",
+      "protein_id": "9606.ENSP00000302297",
+      "final_score": 0.4185213173901352,
+      "geo_validation_mode": "tumor_cohort_expression_support",
+      "geo_match_status": "Not Found",
+      "geo_support_level": "Not Found"
+    },
+    {
+      "rank": 18,
+      "gene_name": "SFTPA2",
+      "protein_id": "9606.ENSP00000361400",
+      "final_score": 0.40855030207380616,
+      "geo_validation_mode": "tumor_cohort_expression_support",
+      "geo_match_status": "Not Found",
+      "geo_support_level": "Not Found"
+    },
+    {
+      "rank": 20,
+      "gene_name": "PEBP4",
+      "protein_id": "9606.ENSP00000256404",
+      "final_score": 0.40196785427351633,
+      "geo_validation_mode": "tumor_cohort_expression_support",
+      "geo_match_status": "Not Found",
+      "geo_support_level": "Not Found"
+    },
+    {
+      "rank": 26,
+      "gene_name": "INMT",
+      "protein_id": "9606.ENSP00000013222",
+      "final_score": 0.3873247008743732,
+      "geo_validation_mode": "tumor_cohort_expression_support",
+      "geo_match_status": "Not Found",
+      "geo_support_level": "Not Found"
+    },
+    {
+      "rank": 28,
+      "gene_name": "VEGFD",
+      "protein_id": "9606.ENSP00000297904",
+      "final_score": 0.3864980895439419,
+      "geo_validation_mode": "tumor_cohort_expression_support",
+      "geo_match_status": "Not Found",
+      "geo_support_level": "Not Found"
+    },
+    {
+      "rank": 35,
+      "gene_name": "LRRK2",
+      "protein_id": "9606.ENSP00000298910",
+      "final_score": 0.37194981436043545,
+      "geo_validation_mode": "tumor_cohort_expression_support",
+      "geo_match_status": "Not Found",
+      "geo_support_level": "Not Found"
+    },
+    {
+      "rank": 36,
+      "gene_name": "MCEMP1",
+      "protein_id": "9606.ENSP00000329920",
+      "final_score": 0.3710457889542049,
+      "geo_validation_mode": "tumor_cohort_expression_support",
+      "geo_match_status": "Not Found",
+      "geo_support_level": "Not Found"
+    },
+    {
+      "rank": 37,
+      "gene_name": "GKN2",
+      "protein_id": "9606.ENSP00000329292",
+      "final_score": 0.3699705023885679,
+      "geo_validation_mode": "tumor_cohort_expression_support",
+      "geo_match_status": "Not Found",
+      "geo_support_level": "Not Found"
+    },
+    {
+      "rank": 41,
+      "gene_name": "FAM83A",
+      "protein_id": "9606.ENSP00000428876",
+      "final_score": 0.359139352928327,
+      "geo_validation_mode": "tumor_cohort_expression_support",
+      "geo_match_status": "Not Found",
+      "geo_support_level": "Not Found"
+    },
+    {
+      "rank": 48,
+      "gene_name": "GPIHBP1",
+      "protein_id": "9606.ENSP00000480053",
+      "final_score": 0.3514206253327946,
+      "geo_validation_mode": "tumor_cohort_expression_support",
+      "geo_match_status": "Not Found",
+      "geo_support_level": "Not Found"
+    },
+    {
+      "rank": 49,
+      "gene_name": "WNT3A",
+      "protein_id": "9606.ENSP00000284523",
+      "final_score": 0.35120455751031165,
+      "geo_validation_mode": "tumor_cohort_expression_support",
+      "geo_match_status": "Not Found",
+      "geo_support_level": "Not Found"
+    },
+    {
+      "rank": 58,
+      "gene_name": "RTKN2",
+      "protein_id": "9606.ENSP00000362894",
+      "final_score": 0.34442007766915134,
+      "geo_validation_mode": "tumor_cohort_expression_support",
+      "geo_match_status": "Not Found",
+      "geo_support_level": "Not Found"
+    },
+    {
+      "rank": 61,
+      "gene_name": "CDK1",
+      "protein_id": "9606.ENSP00000378699",
+      "final_score": 0.34183457617218366,
+      "geo_validation_mode": "tumor_cohort_expression_support",
+      "geo_match_status": "Not Found",
+      "geo_support_level": "Not Found"
+    },
+    {
+      "rank": 71,
+      "gene_name": "MS4A15",
+      "protein_id": "9606.ENSP00000386022",
+      "final_score": 0.3361722857514601,
+      "geo_validation_mode": "tumor_cohort_expression_support",
+      "geo_match_status": "Not Found",
+      "geo_support_level": "Not Found"
+    },
+    {
+      "rank": 72,
+      "gene_name": "CAVIN2",
+      "protein_id": "9606.ENSP00000305675",
+      "final_score": 0.33472516436683586,
+      "geo_validation_mode": "tumor_cohort_expression_support",
+      "geo_match_status": "Not Found",
+      "geo_support_level": "Not Found"
+    }
+  ],
+  "source": "hdfs://master11:9000/drugtarget/data/analysis/geo_validation_result"
+}

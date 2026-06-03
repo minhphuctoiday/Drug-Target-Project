@@ -1,0 +1,35 @@
+{
+  "items": [
+    {
+      "cluster_id": 0,
+      "num_candidates": 315,
+      "avg_abs_log2FC": 3.0002574921499305,
+      "avg_weighted_degree": 415.92028571428546,
+      "avg_combined_score": 568.4919810938302,
+      "avg_num_interactions": 98.93968253968254,
+      "avg_final_score": 0.2962719438536958,
+      "candidate_group": "High expression + high network"
+    },
+    {
+      "cluster_id": 1,
+      "num_candidates": 1078,
+      "avg_abs_log2FC": 1.4794529051451757,
+      "avg_weighted_degree": 198.99968089053797,
+      "avg_combined_score": 518.5278551991738,
+      "avg_num_interactions": 27.887755102040817,
+      "avg_final_score": 0.1672109210297327,
+      "candidate_group": "Expression-driven"
+    },
+    {
+      "cluster_id": 2,
+      "num_candidates": 1186,
+      "avg_abs_log2FC": 1.4733770782457636,
+      "avg_weighted_degree": 638.8713220910623,
+      "avg_combined_score": 599.0315019041534,
+      "avg_num_interactions": 182.6610455311973,
+      "avg_final_score": 0.20911224272104928,
+      "candidate_group": "High expression + high network"
+    }
+  ],
+  "source": "hdfs://master11:9000/drugtarget/data/analysis/ml_cluster_summary"
+}

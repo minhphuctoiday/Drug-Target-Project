@@ -1,0 +1,25 @@
+{
+  "items": [
+    {
+      "k": 2,
+      "silhouette_score": 0.495447590208862
+    },
+    {
+      "k": 3,
+      "silhouette_score": 0.5048944122268278
+    },
+    {
+      "k": 4,
+      "silhouette_score": 0.396131544800113
+    },
+    {
+      "k": 5,
+      "silhouette_score": 0.3986930383078672
+    },
+    {
+      "k": 6,
+      "silhouette_score": 0.34725488497701457
+    }
+  ],
+  "source": "hdfs://master11:9000/drugtarget/data/analysis/ml_k_selection"
+}

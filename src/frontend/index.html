@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LUAD Protein Target Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <span class="brand-mark">DT</span>
+          <div>
+            <strong>LUAD Target Atlas</strong>
+            <small>Research prioritization dashboard</small>
+          </div>
+        </div>
+        <nav class="nav-list" aria-label="Dashboard tabs">
+          <button class="nav-btn active" data-tab="overview">Overview</button>
+          <button class="nav-btn" data-tab="qc">GDC QC</button>
+          <button class="nav-btn" data-tab="deg">Differential Expression</button>
+          <button class="nav-btn" data-tab="mapping">Gene-to-Protein Mapping</button>
+          <button class="nav-btn" data-tab="network">PPI Network</button>
+          <button class="nav-btn" data-tab="ranking">Candidate Ranking</button>
+          <button class="nav-btn" data-tab="geo">GEO Support</button>
+          <button class="nav-btn" data-tab="ml">ML Clustering</button>
+          <button class="nav-btn" data-tab="ai">AI Assistant</button>
+        </nav>
+        <div class="status-box">
+          <span class="status-dot"></span>
+          <span id="health-label">Loading API status</span>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">TCGA/GDC expression + STRING PPI + GEO tumor-cohort support</p>
+            <h1>Candidate Protein Target Prioritization</h1>
+          </div>
+          <div class="topbar-actions">
+            <span class="mode-chip">AI UI only</span>
+            <span class="mode-chip" id="source-chip">real mart</span>
+          </div>
+        </header>
+
+        <section class="panel active" id="tab-overview">
+          <div class="section-head">
+            <div>
+              <h2>Overview</h2>
+              <p id="overview-summary">Pipeline-level summary.</p>
+            </div>
+          </div>
+          <div class="kpi-grid" id="overview-kpis"></div>
+          <div class="chart-grid two">
+            <article class="panel-block wide">
+              <h3>Pipeline Flow</h3>
+              <div class="pipeline-flow" id="pipeline-flow"></div>
+            </article>
+            <article class="panel-block">
+              <h3>Evidence Interpretation</h3>
+              <p class="copy-block">This dashboard ranks candidate protein targets for further study. It does not claim cancer causality, clinical validation, diagnosis, treatment efficacy, or proven therapy.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel" id="tab-qc">
+          <div class="section-head">
+            <div>
+              <h2>Phase 1: GDC Data Quality Control</h2>
+              <p>QC views show retained samples and reasons for exclusion before downstream analysis.</p>
+            </div>
+          </div>
+          <div class="chart-grid two">
+            <article class="panel-block"><h3>Sample Count Before and After QC</h3><canvas id="qc-sample-chart"></canvas></article>
+            <article class="panel-block"><h3 data-help="Counts samples removed by QC flags from refined/gdc/quality_check. In this real run, exclusions come from detected-gene outliers.">Exclusion Reasons</h3><canvas id="qc-exclusion-chart"></canvas></article>
+            <article class="panel-block"><h3>Library Size Distribution</h3><canvas id="qc-library-chart"></canvas></article>
+            <article class="panel-block"><h3>Zero Gene Rate</h3><canvas id="qc-zero-chart"></canvas></article>
+          </div>
+        </section>
+
+        <section class="panel" id="tab-deg">
+          <div class="section-head">
+            <div>
+              <h2>Phase 2: Differential Expression</h2>
+              <p>Volcano and top-gene views summarize tumor-vs-normal expression dysregulation.</p>
+            </div>
+            <div class="controls chart-controls">
+              <label>Top candidates <input id="volcano-highlight" type="number" min="1" max="100" value="20"></label>
+              <label class="check"><input id="volcano-top-only" type="checkbox" checked> Top N only</label>
+              <label class="check"><input class="volcano-color-filter" type="checkbox" value="top" checked><span class="legend-swatch" style="background:#c98721"></span>Top</label>
+              <label class="check"><input class="volcano-color-filter" type="checkbox" value="up" checked><span class="legend-swatch" style="background:#c94b5b"></span>Up</label>
+              <label class="check"><input class="volcano-color-filter" type="checkbox" value="down" checked><span class="legend-swatch" style="background:#3d6eb3"></span>Down</label>
+              <label class="check"><input class="volcano-color-filter" type="checkbox" value="not" checked><span class="legend-swatch" style="background:#8a9892"></span>Not DEG</label>
+              <label class="control-inline range-control">Zoom <input id="volcano-zoom" type="range" min="1" max="30" step="0.1" value="1"><output id="volcano-zoom-value">1x</output></label>
+              <button id="volcano-reset" type="button">Reset</button>
+            </div>
+          </div>
+          <div class="chart-grid two">
+            <article class="panel-block wide"><h3 data-help="Each point is a Phase 2 gene. X is log2FC tumor vs normal; Y is -log10(p_value), capped for plotting. Wheel or pinch on the chart to zoom; drag to pan. Labels appear only when the visible region is sparse enough.">Volcano Plot</h3><canvas id="volcano-chart"></canvas></article>
+            <article class="panel-block"><h3>DEG Summary</h3><canvas id="deg-summary-chart"></canvas></article>
+            <article class="panel-block"><h3>Top DEG by Absolute log2FC</h3><canvas id="top-deg-chart"></canvas></article>
+            <article class="panel-block wide"><h3 data-help="Phase 1 QC-passed log2 TPM expression. Rows are top DEG genes; columns are selected tumor and normal cases. Blue means lower log2 TPM, red means higher log2 TPM.">Top Gene Heatmap</h3><canvas id="heatmap-chart"></canvas></article>
+          </div>
+        </section>
+
+        <section class="panel" id="tab-mapping">
+          <div class="section-head">
+            <div>
+              <h2>Phase 3: Gene-to-Protein Mapping</h2>
+              <p>Mapping views audit how DEG rows become STRING protein candidates.</p>
+            </div>
+          </div>
+          <div class="chart-grid two">
+            <article class="panel-block"><h3>Mapping Success</h3><canvas id="mapping-summary-chart"></canvas></article>
+            <article class="panel-block"><h3>Mapping Confidence</h3><canvas id="mapping-confidence-chart"></canvas></article>
+            <article class="panel-block wide"><h3 data-help="DEG genes that did not join to a STRING protein_id in the refined STRING gene_map. Use this audit to see which expression hits are excluded before PPI and target scoring.">Unmapped Genes Audit</h3><div class="table-wrap" id="unmapped-table"></div></article>
+          </div>
+        </section>
+
+        <section class="panel" id="tab-network">
+          <div class="section-head">
+            <div>
+              <h2>Phase 4: Protein-Protein Interaction Network</h2>
+              <p>Interactive STRING PPI graph for candidate protein targets.</p>
+            </div>
+            <div class="controls">
+              <label>Top N <select id="network-top"><option>20</option><option selected>50</option><option>100</option></select></label>
+              <label>Min score <select id="network-min"><option value="0.4">0.4</option><option value="0.7">0.7</option></select></label>
+              <label>Cluster <select id="network-cluster"><option value="">All</option></select></label><label>Direction <select id="network-direction"><option value="">All</option><option>Upregulated</option><option>Downregulated</option></select></label><label>GEO <select id="network-geo"><option value="">All support levels</option><option>Strong GEO support</option><option>Moderate GEO support</option><option>Limited GEO support</option><option>Not Found</option></select></label><label class="range-control">Zoom <input id="network-zoom" type="range" min="1" max="30" step="0.1" value="1"><output id="network-zoom-value">1x</output></label><button id="network-reset" type="button">Reset</button>
+            </div>
+          </div>
+          <div class="chart-grid two">
+            <article class="panel-block wide"><h3 data-help="Nodes are top candidate proteins from the real target mart. Edges are real STRING interactions among those proteins; width/opacity follow STRING edge_weight_protein.">Interactive PPI Network</h3><canvas id="network-chart"></canvas><p class="hint">Click a node to open target detail. Drag to pan after zooming. Gene labels appear when the graph has enough space.</p><div class="chart-meta" id="network-explain"></div></article>
+            <article class="panel-block"><h3>Top Proteins by Weighted Degree</h3><canvas id="network-top-chart"></canvas></article>
+            <article class="panel-block"><h3 data-help="Distribution of edge_weight_protein for real STRING edges among the selected top candidate proteins.">STRING Score Distribution</h3><canvas id="network-score-chart"></canvas></article>
+          </div>
+        </section>
+
+        <section class="panel" id="tab-ranking">
+          <div class="section-head">
+            <div>
+              <h2>Phase 5: Candidate Target Scoring</h2>
+              <p>Ranking combines expression, PPI context and STRING confidence for candidate protein targets.</p>
+            </div>
+            <div class="controls">
+              <input id="candidate-search" type="search" placeholder="Search gene or protein">
+              <select id="candidate-cluster"><option value="">All clusters</option></select>
+              <select id="candidate-geo"><option value="">All GEO support</option><option>Strong GEO support</option><option>Moderate GEO support</option><option>Limited GEO support</option><option>Not Found</option></select>
+            </div>
+          </div>
+          <div class="chart-grid two">
+            <article class="panel-block"><h3>Top Candidate Ranking</h3><canvas id="ranking-chart"></canvas></article>
+            <article class="panel-block"><h3>Score Decomposition</h3><canvas id="score-chart"></canvas><p class="hint" id="score-title">Select a target to inspect score components.</p></article>
+            <article class="panel-block wide"><h3>Candidate Table</h3><div class="table-wrap" id="candidate-table"></div></article>
+          </div>
+        </section>
+
+        <section class="panel" id="tab-geo">
+          <div class="section-head">
+            <div>
+              <h2>Phase 6: GEO Cohort Support</h2>
+              <p><strong>Mode: tumor-cohort expression support.</strong> GEO contains tumor samples only, so support metrics summarize cohort coverage and within-cohort expression percentile; they are not tumor-vs-normal validation.</p>
+            </div>
+          </div>
+          <div class="chart-grid two">
+            <article class="panel-block"><h3>Support Summary</h3><canvas id="geo-summary-chart"></canvas></article>
+            <article class="panel-block"><h3>Top GEO-Supported Candidates</h3><canvas id="geo-top-supported-chart"></canvas></article>
+            <article class="panel-block wide"><h3>GDC Score vs GEO Support</h3><canvas id="geo-scatter-chart"></canvas></article>
+            <article class="panel-block wide"><h3>Top Candidate GEO Overlap</h3><div class="table-wrap" id="geo-overlap-table"></div></article>
+            <article class="panel-block wide"><h3>Unmatched Candidates</h3><div class="table-wrap" id="geo-unmatched-table"></div></article>
+          </div>
+        </section>
+
+        <section class="panel" id="tab-ml">
+          <div class="section-head">
+            <div>
+              <h2>Phase 7: ML Clustering</h2>
+              <p>Unsupervised clustering groups candidates by expression and protein-network evidence.</p>
+            </div>
+            <div class="controls">
+              <select id="ml-cluster"><option value="">All clusters</option></select>
+              <label class="check"><input id="ml-top-only" type="checkbox"> Top only</label><label class="range-control">Zoom <input id="ml-zoom" type="range" min="1" max="30" step="0.1" value="1"><output id="ml-zoom-value">1x</output></label><button id="ml-reset" type="button">Reset</button>
+            </div>
+          </div>
+          <div class="chart-grid two">
+            <article class="panel-block"><h3>Silhouette Score by k</h3><canvas id="ml-k-chart"></canvas></article>
+            <article class="panel-block wide"><h3>Cluster Scatter Plot</h3><canvas id="ml-scatter-chart"></canvas></article>
+            <article class="panel-block"><h3>Cluster Summary</h3><canvas id="ml-summary-chart"></canvas></article>
+            <article class="panel-block wide"><h3>Cluster Detail Table</h3><div class="table-wrap" id="ml-cluster-table"></div></article>
+          </div>
+        </section>
+
+        <section class="panel" id="tab-ai">
+          <div class="section-head">
+            <div>
+              <h2>AI Assistant</h2>
+              <p>This is interface only. API calls, RAG, finetune and model deployment are intentionally not connected.</p>
+            </div>
+          </div>
+          <div class="assistant-layout">
+            <article class="panel-block">
+              <h3>Ask About the Project</h3>
+              <div class="chat-log" id="chat-log"></div>
+              <form class="chat-form" id="chat-form">
+                <input id="chat-input" type="text" placeholder="Ask about SFTPC ranking, GEO mode, PPI context, or limitations">
+                <button type="submit">Send</button>
+              </form>
+            </article>
+            <article class="panel-block">
+              <h3>Integration Hooks</h3>
+              <div class="hook-list">
+                <div><strong>Model API</strong><span>Not connected</span></div>
+                <div><strong>RAG Retrieval</strong><span>Not connected</span></div>
+                <div><strong>Finetune</strong><span>Not connected</span></div>
+                <div><strong>Current target</strong><span id="chat-target">None selected</span></div>
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <aside class="drawer" id="target-drawer" aria-live="polite">
+      <button class="drawer-close" id="drawer-close" aria-label="Close target detail">x</button>
+      <div id="drawer-content"></div>
+    </aside>
+
+    <script src="app.js"></script>
+  </body>
+</html>

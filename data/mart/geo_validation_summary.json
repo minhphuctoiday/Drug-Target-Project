@@ -1,0 +1,21 @@
+{
+  "mode": "tumor_cohort_expression_support",
+  "description": "GEO contains tumor samples only. Support metrics summarize expression coverage and within-cohort expression percentile; they do not re-rank GDC + STRING candidates.",
+  "items": [
+    {
+      "geo_support_level": "Moderate GEO support",
+      "count": 47,
+      "percentage": 47.0
+    },
+    {
+      "geo_support_level": "Limited GEO support",
+      "count": 35,
+      "percentage": 35.0
+    },
+    {
+      "geo_support_level": "Not Found",
+      "count": 18,
+      "percentage": 18.0
+    }
+  ]
+}

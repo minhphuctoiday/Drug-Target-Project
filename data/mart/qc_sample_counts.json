@@ -1,0 +1,19 @@
+{
+  "items": [
+    {
+      "sample_group": "normal",
+      "samples_before_qc": 59,
+      "samples_after_qc": 59,
+      "samples_removed": 0
+    },
+    {
+      "sample_group": "tumor",
+      "samples_before_qc": 542,
+      "samples_after_qc": 531,
+      "samples_removed": 11
+    }
+  ],
+  "source": "hdfs://master11:9000/drugtarget/data/refined/gdc/quality_check",
+  "x_axis": "sample_group",
+  "y_axis": "number of samples"
+}

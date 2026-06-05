@@ -1,5 +1,7 @@
 const state = {
   currentTarget: null,
+  pipelineIndex: 0,
+  pipelineDirection: "next",
   networkHit: [],
   hits: {},
   data: {},
@@ -33,6 +35,202 @@ function geoSupportColor(level) {
   return geoSupportColors[level] || colors.gray;
 }
 
+const navigableTabs = new Set(["overview", "pipeline", "ranking", "geo", "ai"]);
+const overviewGroups = [
+  {
+    title: "Dữ liệu đầu vào",
+    cards: [
+      { label: "GDC sample before processing", match: "GDC samples before QC", unit: "samples" },
+      { label: "GDC sample after processing", match: "GDC samples after QC", unit: "samples" },
+      { label: "Tumor", match: "Tumor samples", unit: "samples" },
+      { label: "Normal", match: "Normal samples", unit: "samples" }
+    ]
+  },
+  {
+    title: "Kết quả",
+    cards: [
+      { label: "Top candidate", match: "Top candidate targets", unit: "targets" },
+      { label: "Protein candidates", match: "Protein candidates", unit: "proteins" }
+    ]
+  }
+];
+const targetFeatureDefinitions = [
+  { display: "Số kết nối (Degree)", raw: "degree", meaning: "Số protein mà protein này tương tác trực tiếp." },
+  { display: "Tổng trọng số kết nối", raw: "weighted_degree", meaning: "Tổng độ tin cậy của tất cả các cạnh nối tới protein." },
+  { display: "Độ tin cậy trung bình", raw: "avg_combined_score", meaning: "Trung bình điểm STRING combined_score của các cạnh." },
+  { display: "Độ tin cậy cao nhất", raw: "max_combined_score", meaning: "Cạnh tương tác mạnh nhất của protein." },
+  { display: "Số kết nối tin cậy cao", raw: "num_high_confidence_edges", meaning: "Số cạnh có combined_score >= 0.7." }
+];
+const pipelineSlides = [
+  {
+    step: "Bước 1",
+    title: "NiFi Ingestion",
+    subtitle: "Đưa GDC, GEO và STRING vào raw HDFS",
+    icon: `<svg viewBox="0 0 64 64" focusable="false"><path d="M12 18h14v14H12zM38 10h14v14H38zM38 40h14v14H38z" fill="none" stroke="currentColor" stroke-width="4"/><path d="M26 25h8c4 0 4-8 8-8M26 25h8c4 0 4 22 8 22" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>`,
+    technologies: ["Apache NiFi", "GDC Portal", "NCBI GEO", "STRING", "HDFS"],
+    description: "NiFi chịu trách nhiệm tải dữ liệu raw và ghi vào HDFS trước khi bất kỳ bước phân tích nào chạy.",
+    details: [
+      { title: "Nguồn GDC", text: "Dữ liệu TCGA-LUAD từ GDC là nguồn chính cho biểu hiện gene và nhãn Tumor/Normal. NiFi đọc manifest, tải file và giữ metadata ingest để biết file nào đến từ đâu." },
+      { title: "Nguồn GEO và STRING", text: "GEO bổ sung cohort hỗ trợ bên ngoài; STRING cung cấp aliases, protein nodes và cạnh PPI. Các nguồn này đi cùng pipeline để downstream có thể mapping và kiểm chứng candidate." },
+      { title: "Kiểm soát luồng tải", text: "InvokeHTTP tải file, RouteOnAttribute kiểm tra HTTP status, UpdateAttribute gắn metadata ingest, PutHDFS ghi xuống HDFS. File lỗi đi theo nhánh lỗi riêng để audit." },
+      { title: "Raw HDFS", text: "Raw layer được xem là bất biến: không rename, không lọc, không sửa nội dung. Mọi cleaning và analysis đọc từ raw/refined để pipeline có thể replay." }
+    ],
+    metrics: [
+      { label: "GDC trước xử lý", match: "GDC samples before QC" },
+      { label: "Nguồn ingest", fallback: "GDC, GEO, STRING" },
+      { label: "Định dạng downstream", fallback: "HDFS + Parquet" }
+    ],
+    why: "NiFi phù hợp cho ingest vì bước này cần retry, route lỗi và audit trạng thái tải file. Tách ingest khỏi analysis giúp dữ liệu gốc không bị thay đổi khi logic phân tích được cải tiến."
+  },
+  {
+    step: "Bước 2",
+    title: "Cleaning & Refined Data",
+    subtitle: "Chuẩn hóa dữ liệu trước khi phân tích",
+    icon: `<svg viewBox="0 0 64 64" focusable="false"><path d="M14 14h34v38H14z" fill="none" stroke="currentColor" stroke-width="4"/><path d="M22 24h18M22 34h18M22 44h12M46 16l8 8" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>`,
+    technologies: ["PySpark", "HDFS", "Parquet", "Hive", "QC reports"],
+    description: "Cleaning chuyển raw data thành refined Parquet có schema rõ ràng, ID thống nhất và có thể join giữa GDC, GEO, STRING.",
+    details: [
+      { title: "Chuẩn hóa schema", text: "Tên cột được đưa về snake_case; sample_id, case_id, gene_id, gene_name và source được chuẩn hóa để các notebook downstream không phải đoán tên trường." },
+      { title: "Chuẩn hóa missing/null", text: "Các giá trị như NA, Unknown, not available được quy về null trong Parquet. Điều này giúp Spark SQL xử lý missing nhất quán thay vì coi chuỗi rác là dữ liệu thật." },
+      { title: "Expression gene-level", text: "Expression được đưa về dạng gene-level, tránh duplicate key ngoài ý muốn và không trộn đơn vị expression nếu chưa có cột expression_unit." },
+      { title: "QC output", text: "Cleaning tạo QC report cho sample, gene, missingness và batch. Các report này là bằng chứng vì sao một dòng dữ liệu được giữ hoặc loại." }
+    ],
+    metrics: [
+      { label: "GDC trước QC", match: "GDC samples before QC" },
+      { label: "GDC sau QC", match: "GDC samples after QC" },
+      { label: "Refined format", fallback: "Parquet" }
+    ],
+    why: "Cleaning được đặt trước DE/DA để mọi bước sau đọc cùng một schema ổn định. Nếu không làm sạch ở tầng refined, lỗi nhỏ như khác tên gene hoặc missing value dạng chuỗi có thể lan sang mapping, scoring và ML."
+  },
+  {
+    step: "Bước 3",
+    title: "GDC QC",
+    subtitle: "Giữ sample đủ chất lượng trước Tumor vs Normal",
+    icon: `<svg viewBox="0 0 64 64" focusable="false"><path d="M12 50h44" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M18 42V28M32 42V16M46 42V24" stroke="currentColor" stroke-width="6" stroke-linecap="round"/><path d="M20 18l8 8 16-16" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+    technologies: ["Hive", "PySpark", "Spark SQL", "HDFS", "Parquet"],
+    description: "Phase QC đọc refined GDC, loại sample outlier và tạo expression protein-coding đã sẵn sàng cho DE.",
+    details: [
+      { title: "Đọc dữ liệu QC", text: "Notebook ưu tiên Hive table gdc.quality_check và gdc.gdc_counts_clean_protein_coding; nếu Hive table chưa có thì fallback sang Parquet refined trên HDFS." },
+      { title: "Loại sample outlier", text: "Sample bị loại nếu có outlier về library size hoặc số gene phát hiện được. Đây là hai tín hiệu thường phản ánh sample quá ít dữ liệu hoặc profile expression bất thường." },
+      { title: "Giữ protein-coding", text: "Pipeline chỉ giữ protein-coding expression vì downstream cần map gene sang protein target và STRING PPI." },
+      { title: "Chuẩn hóa thang expression", text: "TPM được chuyển sang log2 TPM để giảm ảnh hưởng của giá trị expression quá lớn và làm so sánh Tumor/Normal ổn định hơn.", code: "log2_tpm = log2(tpm + 1)" }
+    ],
+    metrics: [
+      { label: "Tumor sau QC", match: "Tumor samples" },
+      { label: "Normal sau QC", match: "Normal samples" },
+      { label: "GDC sau QC", match: "GDC samples after QC" }
+    ],
+    why: "QC là lớp bảo vệ cho thống kê DE: nếu sample lỗi đi vào so sánh Tumor/Normal, log2FC và p-value có thể phản ánh lỗi kỹ thuật thay vì khác biệt sinh học."
+  },
+  {
+    step: "Bước 4",
+    title: "Differential Expression",
+    subtitle: "Tìm gene khác biệt giữa Tumor và Normal",
+    icon: `<svg viewBox="0 0 64 64" focusable="false"><path d="M10 50h44" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M18 46V30M32 46V14M46 46V24" stroke="currentColor" stroke-width="6" stroke-linecap="round"/><circle cx="18" cy="24" r="5" fill="currentColor"/><circle cx="32" cy="10" r="5" fill="currentColor"/><circle cx="46" cy="18" r="5" fill="currentColor"/></svg>`,
+    technologies: ["PySpark", "Spark SQL", "HDFS", "Parquet", "Welch-style statistics"],
+    description: "DE tính mức độ khác biệt expression theo từng gene sau khi sample đã pass QC.",
+    details: [
+      { title: "Tách nhóm Tumor/Normal", text: "sample_group được normalize thành Tumor hoặc Normal. Gene chỉ được so sánh khi có dữ liệu ở cả hai nhóm." },
+      { title: "Tính trung bình và phương sai", text: "PySpark groupBy gene để tính mean_log2_tpm và variance theo từng nhóm, sau đó pivot về cùng một dòng Tumor/Normal." },
+      { title: "Tính log2FC và p-value", text: "log2FC là chênh lệch mean_log2_tpm giữa Tumor và Normal. p-value được tính bằng Welch-style t-stat để xử lý hai nhóm có phương sai/kích thước khác nhau." },
+      { title: "Ngưỡng significant", text: "Một gene được xem là DEG khi vừa đủ lớn về hiệu ứng expression vừa đủ mạnh về thống kê.", code: "|log2FC| >= 1 và p < 0.05" }
+    ],
+    metrics: [
+      { label: "Tumor", match: "Tumor samples" },
+      { label: "Normal", match: "Normal samples" },
+      { label: "Gene DEG", match: "Differentially expressed genes" }
+    ],
+    why: "DE là cầu nối từ dữ liệu expression sang danh sách gene ưu tiên. Dùng cả effect size và p-value giúp tránh chọn gene chỉ khác biệt rất nhỏ nhưng có p-value thấp do số mẫu lớn."
+  },
+  {
+    step: "Bước 5",
+    title: "DA - Gene to Protein Mapping",
+    subtitle: "Chuyển gene significant sang protein ứng viên",
+    icon: `<svg viewBox="0 0 64 64" focusable="false"><path d="M14 18h18M14 32h18M14 46h18M42 18h10M42 32h10M42 46h10" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M32 18h10M32 32h10M32 46h10" stroke="currentColor" stroke-width="2" stroke-dasharray="4 4"/></svg>`,
+    technologies: ["PySpark", "Hive", "STRING.gene_map", "HDFS", "Parquet"],
+    description: "DA chỉ giữ gene significant từ DE, chuẩn hóa tên gene và map sang STRING protein để chuẩn bị phân tích PPI.",
+    details: [
+      { title: "Chuẩn hóa tên gene", text: "Tên gene được trim và uppercase trước khi join. Bước này giảm lỗi do khoảng trắng, chữ hoa/thường hoặc alias không đồng nhất giữa GDC và STRING." },
+      { title: "Đọc STRING gene_map", text: "Pipeline ưu tiên Hive table STRING.gene_map; nếu Hive table chưa đăng ký thì fallback sang Parquet refined trên HDFS." },
+      { title: "Giữ mapping có protein_id", text: "Mapping hợp lệ cần protein_id, ensp_id và gene_confidence. protein_id là khóa chính để nối sang STRING edges/nodes." },
+      { title: "Audit gene không map", text: "Gene không nối được sang STRING protein vẫn được ghi audit, giúp biết expression hit nào bị loại trước PPI và scoring." }
+    ],
+    metrics: [
+      { label: "Gene DEG", match: "Differentially expressed genes" },
+      { label: "DEG map protein", match: "DEG mapped to proteins" },
+      { label: "Protein candidates", match: "Protein candidates" }
+    ],
+    why: "Drug target thực tế là protein hoặc sản phẩm protein. Mapping làm rõ gene nào có protein tương ứng trong STRING, đồng thời giữ audit để không biến mất dữ liệu một cách im lặng."
+  },
+  {
+    step: "Bước 6",
+    title: "DA - PPI Network & Target Score",
+    subtitle: "Tính bối cảnh mạng và điểm mục tiêu",
+    icon: `<svg viewBox="0 0 64 64" focusable="false"><circle cx="16" cy="18" r="7" fill="currentColor"/><circle cx="48" cy="16" r="7" fill="currentColor"/><circle cx="22" cy="48" r="7" fill="currentColor"/><circle cx="48" cy="44" r="7" fill="currentColor"/><path d="M22 20l20-3M18 25l4 23M27 45l15-3M47 23v14M22 23l22 20" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity="0.55"/></svg>`,
+    technologies: ["PySpark", "STRING edges/nodes", "Network features", "Min-max normalization", "Target scoring"],
+    description: "Protein ứng viên được đặt vào mạng PPI để tính feature mạng, sau đó kết hợp với tín hiệu DE và độ tin cậy STRING thành Target Score.",
+    details: [
+      { title: "Lọc cạnh PPI", text: "PySpark lọc STRING edges liên quan protein ứng viên. Cạnh được giữ khi edge_weight_protein >= 0.4; cạnh tin cậy cao dùng ngưỡng 0.7." },
+      { title: "Tính feature mạng", text: "Các feature mạng được tính theo từng protein trung tâm, rồi nối với nodes_protein để bổ sung degree và weighted degree đã có trong refined STRING." },
+      { title: "Biến mạng dễ đọc", text: "Tên hiển thị bên dưới thay cho biến thô, tooltip vẫn giữ tên biến gốc để dễ trace về notebook.", variables: targetFeatureDefinitions },
+      { title: "Chuẩn bị scoring", text: "Các feature expression, centrality và confidence được chuẩn hóa trước khi cộng trọng số để không biến nào áp đảo chỉ vì khác đơn vị đo." }
+    ],
+    metrics: [
+      { label: "Protein candidates", match: "Protein candidates" },
+      { label: "PPI edges", match: "PPI edges in top-target graph" },
+      { label: "DEG map protein", match: "DEG mapped to proteins" }
+    ],
+    score: {
+      formula: "TargetScore = w1 * DE_norm + w2 * Centrality_norm + w3 * Confidence_norm",
+      components: [
+        { term: "DE_norm", source: "|log2FoldChange| chuẩn hóa 0-1", reason: "Chọn biến này vì gene càng khác biệt giữa Tumor và Normal thì càng có tín hiệu sinh học mạnh để xem xét làm target.", normalize: "Chuẩn hóa riêng DE_norm để biên độ log2FC lớn không tự động lấn át các bằng chứng mạng." },
+        { term: "Centrality_norm", source: "weighted_degree chuẩn hóa 0-1", reason: "Chọn biến này vì protein càng trung tâm trong PPI network thì tác động tiềm năng lên mạng sinh học càng lớn.", normalize: "Chuẩn hóa riêng centrality vì weighted_degree là tổng trọng số mạng, khác đơn vị hoàn toàn với expression." },
+        { term: "Confidence_norm", source: "avg_combined_score chuẩn hóa 0-1", reason: "Chọn biến này để ưu tiên target có bằng chứng tương tác đáng tin từ STRING thay vì chỉ có nhiều cạnh yếu.", normalize: "Chuẩn hóa riêng confidence để điểm STRING 0-1000 có thể cộng công bằng với DE và centrality." }
+      ]
+    },
+    why: "Slide này tách rõ hai việc: PPI network cho biết protein nằm ở đâu trong mạng, còn Target Score gom nhiều bằng chứng đã chuẩn hóa. Cách này tránh xếp hạng chỉ dựa vào expression hoặc chỉ dựa vào độ trung tâm mạng."
+  },
+  {
+    step: "Bước 7",
+    title: "Candidate Ranking & GEO Support",
+    subtitle: "Xếp hạng candidate và đối chiếu cohort ngoài",
+    icon: `<svg viewBox="0 0 64 64" focusable="false"><path d="M14 48h36M20 42V22M32 42V14M44 42V30" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M14 16h8M14 24h8M42 12h10M42 20h10" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity="0.65"/></svg>`,
+    technologies: ["PySpark", "HDFS", "Parquet", "GEO support metrics", "Dashboard mart"],
+    description: "Ranking tạo danh sách target ưu tiên, còn GEO support cung cấp bằng chứng bổ sung từ cohort tumor-only bên ngoài.",
+    details: [
+      { title: "Weighted candidate ranking", text: "Final score kết hợp expression_score, protein_network_score và string_confidence_score theo trọng số Phase 5 đã chốt.", code: "0.5 expression + 0.3 network + 0.2 STRING confidence" },
+      { title: "Top candidate mart", text: "Các candidate được sắp theo final_score giảm dần và ghi vào mart để dashboard đọc nhanh thay vì tính lại toàn bộ pipeline." },
+      { title: "GEO support", text: "GEO hiện là tumor-only cohort, nên support được hiểu là coverage và percentile expression trong cohort, không phải validation Tumor vs Normal." },
+      { title: "Không đổi ranking bằng GEO", text: "GEO support được trình bày như bằng chứng phụ. Ranking chính vẫn đến từ GDC + STRING để tránh trộn mục tiêu scoring với cohort hỗ trợ." }
+    ],
+    metrics: [
+      { label: "Top candidate", match: "Top candidate targets" },
+      { label: "Có GEO support", match: "Candidates with GEO support" },
+      { label: "Protein candidates", match: "Protein candidates" }
+    ],
+    why: "Ranking cần ổn định và trace được về dữ liệu GDC + STRING. GEO được giữ riêng để người dùng thấy candidate nào có hỗ trợ ngoài, nhưng không làm thay đổi thứ hạng gốc."
+  },
+  {
+    step: "Bước 8",
+    title: "Machine Learning",
+    subtitle: "KMeans phân nhóm candidate, không tạo ranking",
+    icon: `<svg viewBox="0 0 64 64" focusable="false"><circle cx="18" cy="18" r="6" fill="currentColor"/><circle cx="30" cy="22" r="6" fill="currentColor"/><circle cx="22" cy="34" r="6" fill="currentColor"/><circle cx="46" cy="18" r="6" fill="currentColor" opacity="0.65"/><circle cx="48" cy="36" r="6" fill="currentColor" opacity="0.65"/><circle cx="36" cy="46" r="6" fill="currentColor" opacity="0.65"/><path d="M18 18l12 4M30 22l-8 12M46 18l2 18M48 36L36 46" stroke="currentColor" stroke-width="3" opacity="0.45"/></svg>`,
+    technologies: ["Spark ML", "KMeans", "VectorAssembler", "StandardScaler", "Silhouette score"],
+    description: "ML dùng các feature expression/network/STRING để phân cụm candidate thành nhóm có pattern giống nhau.",
+    details: [
+      { title: "Feature dùng cho ML", text: "ML dùng abs_log2FC, log_weighted_degree, avg_combined_score và log_num_interactions. final_score không được đưa vào feature ML vì nó đã là kết quả scoring." },
+      { title: "Scale feature", text: "StandardScaler đưa các feature về thang tương đương trước KMeans, tránh feature có đơn vị lớn quyết định toàn bộ cluster." },
+      { title: "Chọn k", text: "Pipeline thử nhiều giá trị k và dùng silhouette score để chọn cấu hình có mức tách nhóm tốt hơn." },
+      { title: "Diễn giải cluster", text: "Mỗi candidate nhận cluster_id và candidate_group để dashboard giải thích nhóm như high expression + high network, thay vì thay thế ranking." }
+    ],
+    metrics: [
+      { label: "ML clusters", match: "ML clusters" },
+      { label: "Top candidate", match: "Top candidate targets" },
+      { label: "Protein candidates", match: "Protein candidates" }
+    ],
+    why: "ML ở đây phục vụ diễn giải pattern downstream: các cluster giúp nhìn nhóm candidate giống nhau, còn quyết định ưu tiên vẫn dựa trên ranking có trọng số và có thể trace."
+  }
+];
 const help = {
   rank: "Rank from Phase 5 candidate scoring. Lower rank means higher priority in this pipeline.",
   gene_name: "Gene symbol associated with the candidate protein.",
@@ -729,10 +927,175 @@ function populateClusterControls() {
   });
 }
 
+function metricByName(metrics, name) {
+  return (metrics || []).find((metric) => metric.metric_name === name) || null;
+}
 function renderOverview(data) {
-  $("#overview-summary").textContent = data.summary;
-  $("#overview-kpis").innerHTML = data.metrics.map((metric) => `<article class="kpi-card"><strong>${fmt(metric.metric_value)}</strong><span>${esc(metric.metric_name)}</span><small>${esc(metric.metric_unit)} - ${esc(metric.phase_name)}</small></article>`).join("");
-  $("#pipeline-flow").innerHTML = data.pipeline.map((step, index) => `<div class="pipeline-step"><span>Step ${index + 1}</span><strong>${esc(step)}</strong></div>`).join("");
+  const container = $("#overview-stat-groups");
+  if (!container) return;
+  const metrics = data?.metrics || [];
+  container.innerHTML = overviewGroups.map((group) => {
+    const cards = group.cards.map((card) => {
+      const metric = metricByName(metrics, card.match);
+      const value = metric ? fmt(metric.metric_value) : "Không có dữ liệu";
+      const unit = metric ? (card.unit || metric.metric_unit || "") : "";
+      return `
+        <article class="overview-stat-card${metric ? "" : " missing"}">
+          <span>${esc(card.label)}</span>
+          <strong>${esc(value)}</strong>
+          ${unit ? `<small>${esc(unit)}</small>` : ""}
+        </article>
+      `;
+    }).join("");
+    return `
+      <section class="overview-stat-group" aria-label="${esc(group.title)}">
+        <h3>${esc(group.title)}</h3>
+        <div class="overview-stat-grid">${cards}</div>
+      </section>
+    `;
+  }).join("");
+}
+function overviewMetric(match) {
+  if (!match) return null;
+  return metricByName(state.data.overview?.metrics || [], match);
+}
+function renderVariableTable(items = []) {
+  if (!items.length) return "";
+  return `
+    <div class="pipeline-variable-table" aria-label="Biến mạng">
+      ${items.map((item) => `
+        <div class="pipeline-variable-row" title="${esc(item.raw)}">
+          <div>
+            <strong>${esc(item.display)}</strong>
+          </div>
+          <p>${esc(item.meaning)}</p>
+        </div>
+      `).join("")}
+    </div>
+  `;
+}
+function renderChipList(items = []) {
+  if (!items.length) return "";
+  return `<div class="pipeline-chip-list">${items.map((item) => `<span class="pipeline-chip" title="${esc(item.raw || item)}">${esc(item.display || item)}</span>`).join("")}</div>`;
+}
+function renderScoreBlock(score) {
+  if (!score) return "";
+  return `
+    <div class="pipeline-score-block">
+      <h3>Cách tính điểm mục tiêu (Target Score)</h3>
+      <div class="pipeline-formula">${esc(score.formula)}</div>
+      <div class="pipeline-score-components">
+        ${score.components.map((component) => `
+          <article class="pipeline-score-component">
+            <strong>${esc(component.term)}</strong>
+            <span>${esc(component.source)}</span>
+            <p>${esc(component.reason)}</p>
+            <p><em>${esc(component.normalize)}</em></p>
+          </article>
+        `).join("")}
+      </div>
+    </div>
+  `;
+}
+function renderPipelineSlide(animate = false) {
+  const slideEl = $("#pipeline-slide");
+  if (!slideEl) return;
+  const slide = pipelineSlides[state.pipelineIndex];
+  const detailHtml = slide.details.map((item) => `
+    <article class="pipeline-detail-card${item.variables ? " has-variable-table" : ""}">
+      <h3>${esc(item.title)}</h3>
+      <p>${esc(item.text)}</p>
+      ${item.code ? `<code>${esc(item.code)}</code>` : ""}
+      ${item.chips ? renderChipList(item.chips) : ""}
+      ${item.variables ? renderVariableTable(item.variables) : ""}
+    </article>
+  `).join("");
+  const metricHtml = slide.metrics.map((metric) => {
+    const item = overviewMetric(metric.match);
+    const hasValue = Boolean(item || metric.fallback);
+    const value = item ? esc(fmt(item.metric_value)) : esc(metric.fallback || "Không có dữ liệu");
+    const unit = item ? esc(item.metric_unit || "") : (metric.fallback ? "tham chiếu project" : "không có metric");
+    return `<div class="pipeline-metric${hasValue ? "" : " missing"}"><span>${esc(metric.label)}</span><strong>${value}</strong><small>${unit}</small></div>`;
+  }).join("");
+  slideEl.innerHTML = `
+    <div class="pipeline-slide-content${slide.score ? " is-score-layout" : ""}">
+      <div class="pipeline-hero">
+        <div class="pipeline-icon" aria-hidden="true">${slide.icon}</div>
+        <div>
+          <span class="pipeline-step-label">${esc(slide.step)} / ${pipelineSlides.length}</span>
+          <h3>${esc(slide.title)}</h3>
+          <p class="pipeline-subtitle">${esc(slide.subtitle)}</p>
+          <p>${esc(slide.description)}</p>
+          <div class="pipeline-tech-list" aria-label="Công nghệ sử dụng">
+            ${slide.technologies.map((tech) => `<span>${esc(tech)}</span>`).join("")}
+          </div>
+        </div>
+      </div>
+      <div class="pipeline-body-grid${slide.score ? " score-grid" : ""}">
+        <div class="pipeline-detail-grid">${detailHtml}</div>
+        <aside class="pipeline-side">
+          <h3>Chỉ số liên quan</h3>
+          <div class="pipeline-metric-grid">${metricHtml}</div>
+          ${renderScoreBlock(slide.score)}
+          <div class="pipeline-why">
+            <strong>Vì sao làm vậy?</strong>
+            <p>${esc(slide.why)}</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  `;
+  slideEl.dataset.direction = state.pipelineDirection;
+  if (animate) {
+    slideEl.classList.remove("is-animating");
+    void slideEl.offsetWidth;
+    slideEl.classList.add("is-animating");
+  }
+  const counter = $("#pipeline-counter");
+  if (counter) counter.textContent = `Bước ${state.pipelineIndex + 1} / ${pipelineSlides.length}`;
+  const prev = $("#pipeline-prev");
+  const next = $("#pipeline-next");
+  if (prev) prev.disabled = state.pipelineIndex === 0;
+  if (next) next.disabled = state.pipelineIndex === pipelineSlides.length - 1;
+  const dots = $("#pipeline-dots");
+  if (dots) {
+    dots.innerHTML = pipelineSlides.map((item, index) => {
+      const selected = index === state.pipelineIndex;
+      return `<button type="button" class="pipeline-dot${selected ? " active" : ""}" role="tab" aria-selected="${selected}" aria-label="${esc(item.step)}: ${esc(item.title)}" data-index="${index}"></button>`;
+    }).join("");
+    dots.querySelectorAll(".pipeline-dot").forEach((dot) => dot.addEventListener("click", () => setPipelineIndex(Number(dot.dataset.index))));
+  }
+}
+function setPipelineIndex(index) {
+  const nextIndex = clamp(index, 0, pipelineSlides.length - 1);
+  if (nextIndex === state.pipelineIndex) return;
+  state.pipelineDirection = nextIndex > state.pipelineIndex ? "next" : "prev";
+  state.pipelineIndex = nextIndex;
+  renderPipelineSlide(true);
+}
+function pathForTab(tab) {
+  if (tab === "pipeline") return "/pipeline";
+  if (tab === "overview") return "/";
+  return `/#${tab}`;
+}
+function tabFromLocation() {
+  if (window.location.pathname === "/pipeline") return "pipeline";
+  const hashTab = window.location.hash.replace(/^#/, "");
+  return navigableTabs.has(hashTab) ? hashTab : "overview";
+}
+function activateTab(tab, options = {}) {
+  const nextTab = navigableTabs.has(tab) ? tab : "overview";
+  const panel = $(`#tab-${nextTab}`);
+  if (!panel) return;
+  document.querySelectorAll(".nav-btn").forEach((item) => item.classList.toggle("active", item.dataset.tab === nextTab));
+  document.querySelectorAll(".panel").forEach((item) => item.classList.toggle("active", item.id === `tab-${nextTab}`));
+  if (nextTab === "pipeline") renderPipelineSlide(false);
+  if (options.push !== false) {
+    const nextPath = pathForTab(nextTab);
+    const currentPath = `${window.location.pathname}${window.location.hash}`;
+    if (currentPath !== nextPath) window.history.pushState({ tab: nextTab }, "", nextPath);
+  }
+  if (options.render !== false && Object.keys(state.data).length) setTimeout(renderAll, 30);
 }
 function renderQc() {
   drawGroupedBars($("#qc-sample-chart"), state.data.qcSamples.items, "sample_group", [
@@ -908,11 +1271,11 @@ async function initializeData() {
   state.data = Object.fromEntries(entries);
   $("#health-label").textContent = `API ready (${state.data.health.mart_source || "json"}, real data)`;
   $(".status-dot").classList.add("ok");
-  $("#source-chip").textContent = "real HDFS mart snapshot";
   populateClusterControls();
 }
 async function renderAll() {
   renderOverview(state.data.overview);
+  renderPipelineSlide(false);
   renderQc();
   await renderDeg();
   renderMapping();
@@ -1041,13 +1404,15 @@ function bindEvents() {
     h3.addEventListener("mousemove", (event) => showTooltip(`<strong>${esc(h3.textContent)}</strong>${esc(h3.dataset.help)}`, event.clientX, event.clientY));
     h3.addEventListener("mouseleave", hideTooltip);
   });
-  document.querySelectorAll(".nav-btn").forEach((button) => button.addEventListener("click", () => {
-    document.querySelectorAll(".nav-btn").forEach((item) => item.classList.remove("active"));
-    document.querySelectorAll(".panel").forEach((panel) => panel.classList.remove("active"));
-    button.classList.add("active");
-    $(`#tab-${button.dataset.tab}`).classList.add("active");
-    setTimeout(renderAll, 30);
-  }));
+  document.querySelectorAll(".nav-btn").forEach((button) => button.addEventListener("click", () => activateTab(button.dataset.tab)));
+  $("#pipeline-prev")?.addEventListener("click", () => setPipelineIndex(state.pipelineIndex - 1));
+  $("#pipeline-next")?.addEventListener("click", () => setPipelineIndex(state.pipelineIndex + 1));
+  document.addEventListener("keydown", (event) => {
+    if (!$("#tab-pipeline")?.classList.contains("active")) return;
+    if (event.key === "ArrowLeft") setPipelineIndex(state.pipelineIndex - 1);
+    if (event.key === "ArrowRight") setPipelineIndex(state.pipelineIndex + 1);
+  });
+  window.addEventListener("popstate", () => activateTab(tabFromLocation(), { push: false }));
   $("#drawer-close").addEventListener("click", () => $("#target-drawer").classList.remove("open"));
   $("#volcano-highlight").addEventListener("change", async () => { resetVolcanoView(); await renderDeg(); });
   $("#volcano-top-only").addEventListener("change", () => { resetVolcanoView(); redrawVolcano(); });
@@ -1093,7 +1458,8 @@ function bindEvents() {
 }
 document.addEventListener("DOMContentLoaded", async () => {
   bindEvents();
-  addChatMessage("assistant", "AI model, RAG and finetune are not connected. The dashboard data itself is now read from real HDFS phase outputs via local mart snapshots.");
+  activateTab(tabFromLocation(), { push: false, render: false });
+  addChatMessage("assistant", "Khung chat này là mô phỏng giao diện; dữ liệu dashboard lấy từ mart hiện tại của project.");
   try {
     await initializeData();
     await renderAll();

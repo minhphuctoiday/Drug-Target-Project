@@ -18,13 +18,9 @@
         </div>
         <nav class="nav-list" aria-label="Dashboard tabs">
           <button class="nav-btn active" data-tab="overview">Overview</button>
-          <button class="nav-btn" data-tab="qc">GDC QC</button>
-          <button class="nav-btn" data-tab="deg">Differential Expression</button>
-          <button class="nav-btn" data-tab="mapping">Gene-to-Protein Mapping</button>
-          <button class="nav-btn" data-tab="network">PPI Network</button>
+          <button class="nav-btn" data-tab="pipeline">Pipeline Flow</button>
           <button class="nav-btn" data-tab="ranking">Candidate Ranking</button>
           <button class="nav-btn" data-tab="geo">GEO Support</button>
-          <button class="nav-btn" data-tab="ml">ML Clustering</button>
           <button class="nav-btn" data-tab="ai">AI Assistant</button>
         </nav>
         <div class="status-box">
@@ -39,30 +35,35 @@
             <p class="eyebrow">TCGA/GDC expression + STRING PPI + GEO tumor-cohort support</p>
             <h1>Candidate Protein Target Prioritization</h1>
           </div>
-          <div class="topbar-actions">
-            <span class="mode-chip">AI UI only</span>
-            <span class="mode-chip" id="source-chip">real mart</span>
-          </div>
         </header>
 
         <section class="panel active" id="tab-overview">
-          <div class="section-head">
+          <div class="section-head overview-head">
             <div>
               <h2>Overview</h2>
-              <p id="overview-summary">Pipeline-level summary.</p>
+              <p>6 chỉ số cốt lõi được lấy trực tiếp từ mart hiện tại của project.</p>
             </div>
           </div>
-          <div class="kpi-grid" id="overview-kpis"></div>
-          <div class="chart-grid two">
-            <article class="panel-block wide">
-              <h3>Pipeline Flow</h3>
-              <div class="pipeline-flow" id="pipeline-flow"></div>
-            </article>
-            <article class="panel-block">
-              <h3>Evidence Interpretation</h3>
-              <p class="copy-block">This dashboard ranks candidate protein targets for further study. It does not claim cancer causality, clinical validation, diagnosis, treatment efficacy, or proven therapy.</p>
-            </article>
+          <div class="overview-stat-groups" id="overview-stat-groups"></div>
+        </section>
+
+        <section class="panel" id="tab-pipeline">
+          <div class="section-head pipeline-title-row">
+            <div>
+              <p class="eyebrow">Luồng xử lý DrugTarget Identification</p>
+              <h2>Pipeline Flow</h2>
+              <p>Carousel mô tả toàn bộ hành trình từ dữ liệu raw đến candidate ranking và phân cụm ML, với công nghệ và lý do thiết kế ở từng bước.</p>
+            </div>
+            <div class="pipeline-counter" id="pipeline-counter" aria-live="polite">Bước 1 / 8</div>
           </div>
+
+          <div class="pipeline-carousel" aria-label="Pipeline workflow carousel">
+            <button class="pipeline-arrow" id="pipeline-prev" type="button" aria-label="Bước trước">&larr;</button>
+            <article class="pipeline-slide-card" id="pipeline-slide" aria-live="polite"></article>
+            <button class="pipeline-arrow" id="pipeline-next" type="button" aria-label="Bước sau">&rarr;</button>
+          </div>
+
+          <div class="pipeline-dots" id="pipeline-dots" role="tablist" aria-label="Chọn bước pipeline"></div>
         </section>
 
         <section class="panel" id="tab-qc">

@@ -110,6 +110,11 @@ def index() -> FileResponse:
     return FileResponse(FRONTEND_DIR / "index.html")
 
 
+@app.get("/pipeline")
+def pipeline_page() -> FileResponse:
+    return FileResponse(FRONTEND_DIR / "index.html")
+
+
 @app.get("/{asset_name}")
 def frontend_asset(asset_name: str) -> FileResponse:
     if asset_name not in {"app.js", "styles.css"}:

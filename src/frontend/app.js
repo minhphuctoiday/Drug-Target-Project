@@ -303,6 +303,15 @@ function filteredVolcanoRows(rows) {
     return !topOnly || group === "top";
   });
 }
+function drawableVolcanoRows(rows) {
+  return (rows || []).filter((row) => (
+    row.p_value !== null
+    && row.p_value !== undefined
+    && Number.isFinite(Number(row.p_value))
+    && Number.isFinite(Number(row.log2FC))
+    && Number.isFinite(Number(row.plot_minus_log10_p_value))
+  ));
+}
 function canvasPoint(event, canvas) {
   const rect = canvas.getBoundingClientRect();
   return { x: event.clientX - rect.left, y: event.clientY - rect.top };
@@ -663,8 +672,9 @@ function volcanoViewport(rows) {
   };
 }
 function drawVolcano(canvas, rows) {
-  const filtered = filteredVolcanoRows(rows);
-  const view = volcanoViewport(filtered.length ? filtered : rows);
+  const drawable = drawableVolcanoRows(rows);
+  const filtered = filteredVolcanoRows(drawable);
+  const view = volcanoViewport(drawable);
   const visibleEstimate = filtered.filter((row) => {
     const x = Number(row.log2FC);
     const y = Number(row.plot_minus_log10_p_value);
@@ -1492,7 +1502,7 @@ function bindEvents() {
   $("#drawer-close").addEventListener("click", () => $("#target-drawer").classList.remove("open"));
   $("#volcano-highlight").addEventListener("change", async () => { resetVolcanoView(); await renderDeg(); });
   $("#volcano-top-only").addEventListener("change", () => { resetVolcanoView(); redrawVolcano(); });
-  document.querySelectorAll(".volcano-color-filter").forEach((input) => input.addEventListener("change", () => { resetVolcanoView(); redrawVolcano(); }));
+  document.querySelectorAll(".volcano-color-filter").forEach((input) => input.addEventListener("change", redrawVolcano));
   $("#volcano-zoom").addEventListener("input", redrawVolcano);
   $("#volcano-reset").addEventListener("click", () => { resetVolcanoView(); $("#volcano-zoom").value = "1"; redrawVolcano(); });
   ["network-top", "network-min", "network-cluster", "network-direction", "network-geo"].forEach((id) => $(`#${id}`).addEventListener("change", async () => { resetNetworkView(); await renderNetwork(); }));

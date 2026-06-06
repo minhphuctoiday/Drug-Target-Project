@@ -127,7 +127,10 @@ def build_real_marts(output_dir: Path, hdfs_base: str) -> None:
 
     deg_plot = (
         deg.withColumn("minus_log10_p_value", neg_log10_expr(F, "p_value"))
-        .withColumn("plot_minus_log10_p_value", F.least(F.col("minus_log10_p_value"), F.lit(60.0)))
+        .withColumn(
+            "plot_minus_log10_p_value",
+            F.when(F.col("minus_log10_p_value").isNull(), None).otherwise(F.least(F.col("minus_log10_p_value"), F.lit(60.0))),
+        )
         .select(
             "gene_name",
             "gene_id_base",

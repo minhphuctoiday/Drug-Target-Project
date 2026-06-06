@@ -5,6 +5,7 @@ const state = {
   networkHit: [],
   hits: {},
   data: {},
+  tableSort: { candidate: { key: "rank", dir: "asc" } },
   volcanoView: { centerX: 0, minY: 0 },
   networkView: { panX: 0, panY: 0 },
   mlView: { centerX: 0, centerY: 0 },
@@ -35,24 +36,16 @@ function geoSupportColor(level) {
   return geoSupportColors[level] || colors.gray;
 }
 
+const detailTabs = new Set(["qc", "deg", "mapping", "network", "ml"]);
 const navigableTabs = new Set(["overview", "pipeline", "ranking", "geo", "ai"]);
-const overviewGroups = [
-  {
-    title: "Dữ liệu đầu vào",
-    cards: [
-      { label: "GDC sample before processing", match: "GDC samples before QC", unit: "samples" },
-      { label: "GDC sample after processing", match: "GDC samples after QC", unit: "samples" },
-      { label: "Tumor", match: "Tumor samples", unit: "samples" },
-      { label: "Normal", match: "Normal samples", unit: "samples" }
-    ]
-  },
-  {
-    title: "Kết quả",
-    cards: [
-      { label: "Top candidate", match: "Top candidate targets", unit: "targets" },
-      { label: "Protein candidates", match: "Protein candidates", unit: "proteins" }
-    ]
-  }
+detailTabs.forEach((tab) => navigableTabs.add(tab));
+const overviewCards = [
+  { label: "Samples after QC", match: "GDC samples after QC", unit: "samples", note: "Sample GDC/TCGA-LUAD còn lại sau quality control." },
+  { label: "DEGs", match: "Differentially expressed genes", unit: "genes", note: "Gene khác biệt expression giữa Tumor và Normal." },
+  { label: "Mapped proteins", match: "DEG mapped to proteins", unit: "genes", note: "DEG map được sang STRING protein_id." },
+  { label: "STRING edges", match: "PPI edges in top-target graph", unit: "edges", note: "Cạnh PPI trong top-target graph với edge_weight >= 0.4." },
+  { label: "Top candidates", match: "Top candidate targets", unit: "targets", note: "Candidate target cuối cùng từ mart enriched." },
+  { label: "GEO-supported targets", match: "Candidates with GEO support", unit: "targets", note: "Target có support trong GEO tumor-only cohort." }
 ];
 const targetFeatureDefinitions = [
   { display: "Số kết nối (Degree)", raw: "degree", meaning: "Số protein mà protein này tương tác trực tiếp." },
@@ -892,13 +885,41 @@ function drawScoreBreakdown(canvas, breakdown) {
   registerHits(canvas, hits);
   setMeta(canvas, `${legend([{ label: "Raw component score", color: "#dce5e0" }, { label: "Weighted contribution", color: colors.green }])}<div class="axis-note">Weighted contribution = raw component score x configured Phase 5 weight. Final score is the sum of weighted contributions.</div>`);
 }
-function renderTable(container, rows, columns, clickable = false) {
-  if (!rows || !rows.length) {
-    container.innerHTML = "<p class=\"hint\">No rows match the current filters.</p>";
+function sortRows(rows, key, dir) {
+  const direction = dir === "desc" ? -1 : 1;
+  const normalize = (value) => {
+    if (value === null || value === undefined || value === "") return { missing: true, value: "" };
+    const numeric = Number(value);
+    if (Number.isFinite(numeric) && String(value).trim() !== "") return { missing: false, value: numeric };
+    return { missing: false, value: String(value).toLowerCase() };
+  };
+  return [...rows].sort((a, b) => {
+    const av = normalize(a[key]);
+    const bv = normalize(b[key]);
+    if (av.missing && bv.missing) return 0;
+    if (av.missing) return 1;
+    if (bv.missing) return -1;
+    if (av.value === bv.value) return 0;
+    return av.value > bv.value ? direction : -direction;
+  });
+}
+function renderTable(container, rows, columns, options = false) {
+  const settings = typeof options === "boolean" ? { clickable: options } : (options || {});
+  const clickable = Boolean(settings.clickable);
+  const sortId = settings.sortId;
+  const sort = sortId ? state.tableSort[sortId] : null;
+  const displayRows = sort ? sortRows(rows || [], sort.key, sort.dir) : [...(rows || [])];
+  if (!displayRows.length) {
+    container.innerHTML = '<p class="hint">Không có dòng nào khớp với filter hiện tại.</p>';
     return;
   }
-  const headers = columns.map((column) => `<th data-help="${esc(column.help || help[column.key] || column.label)}">${esc(column.label)}</th>`).join("");
-  const body = rows.map((row) => {
+  const headers = columns.map((column) => {
+    const sorted = sort && sort.key === column.key;
+    const marker = sorted ? (sort.dir === "asc" ? " ↑" : " ↓") : "";
+    const sortAttrs = sortId ? ` data-sort-key="${esc(column.key)}" tabindex="0"${sorted ? ` aria-sort="${sort.dir === "asc" ? "ascending" : "descending"}"` : ""}` : "";
+    return `<th data-help="${esc(column.help || help[column.key] || column.label)}"${sortAttrs}>${esc(column.label)}${marker}</th>`;
+  }).join("");
+  const body = displayRows.map((row) => {
     const cells = columns.map((column) => `<td>${esc(fmt(row[column.key]))}</td>`).join("");
     const attrs = clickable && row.protein_id ? ` class="clickable" data-protein="${esc(row.protein_id)}"` : "";
     return `<tr${attrs}>${cells}</tr>`;
@@ -908,8 +929,26 @@ function renderTable(container, rows, columns, clickable = false) {
     th.addEventListener("mousemove", (event) => showTooltip(`<strong>${esc(th.textContent)}</strong>${esc(th.dataset.help)}`, event.clientX, event.clientY, 1200));
     th.addEventListener("mouseleave", hideTooltip);
   });
+  if (sortId) {
+    container.querySelectorAll("th[data-sort-key]").forEach((th) => {
+      const updateSort = () => {
+        const key = th.dataset.sortKey;
+        const current = state.tableSort[sortId] || { key, dir: "asc" };
+        state.tableSort[sortId] = { key, dir: current.key === key && current.dir === "asc" ? "desc" : "asc" };
+        renderTable(container, rows, columns, settings);
+      };
+      th.addEventListener("click", updateSort);
+      th.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          updateSort();
+        }
+      });
+    });
+  }
   if (clickable) container.querySelectorAll("tr[data-protein]").forEach((row) => row.addEventListener("click", () => openTarget(row.dataset.protein)));
 }
+
 
 function populateClusterControls() {
   const clusters = [...new Set((state.data.mlSummary.items || []).map((row) => row.cluster_id))].sort((a, b) => Number(a) - Number(b));
@@ -934,27 +973,29 @@ function renderOverview(data) {
   const container = $("#overview-stat-groups");
   if (!container) return;
   const metrics = data?.metrics || [];
-  container.innerHTML = overviewGroups.map((group) => {
-    const cards = group.cards.map((card) => {
-      const metric = metricByName(metrics, card.match);
-      const value = metric ? fmt(metric.metric_value) : "Không có dữ liệu";
-      const unit = metric ? (card.unit || metric.metric_unit || "") : "";
-      return `
-        <article class="overview-stat-card${metric ? "" : " missing"}">
-          <span>${esc(card.label)}</span>
-          <strong>${esc(value)}</strong>
-          ${unit ? `<small>${esc(unit)}</small>` : ""}
-        </article>
-      `;
-    }).join("");
+  const cards = overviewCards.map((card) => {
+    const metric = metricByName(metrics, card.match);
+    const value = metric ? fmt(metric.metric_value) : "Không có dữ liệu";
+    const unit = metric ? (card.unit || metric.metric_unit || "") : "";
     return `
-      <section class="overview-stat-group" aria-label="${esc(group.title)}">
-        <h3>${esc(group.title)}</h3>
-        <div class="overview-stat-grid">${cards}</div>
-      </section>
+      <article class="overview-stat-card${metric ? "" : " missing"}">
+        <span>${esc(card.label)}</span>
+        <strong>${esc(value)}</strong>
+        ${unit ? `<small>${esc(unit)}</small>` : ""}
+        <p>${esc(card.note)}</p>
+      </article>
     `;
   }).join("");
+  const summary = "Dữ liệu hiển thị được build từ phase outputs thật và JSON mart local. Overview không phải một phase phân tích riêng; nó giúp đọc nhanh quy mô sample sau QC, số DEG, mapping protein, PPI edges, top candidate và GEO support.";
+  container.innerHTML = `
+    <article class="overview-summary-card">
+      <strong>Project snapshot</strong>
+      <p>${esc(summary)}</p>
+    </article>
+    <div class="overview-stat-grid">${cards}</div>
+  `;
 }
+
 function overviewMetric(match) {
   if (!match) return null;
   return metricByName(state.data.overview?.metrics || [], match);
@@ -1087,7 +1128,8 @@ function activateTab(tab, options = {}) {
   const nextTab = navigableTabs.has(tab) ? tab : "overview";
   const panel = $(`#tab-${nextTab}`);
   if (!panel) return;
-  document.querySelectorAll(".nav-btn").forEach((item) => item.classList.toggle("active", item.dataset.tab === nextTab));
+  const activeNav = detailTabs.has(nextTab) ? "pipeline" : nextTab;
+  document.querySelectorAll(".nav-btn").forEach((item) => item.classList.toggle("active", item.dataset.tab === activeNav));
   document.querySelectorAll(".panel").forEach((item) => item.classList.toggle("active", item.id === `tab-${nextTab}`));
   if (nextTab === "pipeline") renderPipelineSlide(false);
   if (options.push !== false) {
@@ -1095,7 +1137,7 @@ function activateTab(tab, options = {}) {
     const currentPath = `${window.location.pathname}${window.location.hash}`;
     if (currentPath !== nextPath) window.history.pushState({ tab: nextTab }, "", nextPath);
   }
-  if (options.render !== false && Object.keys(state.data).length) setTimeout(renderAll, 30);
+  if (options.render !== false && state.data.overview) setTimeout(renderAll, 30);
 }
 function renderQc() {
   drawGroupedBars($("#qc-sample-chart"), state.data.qcSamples.items, "sample_group", [
@@ -1153,7 +1195,7 @@ async function renderRanking() {
   });
   renderTable($("#candidate-table"), rows, [
     { key: "rank", label: "Rank" }, { key: "gene_name", label: "Gene" }, { key: "protein_id", label: "STRING protein ID" }, { key: "log2FC", label: "log2FC" }, { key: "p_value", label: "p-value" }, { key: "weighted_degree_protein", label: "Weighted degree" }, { key: "avg_combined_score", label: "Avg STRING" }, { key: "final_score", label: "Final score" }, { key: "geo_support_score", label: "GEO score" }, { key: "geo_support_level", label: "GEO support" }, { key: "cluster_id", label: "Cluster" }, { key: "candidate_group", label: "Group" }
-  ], true);
+  ], { clickable: true, sortId: "candidate" });
   if (!state.currentTarget && rows[0]) await renderScore(rows[0].protein_id);
 }
 async function renderScore(proteinId) {
@@ -1246,15 +1288,44 @@ async function renderMl() {
     { key: "cluster_id", label: "Cluster" }, { key: "candidate_group", label: "Candidate group" }, { key: "num_candidates", label: "Candidates" }, { key: "avg_abs_log2FC", label: "Avg abs log2FC" }, { key: "avg_weighted_degree", label: "Avg weighted degree" }, { key: "avg_combined_score", label: "Avg STRING" }, { key: "avg_final_score", label: "Avg final score" }
   ]);
 }
-async function openTarget(proteinId) {
+function targetDetailSections(detail) {
+  return [["Identity", detail.identity], ["Phase 2 DEG", detail.phase_2_deg], ["Phase 3 Mapping", detail.phase_3_mapping], ["Phase 4 PPI", detail.phase_4_ppi], ["Phase 5 Scoring", detail.phase_5_scoring], ["Phase 6 GEO", detail.phase_6_geo], ["Phase 7 ML", detail.phase_7_ml]];
+}
+function detailGrid(payload) {
+  return `<div class="detail-grid">${Object.entries(payload).map(([key, value]) => `<div class="detail-item" title="${esc(help[key] || key)}"><span>${esc(key)}</span><strong>${esc(fmt(value))}</strong></div>`).join("")}</div>`;
+}
+function targetDetailHtml(detail) {
+  return `<h2>${esc(detail.identity.gene_name)}</h2><p class="hint">STRING protein: ${esc(detail.identity.protein_id)}</p>${targetDetailSections(detail).map(([title, payload]) => `<h3>${title}</h3>${detailGrid(payload)}`).join("")}`;
+}
+function renderTargetDetailPanel(detail) {
+  const panel = $("#target-detail-panel");
+  if (!panel) return;
+  panel.innerHTML = `
+    <div class="target-summary">
+      <span class="target-kicker">Target hiện tại</span>
+      <h4>${esc(detail.identity.gene_name)}</h4>
+      <p class="hint">${esc(detail.identity.protein_id)}</p>
+      <div class="target-badges">
+        <span>Rank #${esc(fmt(detail.identity.rank))}</span>
+        <span>${esc(detail.phase_2_deg.deg_direction || "NA")}</span>
+        <span>${esc(detail.phase_6_geo.support_level || "NA")}</span>
+      </div>
+      <button type="button" class="detail-drawer-btn" data-open-drawer="${esc(detail.identity.protein_id)}">Mở drawer chi tiết</button>
+    </div>
+    ${targetDetailSections(detail).map(([title, payload]) => `<section class="detail-section"><h4>${title}</h4>${detailGrid(payload)}</section>`).join("")}
+  `;
+  panel.querySelector("[data-open-drawer]")?.addEventListener("click", (event) => openTarget(event.currentTarget.dataset.openDrawer, { openDrawer: true }));
+}
+async function openTarget(proteinId, options = {}) {
   const detail = await api(`/api/v1/targets/${encodeURIComponent(proteinId)}`);
   state.currentTarget = detail.identity;
   $("#chat-target").textContent = `${detail.identity.gene_name} (${detail.identity.protein_id})`;
   await renderScore(detail.identity.protein_id);
-  const sections = [["Identity", detail.identity], ["Phase 2 DEG", detail.phase_2_deg], ["Phase 3 Mapping", detail.phase_3_mapping], ["Phase 4 PPI", detail.phase_4_ppi], ["Phase 5 Scoring", detail.phase_5_scoring], ["Phase 6 GEO", detail.phase_6_geo], ["Phase 7 ML", detail.phase_7_ml]];
-  $("#drawer-content").innerHTML = `<h2>${esc(detail.identity.gene_name)}</h2><p class="hint">STRING protein: ${esc(detail.identity.protein_id)}</p>${sections.map(([title, payload]) => `<h3>${title}</h3><div class="detail-grid">${Object.entries(payload).map(([key, value]) => `<div class="detail-item" title="${esc(help[key] || key)}"><span>${esc(key)}</span><strong>${esc(fmt(value))}</strong></div>`).join("")}</div>`).join("")}`;
-  $("#target-drawer").classList.add("open");
+  renderTargetDetailPanel(detail);
+  $("#drawer-content").innerHTML = targetDetailHtml(detail);
+  if (options.openDrawer) $("#target-drawer").classList.add("open");
 }
+
 function addChatMessage(role, text) {
   const log = $("#chat-log");
   const div = document.createElement("div");
@@ -1264,15 +1335,19 @@ function addChatMessage(role, text) {
   log.scrollTop = log.scrollHeight;
 }
 async function initializeData() {
+  const health = await api("/api/v1/health");
+  state.data.health = health;
+  $("#health-label").textContent = `API sẵn sàng (${health.mart_source || "json"}, real data)`;
+  $(".status-dot").classList.add("ok");
+  $(".status-dot").classList.remove("error");
   const calls = [
-    ["health", "/api/v1/health"], ["overview", "/api/v1/overview"], ["qcSamples", "/api/v1/visualizations/qc/sample-counts"], ["qcExclusions", "/api/v1/visualizations/qc/exclusions"], ["qcLibrary", "/api/v1/visualizations/qc/library-size"], ["qcZero", "/api/v1/visualizations/qc/zero-gene-rate"], ["degSummary", "/api/v1/visualizations/deg/summary"], ["topDeg", "/api/v1/visualizations/deg/top-genes?limit=50"], ["heatmap", "/api/v1/visualizations/deg/heatmap?top_n=24"], ["mappingSummary", "/api/v1/visualizations/mapping/summary"], ["mappingConfidence", "/api/v1/visualizations/mapping/confidence"], ["unmapped", "/api/v1/mapping/unmapped"], ["networkTop", "/api/v1/visualizations/network/top-proteins?limit=100"], ["networkScores", "/api/v1/visualizations/network/score-distribution"], ["geoSummary", "/api/v1/visualizations/geo/summary"], ["geoTopSupported", "/api/v1/visualizations/geo/top-supported?limit=100"], ["geoScatter", "/api/v1/visualizations/geo/gdc-vs-support"], ["geoOverlap", "/api/v1/visualizations/geo/top-candidate-overlap?limit=100"], ["geoUnmatched", "/api/v1/geo/unmatched-candidates"], ["mlK", "/api/v1/visualizations/ml/k-selection"], ["mlSummary", "/api/v1/visualizations/ml/cluster-summary"], ["mlClusters", "/api/v1/ml/clusters"]
+    ["overview", "/api/v1/overview"], ["qcSamples", "/api/v1/visualizations/qc/sample-counts"], ["qcExclusions", "/api/v1/visualizations/qc/exclusions"], ["qcLibrary", "/api/v1/visualizations/qc/library-size"], ["qcZero", "/api/v1/visualizations/qc/zero-gene-rate"], ["degSummary", "/api/v1/visualizations/deg/summary"], ["topDeg", "/api/v1/visualizations/deg/top-genes?limit=50"], ["heatmap", "/api/v1/visualizations/deg/heatmap?top_n=24"], ["mappingSummary", "/api/v1/visualizations/mapping/summary"], ["mappingConfidence", "/api/v1/visualizations/mapping/confidence"], ["unmapped", "/api/v1/mapping/unmapped"], ["networkTop", "/api/v1/visualizations/network/top-proteins?limit=100"], ["networkScores", "/api/v1/visualizations/network/score-distribution"], ["geoSummary", "/api/v1/visualizations/geo/summary"], ["geoTopSupported", "/api/v1/visualizations/geo/top-supported?limit=100"], ["geoScatter", "/api/v1/visualizations/geo/gdc-vs-support"], ["geoOverlap", "/api/v1/visualizations/geo/top-candidate-overlap?limit=100"], ["geoUnmatched", "/api/v1/geo/unmatched-candidates"], ["mlK", "/api/v1/visualizations/ml/k-selection"], ["mlSummary", "/api/v1/visualizations/ml/cluster-summary"], ["mlClusters", "/api/v1/ml/clusters"]
   ];
   const entries = await Promise.all(calls.map(async ([key, path]) => [key, await api(path)]));
-  state.data = Object.fromEntries(entries);
-  $("#health-label").textContent = `API ready (${state.data.health.mart_source || "json"}, real data)`;
-  $(".status-dot").classList.add("ok");
+  state.data = { ...state.data, ...Object.fromEntries(entries) };
   populateClusterControls();
 }
+
 async function renderAll() {
   renderOverview(state.data.overview);
   renderPipelineSlide(false);
@@ -1405,6 +1480,7 @@ function bindEvents() {
     h3.addEventListener("mouseleave", hideTooltip);
   });
   document.querySelectorAll(".nav-btn").forEach((button) => button.addEventListener("click", () => activateTab(button.dataset.tab)));
+  document.querySelectorAll("[data-analysis-tab]").forEach((button) => button.addEventListener("click", () => activateTab(button.dataset.analysisTab)));
   $("#pipeline-prev")?.addEventListener("click", () => setPipelineIndex(state.pipelineIndex - 1));
   $("#pipeline-next")?.addEventListener("click", () => setPipelineIndex(state.pipelineIndex + 1));
   document.addEventListener("keydown", (event) => {
@@ -1459,12 +1535,13 @@ function bindEvents() {
 document.addEventListener("DOMContentLoaded", async () => {
   bindEvents();
   activateTab(tabFromLocation(), { push: false, render: false });
-  addChatMessage("assistant", "Khung chat này là mô phỏng giao diện; dữ liệu dashboard lấy từ mart hiện tại của project.");
+  addChatMessage("assistant", "AI Assistant đang ở chế độ thử nghiệm giao diện; dữ liệu dashboard lấy từ mart hiện tại của project.");
   try {
     await initializeData();
     await renderAll();
   } catch (error) {
-    $("#health-label").textContent = "API/data load failed";
-    addChatMessage("assistant", `Dashboard data load failed: ${error.message}`);
+    $("#health-label").textContent = "Không tải được API/data";
+    $(".status-dot").classList.add("error");
+    addChatMessage("assistant", `Không tải được dữ liệu dashboard: ${error.message}`);
   }
 });

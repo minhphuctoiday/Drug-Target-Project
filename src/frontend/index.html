@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="vi">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,19 +13,19 @@
           <span class="brand-mark">DT</span>
           <div>
             <strong>LUAD Target Atlas</strong>
-            <small>Research prioritization dashboard</small>
+            <small>Dashboard ưu tiên protein target</small>
           </div>
         </div>
         <nav class="nav-list" aria-label="Dashboard tabs">
-          <button class="nav-btn active" data-tab="overview">Overview</button>
+          <button class="nav-btn active" data-tab="overview">Tổng quan</button>
           <button class="nav-btn" data-tab="pipeline">Pipeline Flow</button>
-          <button class="nav-btn" data-tab="ranking">Candidate Ranking</button>
-          <button class="nav-btn" data-tab="geo">GEO Support</button>
+          <button class="nav-btn" data-tab="ranking">Xếp hạng candidate</button>
+          <button class="nav-btn" data-tab="geo">Hỗ trợ GEO</button>
           <button class="nav-btn" data-tab="ai">AI Assistant</button>
         </nav>
         <div class="status-box">
           <span class="status-dot"></span>
-          <span id="health-label">Loading API status</span>
+          <span id="health-label">Đang kiểm tra API</span>
         </div>
       </aside>
 
@@ -33,15 +33,15 @@
         <header class="topbar">
           <div>
             <p class="eyebrow">TCGA/GDC expression + STRING PPI + GEO tumor-cohort support</p>
-            <h1>Candidate Protein Target Prioritization</h1>
+            <h1>Ưu tiên Candidate Protein Target cho LUAD</h1>
           </div>
         </header>
 
         <section class="panel active" id="tab-overview">
           <div class="section-head overview-head">
             <div>
-              <h2>Overview</h2>
-              <p>6 chỉ số cốt lõi được lấy trực tiếp từ mart hiện tại của project.</p>
+              <h2>Tổng quan</h2>
+              <p>Dashboard tóm tắt pipeline thực tế của project: GDC/TCGA LUAD -> QC -> DEG -> gene-to-protein mapping -> STRING PPI/scoring -> GEO support + ML clustering.</p>
             </div>
           </div>
           <div class="overview-stat-groups" id="overview-stat-groups"></div>
@@ -64,20 +64,35 @@
           </div>
 
           <div class="pipeline-dots" id="pipeline-dots" role="tablist" aria-label="Chọn bước pipeline"></div>
+
+          <div class="analysis-jump-section">
+            <div>
+              <p class="eyebrow">Phân tích chi tiết</p>
+              <h3>Từ dữ liệu đến quyết định target</h3>
+              <p>Carousel phía trên giải thích luồng tổng thể. Các khối dưới đây mở từng phase phân tích thật để xem chart, bảng audit và network tương tác.</p>
+            </div>
+            <div class="analysis-jump-grid">
+              <button type="button" data-analysis-tab="qc">Phase 1 - QC</button>
+              <button type="button" data-analysis-tab="deg">Phase 2 - DEG</button>
+              <button type="button" data-analysis-tab="mapping">Phase 3 - Mapping</button>
+              <button type="button" data-analysis-tab="network">Phase 4 - PPI Network</button>
+              <button type="button" data-analysis-tab="ml">Phase 7 - ML Clustering</button>
+            </div>
+          </div>
         </section>
 
         <section class="panel" id="tab-qc">
           <div class="section-head">
             <div>
               <h2>Phase 1: GDC Data Quality Control</h2>
-              <p>QC views show retained samples and reasons for exclusion before downstream analysis.</p>
+              <p>QC cho biết số sample được giữ lại và lý do loại trước các bước phân tích downstream.</p>
             </div>
           </div>
           <div class="chart-grid two">
-            <article class="panel-block"><h3>Sample Count Before and After QC</h3><canvas id="qc-sample-chart"></canvas></article>
-            <article class="panel-block"><h3 data-help="Counts samples removed by QC flags from refined/gdc/quality_check. In this real run, exclusions come from detected-gene outliers.">Exclusion Reasons</h3><canvas id="qc-exclusion-chart"></canvas></article>
-            <article class="panel-block"><h3>Library Size Distribution</h3><canvas id="qc-library-chart"></canvas></article>
-            <article class="panel-block"><h3>Zero Gene Rate</h3><canvas id="qc-zero-chart"></canvas></article>
+            <article class="panel-block"><h3>Sample trước và sau QC</h3><canvas id="qc-sample-chart"></canvas></article>
+            <article class="panel-block"><h3 data-help="Counts samples removed by QC flags from refined/gdc/quality_check. In this real run, exclusions come from detected-gene outliers.">Lý do loại sample</h3><canvas id="qc-exclusion-chart"></canvas></article>
+            <article class="panel-block"><h3>Phân bố library size</h3><canvas id="qc-library-chart"></canvas></article>
+            <article class="panel-block"><h3>Tỷ lệ zero gene</h3><canvas id="qc-zero-chart"></canvas></article>
           </div>
         </section>
 
@@ -85,23 +100,32 @@
           <div class="section-head">
             <div>
               <h2>Phase 2: Differential Expression</h2>
-              <p>Volcano and top-gene views summarize tumor-vs-normal expression dysregulation.</p>
+              <p>Volcano và top-gene views tóm tắt khác biệt expression Tumor vs Normal.</p>
             </div>
-            <div class="controls chart-controls">
-              <label>Top candidates <input id="volcano-highlight" type="number" min="1" max="100" value="20"></label>
-              <label class="check"><input id="volcano-top-only" type="checkbox" checked> Top N only</label>
-              <label class="check"><input class="volcano-color-filter" type="checkbox" value="top" checked><span class="legend-swatch" style="background:#c98721"></span>Top</label>
-              <label class="check"><input class="volcano-color-filter" type="checkbox" value="up" checked><span class="legend-swatch" style="background:#c94b5b"></span>Up</label>
-              <label class="check"><input class="volcano-color-filter" type="checkbox" value="down" checked><span class="legend-swatch" style="background:#3d6eb3"></span>Down</label>
-              <label class="check"><input class="volcano-color-filter" type="checkbox" value="not" checked><span class="legend-swatch" style="background:#8a9892"></span>Not DEG</label>
-              <label class="control-inline range-control">Zoom <input id="volcano-zoom" type="range" min="1" max="30" step="0.1" value="1"><output id="volcano-zoom-value">1x</output></label>
-              <button id="volcano-reset" type="button">Reset</button>
+            <div class="controls chart-controls filter-bar">
+              <div class="control-group">
+                <span class="control-group-title">Candidate</span>
+                <label>Top N <input id="volcano-highlight" type="number" min="1" max="100" value="20"></label>
+                <label class="check"><input id="volcano-top-only" type="checkbox" checked> Chỉ Top N</label>
+              </div>
+              <div class="control-group">
+                <span class="control-group-title">Nhóm DEG</span>
+                <label class="check"><input class="volcano-color-filter" type="checkbox" value="top" checked><span class="legend-swatch" style="background:#c98721"></span>Top</label>
+                <label class="check"><input class="volcano-color-filter" type="checkbox" value="up" checked><span class="legend-swatch" style="background:#c94b5b"></span>Up</label>
+                <label class="check"><input class="volcano-color-filter" type="checkbox" value="down" checked><span class="legend-swatch" style="background:#3d6eb3"></span>Down</label>
+                <label class="check"><input class="volcano-color-filter" type="checkbox" value="not" checked><span class="legend-swatch" style="background:#8a9892"></span>Not DEG</label>
+              </div>
+              <div class="control-group">
+                <span class="control-group-title">Điều hướng</span>
+                <label class="range-control">Zoom <input id="volcano-zoom" type="range" min="1" max="30" step="0.1" value="1"><output id="volcano-zoom-value">1x</output></label>
+                <button id="volcano-reset" type="button">Reset</button>
+              </div>
             </div>
           </div>
           <div class="chart-grid two">
             <article class="panel-block wide"><h3 data-help="Each point is a Phase 2 gene. X is log2FC tumor vs normal; Y is -log10(p_value), capped for plotting. Wheel or pinch on the chart to zoom; drag to pan. Labels appear only when the visible region is sparse enough.">Volcano Plot</h3><canvas id="volcano-chart"></canvas></article>
             <article class="panel-block"><h3>DEG Summary</h3><canvas id="deg-summary-chart"></canvas></article>
-            <article class="panel-block"><h3>Top DEG by Absolute log2FC</h3><canvas id="top-deg-chart"></canvas></article>
+            <article class="panel-block"><h3>Top DEG theo absolute log2FC</h3><canvas id="top-deg-chart"></canvas></article>
             <article class="panel-block wide"><h3 data-help="Phase 1 QC-passed log2 TPM expression. Rows are top DEG genes; columns are selected tumor and normal cases. Blue means lower log2 TPM, red means higher log2 TPM.">Top Gene Heatmap</h3><canvas id="heatmap-chart"></canvas></article>
           </div>
         </section>
@@ -110,13 +134,13 @@
           <div class="section-head">
             <div>
               <h2>Phase 3: Gene-to-Protein Mapping</h2>
-              <p>Mapping views audit how DEG rows become STRING protein candidates.</p>
+              <p>Mapping views kiểm tra cách các DEG trở thành STRING protein candidates.</p>
             </div>
           </div>
           <div class="chart-grid two">
-            <article class="panel-block"><h3>Mapping Success</h3><canvas id="mapping-summary-chart"></canvas></article>
+            <article class="panel-block"><h3>Mapping thành công</h3><canvas id="mapping-summary-chart"></canvas></article>
             <article class="panel-block"><h3>Mapping Confidence</h3><canvas id="mapping-confidence-chart"></canvas></article>
-            <article class="panel-block wide"><h3 data-help="DEG genes that did not join to a STRING protein_id in the refined STRING gene_map. Use this audit to see which expression hits are excluded before PPI and target scoring.">Unmapped Genes Audit</h3><div class="table-wrap" id="unmapped-table"></div></article>
+            <article class="panel-block wide"><h3 data-help="DEG genes that did not join to a STRING protein_id in the refined STRING gene_map. Use this audit to see which expression hits are excluded before PPI and target scoring.">Audit gene chưa map</h3><div class="table-wrap" id="unmapped-table"></div></article>
           </div>
         </section>
 
@@ -124,17 +148,31 @@
           <div class="section-head">
             <div>
               <h2>Phase 4: Protein-Protein Interaction Network</h2>
-              <p>Interactive STRING PPI graph for candidate protein targets.</p>
+              <p>Đồ thị STRING PPI tương tác cho candidate protein targets.</p>
             </div>
-            <div class="controls">
-              <label>Top N <select id="network-top"><option>20</option><option selected>50</option><option>100</option></select></label>
-              <label>Min score <select id="network-min"><option value="0.4">0.4</option><option value="0.7">0.7</option></select></label>
-              <label>Cluster <select id="network-cluster"><option value="">All</option></select></label><label>Direction <select id="network-direction"><option value="">All</option><option>Upregulated</option><option>Downregulated</option></select></label><label>GEO <select id="network-geo"><option value="">All support levels</option><option>Strong GEO support</option><option>Moderate GEO support</option><option>Limited GEO support</option><option>Not Found</option></select></label><label class="range-control">Zoom <input id="network-zoom" type="range" min="1" max="30" step="0.1" value="1"><output id="network-zoom-value">1x</output></label><button id="network-reset" type="button">Reset</button>
+            <div class="controls filter-bar network-controls">
+              <div class="control-group">
+                <span class="control-group-title">Network</span>
+                <label>Top N <select id="network-top"><option>20</option><option selected>50</option><option>100</option></select></label>
+                <label>Min score <select id="network-min"><option value="0.4">0.4</option><option value="0.7">0.7</option></select></label>
+              </div>
+              <div class="control-group">
+                <span class="control-group-title">Filter</span>
+                <label>Cluster <select id="network-cluster"><option value="">Tất cả</option></select></label>
+                <label>Direction <select id="network-direction"><option value="">Tất cả</option><option>Upregulated</option><option>Downregulated</option></select></label>
+                <label>GEO <select id="network-geo"><option value="">Tất cả support</option><option>Strong GEO support</option><option>Moderate GEO support</option><option>Limited GEO support</option><option>Not Found</option></select></label>
+              </div>
+              <div class="control-group">
+                <span class="control-group-title">Điều hướng</span>
+                <label class="range-control">Zoom <input id="network-zoom" type="range" min="1" max="30" step="0.1" value="1"><output id="network-zoom-value">1x</output></label>
+                <button id="network-reset" type="button">Reset</button>
+              </div>
             </div>
           </div>
-          <div class="chart-grid two">
-            <article class="panel-block wide"><h3 data-help="Nodes are top candidate proteins from the real target mart. Edges are real STRING interactions among those proteins; width/opacity follow STRING edge_weight_protein.">Interactive PPI Network</h3><canvas id="network-chart"></canvas><p class="hint">Click a node to open target detail. Drag to pan after zooming. Gene labels appear when the graph has enough space.</p><div class="chart-meta" id="network-explain"></div></article>
-            <article class="panel-block"><h3>Top Proteins by Weighted Degree</h3><canvas id="network-top-chart"></canvas></article>
+          <div class="network-layout">
+            <article class="panel-block network-graph"><h3 data-help="Nodes are top candidate proteins from the real target mart. Edges are real STRING interactions among those proteins; width/opacity follow STRING edge_weight_protein.">Interactive PPI Network</h3><canvas id="network-chart"></canvas><p class="hint">Click node để xem Target Detail Panel. Kéo để pan sau khi zoom. Label hiện khi graph đủ khoảng trống.</p><div class="chart-meta" id="network-explain"></div></article>
+            <article class="panel-block target-detail-panel"><h3>Target Detail Panel</h3><div id="target-detail-panel"><p class="hint">Chưa chọn target. Click một node trong PPI Network hoặc một dòng trong Candidate Table để xem chi tiết.</p></div></article>
+            <article class="panel-block"><h3>Top Proteins theo Weighted Degree</h3><canvas id="network-top-chart"></canvas></article>
             <article class="panel-block"><h3 data-help="Distribution of edge_weight_protein for real STRING edges among the selected top candidate proteins.">STRING Score Distribution</h3><canvas id="network-score-chart"></canvas></article>
           </div>
         </section>
@@ -143,16 +181,22 @@
           <div class="section-head">
             <div>
               <h2>Phase 5: Candidate Target Scoring</h2>
-              <p>Ranking combines expression, PPI context and STRING confidence for candidate protein targets.</p>
+              <p>Đây là output chính: ranking kết hợp expression, PPI context và STRING confidence cho candidate protein targets.</p>
             </div>
-            <div class="controls">
-              <input id="candidate-search" type="search" placeholder="Search gene or protein">
-              <select id="candidate-cluster"><option value="">All clusters</option></select>
-              <select id="candidate-geo"><option value="">All GEO support</option><option>Strong GEO support</option><option>Moderate GEO support</option><option>Limited GEO support</option><option>Not Found</option></select>
+            <div class="controls filter-bar ranking-controls">
+              <div class="control-group">
+                <span class="control-group-title">Tìm kiếm</span>
+                <input id="candidate-search" type="search" placeholder="Tìm gene hoặc protein">
+              </div>
+              <div class="control-group">
+                <span class="control-group-title">Filter</span>
+                <select id="candidate-cluster"><option value="">Tất cả cluster</option></select>
+                <select id="candidate-geo"><option value="">Tất cả GEO support</option><option>Strong GEO support</option><option>Moderate GEO support</option><option>Limited GEO support</option><option>Not Found</option></select>
+              </div>
             </div>
           </div>
           <div class="chart-grid two">
-            <article class="panel-block"><h3>Top Candidate Ranking</h3><canvas id="ranking-chart"></canvas></article>
+            <article class="panel-block ranking-primary"><h3>Top Candidate Ranking</h3><canvas id="ranking-chart"></canvas></article>
             <article class="panel-block"><h3>Score Decomposition</h3><canvas id="score-chart"></canvas><p class="hint" id="score-title">Select a target to inspect score components.</p></article>
             <article class="panel-block wide"><h3>Candidate Table</h3><div class="table-wrap" id="candidate-table"></div></article>
           </div>
@@ -162,8 +206,12 @@
           <div class="section-head">
             <div>
               <h2>Phase 6: GEO Cohort Support</h2>
-              <p><strong>Mode: tumor-cohort expression support.</strong> GEO contains tumor samples only, so support metrics summarize cohort coverage and within-cohort expression percentile; they are not tumor-vs-normal validation.</p>
+              <p>GEO support được dùng như bằng chứng bổ sung sau ranking GDC + STRING.</p>
             </div>
+          </div>
+          <div class="warning-box">
+            <strong>Lưu ý diễn giải GEO:</strong>
+            GEO trong project này là tumor-only cohort, nên các chỉ số support phản ánh coverage và expression percentile trong cohort; đây không phải independent tumor-vs-normal validation và không dùng để re-rank candidate.
           </div>
           <div class="chart-grid two">
             <article class="panel-block"><h3>Support Summary</h3><canvas id="geo-summary-chart"></canvas></article>
@@ -178,11 +226,19 @@
           <div class="section-head">
             <div>
               <h2>Phase 7: ML Clustering</h2>
-              <p>Unsupervised clustering groups candidates by expression and protein-network evidence.</p>
+              <p>Clustering không tạo ranking mới; nó nhóm candidate theo pattern expression và protein-network evidence.</p>
             </div>
-            <div class="controls">
-              <select id="ml-cluster"><option value="">All clusters</option></select>
-              <label class="check"><input id="ml-top-only" type="checkbox"> Top only</label><label class="range-control">Zoom <input id="ml-zoom" type="range" min="1" max="30" step="0.1" value="1"><output id="ml-zoom-value">1x</output></label><button id="ml-reset" type="button">Reset</button>
+            <div class="controls filter-bar ml-controls">
+              <div class="control-group">
+                <span class="control-group-title">Filter</span>
+                <select id="ml-cluster"><option value="">Tất cả cluster</option></select>
+                <label class="check"><input id="ml-top-only" type="checkbox"> Chỉ top candidate</label>
+              </div>
+              <div class="control-group">
+                <span class="control-group-title">Điều hướng</span>
+                <label class="range-control">Zoom <input id="ml-zoom" type="range" min="1" max="30" step="0.1" value="1"><output id="ml-zoom-value">1x</output></label>
+                <button id="ml-reset" type="button">Reset</button>
+              </div>
             </div>
           </div>
           <div class="chart-grid two">
@@ -196,26 +252,26 @@
         <section class="panel" id="tab-ai">
           <div class="section-head">
             <div>
-              <h2>AI Assistant</h2>
-              <p>This is interface only. API calls, RAG, finetune and model deployment are intentionally not connected.</p>
+              <h2>Thử nghiệm / Future Work: AI Assistant</h2>
+              <p>Đây là giao diện thử nghiệm. Model API, RAG retrieval, finetune và model deployment chưa được kết nối trong bản dashboard local này.</p>
             </div>
           </div>
           <div class="assistant-layout">
             <article class="panel-block">
-              <h3>Ask About the Project</h3>
+              <h3>Hỏi về project</h3>
               <div class="chat-log" id="chat-log"></div>
               <form class="chat-form" id="chat-form">
-                <input id="chat-input" type="text" placeholder="Ask about SFTPC ranking, GEO mode, PPI context, or limitations">
+                <input id="chat-input" type="text" placeholder="Hỏi về SFTPC ranking, GEO mode, PPI context hoặc limitation">
                 <button type="submit">Send</button>
               </form>
             </article>
             <article class="panel-block">
               <h3>Integration Hooks</h3>
               <div class="hook-list">
-                <div><strong>Model API</strong><span>Not connected</span></div>
-                <div><strong>RAG Retrieval</strong><span>Not connected</span></div>
-                <div><strong>Finetune</strong><span>Not connected</span></div>
-                <div><strong>Current target</strong><span id="chat-target">None selected</span></div>
+                <div><strong>Model API</strong><span>Chưa kết nối</span></div>
+                <div><strong>RAG Retrieval</strong><span>Chưa kết nối</span></div>
+                <div><strong>Finetune</strong><span>Chưa kết nối</span></div>
+                <div><strong>Target hiện tại</strong><span id="chat-target">Chưa chọn target</span></div>
               </div>
             </article>
           </div>
@@ -224,7 +280,7 @@
     </div>
 
     <aside class="drawer" id="target-drawer" aria-live="polite">
-      <button class="drawer-close" id="drawer-close" aria-label="Close target detail">x</button>
+      <button class="drawer-close" id="drawer-close" aria-label="Close target detail">&times;</button>
       <div id="drawer-content"></div>
     </aside>
 

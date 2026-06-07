@@ -3,37 +3,68 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#07110e">
     <title>LUAD Protein Target Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <div class="app-shell">
       <aside class="sidebar">
-        <div class="brand">
-          <span class="brand-mark">DT</span>
-          <div>
-            <strong>LUAD Target Atlas</strong>
-            <small>Dashboard ưu tiên protein target</small>
+        <div class="sidebar-header">
+          <div class="brand">
+            <span class="brand-mark">DT</span>
+            <div class="brand-copy">
+              <strong>LUAD Target Atlas</strong>
+              <small>Dashboard ưu tiên protein target</small>
+            </div>
           </div>
+          <button class="sidebar-toggle" id="sidebar-toggle" type="button" aria-label="Thu gọn sidebar" aria-expanded="true">
+            <i data-lucide="panel-left-close" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="sidebar-context">
+          <span class="context-label">Research workspace</span>
+          <strong>TCGA-LUAD</strong>
+          <span>Protein target discovery</span>
         </div>
         <nav class="nav-list" aria-label="Dashboard tabs">
-          <button class="nav-btn active" data-tab="overview">Tổng quan</button>
-          <button class="nav-btn" data-tab="pipeline">Pipeline Flow</button>
-          <button class="nav-btn" data-tab="ranking">Xếp hạng candidate</button>
-          <button class="nav-btn" data-tab="geo">Hỗ trợ GEO</button>
-          <button class="nav-btn" data-tab="ai">AI Assistant</button>
+          <button class="nav-btn active" data-tab="overview"><i data-lucide="layout-dashboard" aria-hidden="true"></i><span>Tổng quan</span></button>
+          <button class="nav-btn" data-tab="pipeline" aria-controls="pipeline-subnav" aria-expanded="false"><i data-lucide="workflow" aria-hidden="true"></i><span>Pipeline Flow</span><i class="nav-chevron" data-lucide="chevron-down" aria-hidden="true"></i></button>
+          <div class="pipeline-subnav" id="pipeline-subnav">
+            <button type="button" data-analysis-tab="qc"><span>01</span><strong>QC</strong></button>
+            <button type="button" data-analysis-tab="deg"><span>02</span><strong>DEG</strong></button>
+            <button type="button" data-analysis-tab="mapping"><span>03</span><strong>Mapping</strong></button>
+            <button type="button" data-analysis-tab="network"><span>04</span><strong>Network</strong></button>
+            <button type="button" data-analysis-tab="ml"><span>07</span><strong>ML</strong></button>
+          </div>
+          <button class="nav-btn" data-tab="ranking"><i data-lucide="chart-no-axes-combined" aria-hidden="true"></i><span>Xếp hạng candidate</span></button>
+          <button class="nav-btn" data-tab="geo"><i data-lucide="database-zap" aria-hidden="true"></i><span>Hỗ trợ GEO</span></button>
+          <button class="nav-btn" data-tab="ai"><i data-lucide="sparkles" aria-hidden="true"></i><span>AI Assistant</span><em>Beta</em></button>
         </nav>
         <div class="status-box">
           <span class="status-dot"></span>
-          <span id="health-label">Đang kiểm tra API</span>
+          <div>
+            <small>Data pipeline</small>
+            <span id="health-label">Đang kiểm tra API</span>
+          </div>
         </div>
       </aside>
 
       <main class="workspace">
         <header class="topbar">
-          <div>
-            <p class="eyebrow">TCGA/GDC expression + STRING PPI + GEO tumor-cohort support</p>
-            <h1>Ưu tiên Candidate Protein Target cho LUAD</h1>
+          <div class="topbar-path">
+            <div class="breadcrumb" aria-label="Breadcrumb">
+              <span>LUAD Target Atlas</span>
+              <i data-lucide="chevron-right" aria-hidden="true"></i>
+              <strong id="active-breadcrumb">Tổng quan</strong>
+            </div>
+          </div>
+          <div class="topbar-meta">
+            <span><i data-lucide="microscope" aria-hidden="true"></i> TCGA/GDC + STRING + GEO</span>
+            <span class="live-chip"><i data-lucide="activity" aria-hidden="true"></i> Real mart data</span>
           </div>
         </header>
 
@@ -72,11 +103,11 @@
               <p>Carousel phía trên giải thích luồng tổng thể. Các khối dưới đây mở từng phase phân tích thật để xem chart, bảng audit và network tương tác.</p>
             </div>
             <div class="analysis-jump-grid">
-              <button type="button" data-analysis-tab="qc">Phase 1 - QC</button>
-              <button type="button" data-analysis-tab="deg">Phase 2 - DEG</button>
-              <button type="button" data-analysis-tab="mapping">Phase 3 - Mapping</button>
-              <button type="button" data-analysis-tab="network">Phase 4 - PPI Network</button>
-              <button type="button" data-analysis-tab="ml">Phase 7 - ML Clustering</button>
+              <button type="button" data-analysis-tab="qc"><i data-lucide="scan-search" aria-hidden="true"></i><span>Phase 1</span><strong>Quality Control</strong></button>
+              <button type="button" data-analysis-tab="deg"><i data-lucide="chart-scatter" aria-hidden="true"></i><span>Phase 2</span><strong>Differential Expression</strong></button>
+              <button type="button" data-analysis-tab="mapping"><i data-lucide="git-compare-arrows" aria-hidden="true"></i><span>Phase 3</span><strong>Gene-Protein Mapping</strong></button>
+              <button type="button" data-analysis-tab="network"><i data-lucide="share-2" aria-hidden="true"></i><span>Phase 4</span><strong>PPI Network</strong></button>
+              <button type="button" data-analysis-tab="ml"><i data-lucide="boxes" aria-hidden="true"></i><span>Phase 7</span><strong>ML Clustering</strong></button>
             </div>
           </div>
         </section>
@@ -198,7 +229,13 @@
           <div class="chart-grid two">
             <article class="panel-block ranking-primary"><h3>Top Candidate Ranking</h3><canvas id="ranking-chart"></canvas></article>
             <article class="panel-block"><h3>Score Decomposition</h3><canvas id="score-chart"></canvas><p class="hint" id="score-title">Select a target to inspect score components.</p></article>
-            <article class="panel-block wide"><h3>Candidate Table</h3><div class="table-wrap" id="candidate-table"></div></article>
+            <article class="panel-block wide">
+              <div class="panel-toolbar">
+                <h3>Candidate Table</h3>
+                <button class="export-btn" id="export-csv" type="button"><i data-lucide="download" aria-hidden="true"></i>Export CSV</button>
+              </div>
+              <div class="table-wrap candidate-table-wrap" id="candidate-table"></div>
+            </article>
           </div>
         </section>
 
@@ -258,19 +295,19 @@
           </div>
           <div class="assistant-layout">
             <article class="panel-block">
-              <h3>Hỏi về project</h3>
+              <div class="panel-toolbar"><h3>Hỏi về project</h3><span class="coming-soon">Coming Soon</span></div>
               <div class="chat-log" id="chat-log"></div>
               <form class="chat-form" id="chat-form">
-                <input id="chat-input" type="text" placeholder="Hỏi về SFTPC ranking, GEO mode, PPI context hoặc limitation">
-                <button type="submit">Send</button>
+                <input id="chat-input" type="text" placeholder="Chức năng AI chưa được kết nối" disabled aria-disabled="true">
+                <button type="submit" disabled aria-disabled="true">Send</button>
               </form>
             </article>
             <article class="panel-block">
               <h3>Integration Hooks</h3>
               <div class="hook-list">
-                <div><strong>Model API</strong><span>Chưa kết nối</span></div>
-                <div><strong>RAG Retrieval</strong><span>Chưa kết nối</span></div>
-                <div><strong>Finetune</strong><span>Chưa kết nối</span></div>
+                <div><strong>Model API</strong><span class="coming-soon">Coming Soon</span></div>
+                <div><strong>RAG Retrieval</strong><span class="coming-soon">Coming Soon</span></div>
+                <div><strong>Finetune</strong><span class="coming-soon">Coming Soon</span></div>
                 <div><strong>Target hiện tại</strong><span id="chat-target">Chưa chọn target</span></div>
               </div>
             </article>
@@ -279,11 +316,13 @@
       </main>
     </div>
 
+    <div class="drawer-backdrop" id="drawer-backdrop" aria-hidden="true"></div>
     <aside class="drawer" id="target-drawer" aria-live="polite">
       <button class="drawer-close" id="drawer-close" aria-label="Close target detail">&times;</button>
       <div id="drawer-content"></div>
     </aside>
 
+    <script async src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" onload="window.lucide?.createIcons({ attrs: { 'stroke-width': 1.8 } })"></script>
     <script src="app.js"></script>
   </body>
 </html>

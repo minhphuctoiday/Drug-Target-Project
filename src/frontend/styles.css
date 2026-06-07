@@ -1004,20 +1004,29 @@ h3[data-help] {
 
 .pipeline-variable-table {
   display: grid;
-  gap: 8px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  align-items: stretch;
+  gap: 10px;
   margin-top: 4px;
 }
 
 .pipeline-variable-row {
   display: grid;
-  grid-template-columns: minmax(150px, 0.95fr) minmax(0, 1.35fr);
-  gap: 10px;
-  align-items: start;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  gap: 8px;
+  min-width: 0;
+  height: 100%;
+  overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 10px;
   background: #fbfdfc;
   padding: 10px;
   cursor: help;
+}
+
+.pipeline-variable-row > div {
+  min-width: 0;
 }
 
 .pipeline-variable-row strong,
@@ -1096,8 +1105,8 @@ h3[data-help] {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .pipeline-variable-row {
-    grid-template-columns: 1fr;
+  .pipeline-variable-table {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr));
   }
 }
 
@@ -2157,7 +2166,11 @@ body.sidebar-collapsed .status-box {
 .pipeline-variable-row code {
   display: inline-flex;
   width: fit-content;
+  max-width: 100%;
+  min-width: 0;
   margin-top: 6px;
+  overflow-wrap: anywhere;
+  white-space: normal;
   border: 1px solid rgba(0, 212, 180, .18);
   border-radius: 999px;
   background: rgba(0, 212, 180, .06);
@@ -2182,4 +2195,116 @@ body.sidebar-collapsed .status-box {
 
 body.sidebar-collapsed .brand-mark {
   cursor: pointer;
+}
+
+.pipeline-variable-row strong,
+.pipeline-variable-row p {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.pipeline-variable-row p {
+  line-height: 1.45;
+}
+
+
+/* PPI pipeline step 6 presentation layout */
+.pipeline-slide-content.is-ppi-layout .pipeline-body-grid.score-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.34fr);
+  align-items: start;
+}
+
+.pipeline-slide-content.is-ppi-layout .pipeline-detail-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 12px;
+}
+
+.pipeline-slide-content.is-ppi-layout .pipeline-scoring-card,
+.pipeline-slide-content.is-ppi-layout .pipeline-variable-section {
+  grid-column: 1 / -1;
+}
+
+.pipeline-slide-content.is-ppi-layout .pipeline-detail-card {
+  min-height: 128px;
+}
+
+.pipeline-slide-content.is-ppi-layout .pipeline-scoring-card {
+  min-height: 118px;
+}
+
+.pipeline-slide-content.is-ppi-layout .pipeline-variable-section {
+  display: grid;
+  gap: 12px;
+}
+
+.pipeline-slide-content.is-ppi-layout .pipeline-variable-section > p {
+  max-width: 820px;
+  margin: 0;
+}
+
+.pipeline-slide-content.is-ppi-layout .pipeline-variable-table {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 0;
+}
+
+.pipeline-slide-content.is-ppi-layout .pipeline-variable-row {
+  min-height: 150px;
+  grid-template-rows: auto 1fr;
+  gap: 12px;
+  padding: 12px;
+}
+
+.pipeline-slide-content.is-ppi-layout .pipeline-variable-row > div {
+  display: grid;
+  align-content: start;
+  justify-items: start;
+  gap: 8px;
+}
+
+.pipeline-slide-content.is-ppi-layout .pipeline-variable-row strong {
+  color: var(--lab-text);
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.pipeline-slide-content.is-ppi-layout .pipeline-variable-row code {
+  border-color: var(--lab-accent);
+  background: var(--lab-accent);
+  color: #04110d;
+  line-height: 1.2;
+}
+
+.pipeline-slide-content.is-ppi-layout .pipeline-variable-row p {
+  align-self: stretch;
+  margin: 0;
+}
+
+
+.pipeline-slide-content.is-ppi-layout .pipeline-side {
+  margin-top: 0;
+}
+
+@media (max-width: 1180px) {
+  .pipeline-slide-content.is-ppi-layout .pipeline-variable-table {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .pipeline-slide-content.is-ppi-layout .pipeline-body-grid.score-grid,
+  .pipeline-slide-content.is-ppi-layout .pipeline-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pipeline-slide-content.is-ppi-layout .pipeline-side {
+    position: static;
+  }
+}
+
+@media (max-width: 620px) {
+  .pipeline-slide-content.is-ppi-layout .pipeline-variable-table {
+    grid-template-columns: 1fr;
+  }
 }

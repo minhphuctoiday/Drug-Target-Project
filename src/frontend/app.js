@@ -65,9 +65,9 @@ const pipelineSlides = [
     technologies: ["Apache NiFi", "GDC Portal", "NCBI GEO", "STRING", "HDFS"],
     description: "NiFi chịu trách nhiệm tải dữ liệu raw và ghi vào HDFS trước khi bất kỳ bước phân tích nào chạy.",
     details: [
-      { title: "Nguồn GDC", text: "Dữ liệu TCGA-LUAD từ GDC là nguồn chính cho biểu hiện gene và nhãn Tumor/Normal. NiFi đọc manifest, tải file và giữ metadata ingest để biết file nào đến từ đâu." },
+      { title: "Tổng quan", text: "NiFi đóng vai trò như ‘ống hút’ tự động hút dữ liệu từ các nguồn thông qua API và đưa về HDFS để lưu trữ file thô." },
       { title: "Nguồn GEO và STRING", text: "GEO bổ sung cohort hỗ trợ bên ngoài; STRING cung cấp aliases, protein nodes và cạnh PPI. Các nguồn này đi cùng pipeline để downstream có thể mapping và kiểm chứng candidate." },
-      { title: "Kiểm soát luồng tải", text: "InvokeHTTP tải file, RouteOnAttribute kiểm tra HTTP status, UpdateAttribute gắn metadata ingest, PutHDFS ghi xuống HDFS. File lỗi đi theo nhánh lỗi riêng để audit." },
+      { title: "Kiểm soát luồng tải", text: "NiFi có cơ chế giúp tự động thu thập dữ liệu sau một khoảng thời gian cố định." },
       { title: "Raw HDFS", text: "Raw layer được xem là bất biến: không rename, không lọc, không sửa nội dung. Mọi cleaning và analysis đọc từ raw/refined để pipeline có thể replay." }
     ],
     metrics: [
@@ -85,7 +85,7 @@ const pipelineSlides = [
     technologies: ["PySpark", "HDFS", "Parquet", "Hive", "QC reports"],
     description: "Cleaning chuyển raw data thành refined Parquet có schema rõ ràng, ID thống nhất và có thể join giữa GDC, GEO, STRING.",
     details: [
-      { title: "Chuẩn hóa schema", text: "Tên cột được đưa về snake_case; sample_id, case_id, gene_id, gene_name và source được chuẩn hóa để các notebook downstream không phải đoán tên trường." },
+      { title: "Chuẩn hóa schema", text: "Tên các gene đã được chuẩn hóa và lọc bỏ phần thừa, ví dụ loại bỏ version của gene vì không link được với bộ STRING. Các bảng phục vụ phân tích được join lại để dữ liệu sạch hơn và dễ liên kết giữa GDC/STRING hơn." },
       { title: "Chuẩn hóa missing/null", text: "Các giá trị như NA, Unknown, not available được quy về null trong Parquet. Điều này giúp Spark SQL xử lý missing nhất quán thay vì coi chuỗi rác là dữ liệu thật." },
       { title: "Expression gene-level", text: "Expression được đưa về dạng gene-level, tránh duplicate key ngoài ý muốn và không trộn đơn vị expression nếu chưa có cột expression_unit." },
       { title: "QC output", text: "Cleaning tạo QC report cho sample, gene, missingness và batch. Các report này là bằng chứng vì sao một dòng dữ liệu được giữ hoặc loại." }
@@ -105,17 +105,17 @@ const pipelineSlides = [
     technologies: ["Hive", "PySpark", "Spark SQL", "HDFS", "Parquet"],
     description: "Phase QC đọc refined GDC, loại sample outlier và tạo expression protein-coding đã sẵn sàng cho DE.",
     details: [
-      { title: "Đọc dữ liệu QC", text: "Notebook ưu tiên Hive table gdc.quality_check và gdc.gdc_counts_clean_protein_coding; nếu Hive table chưa có thì fallback sang Parquet refined trên HDFS." },
+      { title: "Đọc dữ liệu QC", text: "Notebook đọc dữ liệu QC từ Hive table nếu bảng đã được đăng ký. Nếu chưa có Hive table, hệ thống sẽ đọc trực tiếp dữ liệu Parquet refined trên HDFS để đảm bảo notebook vẫn chạy được." },
       { title: "Loại sample outlier", text: "Sample bị loại nếu có outlier về library size hoặc số gene phát hiện được. Đây là hai tín hiệu thường phản ánh sample quá ít dữ liệu hoặc profile expression bất thường." },
       { title: "Giữ protein-coding", text: "Pipeline chỉ giữ protein-coding expression vì downstream cần map gene sang protein target và STRING PPI." },
-      { title: "Chuẩn hóa thang expression", text: "TPM được chuyển sang log2 TPM để giảm ảnh hưởng của giá trị expression quá lớn và làm so sánh Tumor/Normal ổn định hơn.", code: "log2_tpm = log2(tpm + 1)" }
+      { title: "Chuẩn hóa thang expression", text: "TPM được chuyển sang log2(TPM + 1) để giảm ảnh hưởng của giá trị expression quá lớn và làm so sánh Tumor/Normal ổn định hơn.", code: "log2_tpm = log2(TPM + 1)" }
     ],
     metrics: [
       { label: "Tumor sau QC", match: "Tumor samples" },
       { label: "Normal sau QC", match: "Normal samples" },
       { label: "GDC sau QC", match: "GDC samples after QC" }
     ],
-    why: "QC là lớp bảo vệ cho thống kê DE: nếu sample lỗi đi vào so sánh Tumor/Normal, log2FC và p-value có thể phản ánh lỗi kỹ thuật thay vì khác biệt sinh học."
+    why: "QC giúp kiểm tra và loại các sample có chất lượng bất thường trước khi phân tích DE, ví dụ sample có tổng expression quá thấp hoặc số gene phát hiện quá ít. Sau bước QC, dữ liệu expression được chuẩn hóa bằng log2(TPM + 1) để giảm ảnh hưởng của các giá trị quá lớn, xử lý được trường hợp TPM = 0 và giúp việc so sánh Tumor/Normal ổn định hơn. Nếu xuất hiện TPM âm, đó được xem là dữ liệu không hợp lệ và cần được đánh dấu hoặc loại bỏ trước khi phân tích."
   },
   {
     step: "Bước 4",
@@ -126,9 +126,9 @@ const pipelineSlides = [
     description: "DE tính mức độ khác biệt expression theo từng gene sau khi sample đã pass QC.",
     details: [
       { title: "Tách nhóm Tumor/Normal", text: "sample_group được normalize thành Tumor hoặc Normal. Gene chỉ được so sánh khi có dữ liệu ở cả hai nhóm." },
-      { title: "Tính trung bình và phương sai", text: "PySpark groupBy gene để tính mean_log2_tpm và variance theo từng nhóm, sau đó pivot về cùng một dòng Tumor/Normal." },
+      { title: "Tính trung bình và phương sai", text: "Với mỗi gene, hệ thống gom các sample Tumor và Normal thành hai nhóm. Sau đó tính expression trung bình của gene trong từng nhóm để xem gene đó tăng hay giảm ở Tumor. Phương sai được dùng để biết expression của gene có ổn định giữa các sample hay dao động quá mạnh. Nhờ vậy, bước DE không chỉ nhìn vào chênh lệch trung bình mà còn xem độ tin cậy của chênh lệch đó." },
       { title: "Tính log2FC và p-value", text: "log2FC là chênh lệch mean_log2_tpm giữa Tumor và Normal. p-value được tính bằng Welch-style t-stat để xử lý hai nhóm có phương sai/kích thước khác nhau." },
-      { title: "Ngưỡng significant", text: "Một gene được xem là DEG khi vừa đủ lớn về hiệu ứng expression vừa đủ mạnh về thống kê.", code: "|log2FC| >= 1 và p < 0.05" }
+      { title: "Ngưỡng significant", text: "Một gene được xem là DEG khi vừa có mức thay đổi expression đủ lớn, vừa có bằng chứng thống kê đủ mạnh. Ngưỡng |log2FC| >= 1 tương đương expression thay đổi khoảng 2 lần giữa Tumor và Normal, giúp giữ lại các gene có hiệu ứng rõ ràng. Ngưỡng p_value < 0.05 giúp lọc các gene có khác biệt ít khả năng xuất hiện do ngẫu nhiên.", code: "|log2FC| >= 1 và p_value < 0.05" }
     ],
     metrics: [
       { label: "Tumor", match: "Tumor samples" },
@@ -167,8 +167,8 @@ const pipelineSlides = [
     details: [
       { title: "Lọc cạnh PPI", text: "PySpark lọc STRING edges liên quan protein ứng viên. Cạnh được giữ khi edge_weight_protein >= 0.4; cạnh tin cậy cao dùng ngưỡng 0.7." },
       { title: "Tính feature mạng", text: "Các feature mạng được tính theo từng protein trung tâm, rồi nối với nodes_protein để bổ sung degree và weighted degree đã có trong refined STRING." },
-      { title: "Biến mạng dễ đọc", text: "Tên hiển thị bên dưới thay cho biến thô, tooltip vẫn giữ tên biến gốc để dễ trace về notebook.", variables: targetFeatureDefinitions },
-      { title: "Chuẩn bị scoring", text: "Các feature expression, centrality và confidence được chuẩn hóa trước khi cộng trọng số để không biến nào áp đảo chỉ vì khác đơn vị đo." }
+      { title: "Chuẩn bị scoring", text: "Các feature expression, centrality và confidence được chuẩn hóa trước khi cộng trọng số để không biến nào áp đảo chỉ vì khác đơn vị đo." },
+      { title: "Biến mạng", text: "Tên hiển thị bên dưới thay cho biến thô; tooltip vẫn giữ tên biến gốc để trace về notebook.", variables: targetFeatureDefinitions }
     ],
     metrics: [
       { label: "Protein candidates", match: "Protein candidates" },
@@ -1157,10 +1157,10 @@ function renderVariableTable(items = []) {
   return `
     <div class="pipeline-variable-table" aria-label="Biến mạng">
       ${items.map((item) => `
-        <div class="pipeline-variable-row" title="${esc(item.raw)}">
+        <div class="pipeline-variable-row" title="${esc(item.raw || item.display)}">
           <div>
             <strong>${esc(item.display)}</strong>
-            <code>${esc(item.raw)}</code>
+            ${item.raw ? `<code>${esc(item.raw)}</code>` : ""}
           </div>
           <p>${esc(item.meaning)}</p>
         </div>
@@ -1196,15 +1196,24 @@ function renderPipelineSlide(animate = false) {
   const slideEl = $("#pipeline-slide");
   if (!slideEl) return;
   const slide = pipelineSlides[state.pipelineIndex];
-  const detailHtml = slide.details.map((item) => `
-    <article class="pipeline-detail-card${item.variables ? " has-variable-table" : ""}">
-      <h3>${esc(item.title)}</h3>
-      <p>${esc(item.text)}</p>
-      ${item.code ? `<code>${esc(item.code)}</code>` : ""}
-      ${item.chips ? renderChipList(item.chips) : ""}
-      ${item.variables ? renderVariableTable(item.variables) : ""}
-    </article>
-  `).join("");
+  const isPpiLayout = slide.step === "Bước 6";
+  const slideContentClasses = ["pipeline-slide-content"];
+  if (slide.score) slideContentClasses.push("is-score-layout");
+  if (isPpiLayout) slideContentClasses.push("is-ppi-layout");
+  const detailHtml = slide.details.map((item) => {
+    const cardClasses = ["pipeline-detail-card"];
+    if (item.variables) cardClasses.push("has-variable-table", "pipeline-variable-section");
+    if (isPpiLayout && item.title === "Chuẩn bị scoring") cardClasses.push("pipeline-scoring-card");
+    return `
+      <article class="${cardClasses.join(" ")}">
+        <h3>${esc(item.title)}</h3>
+        <p>${esc(item.text)}</p>
+        ${item.code ? `<code>${esc(item.code)}</code>` : ""}
+        ${item.chips ? renderChipList(item.chips) : ""}
+        ${item.variables ? renderVariableTable(item.variables) : ""}
+      </article>
+    `;
+  }).join("");
   const metricHtml = slide.metrics.map((metric) => {
     const item = overviewMetric(metric.match);
     const hasValue = Boolean(item || metric.fallback);
@@ -1219,7 +1228,7 @@ function renderPipelineSlide(animate = false) {
     </article>
   `;
   slideEl.innerHTML = `
-    <div class="pipeline-slide-content${slide.score ? " is-score-layout" : ""}">
+    <div class="${slideContentClasses.join(" ")}">
       <div class="pipeline-hero">
         <div class="pipeline-icon" aria-hidden="true">${slide.icon}</div>
         <div>

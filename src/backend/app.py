@@ -26,6 +26,19 @@ _repository = MartRepository(
     mongodb_db=settings.mongodb_db,
 )
 
+CLUSTER_INTERPRETATIONS = {
+    0: "Biểu hiện mạnh, mạng cân bằng",
+    1: "Thiên về biểu hiện, mạng thấp",
+    2: "Protein hub, mạng tương tác mạnh",
+}
+
+ML_FEATURES = [
+    {"key": "abs_log2FC", "model_key": "abs_log2FC", "label": "|log2FC|", "meaning": "Độ lớn thay đổi expression giữa Tumor và Normal."},
+    {"key": "weighted_degree_protein", "model_key": "log1p(weighted_degree_protein)", "label": "Weighted degree", "meaning": "Tổng trọng số kết nối STRING của protein; mô hình dùng log1p trước khi scale."},
+    {"key": "avg_combined_score", "model_key": "avg_combined_score", "label": "Avg STRING score", "meaning": "Độ tin cậy STRING trung bình của các tương tác."},
+    {"key": "num_interactions_in_deg_network", "model_key": "log1p(num_interactions_in_deg_network)", "label": "DEG interactions", "meaning": "Số tương tác trong mạng DEG; mô hình dùng log1p trước khi scale."},
+]
+
 
 def unavailable_mart(name: str) -> dict[str, Any]:
     return {
@@ -66,6 +79,28 @@ def safe_float(value: Any, default: float = 0.0) -> float:
         return default
 
 
+def cluster_interpretation(cluster_id: Any) -> str:
+    try:
+        key = int(cluster_id)
+    except (TypeError, ValueError):
+        return "Chưa có diễn giải"
+    return CLUSTER_INTERPRETATIONS.get(key, f"Cluster {key}")
+
+
+def enrich_cluster_row(row: dict[str, Any]) -> dict[str, Any]:
+    return {**row, "cluster_interpretation": cluster_interpretation(row.get("cluster_id"))}
+
+
+def median_value(values: list[float]) -> float | None:
+    if not values:
+        return None
+    ordered = sorted(values)
+    midpoint = len(ordered) // 2
+    if len(ordered) % 2:
+        return ordered[midpoint]
+    return (ordered[midpoint - 1] + ordered[midpoint]) / 2
+
+
 def find_target(protein_id: str) -> dict[str, Any]:
     token = protein_id.upper()
     for row in target_rows():
@@ -102,7 +137,7 @@ def filtered_targets(
     if min_final_score is not None:
         rows = [row for row in rows if row.get("final_score") is not None and float(row["final_score"]) >= min_final_score]
     rows = sorted(rows, key=lambda row: row.get("rank") or 10**9)
-    return {"items": rows[offset : offset + limit], "total": len(rows), "limit": limit, "offset": offset, "source": "real_mart"}
+    return {"items": [enrich_cluster_row(row) for row in rows[offset : offset + limit]], "total": len(rows), "limit": limit, "offset": offset, "source": "real_mart"}
 
 
 @app.get("/")
@@ -222,7 +257,7 @@ def network(
     geo_validation_status: str | None = None,
     protein_id: str | None = None,
 ) -> dict[str, Any]:
-    nodes = sorted(item_list("ppi_visualization_nodes"), key=lambda row: row.get("rank") or 10**9)[:top_n]
+    nodes = [enrich_cluster_row(row) for row in sorted(item_list("ppi_visualization_nodes"), key=lambda row: row.get("rank") or 10**9)[:top_n]]
     if cluster_id is not None:
         nodes = [row for row in nodes if row.get("cluster_id") is not None and int(row["cluster_id"]) == cluster_id]
     if deg_direction:
@@ -338,7 +373,11 @@ def target_detail(protein_id: str) -> dict[str, Any]:
             "support_score": row.get("geo_support_score"),
             "support_level": row.get("geo_support_level"),
         },
-        "phase_7_ml": {"cluster_id": row.get("cluster_id"), "candidate_group": row.get("candidate_group")},
+        "phase_7_ml": {
+            "cluster_id": row.get("cluster_id"),
+            "cluster_interpretation": cluster_interpretation(row.get("cluster_id")),
+            "candidate_group_source": row.get("candidate_group"),
+        },
     }
 
 
@@ -399,17 +438,72 @@ def ml_scatter(limit: int = Query(100, ge=1, le=5000), cluster_id: int | None = 
     if top_only:
         top_ids = {row.get("protein_id") for row in target_rows()[:100]}
         rows = [row for row in rows if row.get("protein_id") in top_ids]
-    return {"items": rows[:limit], "limit": limit, "cluster_id": cluster_id, "top_only": top_only}
+    return {"items": [enrich_cluster_row(row) for row in rows[:limit]], "limit": limit, "cluster_id": cluster_id, "top_only": top_only}
 
 
 @app.get("/api/v1/visualizations/ml/cluster-summary")
 def ml_cluster_summary() -> Any:
-    return mart("ml_cluster_summary")
+    data = mart("ml_cluster_summary")
+    return {**data, "items": [enrich_cluster_row(row) for row in item_list("ml_cluster_summary")]} if isinstance(data, dict) else data
 
 
 @app.get("/api/v1/ml/clusters")
 def ml_clusters() -> Any:
-    return mart("ml_clusters")
+    data = mart("ml_clusters")
+    return {**data, "items": [enrich_cluster_row(row) for row in item_list("ml_clusters")]} if isinstance(data, dict) else data
+
+
+@app.get("/api/v1/visualizations/ml/explainability")
+def ml_explainability() -> dict[str, Any]:
+    points = item_list("ml_cluster_points")
+    summaries = {int(row["cluster_id"]): row for row in item_list("ml_cluster_summary") if row.get("cluster_id") is not None}
+    top_targets = sorted(target_rows(), key=lambda row: row.get("rank") or 10**9)[:100]
+    top_by_cluster: dict[int, list[dict[str, Any]]] = {}
+    for row in top_targets:
+        if row.get("cluster_id") is None:
+            continue
+        top_by_cluster.setdefault(int(row["cluster_id"]), []).append(row)
+
+    total_candidates = len(points)
+    total_top = len(top_targets)
+    profiles = []
+    for cluster_id in sorted(summaries):
+        summary = summaries[cluster_id]
+        members = [row for row in points if row.get("cluster_id") is not None and int(row["cluster_id"]) == cluster_id]
+        top_members = top_by_cluster.get(cluster_id, [])
+        feature_ranges = {}
+        for feature in ML_FEATURES:
+            values = [safe_float(row.get(feature["key"])) for row in members if row.get(feature["key"]) is not None]
+            feature_ranges[feature["key"]] = {"min": min(values) if values else None, "median": median_value(values), "max": max(values) if values else None}
+        profiles.append({
+            **summary,
+            "cluster_interpretation": cluster_interpretation(cluster_id),
+            "source_candidate_group": summary.get("candidate_group"),
+            "population_percentage": (len(members) / total_candidates * 100) if total_candidates else 0,
+            "top_100_count": len(top_members),
+            "top_100_percentage": (len(top_members) / total_top * 100) if total_top else 0,
+            "top_100_capture_rate": (len(top_members) / len(members) * 100) if members else 0,
+            "top_genes": [row.get("gene_name") for row in top_members[:10]],
+            "feature_ranges": feature_ranges,
+        })
+
+    k_rows = item_list("ml_k_selection")
+    best_k = max(k_rows, key=lambda row: safe_float(row.get("silhouette_score")), default={})
+    return {
+        "assignment": {
+            "algorithm": "KMeans on StandardScaler-transformed features",
+            "fixed_score_threshold": False,
+            "rule": "Mỗi candidate được gán vào centroid gần nhất trong không gian 4 feature đã chuẩn hóa; không có ngưỡng điểm cố định để vào Cluster 0, 1 hoặc 2.",
+            "features": ML_FEATURES,
+            "selected_k": best_k.get("k"),
+            "silhouette_score": best_k.get("silhouette_score"),
+            "note": "Khoảng min/median/max chỉ mô tả các thành viên hiện tại và có thể chồng lấp; chúng không phải luật gán cluster.",
+        },
+        "items": profiles,
+        "top_100_total": total_top,
+        "total_candidates": total_candidates,
+        "source": {"points": "ml_cluster_points", "summary": "ml_cluster_summary", "top_targets": "top_candidate_targets_enriched"},
+    }
 
 
 @app.post("/api/v1/chat")

@@ -2,6 +2,10 @@ const state = {
   currentTarget: null,
   pipelineIndex: 0,
   pipelineDirection: "next",
+  pipelineVisualTabs: {},
+  pipelineNetworkFilters: { topN: 50, minScore: 0.4, direction: "", geoSupported: false },
+  pipelineDegFilter: "top100",
+  pipelineDegView: { zoom: 1, centerX: 0, minY: 0 },
   networkHit: [],
   hits: {},
   data: {},
@@ -37,17 +41,26 @@ const geoSupportColors = {
 function geoSupportColor(level) {
   return geoSupportColors[level] || colors.gray;
 }
+function clusterProfile(clusterId) {
+  return (state.data.mlExplain?.items || []).find((row) => Number(row.cluster_id) === Number(clusterId)) || null;
+}
+function clusterInterpretation(clusterId) {
+  return clusterProfile(clusterId)?.cluster_interpretation || `Cluster ${clusterId}`;
+}
+function clusterFullLabel(clusterId) {
+  return `Cluster ${clusterId} · ${clusterInterpretation(clusterId)}`;
+}
 
 const detailTabs = new Set(["qc", "deg", "mapping", "network", "ml"]);
 const navigableTabs = new Set(["overview", "pipeline", "ranking", "geo", "ai"]);
 detailTabs.forEach((tab) => navigableTabs.add(tab));
 const overviewCards = [
-  { label: "Samples after QC", match: "GDC samples after QC", unit: "samples", icon: "scan-search", note: "Sample GDC/TCGA-LUAD còn lại sau quality control." },
+  { label: "Sample sau QC", match: "GDC samples after QC", unit: "samples", icon: "scan-search", note: "Sample GDC/TCGA-LUAD còn lại sau quality control." },
   { label: "DEGs", match: "Differentially expressed genes", unit: "genes", icon: "chart-scatter", note: "Gene khác biệt expression giữa Tumor và Normal." },
-  { label: "Mapped proteins", match: "DEG mapped to proteins", unit: "genes", icon: "git-compare-arrows", note: "DEG map được sang STRING protein_id." },
+  { label: "Protein đã mapping", match: "DEG mapped to proteins", unit: "genes", icon: "git-compare-arrows", note: "DEG map được sang STRING protein_id." },
   { label: "STRING edges", match: "PPI edges in top-target graph", unit: "edges", icon: "share-2", note: "Cạnh PPI trong top-target graph với edge_weight >= 0.4." },
-  { label: "Top candidates", match: "Top candidate targets", unit: "targets", icon: "trophy", note: "Candidate target cuối cùng từ mart enriched." },
-  { label: "GEO-supported targets", match: "Candidates with GEO support", unit: "targets", icon: "database-zap", note: "Target có support trong GEO tumor-only cohort." }
+  { label: "Candidate ưu tiên", match: "Top candidate targets", unit: "targets", icon: "trophy", note: "Candidate target cuối cùng từ mart enriched." },
+  { label: "Target có GEO support", match: "Candidates with GEO support", unit: "targets", icon: "database-zap", note: "Target có support trong GEO tumor-only cohort." }
 ];
 const targetFeatureDefinitions = [
   { display: "Số kết nối", raw: "degree", meaning: "Biến degree: số protein mà protein trung tâm tương tác trực tiếp." },
@@ -58,110 +71,151 @@ const targetFeatureDefinitions = [
 ];
 const pipelineSlides = [
   {
-    step: "Bước 1",
-    title: "NiFi Ingestion",
-    subtitle: "Đưa GDC, GEO và STRING vào raw HDFS",
-    icon: `<svg viewBox="0 0 64 64" focusable="false"><path d="M12 18h14v14H12zM38 10h14v14H38zM38 40h14v14H38z" fill="none" stroke="currentColor" stroke-width="4"/><path d="M26 25h8c4 0 4-8 8-8M26 25h8c4 0 4 22 8 22" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>`,
-    technologies: ["Apache NiFi", "GDC Portal", "NCBI GEO", "STRING", "HDFS"],
-    description: "NiFi chịu trách nhiệm tải dữ liệu raw và ghi vào HDFS trước khi bất kỳ bước phân tích nào chạy.",
+    id: 1,
+    stepLabel: "Thu thập dữ liệu",
+    shortLabel: "Dữ liệu",
+    icon: "database",
+    title: "Thu thập dữ liệu từ GDC, STRING và GEO",
+    description: "Pipeline bắt đầu bằng việc tự động lấy dữ liệu từ nhiều nguồn sinh học. GDC cung cấp expression gene và metadata sample, STRING cung cấp mạng PPI, còn GEO hỗ trợ đối chiếu cohort bên ngoài.",
+    goal: "Đưa dữ liệu thô từ các nguồn khác nhau về cùng một hệ thống để xử lý tiếp.",
+    inputs: ["GDC/TCGA expression & metadata", "STRING protein-protein interaction", "GEO tumor cohort support"],
+    outputs: ["Dữ liệu thô được lưu trữ tập trung", "Các file nguồn được quản lý theo từng lần tải"],
     details: [
-      { title: "Tổng quan", text: "NiFi đóng vai trò như ‘ống hút’ tự động hút dữ liệu từ các nguồn thông qua API và đưa về HDFS để lưu trữ file thô." },
+      { title: "Tổng quan", text: "NiFi đóng vai trò như 'ống hút' tự động hút dữ liệu từ các nguồn thông qua API và đưa về HDFS để lưu trữ file thô." },
       { title: "Nguồn GEO và STRING", text: "GEO bổ sung cohort hỗ trợ bên ngoài; STRING cung cấp aliases, protein nodes và cạnh PPI. Các nguồn này đi cùng pipeline để downstream có thể mapping và kiểm chứng candidate." },
       { title: "Kiểm soát luồng tải", text: "NiFi có cơ chế giúp tự động thu thập dữ liệu sau một khoảng thời gian cố định." },
       { title: "Raw HDFS", text: "Raw layer được xem là bất biến: không rename, không lọc, không sửa nội dung. Mọi cleaning và analysis đọc từ raw/refined để pipeline có thể replay." }
     ],
-    metrics: [
-      { label: "GDC trước xử lý", match: "GDC samples before QC" },
-      { label: "Nguồn ingest", fallback: "GDC, GEO, STRING" },
-      { label: "Định dạng downstream", fallback: "Parquet" }
+    statHighlights: [
+      { label: "Nguồn dữ liệu", value: 3, unit: "nguồn" },
+      { label: "GDC samples", match: "GDC samples before QC" },
+      { label: "STRING edges", match: "PPI edges in top-target graph" },
+      { label: "Có GEO support", match: "Candidates with GEO support" }
     ],
-    why: "NiFi phù hợp cho ingest vì bước này cần retry, route lỗi và audit trạng thái tải file. Tách ingest khỏi analysis giúp dữ liệu gốc không bị thay đổi khi logic phân tích được cải tiến."
+    visual: { type: "sources" },
+    actions: [
+      { label: "Chi tiết kỹ thuật", icon: "settings", title: "Thu thập tự động", body: ["NiFi tự động gọi API theo lịch để tải GDC, STRING và GEO.", "Dữ liệu raw được đưa về HDFS theo partition ngày để có thể audit và chạy lại pipeline khi cần.", "Các lỗi tải file được route riêng để không làm sai lệch dữ liệu downstream."] }
+    ]
   },
   {
-    step: "Bước 2",
-    title: "Cleaning & Refined Data",
-    subtitle: "Chuẩn hóa dữ liệu trước khi phân tích",
-    icon: `<svg viewBox="0 0 64 64" focusable="false"><path d="M14 14h34v38H14z" fill="none" stroke="currentColor" stroke-width="4"/><path d="M22 24h18M22 34h18M22 44h12M46 16l8 8" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>`,
-    technologies: ["PySpark", "HDFS", "Parquet", "Hive", "QC reports"],
-    description: "Cleaning chuyển raw data thành refined Parquet có schema rõ ràng, ID thống nhất và có thể join giữa GDC, GEO, STRING.",
+    id: 2,
+    stepLabel: "Làm sạch",
+    shortLabel: "Làm sạch",
+    icon: "sparkles",
+    title: "Làm sạch dữ liệu để các nguồn có thể liên kết với nhau",
+    description: "Dữ liệu từ GDC, STRING và GEO dùng các định dạng tên gene và protein khác nhau. Bước này chuẩn hóa định danh để các nguồn có thể được phân tích chung một cách nhất quán.",
+    goal: "Tạo dữ liệu refined sạch, nhất quán, sẵn sàng cho QC và phân tích tiếp theo.",
+    inputs: ["Raw GDC expression", "Raw STRING edges", "Raw GEO cohort"],
+    outputs: ["Expression matrix đã chuẩn hóa", "Metadata sample/case", "Bảng ánh xạ gene-protein", "Network edges từ STRING"],
     details: [
       { title: "Chuẩn hóa schema", text: "Tên các gene đã được chuẩn hóa và lọc bỏ phần thừa, ví dụ loại bỏ version của gene vì không link được với bộ STRING. Các bảng phục vụ phân tích được join lại để dữ liệu sạch hơn và dễ liên kết giữa GDC/STRING hơn." },
       { title: "Chuẩn hóa missing/null", text: "Các giá trị như NA, Unknown, not available được quy về null trong Parquet. Điều này giúp Spark SQL xử lý missing nhất quán thay vì coi chuỗi rác là dữ liệu thật." },
       { title: "Expression gene-level", text: "Expression được đưa về dạng gene-level, tránh duplicate key ngoài ý muốn và không trộn đơn vị expression nếu chưa có cột expression_unit." },
       { title: "QC output", text: "Cleaning tạo QC report cho sample, gene, missingness và batch. Các report này là bằng chứng vì sao một dòng dữ liệu được giữ hoặc loại." }
     ],
-    metrics: [
-      { label: "GDC trước QC", match: "GDC samples before QC" },
-      { label: "GDC sau QC", match: "GDC samples after QC" },
-      { label: "Refined format", fallback: "Parquet" }
+    statHighlights: [
+      { label: "Gene sau chuẩn hóa", compute: "totalGenes", unit: "genes" },
+      { label: "Sample hợp lệ", match: "GDC samples after QC" },
+      { label: "Mapping rate", compute: "mappingRate", unit: "%" },
+      { label: "STRING edges sau lọc", match: "PPI edges in top-target graph" }
     ],
-    why: "Cleaning được đặt trước DE/DA để mọi bước sau đọc cùng một schema ổn định. Nếu không làm sạch ở tầng refined, lỗi nhỏ như khác tên gene hoặc missing value dạng chuỗi có thể lan sang mapping, scoring và ML."
+    visual: { type: "cleaningStats" },
+    actions: [
+      { label: "Chi tiết kỹ thuật", icon: "wrench", title: "Chuẩn hóa định danh", body: ["Ensembl gene ID được chuẩn hóa bằng cách bỏ version suffix trước khi link sang STRING.", "Các bảng phân tích join theo identifier đã thống nhất để giảm lỗi do alias, khoảng trắng hoặc chữ hoa/thường.", "Dữ liệu refined được lưu dạng Parquet để dashboard và notebook đọc lại cùng một schema."] }
+    ]
   },
   {
-    step: "Bước 3",
-    title: "GDC QC",
-    subtitle: "Giữ sample đủ chất lượng trước Tumor vs Normal",
-    icon: `<svg viewBox="0 0 64 64" focusable="false"><path d="M12 50h44" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M18 42V28M32 42V16M46 42V24" stroke="currentColor" stroke-width="6" stroke-linecap="round"/><path d="M20 18l8 8 16-16" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
-    technologies: ["Hive", "PySpark", "Spark SQL", "HDFS", "Parquet"],
-    description: "Phase QC đọc refined GDC, loại sample outlier và tạo expression protein-coding đã sẵn sàng cho DE.",
+    id: 3,
+    stepLabel: "QC",
+    shortLabel: "QC",
+    icon: "shield-check",
+    title: "Kiểm tra chất lượng trước khi phân tích",
+    description: "Trước khi so sánh Tumor và Normal, pipeline loại bỏ các sample có chất lượng kém như tổng expression quá thấp hoặc quá ít gene được phát hiện để tránh sai lệch kết quả.",
+    goal: "Giữ lại các sample đủ tin cậy cho phân tích Differential Expression.",
+    inputs: ["Expression matrix", "Metadata sample", "Library size", "Gene detected count", "Zero rate"],
+    outputs: ["Danh sách sample pass/fail QC", "Expression data sẵn sàng cho log2(TPM+1) và DE"],
     details: [
       { title: "Đọc dữ liệu QC", text: "Notebook đọc dữ liệu QC từ Hive table nếu bảng đã được đăng ký. Nếu chưa có Hive table, hệ thống sẽ đọc trực tiếp dữ liệu Parquet refined trên HDFS để đảm bảo notebook vẫn chạy được." },
       { title: "Loại sample outlier", text: "Sample bị loại nếu có outlier về library size hoặc số gene phát hiện được. Đây là hai tín hiệu thường phản ánh sample quá ít dữ liệu hoặc profile expression bất thường." },
       { title: "Giữ protein-coding", text: "Pipeline chỉ giữ protein-coding expression vì downstream cần map gene sang protein target và STRING PPI." },
-      { title: "Chuẩn hóa thang expression", text: "TPM được chuyển sang log2(TPM + 1) để giảm ảnh hưởng của giá trị expression quá lớn và làm so sánh Tumor/Normal ổn định hơn.", code: "log2_tpm = log2(TPM + 1)" }
+      { title: "Chuẩn hóa thang expression", text: "TPM được chuyển sang log2(TPM + 1) để giảm ảnh hưởng của giá trị expression quá lớn và làm so sánh Tumor/Normal ổn định hơn.", code: "log2_tpm = log2(TPM + 1)" },
+      { title: "Giải thích", text: "QC giúp kiểm tra và loại các sample có chất lượng bất thường trước khi phân tích DE, ví dụ sample có tổng expression quá thấp hoặc số gene phát hiện quá ít. Sau bước QC, dữ liệu expression được chuẩn hóa bằng log2(TPM + 1) để giảm ảnh hưởng của các giá trị quá lớn, xử lý được trường hợp TPM = 0 và giúp việc so sánh Tumor/Normal ổn định hơn. Nếu xuất hiện TPM âm, đó được xem là dữ liệu không hợp lệ và cần được đánh dấu hoặc loại bỏ trước khi phân tích." }
     ],
-    metrics: [
-      { label: "Tumor sau QC", match: "Tumor samples" },
-      { label: "Normal sau QC", match: "Normal samples" },
-      { label: "GDC sau QC", match: "GDC samples after QC" }
+    statHighlights: [
+      { label: "Trước QC", match: "GDC samples before QC" },
+      { label: "Sau QC", match: "GDC samples after QC" },
+      { label: "Loại", compute: "qcRemoved", unit: "samples", tone: "danger" }
     ],
-    why: "QC giúp kiểm tra và loại các sample có chất lượng bất thường trước khi phân tích DE, ví dụ sample có tổng expression quá thấp hoặc số gene phát hiện quá ít. Sau bước QC, dữ liệu expression được chuẩn hóa bằng log2(TPM + 1) để giảm ảnh hưởng của các giá trị quá lớn, xử lý được trường hợp TPM = 0 và giúp việc so sánh Tumor/Normal ổn định hơn. Nếu xuất hiện TPM âm, đó được xem là dữ liệu không hợp lệ và cần được đánh dấu hoặc loại bỏ trước khi phân tích."
+    visual: { type: "qc" },
+    actions: [
+      { label: "Xem lý do loại sample", icon: "list-filter", title: "Lý do loại sample", body: ["Bảng này hiển thị lý do QC loại sample trong mart hiện tại."], dynamic: "qcExclusions" },
+      { label: "Giải thích log2(TPM+1)", icon: "calculator", title: "Vì sao dùng log2(TPM+1)?", body: ["TPM có thể có giá trị rất lớn và cũng có giá trị bằng 0.", "Công thức log2(TPM+1) làm phân phối ổn định hơn, giảm ảnh hưởng của outlier lớn và vẫn xử lý được TPM = 0."] },
+      { label: "Chi tiết kỹ thuật", icon: "settings", title: "QC data access", body: ["Notebook ưu tiên đọc QC từ Hive table khi bảng đã đăng ký.", "Nếu Hive table chưa sẵn sàng, notebook fallback sang Parquet trên HDFS để vẫn chạy được trong môi trường local/lab."] }
+    ]
   },
   {
-    step: "Bước 4",
-    title: "Differential Expression",
-    subtitle: "Tìm gene khác biệt giữa Tumor và Normal",
-    icon: `<svg viewBox="0 0 64 64" focusable="false"><path d="M10 50h44" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M18 46V30M32 46V14M46 46V24" stroke="currentColor" stroke-width="6" stroke-linecap="round"/><circle cx="18" cy="24" r="5" fill="currentColor"/><circle cx="32" cy="10" r="5" fill="currentColor"/><circle cx="46" cy="18" r="5" fill="currentColor"/></svg>`,
-    technologies: ["PySpark", "Spark SQL", "HDFS", "Parquet", "Welch-style statistics"],
-    description: "DE tính mức độ khác biệt expression theo từng gene sau khi sample đã pass QC.",
+    id: 4,
+    stepLabel: "Differential Expression",
+    shortLabel: "DE",
+    icon: "trending-up",
+    title: "Tìm gene biểu hiện khác biệt giữa Tumor và Normal",
+    description: "DE so sánh expression của từng gene giữa nhóm Tumor và Normal. Gene có |log2FC| >= 1 và p-value < 0.05 được xác định là DEG, tạo danh sách ứng viên ban đầu cho drug target.",
+    goal: "Xác định các gene tăng hoặc giảm rõ rệt trong ung thư phổi LUAD.",
+    inputs: ["Expression đã qua QC", "Nhãn Tumor / Normal cho từng sample"],
+    outputs: ["Danh sách DEG", "log2FC", "p-value", "Chiều Up/Down/Not DEG"],
     details: [
       { title: "Tách nhóm Tumor/Normal", text: "sample_group được normalize thành Tumor hoặc Normal. Gene chỉ được so sánh khi có dữ liệu ở cả hai nhóm." },
       { title: "Tính trung bình và phương sai", text: "Với mỗi gene, hệ thống gom các sample Tumor và Normal thành hai nhóm. Sau đó tính expression trung bình của gene trong từng nhóm để xem gene đó tăng hay giảm ở Tumor. Phương sai được dùng để biết expression của gene có ổn định giữa các sample hay dao động quá mạnh. Nhờ vậy, bước DE không chỉ nhìn vào chênh lệch trung bình mà còn xem độ tin cậy của chênh lệch đó." },
       { title: "Tính log2FC và p-value", text: "log2FC là chênh lệch mean_log2_tpm giữa Tumor và Normal. p-value được tính bằng Welch-style t-stat để xử lý hai nhóm có phương sai/kích thước khác nhau." },
       { title: "Ngưỡng significant", text: "Một gene được xem là DEG khi vừa có mức thay đổi expression đủ lớn, vừa có bằng chứng thống kê đủ mạnh. Ngưỡng |log2FC| >= 1 tương đương expression thay đổi khoảng 2 lần giữa Tumor và Normal, giúp giữ lại các gene có hiệu ứng rõ ràng. Ngưỡng p_value < 0.05 giúp lọc các gene có khác biệt ít khả năng xuất hiện do ngẫu nhiên.", code: "|log2FC| >= 1 và p_value < 0.05" }
     ],
-    metrics: [
-      { label: "Tumor", match: "Tumor samples" },
-      { label: "Normal", match: "Normal samples" },
-      { label: "Gene DEG", match: "Differentially expressed genes" }
+    statHighlights: [
+      { label: "Tumor samples", match: "Tumor samples", unit: "samples" },
+      { label: "Normal samples", match: "Normal samples", unit: "samples" },
+      { label: "Gene DEG", match: "Differentially expressed genes", unit: "genes" }
     ],
-    why: "DE là cầu nối từ dữ liệu expression sang danh sách gene ưu tiên. Dùng cả effect size và p-value giúp tránh chọn gene chỉ khác biệt rất nhỏ nhưng có p-value thấp do số mẫu lớn."
+    visual: { type: "deg", tabs: ["Volcano plot"] },
+    actions: [
+      { label: "Giải thích log2FC & p-value", icon: "book-open", title: "log2FC và p-value", body: ["Ngưỡng |log2FC| >= 1 tương đương expression thay đổi khoảng 2 lần giữa Tumor và Normal.", "p-value < 0.05 giúp lọc các khác biệt ít khả năng xuất hiện do ngẫu nhiên.", "Một gene chỉ được xem là DEG khi vừa có hiệu ứng đủ lớn vừa có bằng chứng thống kê đủ mạnh."] },
+      { label: "Giải thích mean & variance", icon: "activity", title: "Mean và variance trong DE", body: ["Pipeline tính expression trung bình của từng gene trong nhóm Tumor và nhóm Normal.", "Variance cho biết expression của gene đó ổn định hay dao động mạnh giữa các sample.", "Kết hợp mean và variance giúp tránh chọn gene chỉ chênh lệch tình cờ hoặc quá nhiễu."] }
+    ]
   },
   {
-    step: "Bước 5",
-    title: "DA - Gene to Protein Mapping",
-    subtitle: "Chuyển gene significant sang protein ứng viên",
-    icon: `<svg viewBox="0 0 64 64" focusable="false"><path d="M14 18h18M14 32h18M14 46h18M42 18h10M42 32h10M42 46h10" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M32 18h10M32 32h10M32 46h10" stroke="currentColor" stroke-width="2" stroke-dasharray="4 4"/></svg>`,
-    technologies: ["PySpark", "Hive", "STRING.gene_map", "HDFS", "Parquet"],
-    description: "DA chỉ giữ gene significant từ DE, chuẩn hóa tên gene và map sang STRING protein để chuẩn bị phân tích PPI.",
+    id: 5,
+    stepLabel: "Gene-to-Protein Mapping",
+    shortLabel: "Mapping",
+    icon: "link",
+    title: "Liên kết gene khác biệt sang protein target",
+    description: "Drug target thường được nghiên cứu ở mức protein. Bước này ánh xạ DEG sang protein tương ứng trong STRING để tiếp tục phân tích mạng tương tác.",
+    goal: "Chuyển danh sách DEG thành danh sách protein candidate có thể phân tích bằng mạng STRING.",
+    inputs: ["Danh sách DEG", "Gene symbol / ENSG ID đã chuẩn hóa", "STRING gene-protein map"],
+    outputs: ["DEG đã được ánh xạ sang protein", "Danh sách gene chưa ánh xạ được", "Mapping confidence"],
     details: [
       { title: "Chuẩn hóa tên gene", text: "Tên gene được trim và uppercase trước khi join. Bước này giảm lỗi do khoảng trắng, chữ hoa/thường hoặc alias không đồng nhất giữa GDC và STRING." },
       { title: "Đọc STRING gene_map", text: "Pipeline ưu tiên Hive table STRING.gene_map; nếu Hive table chưa đăng ký thì fallback sang Parquet refined trên HDFS." },
       { title: "Giữ mapping có protein_id", text: "Mapping hợp lệ cần protein_id, ensp_id và gene_confidence. protein_id là khóa chính để nối sang STRING edges/nodes." },
       { title: "Audit gene không map", text: "Gene không nối được sang STRING protein vẫn được ghi audit, giúp biết expression hit nào bị loại trước PPI và scoring." }
     ],
-    metrics: [
-      { label: "Gene DEG", match: "Differentially expressed genes" },
-      { label: "DEG map protein", match: "DEG mapped to proteins" },
-      { label: "Protein candidates", match: "Protein candidates" }
+    statHighlights: [
+      { label: "DEG đã mapping", compute: "mappedRatio" },
+      { label: "Tỷ lệ thành công", compute: "mappingRate", unit: "%" },
+      { label: "Chưa mapping", compute: "unmappedGenes", unit: "genes", tone: "danger" },
+      { label: "Confidence", compute: "mappingConfidence" }
     ],
-    why: "Drug target thực tế là protein hoặc sản phẩm protein. Mapping làm rõ gene nào có protein tương ứng trong STRING, đồng thời giữ audit để không biến mất dữ liệu một cách im lặng."
+    visual: { type: "mapping" },
+    callout: "Không phải gene nào cũng có protein tương ứng trong STRING. Bước này kiểm tra độ phủ trước khi đưa vào phân tích mạng.",
+    actions: [
+      { label: "Xem gene chưa mapping được", icon: "list-x", title: "Audit gene chưa mapping", body: ["Các gene dưới đây là DEG nhưng không nối được sang STRING protein trong mart hiện tại."], dynamic: "unmappedGenes" },
+      { label: "Mapping confidence là gì?", icon: "badge-help", title: "Mapping confidence", body: ["STRING cung cấp mức tin cậy cho ánh xạ gene/protein dựa trên identifier và alias.", "ENSP ID là Ensembl protein ID được dùng để nối candidate sang mạng protein.", "Confidence cao nghĩa là bước mapping ít mơ hồ hơn trước khi tính network score."] }
+    ]
   },
   {
-    step: "Bước 6",
+    id: 6,
+    stepLabel: "PPI Network & Target Score",
+    shortLabel: "PPI",
+    icon: "network",
     title: "DA - PPI Network & Target Score",
     subtitle: "Tính bối cảnh mạng và điểm mục tiêu",
-    icon: `<svg viewBox="0 0 64 64" focusable="false"><circle cx="16" cy="18" r="7" fill="currentColor"/><circle cx="48" cy="16" r="7" fill="currentColor"/><circle cx="22" cy="48" r="7" fill="currentColor"/><circle cx="48" cy="44" r="7" fill="currentColor"/><path d="M22 20l20-3M18 25l4 23M27 45l15-3M47 23v14M22 23l22 20" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity="0.55"/></svg>`,
     technologies: ["PySpark", "STRING edges/nodes", "Network features", "Min-max normalization", "Target scoring"],
     description: "Protein ứng viên được đặt vào mạng PPI để tính feature mạng, sau đó kết hợp với tín hiệu DE và độ tin cậy STRING thành Target Score.",
     details: [
@@ -170,7 +224,7 @@ const pipelineSlides = [
       { title: "Chuẩn bị scoring", text: "Các feature expression, centrality và confidence được chuẩn hóa trước khi cộng trọng số để không biến nào áp đảo chỉ vì khác đơn vị đo." },
       { title: "Biến mạng", text: "Tên hiển thị bên dưới thay cho biến thô; tooltip vẫn giữ tên biến gốc để trace về notebook.", variables: targetFeatureDefinitions }
     ],
-    metrics: [
+    statHighlights: [
       { label: "Protein candidates", match: "Protein candidates" },
       { label: "PPI edges", match: "PPI edges in top-target graph" },
       { label: "DEG map protein", match: "DEG mapped to proteins" }
@@ -183,98 +237,109 @@ const pipelineSlides = [
         { term: "Confidence_norm", source: "avg_combined_score chuẩn hóa về 0-1", definition: "Confidence_norm là chỉ số độ tin cậy STRING: dùng avg_combined_score, tức điểm tin cậy trung bình của các tương tác STRING quanh protein, rồi chuẩn hóa về 0-1.", reason: "Biến này giúp ưu tiên target có bằng chứng tương tác đáng tin, thay vì chỉ có nhiều cạnh yếu.", normalize: "Chuẩn hóa riêng Confidence_norm để điểm STRING 0-1000 có thể cộng công bằng với DE và centrality." }
       ]
     },
-    why: "Slide này tách rõ hai việc: PPI network cho biết protein nằm ở đâu trong mạng, còn Target Score gom nhiều bằng chứng đã chuẩn hóa. Cách này tránh xếp hạng chỉ dựa vào expression hoặc chỉ dựa vào độ trung tâm mạng."
+    why: "Slide này tách rõ hai việc: PPI network cho biết protein nằm ở đâu trong mạng, còn Target Score gom nhiều bằng chứng đã chuẩn hóa. Cách này tránh xếp hạng chỉ dựa vào expression hoặc chỉ dựa vào độ trung tâm mạng.",
+    visual: { type: "network" }
   },
   {
-    step: "Bước 7",
-    title: "Candidate Ranking & GEO Support",
-    subtitle: "Xếp hạng candidate và đối chiếu cohort ngoài",
-    icon: `<svg viewBox="0 0 64 64" focusable="false"><path d="M14 48h36M20 42V22M32 42V14M44 42V30" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M14 16h8M14 24h8M42 12h10M42 20h10" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity="0.65"/></svg>`,
-    technologies: ["PySpark", "HDFS", "Parquet", "GEO support metrics", "Dashboard mart"],
-    description: "Ranking tạo danh sách target ưu tiên, còn GEO support cung cấp bằng chứng bổ sung từ cohort tumor-only bên ngoài.",
+    id: 7,
+    stepLabel: "Candidate Scoring & GEO",
+    shortLabel: "Scoring",
+    icon: "trophy",
+    title: "Chấm điểm và đánh giá mức hỗ trợ của candidate target",
+    description: "Pipeline kết hợp mức thay đổi expression, vị trí mạng và độ tin cậy STRING để chấm điểm protein candidate. GEO được dùng như cohort bên ngoài để xem mức hỗ trợ expression.",
+    goal: "Tạo danh sách candidate protein target có thể xếp hạng, giải thích và ưu tiên.",
+    inputs: ["DEG metrics", "Network metrics", "STRING confidence score", "GEO tumor cohort expression"],
+    outputs: ["Candidate ranking", "Score decomposition", "GEO support level", "Candidate table"],
     details: [
-      { title: "Weighted candidate ranking", text: "Final score kết hợp expression_score, protein_network_score và string_confidence_score theo trọng số Phase 5 đã chốt.", code: "0.5 expression + 0.3 network + 0.2 STRING confidence" },
-      { title: "Top candidate mart", text: "Các candidate được sắp theo final_score giảm dần và ghi vào mart để dashboard đọc nhanh thay vì tính lại toàn bộ pipeline." },
-      { title: "GEO support", text: "GEO hiện là tumor-only cohort, nên support được hiểu là coverage và percentile expression trong cohort, không phải validation Tumor vs Normal." },
-      { title: "Không đổi ranking bằng GEO", text: "GEO support được trình bày như bằng chứng phụ. Ranking chính vẫn đến từ GDC + STRING để tránh trộn mục tiêu scoring với cohort hỗ trợ." }
+      { title: "Weighted candidate ranking", text: "Final score kết hợp expression_score, protein_network_score và string_confidence_score theo trọng số Phase 5 đã chốt.", code: "0.5 × expression + 0.3 × network + 0.2 × STRING confidence" }
     ],
-    metrics: [
-      { label: "Top candidate", match: "Top candidate targets" },
+    statHighlights: [
+      { label: "Candidate ưu tiên", match: "Top candidate targets" },
       { label: "Có GEO support", match: "Candidates with GEO support" },
-      { label: "Protein candidates", match: "Protein candidates" }
+      { label: "Moderate support", compute: "geoModerate", unit: "targets" },
+      { label: "Top final score", compute: "topFinalScore" }
     ],
-    why: "Ranking cần ổn định và trace được về dữ liệu GDC + STRING. GEO được giữ riêng để người dùng thấy candidate nào có hỗ trợ ngoài, nhưng không làm thay đổi thứ hạng gốc."
+    visual: { type: "scoring", tabs: ["Xếp hạng", "GEO Support", "Bảng đầy đủ"] },
+    callout: "GEO trong project là dữ liệu tumor cohort bên ngoài: dùng để đánh giá độ phủ và mức expression, không phải validation Tumor-vs-Normal độc lập.",
+    actions: [
+      { label: "GEO support là gì?", icon: "database-zap", title: "GEO support", body: ["GEO ở project này là tumor cohort bên ngoài, không có nhóm Normal đối chứng.", "Vì vậy GEO support phản ánh coverage và expression percentile trong cohort, không phải independent Tumor-vs-Normal DE validation.", "Ranking chính vẫn đến từ GDC + STRING; GEO là bằng chứng phụ để đọc candidate cẩn thận hơn."] },
+      { label: "Giải thích scoring", icon: "scale", title: "Candidate scoring", body: ["Score kết hợp có trọng số của |log2FC|, weighted degree và STRING confidence.", "Expression score phản ánh mức thay đổi giữa Tumor và Normal.", "Network score phản ánh vai trò trung tâm trong PPI.", "STRING confidence score phản ánh độ tin cậy của bằng chứng tương tác."] }
+    ]
   },
   {
-    step: "Bước 8",
-    title: "Machine Learning",
-    subtitle: "KMeans phân nhóm candidate, không tạo ranking",
-    icon: `<svg viewBox="0 0 64 64" focusable="false"><circle cx="18" cy="18" r="6" fill="currentColor"/><circle cx="30" cy="22" r="6" fill="currentColor"/><circle cx="22" cy="34" r="6" fill="currentColor"/><circle cx="46" cy="18" r="6" fill="currentColor" opacity="0.65"/><circle cx="48" cy="36" r="6" fill="currentColor" opacity="0.65"/><circle cx="36" cy="46" r="6" fill="currentColor" opacity="0.65"/><path d="M18 18l12 4M30 22l-8 12M46 18l2 18M48 36L36 46" stroke="currentColor" stroke-width="3" opacity="0.45"/></svg>`,
-    technologies: ["Spark ML", "KMeans", "VectorAssembler", "StandardScaler", "Silhouette score"],
-    description: "ML dùng các feature expression/network/STRING để phân cụm candidate thành nhóm có pattern giống nhau.",
-    details: [
-      { title: "Feature dùng cho ML", text: "ML dùng abs_log2FC, log_weighted_degree, avg_combined_score và log_num_interactions. final_score không được đưa vào feature ML vì nó đã là kết quả scoring." },
-      { title: "Scale feature", text: "StandardScaler đưa các feature về thang tương đương trước KMeans, tránh feature có đơn vị lớn quyết định toàn bộ cluster." },
-      { title: "Chọn k", text: "Pipeline thử nhiều giá trị k và dùng silhouette score để chọn cấu hình có mức tách nhóm tốt hơn." },
-      { title: "Diễn giải cluster", text: "Mỗi candidate nhận cluster_id và candidate_group để dashboard giải thích nhóm như high expression + high network, thay vì thay thế ranking." }
+    id: 8,
+    stepLabel: "ML Clustering",
+    shortLabel: "ML",
+    icon: "brain-circuit",
+    title: "Phân nhóm candidate bằng Machine Learning không giám sát",
+    description: "Bước cuối dùng clustering để tự động nhóm các candidate protein có đặc điểm tương tự, giúp khám phá pattern thay vì chỉ nhìn vào một bảng xếp hạng phẳng.",
+    goal: "Hỗ trợ khám phá các kiểu target khác nhau trong danh sách candidate.",
+    inputs: ["abs(log2FC)", "log1p(weighted degree)", "Avg STRING score", "log1p(DEG interactions)"],
+    outputs: ["Cluster label cho mỗi candidate", "Cluster summary", "Scatter plot 2D", "Silhouette score"],
+    statHighlights: [
+      { label: "Số cụm", match: "ML clusters" },
+      { label: "Best k", compute: "bestK" },
+      { label: "Silhouette", compute: "bestSilhouette" },
+      { label: "Candidate", compute: "mlTotalCandidates", unit: "proteins" }
     ],
-    metrics: [
-      { label: "ML clusters", match: "ML clusters" },
-      { label: "Top candidate", match: "Top candidate targets" },
-      { label: "Protein candidates", match: "Protein candidates" }
-    ],
-    why: "ML ở đây phục vụ diễn giải pattern downstream: các cluster giúp nhìn nhóm candidate giống nhau, còn quyết định ưu tiên vẫn dựa trên ranking có trọng số và có thể trace."
+    visual: { type: "ml", tabs: ["Silhouette score", "Scatter plot", "Chi tiết cụm"] },
+    callout: "Đây là học máy không giám sát: hệ thống tự tìm nhóm mà không cần nhãn đúng/sai. Mục đích là khám phá, không phải phân loại.",
+    actions: [
+      { label: "Candidate vào cluster bằng cách nào?", icon: "brain", title: "Quy tắc gán KMeans", body: ["Không có một ngưỡng điểm cố định để vào Cluster 0, 1 hoặc 2.", "Bốn feature được biến đổi và chuẩn hóa; KMeans gán mỗi candidate vào centroid gần nhất trong không gian feature.", "Min/median/max của mỗi cluster chỉ dùng để mô tả, không phải luật phân loại cứng."] },
+      { label: "Giải thích silhouette score", icon: "line-chart", title: "Silhouette score", body: ["Score gần 1 nghĩa là các cụm tách nhau rõ hơn.", "Score gần 0 nghĩa là cụm chồng lấp hoặc ranh giới không rõ.", "Pipeline thử nhiều giá trị k và dùng silhouette để chọn cấu hình hợp lý hơn."] }
+    ]
   }
 ];
 const help = {
-  rank: "Rank from Phase 5 candidate scoring. Lower rank means higher priority in this pipeline.",
-  gene_name: "Gene symbol associated with the candidate protein.",
-  protein_id: "STRING protein identifier used by Phase 3-5 mapping and PPI joins.",
-  ensp_id: "Ensembl protein ID extracted from STRING protein_id.",
-  log2FC: "log2 fold change from Phase 2. Positive means higher mean expression in tumor; negative means lower in tumor.",
-  p_value: "Phase 2 p-value from the project output. The current Phase 2 mart does not contain adjusted_p_value, so this dashboard does not relabel it as adjusted.",
-  deg_direction: "Direction assigned by Phase 2 from log2FC sign.",
-  gene_confidence: "Mapping confidence from refined STRING gene_map used in Phase 3.",
-  weighted_degree_protein: "STRING network weighted degree for this protein from Phase 4.",
-  avg_combined_score: "Average STRING combined_score_protein over candidate interactions. STRING combined_score uses a 0-1000 scale.",
-  edge_weight_protein: "STRING combined_score_protein divided by 1000. 0.4 is medium confidence; 0.7 is high confidence.",
-  final_score: "Phase 5 weighted candidate score combining expression, protein-network score and STRING confidence score.",
-  geo_match_status: "Whether the candidate gene matched an expression row in the tumor-only GEO cohort.",
-  geo_coverage_rate: "Fraction of GEO tumor-cohort samples with usable expression for this candidate gene.",
-  geo_mean_expression: "Mean GEO expression across matched tumor-cohort samples.",
-  geo_median_expression: "Median GEO expression across matched tumor-cohort samples.",
-  geo_mean_percentile: "Average within-sample expression percentile among top candidate genes in GEO.",
-  geo_top_quartile_rate: "Fraction of GEO tumor-cohort samples where the candidate is in the top expression quartile among candidates.",
+  rank: "Hạng trong Phase 5 candidate scoring; số nhỏ hơn nghĩa là ưu tiên cao hơn trong pipeline này.",
+  gene_name: "Gene symbol gắn với candidate protein.",
+  protein_id: "STRING protein identifier dùng cho mapping và join PPI ở Phase 3-5.",
+  ensp_id: "Ensembl protein ID tách từ STRING protein_id.",
+  log2FC: "log2 fold change từ Phase 2. Giá trị dương nghĩa là mean expression cao hơn ở Tumor; giá trị âm nghĩa là thấp hơn ở Tumor.",
+  p_value: "p-value từ output Phase 2. Mart hiện tại chưa có adjusted_p_value, nên dashboard không đổi tên thành adjusted.",
+  deg_direction: "Chiều DEG được Phase 2 gán theo dấu của log2FC.",
+  gene_confidence: "Mapping confidence từ refined STRING gene_map dùng trong Phase 3.",
+  weighted_degree_protein: "STRING network weighted degree của protein này từ Phase 4.",
+  avg_combined_score: "Điểm STRING combined_score trung bình trên các tương tác quanh protein. STRING combined_score dùng thang 0-1000.",
+  edge_weight_protein: "STRING combined_score_protein chia 1000. 0.4 là medium confidence; 0.7 là high confidence.",
+  final_score: "Phase 5 weighted candidate score kết hợp expression, protein_network_score và STRING confidence score.",
+  geo_match_status: "Candidate gene có match expression row trong GEO tumor-only cohort hay không.",
+  geo_coverage_rate: "Tỷ lệ sample GEO tumor-cohort có expression dùng được cho candidate gene này.",
+  geo_mean_expression: "Mean GEO expression trên các sample tumor-cohort đã match.",
+  geo_median_expression: "Median GEO expression trên các sample tumor-cohort đã match.",
+  geo_mean_percentile: "Trung bình within-sample expression percentile trong nhóm top candidate gene ở GEO.",
+  geo_top_quartile_rate: "Tỷ lệ sample GEO tumor-cohort mà candidate nằm trong top quartile expression.",
   geo_support_score: "Phase 6 tumor-only GEO support score: 0.2 coverage + 0.5 mean percentile + 0.3 top-quartile rate.",
-  geo_support_level: "Support bucket derived from geo_support_score; Not Found has no score.",
-  match_status: "Whether the candidate gene matched an expression row in the tumor-only GEO cohort.",
-  coverage_rate: "Fraction of GEO tumor-cohort samples with usable expression for this candidate gene.",
-  mean_expression: "Mean GEO expression across matched tumor-cohort samples.",
-  median_expression: "Median GEO expression across matched tumor-cohort samples.",
-  mean_percentile: "Average within-sample expression percentile among top candidate genes in GEO.",
-  top_quartile_rate: "Fraction of GEO tumor-cohort samples where the candidate is in the top expression quartile among candidates.",
+  geo_support_level: "Nhóm support suy ra từ geo_support_score; Not Found không có score.",
+  match_status: "Candidate gene có match expression row trong GEO tumor-only cohort hay không.",
+  coverage_rate: "Tỷ lệ sample GEO tumor-cohort có expression dùng được cho candidate gene này.",
+  mean_expression: "Mean GEO expression trên các sample tumor-cohort đã match.",
+  median_expression: "Median GEO expression trên các sample tumor-cohort đã match.",
+  mean_percentile: "Trung bình within-sample expression percentile trong nhóm top candidate gene ở GEO.",
+  top_quartile_rate: "Tỷ lệ sample GEO tumor-cohort mà candidate nằm trong top quartile expression.",
   support_score: "Phase 6 tumor-only GEO support score: 0.2 coverage + 0.5 mean percentile + 0.3 top-quartile rate.",
-  support_level: "Support bucket derived from the GEO support score; Not Found has no score.",
-  cluster_id: "KMeans cluster ID from Phase 7.",
-  candidate_group: "Cluster interpretation label from Phase 7.",
-  mapping_status: "Whether this DEG gene was mapped to a STRING protein_id in Phase 3.",
-  mapping_reason: "Why the gene is present in the unmapped audit. In this mart, rows have no matching STRING protein_id in refined STRING gene_map.",
-  geo_match_reason: "Reason a candidate is absent from the GEO tumor-cohort support result."
+  support_level: "Nhóm support suy ra từ GEO support score; Not Found không có score.",
+  cluster_id: "KMeans cluster ID từ Phase 7.",
+  candidate_group: "Nhãn diễn giải gốc từ Phase 7; có thể trùng nếu hai cluster cùng nằm một phía của median.",
+  cluster_interpretation: "Nhãn diễn giải riêng của dashboard, dựa trên profile định lượng để phân biệt từng cluster.",
+  mapping_status: "DEG gene này đã mapping sang STRING protein_id trong Phase 3 hay chưa.",
+  mapping_reason: "Lý do gene xuất hiện trong audit chưa mapping. Trong mart này, các dòng không có STRING protein_id khớp trong refined STRING gene_map.",
+  geo_match_reason: "Lý do candidate vắng trong kết quả GEO tumor-cohort support."
 };
 
 function $(selector) { return document.querySelector(selector); }
 
 const tabLabels = {
   overview: "Tổng quan",
-  pipeline: "Pipeline Flow",
-  qc: "Phase 1 / Quality Control",
+  pipeline: "Luồng pipeline",
+  qc: "Phase 1 / QC dữ liệu",
   deg: "Phase 2 / Differential Expression",
   mapping: "Phase 3 / Gene-Protein Mapping",
-  network: "Phase 4 / PPI Network",
+  network: "Phase 4 / Mạng PPI",
   ranking: "Xếp hạng candidate",
   geo: "Hỗ trợ GEO",
   ml: "Phase 7 / ML Clustering",
-  ai: "AI Assistant"
+  ai: "Trợ lý AI"
 };
 
 function refreshIcons() {
@@ -443,7 +508,29 @@ function showTooltip(html, x, y, delay = 650) {
 function hideTooltip() {
   clearTimeout(tooltipTimer);
   const tip = ensureTooltip();
-  tip.classList.remove("visible");
+  tip.classList.remove("visible", "sidebar-tooltip");
+}
+function showSidebarTooltip(label, anchor) {
+  clearTimeout(tooltipTimer);
+  const tip = ensureTooltip();
+  tip.innerHTML = `<strong>${esc(label)}</strong>`;
+  tip.style.left = `${anchor.x}px`;
+  tip.style.top = `${anchor.y}px`;
+  tip.classList.add("sidebar-tooltip", "visible");
+}
+function bindSidebarTooltips() {
+  document.querySelectorAll(".nav-btn").forEach((button) => {
+    const label = button.querySelector("span")?.textContent?.trim() || button.getAttribute("aria-label") || "Mục điều hướng";
+    const show = () => {
+      if (!document.body.classList.contains("sidebar-collapsed")) return;
+      const rect = button.getBoundingClientRect();
+      showSidebarTooltip(label, { x: rect.right + 12, y: rect.top + rect.height / 2 });
+    };
+    button.addEventListener("mouseenter", show);
+    button.addEventListener("focus", show);
+    button.addEventListener("mouseleave", hideTooltip);
+    button.addEventListener("blur", hideTooltip);
+  });
 }
 function registerHits(canvas, hits) {
   state.hits[canvas.id] = hits;
@@ -476,6 +563,12 @@ function bindCanvasTooltip(canvas) {
       if (state.data.network) drawNetwork(canvas, state.data.network);
     }
   });
+}
+
+function bindCanvasTooltipOnce(canvas) {
+  if (!canvas || canvas.dataset.tooltipBound === "true") return;
+  bindCanvasTooltip(canvas);
+  canvas.dataset.tooltipBound = "true";
 }
 
 function canvasContext(canvas) {
@@ -576,7 +669,7 @@ function niceTicks(min, max, count = 5) {
 function drawGroupedBars(canvas, rows, labelKey, series, meta) {
   const { ctx, width, height } = canvasContext(canvas);
   const hits = [];
-  const pad = { left: 58, right: 18, top: 24, bottom: 48 };
+  const pad = { left: 68, right: 30, top: 30, bottom: 56 };
   const plotW = width - pad.left - pad.right;
   const plotH = height - pad.top - pad.bottom;
   const max = Math.max(...rows.flatMap((row) => series.map((item) => Number(row[item.key]) || 0)), 1);
@@ -605,7 +698,7 @@ function drawGroupedBars(canvas, rows, labelKey, series, meta) {
 function drawVerticalBars(canvas, rows, labelKey, valueKey, options = {}) {
   const { ctx, width, height } = canvasContext(canvas);
   const hits = [];
-  const pad = { left: 52, right: 20, top: 20, bottom: options.rotate ? 72 : 46 };
+  const pad = { left: 66, right: 30, top: 28, bottom: options.rotate ? 86 : 56 };
   const plotW = width - pad.left - pad.right;
   const plotH = height - pad.top - pad.bottom;
   const max = Math.max(...rows.map((row) => Number(row[valueKey]) || 0), 1);
@@ -640,7 +733,7 @@ function drawVerticalBars(canvas, rows, labelKey, valueKey, options = {}) {
 function drawBar(canvas, rows, labelKey, valueKey, options = {}) {
   const { ctx, width, height } = canvasContext(canvas);
   const hits = [];
-  const pad = { left: options.left || 132, right: 44, top: 22, bottom: 34 };
+  const pad = { left: options.left || 150, right: 58, top: 30, bottom: 44 };
   const plotW = width - pad.left - pad.right;
   const plotH = height - pad.top - pad.bottom;
   const max = Math.max(...rows.map((row) => Math.abs(Number(row[valueKey]) || 0)), 1);
@@ -706,7 +799,7 @@ function drawDonut(canvas, rows, labelKey, valueKey, palette, meta) {
 function drawScatter(canvas, rows, xKey, yKey, options = {}) {
   const { ctx, width, height } = canvasContext(canvas);
   const hits = [];
-  const pad = options.pad || { left: 64, right: 24, top: 24, bottom: 52 };
+  const pad = options.pad || { left: 76, right: 34, top: 30, bottom: 64 };
   const plotW = width - pad.left - pad.right;
   const plotH = height - pad.top - pad.bottom;
   const xs = rows.map((row) => Number(row[xKey])).filter(Number.isFinite);
@@ -751,7 +844,7 @@ function drawScatter(canvas, rows, xKey, yKey, options = {}) {
   ctx.textAlign = "center";
   ctx.fillText(options.xLabel || xKey, pad.left + plotW / 2, height - 12);
   ctx.save();
-  ctx.translate(14, pad.top + plotH / 2 + 42);
+  ctx.translate(18, pad.top + plotH / 2 + 42);
   ctx.rotate(-Math.PI / 2);
   ctx.fillText(options.yLabel || yKey, 0, 0);
   ctx.restore();
@@ -793,7 +886,7 @@ function drawVolcano(canvas, rows) {
   }).length;
   $("#volcano-zoom-value").textContent = `${view.zoom.toFixed(1).replace(".0", "")}x`;
   drawScatter(canvas, filtered, "log2FC", "plot_minus_log10_p_value", {
-    xLabel: "log2FC (tumor vs normal)",
+    xLabel: "log2FC (Tumor vs Normal)",
     yLabel: "-log10(p_value), capped",
     radius: (row) => row.is_top_candidate ? 4.5 : 2.4,
     alpha: 0.66,
@@ -811,8 +904,8 @@ function drawVolcano(canvas, rows) {
       if (group === "not") return colors.gray;
       return group === "up" ? colors.red : colors.blue;
     },
-    tooltip: (row) => `<strong>${esc(row.gene_name)}</strong><small>${esc(row.gene_id_base)}</small><br>log2FC: ${fmt(row.log2FC)}<br>p_value: ${fmt(row.p_value)}<br>-log10(p): ${fmt(row.minus_log10_p_value)}<br>Rank: ${fmt(row.rank)}<br>Status: ${row.is_deg ? esc(row.deg_direction) : "Not significant"}`,
-    meta: `${legend([{ label: "Top candidate", color: colors.amber }, { label: "Upregulated DEG", color: colors.red }, { label: "Downregulated DEG", color: colors.blue }, { label: "Not significant", color: colors.gray }])}<div class="axis-note">Showing ${fmt(filtered.length)} genes; ${fmt(visibleEstimate)} are inside the current view. Top N only narrows the plot to candidate genes ranked within Top N. Larger amber points are highlighted top candidates; other points use a fixed smaller radius, so size is not another expression metric. Wheel or pinch to zoom; drag to pan.</div>`
+    tooltip: (row) => `<strong>${esc(row.gene_name)}</strong><small>${esc(row.gene_id_base)}</small><br>log2FC: ${fmt(row.log2FC)}<br>p_value: ${fmt(row.p_value)}<br>-log10(p): ${fmt(row.minus_log10_p_value)}<br>Hạng: ${fmt(row.rank)}<br>Trạng thái: ${row.is_deg ? esc(row.deg_direction) : "Not DEG"}`,
+    meta: `${legend([{ label: "Top candidate", color: colors.amber }, { label: "Upregulated DEG", color: colors.red }, { label: "Downregulated DEG", color: colors.blue }, { label: "Not DEG", color: colors.gray }])}<div class="axis-note">Mỗi điểm là một gene. Trục X là log2FC, trục Y là -log10(p-value). Đang hiển thị ${fmt(filtered.length)} gene; ${fmt(visibleEstimate)} gene nằm trong vùng xem hiện tại. Điểm vàng là top candidate; cuộn chuột hoặc pinch để zoom, kéo để pan.</div>`
   });
 }
 function redrawVolcano() {
@@ -827,7 +920,7 @@ function drawHistogram(canvas, rows, valueKey, meta) {
 function drawLine(canvas, rows, xKey, yKey, meta) {
   const { ctx, width, height } = canvasContext(canvas);
   const hits = [];
-  const pad = { left: 56, right: 24, top: 22, bottom: 48 };
+  const pad = { left: 66, right: 30, top: 28, bottom: 58 };
   const plotW = width - pad.left - pad.right;
   const plotH = height - pad.top - pad.bottom;
   const xs = rows.map((row) => Number(row[xKey]));
@@ -875,7 +968,7 @@ function drawHeatmap(canvas, data) {
   const samples = data.samples || [];
   const matrix = data.matrix || [];
   const hits = [];
-  const pad = { left: 92, right: 18, top: 24, bottom: 76 };
+  const pad = { left: 112, right: 26, top: 30, bottom: 90 };
   const plotW = width - pad.left - pad.right;
   const plotH = height - pad.top - pad.bottom;
   const cellW = plotW / Math.max(samples.length, 1);
@@ -905,7 +998,7 @@ function drawHeatmap(canvas, data) {
     }
   });
   registerHits(canvas, hits);
-  setMeta(canvas, `${colorScaleLegend(min, max, data.value_label || "log2 TPM")}<div class="axis-note">Rows: top DEG genes. Columns: selected QC-passed tumor and normal cases. Blue = lower ${esc(data.value_label || "value")}; red = higher ${esc(data.value_label || "value")}.</div>`);
+  setMeta(canvas, `${colorScaleLegend(min, max, data.value_label || "log2 TPM")}<div class="axis-note">Hàng là top DEG genes; cột là các case Tumor/Normal đã pass QC. Xanh là ${esc(data.value_label || "value")} thấp hơn; đỏ là cao hơn.</div>`);
 }
 
 function drawNetwork(canvas, payload) {
@@ -968,7 +1061,7 @@ function drawNetwork(canvas, payload) {
     ctx.stroke();
     ctx.restore();
     labelPoints.push({ row: node, x: node.x, y: node.y, radius: node.hitRadius, bounds: { left: 8, right: width - 8, top: 8, bottom: height - 8 } });
-    hits.push({ x: node.x - node.hitRadius, y: node.y - node.hitRadius, w: node.hitRadius * 2, h: node.hitRadius * 2, html: `<strong>${esc(node.gene_name)}</strong><small>${esc(node.protein_id)}</small><br>ENSP: ${esc(node.ensp_id)}<br>Rank: ${fmt(node.rank)}<br>log2FC: ${fmt(node.log2FC)}<br>Weighted degree: ${fmt(node.weighted_degree_protein)}<br>Avg STRING combined score: ${fmt(node.avg_combined_score)}<br>Final score: ${fmt(node.final_score)}<br>GEO support: ${esc(node.geo_support_level)}<br>Support score: ${fmt(node.geo_support_score)}<br>Coverage: ${fmt(node.geo_coverage_rate)}<br>Mean percentile: ${fmt(node.geo_mean_percentile)}<br>Cluster: ${fmt(node.cluster_id)}<br>Group: ${esc(node.candidate_group)}` });
+    hits.push({ x: node.x - node.hitRadius, y: node.y - node.hitRadius, w: node.hitRadius * 2, h: node.hitRadius * 2, html: `<strong>${esc(node.gene_name)}</strong><small>${esc(node.protein_id)}</small><br>ENSP: ${esc(node.ensp_id)}<br>Hạng: ${fmt(node.rank)}<br>log2FC: ${fmt(node.log2FC)}<br>Weighted degree: ${fmt(node.weighted_degree_protein)}<br>Avg STRING combined score: ${fmt(node.avg_combined_score)}<br>Final score: ${fmt(node.final_score)}<br>GEO support: ${esc(node.geo_support_level)}<br>Support score: ${fmt(node.geo_support_score)}<br>Coverage: ${fmt(node.geo_coverage_rate)}<br>Mean percentile: ${fmt(node.geo_mean_percentile)}<br>Cluster: ${fmt(node.cluster_id)}<br>Diễn giải: ${esc(node.cluster_interpretation || clusterInterpretation(node.cluster_id))}` });
   });
   if (zoom >= 2 || nodes.length <= 25) {
     drawAdaptiveLabels(ctx, labelPoints, {
@@ -979,17 +1072,17 @@ function drawNetwork(canvas, payload) {
   }
   state.networkHit = positioned;
   registerHits(canvas, hits);
-  const explain = payload.edge_explanation || "Edges are real STRING interactions among selected candidate proteins.";
+  const explain = payload.edge_explanation || "Các cạnh là tương tác STRING thật giữa những candidate protein đã chọn.";
   $("#network-zoom-value").textContent = `${zoom.toFixed(1).replace(".0", "")}x`;
-  $("#network-explain").innerHTML = `<strong>How to read this graph:</strong> ${esc(explain)} Wheel or pinch zoom spreads node positions; drag to pan. Labels are placed only when they do not collide. Node size follows weighted_degree_protein. Node color follows ML cluster. Node outline follows GEO support level.`;
-  setMeta(canvas, `${legend(clusters.map((cluster) => ({ label: `Cluster ${cluster}`, color: clusterColors[Math.abs(cluster) % clusterColors.length] })))}${legend(Object.entries(geoSupportColors).map(([label, color]) => ({ label, color })))}<div class="axis-note">Labels use gene_name from real phase outputs; hover shows STRING protein_id and support metrics. Zoom spreads node positions; drag the plot to pan.</div>`);
+  $("#network-explain").innerHTML = `<strong>Cách đọc graph:</strong> ${esc(explain)} Cuộn chuột hoặc pinch để zoom; kéo để pan. Label chỉ hiện khi không chồng nhau. Kích thước node theo weighted_degree_protein, màu theo ML cluster, viền theo GEO support level.`;
+  setMeta(canvas, `${legend(clusters.map((cluster) => ({ label: `Cluster ${cluster}`, color: clusterColors[Math.abs(cluster) % clusterColors.length] })))}${legend(Object.entries(geoSupportColors).map(([label, color]) => ({ label, color })))}<div class="axis-note">Mỗi node là candidate protein, cạnh là STRING PPI. Hover để xem STRING protein_id và metrics; zoom/pan giúp đọc vùng dày node.</div>`);
 }
 
 function drawScoreBreakdown(canvas, breakdown) {
   const rows = breakdown.components || [];
   const { ctx, width, height } = canvasContext(canvas);
   const hits = [];
-  const pad = { left: 168, right: 78, top: 24, bottom: 38 };
+  const pad = { left: 182, right: 92, top: 30, bottom: 46 };
   const plotW = width - pad.left - pad.right;
   const plotH = height - pad.top - pad.bottom;
   drawAxes(ctx, pad, plotW, plotH, niceTicks(0, 1, 4).map((v) => ({ x: pad.left + v * plotW, label: fmt(v) })), []);
@@ -1011,11 +1104,11 @@ function drawScoreBreakdown(canvas, breakdown) {
     ctx.fillText(row.name, pad.left - 8, y + h * 0.72);
     ctx.textAlign = "left";
     ctx.fillText(fmt(weighted), pad.left + Math.max(weightedW, 2) + 6, y + h * 0.72);
-    hits.push({ x: pad.left, y, w: Math.max(rawW, 8), h, html: `<strong>${esc(row.name)}</strong><br>Raw score: ${fmt(raw)}<br>Weight: ${fmt(weight)}<br>Weighted score: ${fmt(weighted)}` });
+    hits.push({ x: pad.left, y, w: Math.max(rawW, 8), h, html: `<strong>${esc(row.name)}</strong><br>Raw score: ${fmt(raw)}<br>Trọng số: ${fmt(weight)}<br>Weighted score: ${fmt(weighted)}` });
   });
   ctx.textAlign = "left";
   registerHits(canvas, hits);
-  setMeta(canvas, `${legend([{ label: "Raw component score", color: "rgba(224, 255, 244, 0.18)" }, { label: "Weighted contribution", color: colors.green }])}<div class="axis-note">Weighted contribution = raw component score x configured Phase 5 weight. Final score is the sum of weighted contributions.</div>`);
+  setMeta(canvas, `${legend([{ label: "Raw component score", color: "rgba(224, 255, 244, 0.18)" }, { label: "Weighted contribution", color: colors.green }])}<div class="axis-note">Weighted contribution = raw component score x trọng số Phase 5. Final score là tổng các weighted contribution.</div>`);
 }
 function sortRows(rows, key, dir) {
   const direction = dir === "desc" ? -1 : 1;
@@ -1042,7 +1135,7 @@ function renderTable(container, rows, columns, options = false) {
   const sort = sortId ? state.tableSort[sortId] : null;
   const displayRows = sort ? sortRows(rows || [], sort.key, sort.dir) : [...(rows || [])];
   if (!displayRows.length) {
-    container.innerHTML = '<p class="hint">Không có dòng nào khớp với filter hiện tại.</p>';
+    container.innerHTML = "<p class=\"hint\">Không có dòng nào khớp với bộ lọc hiện tại.</p>";
     return;
   }
   const headers = columns.map((column) => {
@@ -1092,7 +1185,7 @@ function populateClusterControls() {
     clusters.forEach((cluster) => {
       const option = document.createElement("option");
       option.value = String(cluster);
-      option.textContent = `Cluster ${cluster}`;
+      option.textContent = clusterFullLabel(cluster);
       select.appendChild(option);
     });
   });
@@ -1121,10 +1214,10 @@ function renderOverview(data) {
       </article>
     `;
   }).join("");
-  const summary = "Dữ liệu hiển thị được build từ phase outputs thật và JSON mart local. Overview không phải một phase phân tích riêng; nó giúp đọc nhanh quy mô sample sau QC, số DEG, mapping protein, PPI edges, top candidate và GEO support.";
+  const summary = "Dữ liệu hiển thị được build từ phase outputs thật và JSON mart local. Tổng quan không phải một phase phân tích riêng; nó giúp đọc nhanh quy mô sample sau QC, số DEG, mapping protein, PPI edges, top candidate và GEO support.";
   container.innerHTML = `
     <article class="overview-summary-card">
-      <strong>Project snapshot</strong>
+      <strong>Tổng quan project</strong>
       <p>${esc(summary)}</p>
     </article>
     <div class="overview-stat-grid">${cards}</div>
@@ -1137,143 +1230,646 @@ function overviewMetric(match) {
   if (!match) return null;
   return metricByName(state.data.overview?.metrics || [], match);
 }
-function mathText(value) {
-  const replacements = [
-    ["TargetScore", "Target Score"],
-    ["log2FoldChange", "log<sub>2</sub>FC"],
-    ["log2FC", "log<sub>2</sub>FC"],
-    ["DE_norm", "DE<sub>norm</sub>"],
-    ["Centrality_norm", "Centrality<sub>norm</sub>"],
-    ["Confidence_norm", "Confidence<sub>norm</sub>"],
-    ["w1", "w<sub>1</sub>"],
-    ["w2", "w<sub>2</sub>"],
-    ["w3", "w<sub>3</sub>"],
-    ["*", "×"]
-  ];
-  return replacements.reduce((html, [from, to]) => html.replaceAll(from, to), esc(value));
+function pipelineRows(key) {
+  return state.data[key]?.items || [];
 }
-function renderVariableTable(items = []) {
-  if (!items.length) return "";
+function metricNumber(match) {
+  const item = overviewMetric(match);
+  const value = Number(item?.metric_value);
+  return Number.isFinite(value) ? value : null;
+}
+function sumRows(rows, key) {
+  return (rows || []).reduce((sum, row) => sum + (Number(row[key]) || 0), 0);
+}
+function degCount(direction) {
+  return pipelineRows("degSummary").find((row) => row.deg_direction === direction)?.gene_count || 0;
+}
+function mappingRows() {
+  return pipelineRows("mappingSummary");
+}
+function mappingMappedRow() {
+  return mappingRows().find((row) => String(row.mapping_status || "").toLowerCase().includes("mapped")) || null;
+}
+function mappingUnmappedRow() {
+  return mappingRows().find((row) => String(row.mapping_status || "").toLowerCase().includes("not")) || null;
+}
+function activePipelineNetwork() {
+  return state.data.pipelineNetwork || state.data.network || { nodes: [], edges: [] };
+}
+function bestKRow() {
+  return [...pipelineRows("mlK")].sort((a, b) => Number(b.silhouette_score || 0) - Number(a.silhouette_score || 0))[0] || null;
+}
+function pipelineComputedMetric(key) {
+  const network = activePipelineNetwork();
+  const nodes = network.nodes || [];
+  const edges = network.edges || [];
+  const targets = pipelineRows("targets");
+  if (key === "totalGenes") return { value: sumRows(pipelineRows("degSummary"), "gene_count"), unit: "genes" };
+  if (key === "mappingRate") return { value: mappingMappedRow()?.percentage, unit: "%" };
+  if (key === "mappedRatio") {
+    const mapped = mappingMappedRow()?.gene_count ?? metricNumber("DEG mapped to proteins");
+    const total = metricNumber("Differentially expressed genes");
+    return { value: mapped && total ? `${fmt(mapped)} / ${fmt(total)}` : "NA", unit: "genes" };
+  }
+  if (key === "unmappedGenes") return { value: mappingUnmappedRow()?.gene_count || 0, unit: "genes" };
+  if (key === "mappingConfidence") return { value: pipelineRows("mappingConfidence")[0]?.gene_confidence || "NA", unit: "STRING" };
+  if (key === "qcRemoved") return { value: sumRows(pipelineRows("qcSamples"), "samples_removed"), unit: "samples" };
+  if (key === "upregulated") return { value: degCount("Upregulated"), unit: "genes" };
+  if (key === "downregulated") return { value: degCount("Downregulated"), unit: "genes" };
+  if (key === "topGene") return { value: pipelineRows("topDeg")[0]?.gene_name || "NA", unit: pipelineRows("topDeg")[0]?.deg_direction || "" };
+  if (key === "networkNodes") return { value: nodes.length || state.data.network?.nodes?.length || 0, unit: "node" };
+  if (key === "networkEdges") return { value: edges.length || metricNumber("PPI edges in top-target graph") || 0, unit: "edge" };
+  if (key === "avgNetworkDegree") {
+    const avg = nodes.length ? nodes.reduce((sum, row) => sum + (Number(row.weighted_degree_protein) || 0), 0) / nodes.length : null;
+    return { value: avg, unit: "weighted" };
+  }
+  if (key === "maxStringScore") {
+    const max = Math.max(...edges.map((edge) => Number(edge.edge_weight_protein || 0)), 0);
+    return { value: max, unit: "0-1" };
+  }
+  if (key === "geoModerate") return { value: pipelineRows("geoSummary").find((row) => row.geo_support_level === "Moderate GEO support")?.count || 0, unit: "targets" };
+  if (key === "topFinalScore") return { value: targets[0]?.final_score || null, unit: "rank #1" };
+  if (key === "bestK") return { value: bestKRow()?.k || "NA", unit: "clusters" };
+  if (key === "bestSilhouette") return { value: bestKRow()?.silhouette_score || null, unit: "score" };
+  if (key === "mlTotalCandidates") return { value: sumRows(pipelineRows("mlSummary"), "num_candidates"), unit: "proteins" };
+  return { value: "NA", unit: "" };
+}
+function pipelineStat(stat) {
+  if (stat.compute) {
+    const computed = pipelineComputedMetric(stat.compute);
+    return { label: stat.label, tone: stat.tone, ...computed, unit: stat.unit || computed.unit };
+  }
+  if (stat.match) {
+    const item = overviewMetric(stat.match);
+    return { label: stat.label, value: item ? item.metric_value : "NA", unit: stat.unit || item?.metric_unit || "", tone: stat.tone };
+  }
+  return { label: stat.label, value: stat.value, unit: stat.unit || "", tone: stat.tone };
+}
+function statValueHtml(stat, className = "pipeline-highlight-card") {
+  const item = pipelineStat(stat);
+  const numeric = Number(item.value);
+  const countAttr = Number.isFinite(numeric) ? ` data-count-value="${esc(numeric)}"` : "";
   return `
-    <div class="pipeline-variable-table" aria-label="Biến mạng">
-      ${items.map((item) => `
-        <div class="pipeline-variable-row" title="${esc(item.raw || item.display)}">
-          <div>
-            <strong>${esc(item.display)}</strong>
-            ${item.raw ? `<code>${esc(item.raw)}</code>` : ""}
-          </div>
-          <p>${esc(item.meaning)}</p>
-        </div>
-      `).join("")}
-    </div>
+    <article class="${className}${item.tone ? ` tone-${esc(item.tone)}` : ""}">
+      <span>${esc(item.label)}</span>
+      <strong${countAttr}>${esc(fmt(item.value))}</strong>
+      ${item.unit ? `<small>${esc(item.unit)}</small>` : ""}
+    </article>
   `;
 }
-function renderChipList(items = []) {
-  if (!items.length) return "";
-  return `<div class="pipeline-chip-list">${items.map((item) => `<span class="pipeline-chip" title="${esc(item.raw || item)}">${esc(item.display || item)}</span>`).join("")}</div>`;
+function renderPipelineStats(stats = [], className) {
+  return stats.map((stat) => statValueHtml(stat, className)).join("");
 }
-function renderScoreBlock(score) {
+function renderPipelinePills(items = [], type) {
+  return items.map((item) => `<span class="pipeline-io-pill ${type}">${esc(item)}</span>`).join("");
+}
+
+function renderPipelineDetailBlocks(details = []) {
+  if (!details.length) return "";
+  return `<div class="pipeline-detail-blocks">${details.map((item) => `
+    <article class="pipeline-narrative-block">
+      <strong>${esc(item.title)}</strong>
+      <p>${esc(item.text)}</p>
+      ${item.code ? `<code>${esc(item.code)}</code>` : ""}
+      ${item.variables ? `<div class="pipeline-variable-list">${item.variables.map((variable) => `<div title="${esc(variable.raw)}"><b>${esc(variable.display)}</b><span>${esc(variable.meaning)}</span><code>${esc(variable.raw)}</code></div>`).join("")}</div>` : ""}
+    </article>
+  `).join("")}</div>`;
+}
+function renderPipelineScoreBlock(score) {
   if (!score) return "";
   return `
-    <div class="pipeline-score-block">
-      <h3>Cách tính điểm mục tiêu (Target Score)</h3>
-      <div class="pipeline-formula">${mathText(score.formula)}</div>
-      <div class="pipeline-score-components">
-        ${score.components.map((component) => `
-          <article class="pipeline-score-component">
-            <strong>${mathText(component.term)}</strong>
-            <span>${mathText(component.source)}</span>
-            <p>${mathText(component.definition || component.reason)}</p>
-            <p>${esc(component.reason)}</p>
-            <p><em>${mathText(component.normalize)}</em></p>
-          </article>
-        `).join("")}
-      </div>
-    </div>
+    <section class="pipeline-score-explain">
+      <strong>Target Score</strong>
+      <code>${esc(score.formula)}</code>
+      <div>${(score.components || []).map((item) => `
+        <article>
+          <b>${esc(item.term)}</b>
+          <span>${esc(item.source)}</span>
+          <p>${esc(item.definition)}</p>
+          <p>${esc(item.reason)}</p>
+          <p>${esc(item.normalize)}</p>
+        </article>
+      `).join("")}</div>
+    </section>
   `;
+}
+function renderPipelineNarrative(slide, actionHtml) {
+  if (slide.id === 6) {
+    return `
+      <section class="pipeline-narrative" aria-label="Narrative panel">
+        <span class="pipeline-step-badge">Bước ${slide.id}/${pipelineSlides.length}</span>
+        <h3>${esc(slide.title)}</h3>
+        ${slide.subtitle ? `<p class="pipeline-subtitle-text">${esc(slide.subtitle)}</p>` : ""}
+        <p class="pipeline-description">${esc(slide.description)}</p>
+        <div class="pipeline-tech-list mini">${(slide.technologies || []).map((item) => `<span>${esc(item)}</span>`).join("")}</div>
+        ${renderPipelineDetailBlocks(slide.details)}
+        ${renderPipelineScoreBlock(slide.score)}
+        ${slide.why ? `<aside class="pipeline-callout"><strong>Vì sao bước này quan trọng</strong><p>${esc(slide.why)}</p></aside>` : ""}
+      </section>
+    `;
+  }
+  return `
+    <section class="pipeline-narrative" aria-label="Narrative panel">
+      <span class="pipeline-step-badge">Bước ${slide.id}/${pipelineSlides.length}</span>
+      <h3>${esc(slide.title)}</h3>
+      <p class="pipeline-description">${esc(slide.description)}</p>
+      ${renderPipelineDetailBlocks(slide.details)}
+      <article class="pipeline-goal-card"><i data-lucide="target" aria-hidden="true"></i><div><strong>Mục tiêu</strong><p>${esc(slide.goal)}</p></div></article>
+      <div class="pipeline-io-grid">
+        <article><strong>Đầu vào</strong><div>${renderPipelinePills(slide.inputs, "input")}</div></article>
+        <article><strong>Đầu ra</strong><div>${renderPipelinePills(slide.outputs, "output")}</div></article>
+      </div>
+      ${slide.callout ? `<aside class="pipeline-callout">${esc(slide.callout)}</aside>` : ""}
+      <div class="pipeline-actions">${actionHtml}</div>
+    </section>
+  `;
+}
+
+function renderPipelineTabs(slide) {
+  const tabs = slide.visual?.tabs || [];
+  if (!tabs.length) return "";
+  const active = state.pipelineVisualTabs[slide.id] || tabs[0];
+  return `<div class="pipeline-visual-tabs" role="tablist">${tabs.map((tab) => `<button type="button" class="pipeline-visual-tab${tab === active ? " active" : ""}" data-pipeline-tab="${esc(tab)}">${esc(tab)}</button>`).join("")}</div>`;
+}
+function renderPipelineStepper() {
+  const stepper = $("#pipeline-stepper");
+  if (!stepper) return;
+  stepper.innerHTML = pipelineSlides.map((slide, index) => {
+    const stateClass = index < state.pipelineIndex ? " done" : index === state.pipelineIndex ? " active" : "";
+    return `
+      <button type="button" class="pipeline-stepper-item${stateClass}" role="tab" aria-selected="${index === state.pipelineIndex}" data-index="${index}">
+        <span class="step-circle"><i data-lucide="${esc(index < state.pipelineIndex ? "check" : slide.icon)}" aria-hidden="true"></i></span>
+        <span class="step-copy"><small>${String(index + 1).padStart(2, "0")}</small><strong>${esc(slide.shortLabel)}</strong></span>
+      </button>
+    `;
+  }).join("");
+  stepper.querySelectorAll("[data-index]").forEach((button) => button.addEventListener("click", () => setPipelineIndex(Number(button.dataset.index))));
+  const mobile = $("#pipeline-mobile-step");
+  const current = pipelineSlides[state.pipelineIndex];
+  if (mobile) mobile.textContent = `${state.pipelineIndex + 1}/${pipelineSlides.length} ${current.shortLabel}`;
+}
+function renderPipelineDots() {
+  const dots = $("#pipeline-dots");
+  if (!dots) return;
+  dots.innerHTML = pipelineSlides.map((slide, index) => `
+    <button type="button" class="pipeline-dot${index === state.pipelineIndex ? " active" : ""}" role="tab" aria-selected="${index === state.pipelineIndex}" aria-label="Đến bước ${index + 1}: ${esc(slide.shortLabel)}" data-index="${index}"></button>
+  `).join("");
+  dots.querySelectorAll("[data-index]").forEach((button) => button.addEventListener("click", () => setPipelineIndex(Number(button.dataset.index))));
+}
+function animateCountUps(scope = document) {
+  const counters = scope.querySelectorAll("[data-count-value]");
+  counters.forEach((counter) => {
+    const value = Number(counter.dataset.countValue);
+    if (!Number.isFinite(value)) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      counter.textContent = fmt(value);
+      return;
+    }
+    const start = performance.now();
+    const duration = 720;
+    const frame = (now) => {
+      const progress = clamp((now - start) / duration, 0, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      counter.textContent = fmt(value * eased);
+      if (progress < 1) requestAnimationFrame(frame);
+      else counter.textContent = fmt(value);
+    };
+    requestAnimationFrame(frame);
+  });
+}
+function pipelineLoading(message = "Đang tải dữ liệu mart...") {
+  return `<div class="pipeline-loading"><i data-lucide="loader-circle" aria-hidden="true"></i><span>${esc(message)}</span></div>`;
 }
 function renderPipelineSlide(animate = false) {
   const slideEl = $("#pipeline-slide");
   if (!slideEl) return;
   const slide = pipelineSlides[state.pipelineIndex];
-  const isPpiLayout = slide.step === "Bước 6";
-  const slideContentClasses = ["pipeline-slide-content"];
-  if (slide.score) slideContentClasses.push("is-score-layout");
-  if (isPpiLayout) slideContentClasses.push("is-ppi-layout");
-  const detailHtml = slide.details.map((item) => {
-    const cardClasses = ["pipeline-detail-card"];
-    if (item.variables) cardClasses.push("has-variable-table", "pipeline-variable-section");
-    if (isPpiLayout && item.title === "Chuẩn bị scoring") cardClasses.push("pipeline-scoring-card");
-    return `
-      <article class="${cardClasses.join(" ")}">
-        <h3>${esc(item.title)}</h3>
-        <p>${esc(item.text)}</p>
-        ${item.code ? `<code>${esc(item.code)}</code>` : ""}
-        ${item.chips ? renderChipList(item.chips) : ""}
-        ${item.variables ? renderVariableTable(item.variables) : ""}
-      </article>
-    `;
-  }).join("");
-  const metricHtml = slide.metrics.map((metric) => {
-    const item = overviewMetric(metric.match);
-    const hasValue = Boolean(item || metric.fallback);
-    const value = item ? esc(fmt(item.metric_value)) : esc(metric.fallback || "Không có dữ liệu");
-    const unit = item ? esc(item.metric_unit || "") : (metric.fallback ? "tham chiếu project" : "không có metric");
-    return `<div class="pipeline-metric${hasValue ? "" : " missing"}"><span>${esc(metric.label)}</span><strong>${value}</strong><small>${unit}</small></div>`;
-  }).join("");
-  const explanationHtml = `
-    <article class="pipeline-explanation-card">
-      <strong>Giải thích</strong>
-      <p>${esc(slide.why)}</p>
-    </article>
-  `;
+  const actionHtml = (slide.actions || []).map((action, index) => `
+    <button type="button" class="pipeline-action-btn" data-action-index="${index}">
+      <i data-lucide="${esc(action.icon || "info")}" aria-hidden="true"></i>${esc(action.label)}
+    </button>
+  `).join("");
+  slideEl.dataset.direction = state.pipelineDirection;
   slideEl.innerHTML = `
-    <div class="${slideContentClasses.join(" ")}">
-      <div class="pipeline-hero">
-        <div class="pipeline-icon" aria-hidden="true">${slide.icon}</div>
-        <div>
-          <span class="pipeline-step-label">${esc(slide.step)} / ${pipelineSlides.length}</span>
-          <h3>${esc(slide.title)}</h3>
-          <p class="pipeline-subtitle">${esc(slide.subtitle)}</p>
-          <p>${esc(slide.description)}</p>
-          <div class="pipeline-tech-list" aria-label="Công nghệ sử dụng">
-            ${slide.technologies.map((tech) => `<span>${esc(tech)}</span>`).join("")}
+    <div class="pipeline-slide-frame">
+      ${renderPipelineNarrative(slide, actionHtml)}
+      <section class="pipeline-visual-panel" aria-label="Visual panel">
+        <div class="pipeline-visual-head">
+          <div>
+            <span>${esc(slide.stepLabel)}</span>
+            <h4>${esc(slide.shortLabel)}</h4>
           </div>
+          ${renderPipelineTabs(slide)}
         </div>
-      </div>
-      <div class="pipeline-body-grid${slide.score ? " score-grid" : ""}">
-        <div class="pipeline-detail-grid">
-          ${detailHtml}
-          ${renderScoreBlock(slide.score)}
-          ${explanationHtml}
-        </div>
-        <aside class="pipeline-side">
-          <h3>Chỉ số liên quan</h3>
-          <div class="pipeline-metric-grid">${metricHtml}</div>
-        </aside>
-      </div>
+        <div class="pipeline-highlight-grid">${renderPipelineStats(slide.statHighlights)}</div>
+        <div class="pipeline-visual-body" id="pipeline-visual-body"></div>
+      </section>
     </div>
   `;
-  slideEl.dataset.direction = state.pipelineDirection;
+  slideEl.querySelectorAll("[data-action-index]").forEach((button) => button.addEventListener("click", () => openPipelineModal(Number(button.dataset.actionIndex))));
+  slideEl.querySelectorAll("[data-pipeline-tab]").forEach((button) => button.addEventListener("click", () => {
+    state.pipelineVisualTabs[slide.id] = button.dataset.pipelineTab;
+    renderPipelineSlide(false);
+  }));
   if (animate) {
     slideEl.classList.remove("is-animating");
     void slideEl.offsetWidth;
     slideEl.classList.add("is-animating");
   }
+  renderPipelineStepper();
+  renderPipelineDots();
+  renderPipelineVisual(slide);
+  animateCountUps(slideEl);
   const counter = $("#pipeline-counter");
   if (counter) counter.textContent = `Bước ${state.pipelineIndex + 1} / ${pipelineSlides.length}`;
   const prev = $("#pipeline-prev");
   const next = $("#pipeline-next");
   if (prev) prev.disabled = state.pipelineIndex === 0;
   if (next) next.disabled = state.pipelineIndex === pipelineSlides.length - 1;
-  const dots = $("#pipeline-dots");
-  if (dots) {
-    dots.innerHTML = pipelineSlides.map((item, index) => {
-      const selected = index === state.pipelineIndex;
-      return `<button type="button" class="pipeline-dot${selected ? " active" : ""}" role="tab" aria-selected="${selected}" aria-label="${esc(item.step)}: ${esc(item.title)}" data-index="${index}"></button>`;
-    }).join("");
-    dots.querySelectorAll(".pipeline-dot").forEach((dot) => dot.addEventListener("click", () => setPipelineIndex(Number(dot.dataset.index))));
+  refreshIcons();
+}
+function renderPipelineVisual(slide) {
+  const body = $("#pipeline-visual-body");
+  if (!body) return;
+  if (slide.visual.type === "sources") renderPipelineSourceVisual(body);
+  if (slide.visual.type === "cleaningStats") renderPipelineCleaningVisual(body);
+  if (slide.visual.type === "qc") renderPipelineQcVisual(body);
+  if (slide.visual.type === "deg") renderPipelineDegVisual(body, slide);
+  if (slide.visual.type === "mapping") renderPipelineMappingVisual(body);
+  if (slide.visual.type === "network") renderPipelineNetworkVisual(body);
+  if (slide.visual.type === "scoring") renderPipelineScoringVisual(body, slide);
+  if (slide.visual.type === "ml") renderPipelineMlVisual(body, slide);
+  animateCountUps(body);
+  refreshIcons();
+}
+function renderPipelineSourceVisual(body) {
+  const cards = [
+    { name: "GDC", icon: "database", desc: "Expression và metadata mẫu LUAD", stat: { match: "GDC samples before QC", label: "samples" } },
+    { name: "STRING", icon: "network", desc: "Protein interactions cho network", stat: { match: "PPI edges in top-target graph", label: "edges" } },
+    { name: "GEO", icon: "database-zap", desc: "Tumor cohort support bên ngoài", stat: { match: "Candidates with GEO support", label: "targets" } }
+  ];
+  body.innerHTML = `
+    <div class="pipeline-source-flow">
+      <div class="pipeline-source-cards">
+        ${cards.map((card) => {
+          const metric = pipelineStat(card.stat);
+          return `<article class="pipeline-source-card"><i data-lucide="${card.icon}" aria-hidden="true"></i><strong>${card.name}</strong><p>${card.desc}</p><span>${esc(fmt(metric.value))} ${esc(metric.unit || card.stat.label)}</span></article>`;
+        }).join("")}
+      </div>
+      <svg class="pipeline-source-arrows" viewBox="0 0 680 120" aria-hidden="true">
+        <path d="M115 10 C115 64 250 72 330 104" />
+        <path d="M340 10 C340 62 340 72 340 104" />
+        <path d="M565 10 C565 64 430 72 350 104" />
+      </svg>
+      <div class="pipeline-storage-node"><i data-lucide="server" aria-hidden="true"></i><strong>Kho lưu trữ tập trung</strong><span>Cập nhật: ${new Date().toLocaleDateString("vi-VN")}</span></div>
+      <div class="pipeline-source-row"><span>3 nguồn dữ liệu</span><span>Manifest raw theo từng nguồn</span><span>Mart local sẵn sàng đọc</span></div>
+    </div>
+  `;
+}
+function renderPipelineCleaningVisual(body) {
+  body.innerHTML = `<div class="pipeline-big-stat-grid">${renderPipelineStats([
+    { label: "Gene sau chuẩn hóa", compute: "totalGenes", unit: "genes" },
+    { label: "Sample hợp lệ", match: "GDC samples after QC" },
+    { label: "Gene-Protein mapping rate", compute: "mappingRate", unit: "%" },
+    { label: "STRING edges sau lọc", match: "PPI edges in top-target graph" }
+  ], "pipeline-big-stat")}</div>`;
+}
+function renderPipelineQcVisual(body) {
+  body.innerHTML = `
+    <div class="pipeline-qc-flow">
+      <article><span>Trước QC</span><strong data-count-value="${esc(metricNumber("GDC samples before QC") || 0)}">0</strong><small>samples</small></article>
+      <i data-lucide="arrow-right" aria-hidden="true"></i>
+      <article><span>Sau QC</span><strong data-count-value="${esc(metricNumber("GDC samples after QC") || 0)}">0</strong><small>samples</small></article>
+      <b>Loại ${esc(fmt(pipelineComputedMetric("qcRemoved").value))} samples</b>
+    </div>
+    <div class="pipeline-mini-chart-grid">
+      <article class="pipeline-mini-chart"><h5>Phân phối library size</h5><canvas id="pipeline-qc-library"></canvas></article>
+      <article class="pipeline-mini-chart"><h5>Lý do loại sample</h5><canvas id="pipeline-qc-exclusion"></canvas></article>
+    </div>
+    <div class="pipeline-formula-note">Expression được chuẩn hóa bằng <strong>log2(TPM+1)</strong> để ổn định phân phối và xử lý giá trị bằng 0.</div>
+  `;
+  const library = $("#pipeline-qc-library");
+  const exclusion = $("#pipeline-qc-exclusion");
+  if (library && pipelineRows("qcLibrary").length) { drawHistogram(library, pipelineRows("qcLibrary"), "number_of_samples", "Phân phối tổng lượng expression trên mỗi sample. Sample có library size quá thấp sẽ bị loại."); bindCanvasTooltipOnce(library); }
+  if (exclusion && pipelineRows("qcExclusions").length) { drawVerticalBars(exclusion, pipelineRows("qcExclusions"), "exclusion_reason", "sample_count", { rotate: false, color: () => colors.red, meta: "Số sample bị loại theo từng lý do QC; cột cao hơn nghĩa là nhiều sample bị loại vì lý do đó." }); bindCanvasTooltipOnce(exclusion); }
+}
+function resetPipelineDegView() {
+  state.pipelineDegView = { zoom: 1, centerX: 0, minY: 0 };
+}
+function pipelineVolcanoFilteredRows(rows) {
+  const drawable = drawableVolcanoRows(rows || []);
+  if (state.pipelineDegFilter === "up") return drawable.filter((row) => row.is_deg && row.deg_direction === "Upregulated");
+  if (state.pipelineDegFilter === "down") return drawable.filter((row) => row.is_deg && row.deg_direction === "Downregulated");
+  if (state.pipelineDegFilter === "not") return drawable.filter((row) => !row.is_deg);
+  return [...drawable].sort((a, b) => {
+    const ar = Number(a.rank || 999999);
+    const br = Number(b.rank || 999999);
+    if (ar !== br) return ar - br;
+    return Math.abs(Number(b.log2FC || 0)) - Math.abs(Number(a.log2FC || 0));
+  }).slice(0, 100);
+}
+function pipelineVolcanoViewport(rows) {
+  const xs = rows.map((row) => Math.abs(Number(row.log2FC))).filter(Number.isFinite);
+  const ys = rows.map((row) => Number(row.plot_minus_log10_p_value)).filter(Number.isFinite);
+  const maxAbsX = Math.max(...xs, 1) * 1.08;
+  const maxY = Math.max(...ys, 4) * 1.06;
+  const zoom = clamp(Number(state.pipelineDegView.zoom || 1), 1, 30);
+  const halfX = Math.max(0.08, maxAbsX / zoom);
+  const spanY = Math.max(0.5, maxY / zoom);
+  const maxCenterShift = Math.max(0, maxAbsX - halfX);
+  state.pipelineDegView.centerX = clamp(state.pipelineDegView.centerX, -maxCenterShift, maxCenterShift);
+  state.pipelineDegView.minY = clamp(state.pipelineDegView.minY, 0, Math.max(0, maxY - spanY));
+  return { minX: state.pipelineDegView.centerX - halfX, maxX: state.pipelineDegView.centerX + halfX, minY: state.pipelineDegView.minY, maxY: state.pipelineDegView.minY + spanY, spanX: halfX * 2, spanY, zoom };
+}
+function drawPipelineVolcano(canvas) {
+  const rows = pipelineVolcanoFilteredRows(state.data.volcano?.items || []);
+  if (!rows.length) return;
+  const view = pipelineVolcanoViewport(rows);
+  const visible = rows.filter((row) => {
+    const x = Number(row.log2FC);
+    const y = Number(row.plot_minus_log10_p_value);
+    return Number.isFinite(x) && Number.isFinite(y) && x >= view.minX && x <= view.maxX && y >= view.minY && y <= view.maxY;
+  }).length;
+  const zoomLabel = $("#pipeline-volcano-zoom-value");
+  if (zoomLabel) zoomLabel.textContent = `${view.zoom.toFixed(1).replace(".0", "")}x`;
+  drawScatter(canvas, rows, "log2FC", "plot_minus_log10_p_value", {
+    xLabel: "log2FC (Tumor vs Normal)",
+    yLabel: "-log10(p-value)",
+    minX: view.minX,
+    maxX: view.maxX,
+    minY: view.minY,
+    maxY: view.maxY,
+    radius: (row) => row.is_top_candidate ? 4.2 : 2.2,
+    alpha: 0.58,
+    color: (row) => {
+      if (!row.is_deg) return colors.gray;
+      return row.deg_direction === "Upregulated" ? colors.red : colors.blue;
+    },
+    adaptiveLabels: true,
+    labelDensityLimit: 70,
+    maxLabels: 18,
+    labelEligible: (row) => row.is_top_candidate,
+    labelText: (row) => row.gene_name,
+    tooltip: (row) => `<strong>${esc(row.gene_name)}</strong><br>log2FC: ${fmt(row.log2FC)}<br>p-value: ${fmt(row.p_value)}<br>Trạng thái: ${row.is_deg ? esc(row.deg_direction) : "Not DEG"}`,
+    meta: `${legend([{ label: "Upregulated", color: colors.red }, { label: "Downregulated", color: colors.blue }, { label: "Not DEG", color: colors.gray }])}<div class="axis-note">Mỗi điểm là một gene. Trục X là log2FC, trục Y là -log10(p-value). Đang hiển thị ${fmt(rows.length)} gene; ${fmt(visible)} gene nằm trong vùng zoom hiện tại. Cuộn chuột hoặc pinch trackpad để zoom.</div>`
+  });
+}
+function zoomPipelineVolcanoAt(point, factor) {
+  const rows = pipelineVolcanoFilteredRows(state.data.volcano?.items || []);
+  if (!rows.length) return;
+  const view = pipelineVolcanoViewport(rows);
+  const canvas = $("#pipeline-volcano-chart");
+  const rect = canvas.getBoundingClientRect();
+  const pad = { left: 76, right: 34, top: 30, bottom: 64 };
+  const plotW = Math.max(1, rect.width - pad.left - pad.right);
+  const plotH = Math.max(1, rect.height - pad.top - pad.bottom);
+  const rx = clamp((point.x - pad.left) / plotW, 0, 1);
+  const ry = clamp((point.y - pad.top) / plotH, 0, 1);
+  const dataX = view.minX + rx * view.spanX;
+  const dataY = view.minY + (1 - ry) * view.spanY;
+  state.pipelineDegView.zoom = clamp(Number(state.pipelineDegView.zoom || 1) * factor, 1, 30);
+  const nextView = pipelineVolcanoViewport(rows);
+  state.pipelineDegView.centerX = dataX + (0.5 - rx) * nextView.spanX;
+  state.pipelineDegView.minY = dataY - (1 - ry) * nextView.spanY;
+  drawPipelineVolcano(canvas);
+}
+function bindPipelineVolcanoWheel(canvas) {
+  if (!canvas || canvas.dataset.pipelineWheelBound === "true") return;
+  canvas.addEventListener("wheel", (event) => {
+    event.preventDefault();
+    hideTooltip();
+    zoomPipelineVolcanoAt(canvasPoint(event, canvas), Math.exp(-event.deltaY * 0.0025));
+  }, { passive: false });
+  canvas.dataset.pipelineWheelBound = "true";
+}
+function renderPipelineDegVisual(body, slide) {
+  const options = [
+    { value: "top100", label: "100 gene" },
+    { value: "up", label: "Upregulated" },
+    { value: "down", label: "Downregulated" },
+    { value: "not", label: "Not DEG" }
+  ];
+  body.innerHTML = `
+    <div class="pipeline-volcano-controls" role="group" aria-label="Bộ lọc Volcano plot">
+      ${options.map((item) => `<button type="button" class="pipeline-filter-pill${state.pipelineDegFilter === item.value ? " active" : ""}" data-pipeline-deg-filter="${item.value}">${item.label}</button>`).join("")}
+      <span>Zoom <output id="pipeline-volcano-zoom-value">${fmt(state.pipelineDegView.zoom)}x</output></span>
+    </div>
+    <article class="pipeline-mini-chart wide"><canvas id="pipeline-volcano-chart"></canvas></article>
+  `;
+  body.querySelectorAll("[data-pipeline-deg-filter]").forEach((button) => button.addEventListener("click", () => {
+    state.pipelineDegFilter = button.dataset.pipelineDegFilter;
+    resetPipelineDegView();
+    renderPipelineDegVisual(body, slide);
+  }));
+  const canvas = $("#pipeline-volcano-chart");
+  if (canvas && state.data.volcano?.items?.length) {
+    drawPipelineVolcano(canvas);
+    bindCanvasTooltipOnce(canvas);
+    bindPipelineVolcanoWheel(canvas);
+  } else {
+    body.innerHTML = pipelineLoading("Volcano plot sẽ hiển thị sau khi mart DE tải xong.");
   }
+}
+function renderPipelineMappingVisual(body) {
+  body.innerHTML = `
+    <div class="pipeline-mapping-layout">
+      <article class="pipeline-mini-chart"><canvas id="pipeline-mapping-donut"></canvas></article>
+      <div class="pipeline-side-stat-list">${renderPipelineStats([
+        { label: "DEG đã mapping", compute: "mappedRatio" },
+        { label: "Tỷ lệ thành công", compute: "mappingRate", unit: "%" },
+        { label: "Mapping confidence", compute: "mappingConfidence" }
+      ], "pipeline-side-stat")}</div>
+    </div>
+    <details class="pipeline-inline-audit"><summary>Xem nhanh gene chưa mapping được</summary><div class="table-wrap" id="pipeline-unmapped-preview"></div></details>
+  `;
+  const canvas = $("#pipeline-mapping-donut");
+  if (canvas && pipelineRows("mappingSummary").length) { drawDonut(canvas, pipelineRows("mappingSummary"), "mapping_status", "gene_count", [colors.green, colors.red], "Tỷ lệ gene DEG mapping thành công sang protein trong STRING."); bindCanvasTooltipOnce(canvas); }
+  renderTable($("#pipeline-unmapped-preview"), pipelineRows("unmapped").slice(0, 8), [
+    { key: "gene_name", label: "Gene" }, { key: "gene_id_base", label: "Gene ID" }, { key: "log2FC", label: "log2FC" }, { key: "mapping_reason", label: "Lý do" }
+  ]);
+}
+function filteredPipelineNetworkPayload(payload) {
+  const source = payload || { nodes: [], edges: [] };
+  const geoSupported = state.pipelineNetworkFilters.geoSupported;
+  const nodes = geoSupported ? (source.nodes || []).filter((node) => node.geo_support_level && node.geo_support_level !== "Not Found") : (source.nodes || []);
+  const ids = new Set(nodes.map((node) => node.protein_id));
+  const edges = (source.edges || []).filter((edge) => ids.has(edge.protein_id_src) && ids.has(edge.protein_id_dst));
+  return { nodes, edges };
+}
+function drawPipelineNetwork(canvas, payload) {
+  const { ctx, width, height } = canvasContext(canvas);
+  const { nodes, edges } = filteredPipelineNetworkPayload(payload);
+  const cx = width / 2;
+  const cy = height / 2;
+  const radius = Math.min(width, height) * 0.36;
+  const positioned = nodes.map((node, index) => {
+    const angle = (index / Math.max(nodes.length, 1)) * Math.PI * 2;
+    const ring = radius * (0.72 + (index % 4) * 0.08);
+    return { ...node, x: cx + Math.cos(angle) * ring, y: cy + Math.sin(angle) * ring, hitRadius: Math.max(6, Math.min(20, Number(node.node_size || 10))) };
+  });
+  const byId = Object.fromEntries(positioned.map((node) => [node.protein_id, node]));
+  edges.forEach((edge) => {
+    const src = byId[edge.protein_id_src];
+    const dst = byId[edge.protein_id_dst];
+    if (!src || !dst) return;
+    ctx.beginPath();
+    ctx.moveTo(src.x, src.y);
+    ctx.lineTo(dst.x, dst.y);
+    ctx.strokeStyle = `rgba(56,189,248,${Math.max(0.12, Number(edge.edge_weight_protein || 0.4) * 0.55)})`;
+    ctx.lineWidth = Math.max(1, Number(edge.edge_weight_protein || 0.4) * 3);
+    ctx.stroke();
+  });
+  const hits = [];
+  const labels = [];
+  positioned.forEach((node) => {
+    const color = node.deg_direction === "Upregulated" ? colors.red : colors.blue;
+    ctx.beginPath();
+    ctx.arc(node.x, node.y, node.hitRadius, 0, Math.PI * 2);
+    ctx.fillStyle = color;
+    ctx.shadowColor = color;
+    ctx.shadowBlur = 10;
+    ctx.fill();
+    ctx.shadowBlur = 0;
+    ctx.strokeStyle = geoSupportColor(node.geo_support_level);
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    labels.push({ row: node, x: node.x, y: node.y, radius: node.hitRadius, bounds: { left: 8, right: width - 8, top: 8, bottom: height - 8 } });
+    hits.push({ x: node.x - node.hitRadius, y: node.y - node.hitRadius, w: node.hitRadius * 2, h: node.hitRadius * 2, html: `<strong>${esc(node.gene_name)}</strong><br>Hạng: ${fmt(node.rank)}<br>Weighted degree: ${fmt(node.weighted_degree_protein)}<br>GEO: ${esc(node.geo_support_level)}` });
+  });
+  drawAdaptiveLabels(ctx, labels, { maxLabels: 12, labelEligible: (node) => Number(node.rank || 999) <= 20, labelText: (node) => node.gene_name });
+  registerHits(canvas, hits);
+  setMeta(canvas, `${legend([{ label: "Upregulated", color: colors.red }, { label: "Downregulated", color: colors.blue }])}<div class="axis-note">Mỗi node là protein candidate trong mạng STRING PPI. Cạnh thể hiện tương tác protein; viền node biểu thị mức GEO support.</div>`);
+}
+async function loadPipelineNetwork() {
+  const filters = state.pipelineNetworkFilters;
+  const params = new URLSearchParams({ top_n: String(filters.topN), min_edge_score: String(filters.minScore) });
+  if (filters.direction) params.set("deg_direction", filters.direction);
+  state.data.pipelineNetwork = await api(`/api/v1/visualizations/network?${params.toString()}`);
+  if (pipelineSlides[state.pipelineIndex]?.id === 6) renderPipelineSlide(false);
+}
+function renderPipelineNetworkVisual(body) {
+  const filters = state.pipelineNetworkFilters;
+  body.innerHTML = `
+    <div class="pipeline-network-controls">
+      <label>Top N <input id="pipeline-network-top" type="range" min="20" max="100" step="10" value="${esc(filters.topN)}"><output>${esc(filters.topN)}</output></label>
+      <label>Min score <select id="pipeline-network-min"><option value="0.4"${filters.minScore === 0.4 ? " selected" : ""}>0.4</option><option value="0.7"${filters.minScore === 0.7 ? " selected" : ""}>0.7</option></select></label>
+      <label>Chiều DEG <select id="pipeline-network-direction"><option value="">Tất cả</option><option value="Upregulated"${filters.direction === "Upregulated" ? " selected" : ""}>Upregulated</option><option value="Downregulated"${filters.direction === "Downregulated" ? " selected" : ""}>Downregulated</option></select></label>
+      <label class="check"><input id="pipeline-network-geo" type="checkbox"${filters.geoSupported ? " checked" : ""}> Chỉ có GEO support</label>
+    </div>
+    <article class="pipeline-mini-chart wide network"><canvas id="pipeline-network-mini"></canvas></article>
+    <div class="pipeline-network-metrics">${renderPipelineStats([
+      { label: "Số node", compute: "networkNodes" }, { label: "Số edge", compute: "networkEdges" }, { label: "Avg weighted degree", compute: "avgNetworkDegree" }, { label: "Max STRING score", compute: "maxStringScore" }
+    ], "pipeline-network-metric")}</div>
+  `;
+  const top = $("#pipeline-network-top");
+  const output = top?.closest("label")?.querySelector("output");
+  top?.addEventListener("input", () => { output.textContent = top.value; });
+  top?.addEventListener("change", async () => { state.pipelineNetworkFilters.topN = Number(top.value); await loadPipelineNetwork(); });
+  $("#pipeline-network-min")?.addEventListener("change", async (event) => { state.pipelineNetworkFilters.minScore = Number(event.currentTarget.value); await loadPipelineNetwork(); });
+  $("#pipeline-network-direction")?.addEventListener("change", async (event) => { state.pipelineNetworkFilters.direction = event.currentTarget.value; await loadPipelineNetwork(); });
+  $("#pipeline-network-geo")?.addEventListener("change", (event) => { state.pipelineNetworkFilters.geoSupported = event.currentTarget.checked; renderPipelineSlide(false); });
+  const canvas = $("#pipeline-network-mini");
+  if (canvas) { drawPipelineNetwork(canvas, activePipelineNetwork()); bindCanvasTooltipOnce(canvas); }
+}
+function renderPipelineScoringVisual(body, slide) {
+  const tabs = slide.visual.tabs;
+  const active = state.pipelineVisualTabs[slide.id] || tabs[0];
+  if (active === "Xếp hạng") {
+    const rows = pipelineRows("targets").slice(0, 8);
+    body.innerHTML = rows.length ? `<div class="pipeline-ranked-list">${rows.map((row) => `
+      <article>
+        <div><strong>#${esc(fmt(row.rank))} ${esc(row.gene_name)}</strong><span>${esc(row.geo_support_level || "NA")}</span></div>
+        <div class="pipeline-score-stack" title="Expression / Network / STRING">
+          <i class="score-expression" style="width:${clamp(Number(row.expression_score || 0) * 52, 2, 52)}%"></i>
+          <i class="score-network" style="width:${clamp(Number(row.protein_network_score || 0) * 30, 2, 30)}%"></i>
+          <i class="score-string" style="width:${clamp(Number(row.string_confidence_score || 0) * 18, 2, 18)}%"></i>
+        </div>
+        <b>${esc(fmt(row.final_score))}</b>
+      </article>`).join("")}</div>` : pipelineLoading("Candidate ranking sẽ hiển thị sau khi tải target mart.");
+  }
+  if (active === "GEO Support") {
+    body.innerHTML = `<article class="pipeline-mini-chart wide"><canvas id="pipeline-geo-scatter-mini"></canvas></article>`;
+    const canvas = $("#pipeline-geo-scatter-mini");
+    if (canvas && pipelineRows("geoScatter").length) {
+      drawScatter(canvas, pipelineRows("geoScatter"), "final_score", "geo_support_score", {
+        xLabel: "GDC + STRING final_score",
+        yLabel: "GEO support score",
+        minY: 0,
+        maxY: 1,
+        radius: (row) => 4 + Math.max(0, 101 - Number(row.rank || 101)) / 42,
+        color: (row) => geoSupportColor(row.geo_support_level),
+        adaptiveLabels: true,
+        labelDensityLimit: 70,
+        maxLabels: 18,
+        labelText: (row) => row.gene_name,
+        tooltip: (row) => `<strong>${esc(row.gene_name)}</strong><br>Final score: ${fmt(row.final_score)}<br>GEO support: ${fmt(row.geo_support_score)}<br>${esc(row.geo_support_level)}`,
+        meta: "Mỗi điểm là một candidate. Trục X là final_score từ GDC + STRING; trục Y là GEO support score bổ sung và không đổi ranking chính."
+      });
+      bindCanvasTooltipOnce(canvas);
+    }
+  }
+  if (active === "Bảng đầy đủ") {
+    body.innerHTML = `<div class="table-wrap pipeline-table" id="pipeline-candidate-preview"></div>`;
+    renderTable($("#pipeline-candidate-preview"), pipelineRows("targets").slice(0, 20), [
+      { key: "rank", label: "Hạng" }, { key: "gene_name", label: "Gene" }, { key: "final_score", label: "Final score" }, { key: "geo_support_score", label: "GEO score" }, { key: "geo_support_level", label: "GEO support" }, { key: "cluster_id", label: "Cluster" }
+    ]);
+  }
+}
+function renderPipelineMlVisual(body, slide) {
+  const tabs = slide.visual.tabs;
+  const active = state.pipelineVisualTabs[slide.id] || tabs[0];
+  if (active === "Silhouette score") {
+    body.innerHTML = `<article class="pipeline-mini-chart wide"><canvas id="pipeline-ml-k-mini"></canvas></article>`;
+    const canvas = $("#pipeline-ml-k-mini");
+    if (canvas && pipelineRows("mlK").length) { drawLine(canvas, pipelineRows("mlK"), "k", "silhouette_score", "Silhouette score đo mức độ phân tách giữa các cụm theo từng k. Giá trị gần 1 là phân tách tốt."); bindCanvasTooltipOnce(canvas); }
+  }
+  if (active === "Scatter plot") {
+    body.innerHTML = `<article class="pipeline-mini-chart wide"><canvas id="pipeline-ml-scatter-mini"></canvas></article>`;
+    const canvas = $("#pipeline-ml-scatter-mini");
+    const rows = state.data.mlScatter?.items || [];
+    if (canvas && rows.length) {
+      drawScatter(canvas, rows, "abs_log2FC", "weighted_degree_protein", {
+        xLabel: "abs(log2FC)",
+        yLabel: "weighted degree",
+        radius: (row) => 3 + (row.final_score || 0) * 9,
+        color: (row) => clusterColors[Math.abs(Number(row.cluster_id || 0)) % clusterColors.length],
+        adaptiveLabels: true,
+        labelDensityLimit: 58,
+        maxLabels: 16,
+        tooltip: (row) => `<strong>${esc(row.gene_name)}</strong><br>${esc(clusterFullLabel(row.cluster_id))}<br>Nhãn nguồn: ${esc(row.candidate_group)}`,
+        meta: "Mỗi điểm là một candidate protein; màu biểu thị cluster và vị trí cho thấy quan hệ giữa abs(log2FC) và weighted degree."
+      });
+      bindCanvasTooltipOnce(canvas);
+    } else body.innerHTML = pipelineLoading("Scatter plot sẽ hiển thị sau khi tải ML mart.");
+  }
+  if (active === "Chi tiết cụm") {
+    body.innerHTML = `<div class="pipeline-cluster-cards">${pipelineRows("mlSummary").map((row) => `<article><strong>Cluster ${esc(row.cluster_id)}</strong><span>${esc(fmt(row.num_candidates))} proteins</span><p>${esc(row.cluster_interpretation || clusterInterpretation(row.cluster_id))}</p></article>`).join("")}</div><div class="table-wrap pipeline-table" id="pipeline-cluster-table-mini"></div>`;
+    renderTable($("#pipeline-cluster-table-mini"), pipelineRows("mlClusters"), [
+      { key: "cluster_id", label: "Cluster" }, { key: "cluster_interpretation", label: "Diễn giải" }, { key: "num_candidates", label: "Số candidate" }, { key: "avg_abs_log2FC", label: "Avg abs log2FC" }, { key: "avg_weighted_degree", label: "Avg weighted degree" }
+    ]);
+  }
+}
+function openPipelineModal(actionIndex) {
+  const slide = pipelineSlides[state.pipelineIndex];
+  const action = slide.actions?.[actionIndex];
+  if (!action) return;
+  $("#pipeline-modal-kicker").textContent = `Bước ${slide.id} · ${slide.shortLabel}`;
+  $("#pipeline-modal-title").textContent = action.title;
+  $("#pipeline-modal-body").innerHTML = `${(action.body || []).map((text) => `<p>${esc(text)}</p>`).join("")}${action.dynamic ? `<div class="table-wrap pipeline-modal-table" id="pipeline-modal-dynamic"></div>` : ""}`;
+  const dynamic = $("#pipeline-modal-dynamic");
+  if (dynamic && action.dynamic === "qcExclusions") renderTable(dynamic, pipelineRows("qcExclusions"), [{ key: "exclusion_reason", label: "Lý do" }, { key: "sample_count", label: "Samples" }]);
+  if (dynamic && action.dynamic === "unmappedGenes") renderTable(dynamic, pipelineRows("unmapped").slice(0, 80), [{ key: "gene_name", label: "Gene" }, { key: "gene_id_base", label: "Gene ID" }, { key: "log2FC", label: "log2FC" }, { key: "p_value", label: "p-value" }, { key: "mapping_reason", label: "Lý do" }]);
+  if (dynamic && action.dynamic === "topProteins") renderTable(dynamic, pipelineRows("networkTop").slice(0, 30), [{ key: "gene_name", label: "Gene" }, { key: "protein_id", label: "Protein ID" }, { key: "weighted_degree_protein", label: "Weighted degree" }, { key: "avg_combined_score", label: "Avg STRING" }, { key: "geo_support_level", label: "GEO" }]);
+  $("#pipeline-modal")?.classList.add("open");
+  $("#pipeline-modal")?.setAttribute("aria-hidden", "false");
+  $("#pipeline-modal-backdrop")?.classList.add("open");
+  document.body.classList.add("pipeline-modal-open");
+}
+function closePipelineModal() {
+  $("#pipeline-modal")?.classList.remove("open");
+  $("#pipeline-modal")?.setAttribute("aria-hidden", "true");
+  $("#pipeline-modal-backdrop")?.classList.remove("open");
+  document.body.classList.remove("pipeline-modal-open");
 }
 function setPipelineIndex(index) {
   const nextIndex = clamp(index, 0, pipelineSlides.length - 1);
@@ -1310,26 +1906,26 @@ function activateTab(tab, options = {}) {
 }
 function renderQc() {
   drawGroupedBars($("#qc-sample-chart"), state.data.qcSamples.items, "sample_group", [
-    { key: "samples_before_qc", label: "Before QC", color: colors.gray },
-    { key: "samples_after_qc", label: "After QC", color: colors.green }
-  ], { x: "sample_group", y: "number of samples", text: "<br>QC pass means neither library-size nor detected-gene outlier flag is true." });
-  drawVerticalBars($("#qc-exclusion-chart"), state.data.qcExclusions.items, "exclusion_reason", "sample_count", { rotate: false, color: () => colors.red, meta: "<strong>Exclusion reason:</strong> derived from quality_check boolean flags. X: reason. Y: number of removed samples." });
-  drawHistogram($("#qc-library-chart"), state.data.qcLibrary.items, "number_of_samples", "<strong>Library size:</strong> histogram of total_raw_count from quality_check. X: raw count bin. Y: number of samples. Color follows sample_group.");
-  drawHistogram($("#qc-zero-chart"), state.data.qcZero.items, "number_of_samples", "<strong>Zero gene rate:</strong> histogram of pct_zero_genes from quality_check. X: fraction of genes with zero count. Y: number of samples.");
+    { key: "samples_before_qc", label: "Trước QC", color: colors.gray },
+    { key: "samples_after_qc", label: "Sau QC", color: colors.green }
+  ], { x: "sample_group", y: "số sample", text: "<br>Pass QC nghĩa là sample không bị gắn cờ outlier về library size hoặc số gene phát hiện được." });
+  drawVerticalBars($("#qc-exclusion-chart"), state.data.qcExclusions.items, "exclusion_reason", "sample_count", { rotate: false, color: () => colors.red, meta: "<strong>Lý do loại sample:</strong> lấy từ các cờ boolean trong quality_check. Trục X là lý do; trục Y là số sample bị loại." });
+  drawHistogram($("#qc-library-chart"), state.data.qcLibrary.items, "number_of_samples", "<strong>Library size:</strong> histogram của total_raw_count từ quality_check. Trục X là bin raw count; trục Y là số sample; màu theo sample_group.");
+  drawHistogram($("#qc-zero-chart"), state.data.qcZero.items, "number_of_samples", "<strong>Tỷ lệ zero gene:</strong> histogram của pct_zero_genes từ quality_check. Trục X là tỷ lệ gene có count bằng 0; trục Y là số sample.");
 }
 async function renderDeg() {
   const highlight = Number($("#volcano-highlight").value || 20);
   state.data.volcano = await api(`/api/v1/visualizations/deg/volcano?max_points=20000&highlight_top_n=${highlight}`);
   redrawVolcano();
-  drawVerticalBars($("#deg-summary-chart"), state.data.degSummary.items, "deg_direction", "gene_count", { rotate: false, color: (row) => row.deg_direction === "Upregulated" ? colors.red : row.deg_direction === "Downregulated" ? colors.blue : colors.gray, meta: "X: DEG status. Y: number of genes. Labels are horizontal because there are only three categories." });
-  drawBar($("#top-deg-chart"), state.data.topDeg.items.slice(0, 18), "gene_name", "abs_log2FC", { color: (row) => row.log2FC >= 0 ? colors.red : colors.blue, meta: "Top real DEG genes sorted by absolute log2FC. Bar length is abs(log2FC); color shows direction." });
+  drawVerticalBars($("#deg-summary-chart"), state.data.degSummary.items, "deg_direction", "gene_count", { rotate: false, color: (row) => row.deg_direction === "Upregulated" ? colors.red : row.deg_direction === "Downregulated" ? colors.blue : colors.gray, meta: "Trục X là trạng thái DEG; trục Y là số gene. Màu giữ nguyên theo Upregulated, Downregulated và Not DEG." });
+  drawBar($("#top-deg-chart"), state.data.topDeg.items.slice(0, 18), "gene_name", "abs_log2FC", { color: (row) => row.log2FC >= 0 ? colors.red : colors.blue, meta: "Các gene DEG top được sắp theo abs(log2FC). Chiều dài cột là abs(log2FC); màu cho biết chiều Up/Down." });
   drawHeatmap($("#heatmap-chart"), state.data.heatmap);
 }
 function renderMapping() {
-  drawDonut($("#mapping-summary-chart"), state.data.mappingSummary.items, "mapping_status", "gene_count", [colors.green, colors.red], "Mapped genes have a STRING protein_id in Phase 3. Not mapped genes are DEG rows with no STRING protein mapping.");
-  drawVerticalBars($("#mapping-confidence-chart"), state.data.mappingConfidence.items, "gene_confidence", "number_of_proteins", { rotate: false, color: (_, i) => clusterColors[i], meta: "X: STRING gene_confidence. Y: number of mapped proteins." });
+  drawDonut($("#mapping-summary-chart"), state.data.mappingSummary.items, "mapping_status", "gene_count", [colors.green, colors.red], "Donut cho thấy tỷ lệ DEG mapping được sang STRING protein_id ở Phase 3; phần chưa mapping là DEG không có protein tương ứng trong STRING gene_map.");
+  drawVerticalBars($("#mapping-confidence-chart"), state.data.mappingConfidence.items, "gene_confidence", "number_of_proteins", { rotate: false, color: (_, i) => clusterColors[i], meta: "Trục X là STRING gene_confidence; trục Y là số protein đã mapping." });
   renderTable($("#unmapped-table"), state.data.unmapped.items, [
-    { key: "gene_name", label: "Gene", help: "DEG gene symbol from Phase 2." }, { key: "gene_id_base", label: "Gene ID", help: "Ensembl gene ID without version suffix." }, { key: "log2FC", label: "log2FC", help: help.log2FC }, { key: "p_value", label: "p-value", help: help.p_value }, { key: "mapping_status", label: "Status", help: help.mapping_status }, { key: "mapping_reason", label: "Reason", help: help.mapping_reason }
+    { key: "gene_name", label: "Gene", help: "Gene symbol của DEG từ Phase 2." }, { key: "gene_id_base", label: "Gene ID", help: "Ensembl gene ID đã bỏ version suffix." }, { key: "log2FC", label: "log2FC", help: help.log2FC }, { key: "p_value", label: "p-value", help: help.p_value }, { key: "mapping_status", label: "Trạng thái", help: help.mapping_status }, { key: "mapping_reason", label: "Lý do", help: help.mapping_reason }
   ]);
 }
 async function renderNetwork() {
@@ -1344,8 +1940,8 @@ async function renderNetwork() {
   if (geo) params.set("geo_support_level", geo);
   state.data.network = await api(`/api/v1/visualizations/network?${params.toString()}`);
   drawNetwork($("#network-chart"), state.data.network);
-  drawBar($("#network-top-chart"), state.data.networkTop.items.slice(0, 15), "gene_name", "weighted_degree_protein", { color: () => colors.cyan, meta: "X: weighted_degree_protein. Y: gene. Higher values mean broader/stronger STRING network connectivity." });
-  drawHistogram($("#network-score-chart"), state.data.networkScores.items, "number_of_edges", "<strong>STRING score distribution:</strong> X is edge_weight_protein = combined_score_protein / 1000. Y is number of real STRING edges among selected top targets.");
+  drawBar($("#network-top-chart"), state.data.networkTop.items.slice(0, 15), "gene_name", "weighted_degree_protein", { color: () => colors.cyan, meta: "Trục X là weighted_degree_protein; trục Y là gene. Giá trị cao hơn nghĩa là kết nối STRING rộng hoặc mạnh hơn." });
+  drawHistogram($("#network-score-chart"), state.data.networkScores.items, "number_of_edges", "<strong>Phân phối STRING score:</strong> Trục X là edge_weight_protein = combined_score_protein / 1000; trục Y là số cạnh STRING thật trong nhóm top target đã chọn.");
 }
 async function renderRanking() {
   const params = new URLSearchParams({ limit: "100" });
@@ -1359,11 +1955,11 @@ async function renderRanking() {
   const rows = state.data.targets.items;
   drawBar($("#ranking-chart"), rows.slice(0, 14), "gene_name", "final_score", {
     color: (row) => clusterColors[Math.abs(Number(row.cluster_id || 0)) % clusterColors.length],
-    tooltip: (row) => `<strong>${esc(row.gene_name)}</strong><small>${esc(row.protein_id)}</small><br>Rank: ${fmt(row.rank)}<br>log2FC: ${fmt(row.log2FC)}<br>Weighted degree: ${fmt(row.weighted_degree_protein)}<br>Avg STRING: ${fmt(row.avg_combined_score)}<br>Final score: ${fmt(row.final_score)}<br>GEO support: ${esc(row.geo_support_level)}<br>Support score: ${fmt(row.geo_support_score)}`,
-    meta: "Top candidate ranking from the Phase 7 enriched target mart. Bar length is GDC + STRING final_score; GEO support is shown as supporting evidence, not a ranking component."
+    tooltip: (row) => `<strong>${esc(row.gene_name)}</strong><small>${esc(row.protein_id)}</small><br>Hạng: ${fmt(row.rank)}<br>log2FC: ${fmt(row.log2FC)}<br>Weighted degree: ${fmt(row.weighted_degree_protein)}<br>Avg STRING: ${fmt(row.avg_combined_score)}<br>Final score: ${fmt(row.final_score)}<br>GEO support: ${esc(row.geo_support_level)}<br>Support score: ${fmt(row.geo_support_score)}`,
+    meta: "Các gene/protein được xếp hạng theo điểm tổng hợp từ expression, network và STRING confidence. Chiều dài cột là final_score; GEO support là bằng chứng bổ sung."
   });
   renderTable($("#candidate-table"), rows, [
-    { key: "rank", label: "Rank" }, { key: "gene_name", label: "Gene" }, { key: "protein_id", label: "STRING protein ID" }, { key: "log2FC", label: "log2FC" }, { key: "p_value", label: "p-value" }, { key: "weighted_degree_protein", label: "Weighted degree" }, { key: "avg_combined_score", label: "Avg STRING" }, { key: "final_score", label: "Final score" }, { key: "geo_support_score", label: "GEO score" }, { key: "geo_support_level", label: "GEO support" }, { key: "cluster_id", label: "Cluster" }, { key: "candidate_group", label: "Group" }
+    { key: "rank", label: "Hạng" }, { key: "gene_name", label: "Gene" }, { key: "protein_id", label: "STRING protein ID" }, { key: "log2FC", label: "log2FC" }, { key: "p_value", label: "p-value" }, { key: "weighted_degree_protein", label: "Weighted degree" }, { key: "avg_combined_score", label: "Avg STRING" }, { key: "final_score", label: "Final score" }, { key: "geo_support_score", label: "GEO score" }, { key: "geo_support_level", label: "GEO support" }, { key: "cluster_id", label: "Cluster" }, { key: "cluster_interpretation", label: "Diễn giải cluster" }
   ], { clickable: true, sortId: "candidate" });
   if (!state.currentTarget && rows[0]) await renderScore(rows[0].protein_id);
 }
@@ -1380,12 +1976,12 @@ function renderGeo() {
     "geo_support_level",
     "count",
     summaryItems.map((row) => geoSupportColor(row.geo_support_level)),
-    "Mode: tumor-cohort expression support. GEO support summarizes coverage and within-cohort candidate expression percentile; it is not tumor-vs-normal validation."
+    "Donut tóm tắt GEO support theo coverage và expression percentile trong tumor-only cohort; đây không phải validation Tumor-vs-Normal."
   );
   drawBar($("#geo-top-supported-chart"), (state.data.geoTopSupported.items || []).slice(0, 15), "gene_name", "geo_support_score", {
     color: (row) => geoSupportColor(row.geo_support_level),
-    tooltip: (row) => `<strong>${esc(row.gene_name)}</strong><small>${esc(row.protein_id)}</small><br>GEO support rank: ${fmt(row.geo_support_rank)}<br>GDC rank: ${fmt(row.rank)}<br>Support score: ${fmt(row.geo_support_score)}<br>Coverage: ${fmt(row.geo_coverage_rate)}<br>Mean percentile: ${fmt(row.geo_mean_percentile)}<br>Top-quartile rate: ${fmt(row.geo_top_quartile_rate)}<br>Level: ${esc(row.geo_support_level)}`,
-    meta: "Top supported candidates are sorted by geo_support_score descending, with GDC rank as the tie-breaker."
+    tooltip: (row) => `<strong>${esc(row.gene_name)}</strong><small>${esc(row.protein_id)}</small><br>Hạng GEO support: ${fmt(row.geo_support_rank)}<br>Hạng GDC: ${fmt(row.rank)}<br>Support score: ${fmt(row.geo_support_score)}<br>Coverage: ${fmt(row.geo_coverage_rate)}<br>Mean percentile: ${fmt(row.geo_mean_percentile)}<br>Top-quartile rate: ${fmt(row.geo_top_quartile_rate)}<br>Mức: ${esc(row.geo_support_level)}`,
+    meta: "Các candidate có GEO support cao nhất được sắp theo geo_support_score giảm dần; GDC rank dùng để phá hòa."
   });
   drawScatter($("#geo-scatter-chart"), state.data.geoScatter.items || [], "final_score", "geo_support_score", {
     xLabel: "GDC + STRING final_score",
@@ -1398,14 +1994,14 @@ function renderGeo() {
     labelDensityLimit: 65,
     maxLabels: 24,
     labelText: (row) => row.gene_name,
-    tooltip: (row) => `<strong>${esc(row.gene_name)}</strong><small>${esc(row.protein_id)}</small><br>GDC rank: ${fmt(row.rank)}<br>Final score: ${fmt(row.final_score)}<br>GEO support score: ${fmt(row.geo_support_score)}<br>Coverage: ${fmt(row.geo_coverage_rate)}<br>Mean percentile: ${fmt(row.geo_mean_percentile)}<br>Top-quartile rate: ${fmt(row.geo_top_quartile_rate)}<br>Level: ${esc(row.geo_support_level)}`,
-    meta: `${legend(Object.entries(geoSupportColors).map(([label, color]) => ({ label, color })))}<div class="axis-note">X remains the primary GDC + STRING ranking score. Y is supplemental tumor-only GEO support and does not alter rank.</div>`
+    tooltip: (row) => `<strong>${esc(row.gene_name)}</strong><small>${esc(row.protein_id)}</small><br>Hạng GDC: ${fmt(row.rank)}<br>Final score: ${fmt(row.final_score)}<br>GEO support score: ${fmt(row.geo_support_score)}<br>Coverage: ${fmt(row.geo_coverage_rate)}<br>Mean percentile: ${fmt(row.geo_mean_percentile)}<br>Top-quartile rate: ${fmt(row.geo_top_quartile_rate)}<br>Mức: ${esc(row.geo_support_level)}`,
+    meta: `${legend(Object.entries(geoSupportColors).map(([label, color]) => ({ label, color })))}<div class="axis-note">Trục X là final_score chính từ GDC + STRING. Trục Y là GEO support trong tumor-only cohort và không làm đổi ranking.</div>`
   });
   renderTable($("#geo-overlap-table"), state.data.geoOverlap.items || [], [
-    { key: "rank", label: "GDC rank", help: help.rank }, { key: "gene_name", label: "Gene", help: help.gene_name }, { key: "protein_id", label: "STRING protein ID", help: help.protein_id }, { key: "final_score", label: "Final score", help: help.final_score }, { key: "geo_support_score", label: "GEO score", help: help.geo_support_score }, { key: "geo_support_level", label: "Support level", help: help.geo_support_level }, { key: "geo_coverage_rate", label: "Coverage", help: help.geo_coverage_rate }, { key: "geo_mean_percentile", label: "Mean percentile", help: help.geo_mean_percentile }, { key: "geo_top_quartile_rate", label: "Top quartile rate", help: help.geo_top_quartile_rate }
+    { key: "rank", label: "Hạng GDC", help: help.rank }, { key: "gene_name", label: "Gene", help: help.gene_name }, { key: "protein_id", label: "STRING protein ID", help: help.protein_id }, { key: "final_score", label: "Final score", help: help.final_score }, { key: "geo_support_score", label: "GEO score", help: help.geo_support_score }, { key: "geo_support_level", label: "Mức support", help: help.geo_support_level }, { key: "geo_coverage_rate", label: "Coverage", help: help.geo_coverage_rate }, { key: "geo_mean_percentile", label: "Mean percentile", help: help.geo_mean_percentile }, { key: "geo_top_quartile_rate", label: "Top quartile rate", help: help.geo_top_quartile_rate }
   ], false);
   renderTable($("#geo-unmatched-table"), state.data.geoUnmatched.items || [], [
-    { key: "rank", label: "Rank" }, { key: "gene_name", label: "Gene" }, { key: "protein_id", label: "STRING protein ID", help: help.protein_id }, { key: "final_score", label: "Final score", help: help.final_score }, { key: "geo_support_level", label: "Support level", help: help.geo_support_level }, { key: "geo_match_reason", label: "GEO match reason", help: help.geo_match_reason }
+    { key: "rank", label: "Hạng" }, { key: "gene_name", label: "Gene" }, { key: "protein_id", label: "STRING protein ID", help: help.protein_id }, { key: "final_score", label: "Final score", help: help.final_score }, { key: "geo_support_level", label: "Mức support", help: help.geo_support_level }, { key: "geo_match_reason", label: "Lý do match GEO", help: help.geo_match_reason }
   ], false);
 }
 function mlViewport(rows) {
@@ -1440,9 +2036,25 @@ function drawMlScatter() {
     adaptiveLabels: true,
     labelDensityLimit: 45,
     maxLabels: 18,
-    tooltip: (row) => `<strong>${esc(row.gene_name)}</strong><small>${esc(row.protein_id)}</small><br>Cluster: ${fmt(row.cluster_id)}<br>abs_log2FC: ${fmt(row.abs_log2FC)}<br>Weighted degree: ${fmt(row.weighted_degree_protein)}<br>Avg STRING: ${fmt(row.avg_combined_score)}<br>Final score: ${fmt(row.final_score)}<br>Group: ${esc(row.candidate_group)}`,
-    meta: `${legend([...new Set(rows.map((row) => row.cluster_id))].sort((a, b) => Number(a) - Number(b)).map((cluster) => ({ label: `Cluster ${cluster}`, color: clusterColors[Math.abs(Number(cluster || 0)) % clusterColors.length] })))}<div class="axis-note">Each point is a candidate protein from Phase 7. X = expression effect size, Y = STRING weighted degree, point size = final_score. Wheel or pinch to zoom; drag to pan.</div>`
+    tooltip: (row) => `<strong>${esc(row.gene_name)}</strong><small>${esc(row.protein_id)}</small><br>${esc(clusterFullLabel(row.cluster_id))}<br>abs_log2FC: ${fmt(row.abs_log2FC)}<br>Weighted degree: ${fmt(row.weighted_degree_protein)}<br>Avg STRING: ${fmt(row.avg_combined_score)}<br>Final score: ${fmt(row.final_score)}`,
+    meta: `${legend([...new Set(rows.map((row) => row.cluster_id))].sort((a, b) => Number(a) - Number(b)).map((cluster) => ({ label: clusterFullLabel(cluster), color: clusterColors[Math.abs(Number(cluster || 0)) % clusterColors.length] })))}<div class="axis-note">Mỗi điểm là một candidate protein. KMeans gán điểm vào centroid gần nhất theo 4 feature đã chuẩn hóa; không có ngưỡng điểm cố định. Trục X/Y chỉ hiển thị 2 trong 4 feature.</div>`
   });
+}
+function renderMlExplainability() {
+  const explain = state.data.mlExplain || { assignment: {}, items: [] };
+  const assignment = explain.assignment || {};
+  const note = $("#ml-assignment-note");
+  if (note) note.innerHTML = `<strong>Candidate vào cluster bằng cách nào?</strong><p>${esc(assignment.rule || "Không có dữ liệu giải thích.")}</p><div>${(assignment.features || []).map((feature) => `<span><b>${esc(feature.model_key)}</b>${esc(feature.meaning)}</span>`).join("")}</div><small>${esc(assignment.note || "")}</small>`;
+  drawVerticalBars($("#ml-top100-chart"), explain.items || [], "cluster_id", "top_100_count", { rotate: false, color: (row) => clusterColors[Math.abs(Number(row.cluster_id || 0)) % clusterColors.length], meta: "Số gene trong bảng xếp hạng Top 100 thuộc từng cluster. Tổng bằng 100; cluster có giá trị 0 không có gene nào trong Top 100." });
+  const profiles = $("#ml-cluster-profiles");
+  if (profiles) profiles.innerHTML = (explain.items || []).map((row) => {
+    const ranges = row.feature_ranges || {};
+    const range = (key) => `${fmt(ranges[key]?.min)} / ${fmt(ranges[key]?.median)} / ${fmt(ranges[key]?.max)}`;
+    return `<article class="ml-profile-card" style="--cluster-color:${clusterColors[Math.abs(Number(row.cluster_id || 0)) % clusterColors.length]}"><div class="ml-profile-head"><span>Cluster ${esc(row.cluster_id)}</span><strong>${esc(row.cluster_interpretation)}</strong></div><div class="ml-profile-stats"><span><b>${esc(fmt(row.num_candidates))}</b> toàn bộ candidate</span><span><b>${esc(fmt(row.top_100_count))}</b> gene trong Top 100</span><span><b>${esc(fmt(row.top_100_percentage))}%</b> của Top 100</span></div><dl><div><dt>|log2FC| min / median / max</dt><dd>${esc(range("abs_log2FC"))}</dd></div><div><dt>Weighted degree min / median / max</dt><dd>${esc(range("weighted_degree_protein"))}</dd></div><div><dt>Avg STRING min / median / max</dt><dd>${esc(range("avg_combined_score"))}</dd></div><div><dt>DEG interactions min / median / max</dt><dd>${esc(range("num_interactions_in_deg_network"))}</dd></div></dl><p><b>Top gene đại diện:</b> ${esc((row.top_genes || []).join(", ") || "Không có gene Top 100")}</p></article>`;
+  }).join("");
+  renderTable($("#ml-top100-table"), explain.items || [], [
+    { key: "cluster_id", label: "Cluster" }, { key: "cluster_interpretation", label: "Diễn giải riêng" }, { key: "num_candidates", label: "Toàn bộ candidate" }, { key: "population_percentage", label: "% toàn bộ" }, { key: "top_100_count", label: "Gene Top 100" }, { key: "top_100_percentage", label: "% Top 100" }, { key: "top_100_capture_rate", label: "% thành viên lọt Top 100" }
+  ]);
 }
 async function renderMl() {
   const cluster = $("#ml-cluster").value;
@@ -1450,11 +2062,12 @@ async function renderMl() {
   const params = new URLSearchParams({ limit: "5000", top_only: String(topOnly) });
   if (cluster) params.set("cluster_id", cluster);
   state.data.mlScatter = await api(`/api/v1/visualizations/ml/scatter?${params.toString()}`);
-  drawLine($("#ml-k-chart"), state.data.mlK.items, "k", "silhouette_score", "X: candidate number of clusters k. Y: silhouette score. Higher is better separation.");
+  drawLine($("#ml-k-chart"), state.data.mlK.items, "k", "silhouette_score", "Trục X là số cụm k; trục Y là silhouette score. Giá trị cao hơn nghĩa là cụm tách tốt hơn.");
   drawMlScatter();
-  drawVerticalBars($("#ml-summary-chart"), state.data.mlSummary.items, "cluster_id", "num_candidates", { rotate: false, color: (_, i) => clusterColors[i], meta: "X: cluster_id. Y: number of candidate proteins in the cluster." });
+  drawVerticalBars($("#ml-summary-chart"), state.data.mlSummary.items, "cluster_id", "num_candidates", { rotate: false, color: (row) => clusterColors[Math.abs(Number(row.cluster_id || 0)) % clusterColors.length], meta: "Trục X là cluster_id; trục Y là số candidate protein trong toàn bộ 2.579 candidate." });
+  renderMlExplainability();
   renderTable($("#ml-cluster-table"), state.data.mlClusters.items, [
-    { key: "cluster_id", label: "Cluster" }, { key: "candidate_group", label: "Candidate group" }, { key: "num_candidates", label: "Candidates" }, { key: "avg_abs_log2FC", label: "Avg abs log2FC" }, { key: "avg_weighted_degree", label: "Avg weighted degree" }, { key: "avg_combined_score", label: "Avg STRING" }, { key: "avg_final_score", label: "Avg final score" }
+    { key: "cluster_id", label: "Cluster" }, { key: "cluster_interpretation", label: "Diễn giải riêng" }, { key: "candidate_group", label: "Nhãn nguồn" }, { key: "num_candidates", label: "Số candidate" }, { key: "avg_abs_log2FC", label: "Avg abs log2FC" }, { key: "avg_weighted_degree", label: "Avg weighted degree" }, { key: "avg_combined_score", label: "Avg STRING" }, { key: "avg_final_score", label: "Avg final score" }
   ]);
 }
 function targetDetailSections(detail) {
@@ -1499,18 +2112,18 @@ function addChatMessage(role, text) {
   const log = $("#chat-log");
   const div = document.createElement("div");
   div.className = `chat-message ${role}`;
-  div.innerHTML = `<small>${role === "user" ? "You" : "Assistant"}</small>${esc(text)}`;
+  div.innerHTML = `<small>${role === "user" ? "Bạn" : "Trợ lý"}</small>${esc(text)}`;
   log.appendChild(div);
   log.scrollTop = log.scrollHeight;
 }
 async function initializeData() {
   const health = await api("/api/v1/health");
   state.data.health = health;
-  $("#health-label").textContent = `API sẵn sàng (${health.mart_source || "json"}, real data)`;
+  $("#health-label").textContent = `API sẵn sàng (${health.mart_source || "json"}, dữ liệu thật)`;
   $(".status-dot").classList.add("ok");
   $(".status-dot").classList.remove("error");
   const calls = [
-    ["overview", "/api/v1/overview"], ["qcSamples", "/api/v1/visualizations/qc/sample-counts"], ["qcExclusions", "/api/v1/visualizations/qc/exclusions"], ["qcLibrary", "/api/v1/visualizations/qc/library-size"], ["qcZero", "/api/v1/visualizations/qc/zero-gene-rate"], ["degSummary", "/api/v1/visualizations/deg/summary"], ["topDeg", "/api/v1/visualizations/deg/top-genes?limit=50"], ["heatmap", "/api/v1/visualizations/deg/heatmap?top_n=24"], ["mappingSummary", "/api/v1/visualizations/mapping/summary"], ["mappingConfidence", "/api/v1/visualizations/mapping/confidence"], ["unmapped", "/api/v1/mapping/unmapped"], ["networkTop", "/api/v1/visualizations/network/top-proteins?limit=100"], ["networkScores", "/api/v1/visualizations/network/score-distribution"], ["geoSummary", "/api/v1/visualizations/geo/summary"], ["geoTopSupported", "/api/v1/visualizations/geo/top-supported?limit=100"], ["geoScatter", "/api/v1/visualizations/geo/gdc-vs-support"], ["geoOverlap", "/api/v1/visualizations/geo/top-candidate-overlap?limit=100"], ["geoUnmatched", "/api/v1/geo/unmatched-candidates"], ["mlK", "/api/v1/visualizations/ml/k-selection"], ["mlSummary", "/api/v1/visualizations/ml/cluster-summary"], ["mlClusters", "/api/v1/ml/clusters"]
+    ["overview", "/api/v1/overview"], ["qcSamples", "/api/v1/visualizations/qc/sample-counts"], ["qcExclusions", "/api/v1/visualizations/qc/exclusions"], ["qcLibrary", "/api/v1/visualizations/qc/library-size"], ["qcZero", "/api/v1/visualizations/qc/zero-gene-rate"], ["degSummary", "/api/v1/visualizations/deg/summary"], ["topDeg", "/api/v1/visualizations/deg/top-genes?limit=50"], ["heatmap", "/api/v1/visualizations/deg/heatmap?top_n=24"], ["mappingSummary", "/api/v1/visualizations/mapping/summary"], ["mappingConfidence", "/api/v1/visualizations/mapping/confidence"], ["unmapped", "/api/v1/mapping/unmapped"], ["networkTop", "/api/v1/visualizations/network/top-proteins?limit=100"], ["networkScores", "/api/v1/visualizations/network/score-distribution"], ["geoSummary", "/api/v1/visualizations/geo/summary"], ["geoTopSupported", "/api/v1/visualizations/geo/top-supported?limit=100"], ["geoScatter", "/api/v1/visualizations/geo/gdc-vs-support"], ["geoOverlap", "/api/v1/visualizations/geo/top-candidate-overlap?limit=100"], ["geoUnmatched", "/api/v1/geo/unmatched-candidates"], ["mlK", "/api/v1/visualizations/ml/k-selection"], ["mlSummary", "/api/v1/visualizations/ml/cluster-summary"], ["mlClusters", "/api/v1/ml/clusters"], ["mlExplain", "/api/v1/visualizations/ml/explainability"]
   ];
   const entries = await Promise.all(calls.map(async ([key, path]) => [key, await api(path)]));
   state.data = { ...state.data, ...Object.fromEntries(entries) };
@@ -1519,7 +2132,6 @@ async function initializeData() {
 
 async function renderAll() {
   renderOverview(state.data.overview);
-  renderPipelineSlide(false);
   renderQc();
   await renderDeg();
   renderMapping();
@@ -1527,14 +2139,15 @@ async function renderAll() {
   await renderRanking();
   renderGeo();
   await renderMl();
+  renderPipelineSlide(false);
 }
 function panVolcano(dx, dy) {
   const rows = filteredVolcanoRows(state.data.volcano?.items || []);
   const view = volcanoViewport(rows.length ? rows : state.data.volcano?.items || []);
   const canvas = $("#volcano-chart");
   const rect = canvas.getBoundingClientRect();
-  const plotW = Math.max(1, rect.width - 64 - 24);
-  const plotH = Math.max(1, rect.height - 24 - 52);
+  const plotW = Math.max(1, rect.width - 76 - 34);
+  const plotH = Math.max(1, rect.height - 30 - 64);
   state.volcanoView.centerX -= (dx / plotW) * view.spanX;
   state.volcanoView.minY += (dy / plotH) * view.spanY;
   redrawVolcano();
@@ -1549,8 +2162,8 @@ function panMl(dx, dy) {
   const view = mlViewport(rows);
   const canvas = $("#ml-scatter-chart");
   const rect = canvas.getBoundingClientRect();
-  const plotW = Math.max(1, rect.width - 64 - 24);
-  const plotH = Math.max(1, rect.height - 24 - 52);
+  const plotW = Math.max(1, rect.width - 76 - 34);
+  const plotH = Math.max(1, rect.height - 30 - 64);
   state.mlView.centerX -= (dx / plotW) * view.spanX;
   state.mlView.centerY += (dy / plotH) * view.spanY;
   drawMlScatter();
@@ -1585,7 +2198,7 @@ function zoomVolcanoAt(point, factor) {
   const view = volcanoViewport(rows.length ? rows : state.data.volcano?.items || []);
   const canvas = $("#volcano-chart");
   const rect = canvas.getBoundingClientRect();
-  const pad = { left: 64, right: 24, top: 24, bottom: 52 };
+  const pad = { left: 76, right: 34, top: 30, bottom: 64 };
   const plotW = Math.max(1, rect.width - pad.left - pad.right);
   const plotH = Math.max(1, rect.height - pad.top - pad.bottom);
   const rx = clamp((point.x - pad.left) / plotW, 0, 1);
@@ -1617,7 +2230,7 @@ function zoomMlAt(point, factor) {
   const view = mlViewport(rows);
   const canvas = $("#ml-scatter-chart");
   const rect = canvas.getBoundingClientRect();
-  const pad = { left: 64, right: 24, top: 24, bottom: 52 };
+  const pad = { left: 76, right: 34, top: 30, bottom: 64 };
   const plotW = Math.max(1, rect.width - pad.left - pad.right);
   const plotH = Math.max(1, rect.height - pad.top - pad.bottom);
   const rx = clamp((point.x - pad.left) / plotW, 0, 1);
@@ -1643,7 +2256,8 @@ function bindCanvasWheel(canvas, mode) {
   }, { passive: false });
 }
 function bindEvents() {
-  document.querySelectorAll("canvas").forEach(bindCanvasTooltip);
+  bindSidebarTooltips();
+  document.querySelectorAll("canvas").forEach(bindCanvasTooltipOnce);
   document.querySelectorAll("h3[data-help]").forEach((h3) => {
     h3.addEventListener("mousemove", (event) => showTooltip(`<strong>${esc(h3.textContent)}</strong>${esc(h3.dataset.help)}`, event.clientX, event.clientY));
     h3.addEventListener("mouseleave", hideTooltip);
@@ -1682,7 +2296,9 @@ function bindEvents() {
   $("#export-csv")?.addEventListener("click", exportCurrentCandidates);
   $("#drawer-close").addEventListener("click", () => setDrawerOpen(false));
   $("#drawer-backdrop")?.addEventListener("click", () => setDrawerOpen(false));
-  document.addEventListener("keydown", (event) => { if (event.key === "Escape") setDrawerOpen(false); });
+  document.addEventListener("keydown", (event) => { if (event.key === "Escape") { setDrawerOpen(false); closePipelineModal(); } });
+  $("#pipeline-modal-close")?.addEventListener("click", closePipelineModal);
+  $("#pipeline-modal-backdrop")?.addEventListener("click", closePipelineModal);
   $("#volcano-highlight").addEventListener("change", async () => { resetVolcanoView(); await renderDeg(); });
   $("#volcano-top-only").addEventListener("change", () => { resetVolcanoView(); redrawVolcano(); });
   document.querySelectorAll(".volcano-color-filter").forEach((input) => input.addEventListener("change", redrawVolcano));
@@ -1729,7 +2345,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   refreshIcons();
   bindEvents();
   activateTab(tabFromLocation(), { push: false, render: false });
-  addChatMessage("assistant", "AI Assistant đang ở chế độ thử nghiệm giao diện; dữ liệu dashboard lấy từ mart hiện tại của project.");
+  addChatMessage("assistant", "Trợ lý AI đang ở chế độ thử nghiệm giao diện; dữ liệu dashboard lấy từ mart hiện tại của project.");
   try {
     await initializeData();
     await renderAll();

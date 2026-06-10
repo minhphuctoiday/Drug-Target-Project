@@ -40,3 +40,15 @@ http://127.0.0.1:8000/pipeline
 ```
 
 The frontend expects real mart snapshots generated from HDFS phase outputs; missing marts are reported explicitly and no mock data fallback is used.
+
+### ML cluster interpretation
+
+Phase 7 uses KMeans on four standardized features: `abs_log2FC`, `log1p(weighted_degree_protein)`, `avg_combined_score`, and `log1p(num_interactions_in_deg_network)`. A candidate is assigned to the nearest centroid; there is no fixed score threshold for entering Cluster 0, 1, or 2.
+
+The dashboard exposes `/api/v1/visualizations/ml/explainability` and shows:
+
+- Unique descriptive labels for each cluster while preserving the original Phase 7 label.
+- Candidate counts and empirical min/median/max feature profiles per cluster.
+- Distribution of the ranked Top 100 targets across clusters.
+
+Current Top 100 distribution: Cluster 0 = 83, Cluster 1 = 0, Cluster 2 = 17. These counts are computed from the current real mart data rather than hard-coded in the frontend.

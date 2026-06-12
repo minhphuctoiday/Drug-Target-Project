@@ -2158,6 +2158,19 @@ function configureChat(status) {
   badge.classList.toggle("ready", state.chatReady);
   input.placeholder = placeholder;
 }
+
+async function initializeChatStatus() {
+  try {
+    const status = await api("/api/v1/chat/status", { cache: "no-store" });
+    state.data.chatStatus = status;
+    configureChat(status);
+    if (status?.ready) addChatMessage("assistant", "Chatbot đã sẵn sàng và có thể đọc real mart data hiện tại của dashboard.");
+  } catch (error) {
+    state.chatReady = false;
+    addChatMessage("assistant", `Không kiểm tra được trạng thái chatbot: ${error.message}`);
+  }
+}
+
 async function initializeData() {
   const health = await api("/api/v1/health");
   state.data.health = health;
@@ -2165,11 +2178,10 @@ async function initializeData() {
   $(".status-dot").classList.add("ok");
   $(".status-dot").classList.remove("error");
   const calls = [
-    ["chatStatus", "/api/v1/chat/status"], ["overview", "/api/v1/overview"], ["qcSamples", "/api/v1/visualizations/qc/sample-counts"], ["qcExclusions", "/api/v1/visualizations/qc/exclusions"], ["qcLibrary", "/api/v1/visualizations/qc/library-size"], ["qcZero", "/api/v1/visualizations/qc/zero-gene-rate"], ["degSummary", "/api/v1/visualizations/deg/summary"], ["topDeg", "/api/v1/visualizations/deg/top-genes?limit=50"], ["heatmap", "/api/v1/visualizations/deg/heatmap?top_n=24"], ["mappingSummary", "/api/v1/visualizations/mapping/summary"], ["mappingConfidence", "/api/v1/visualizations/mapping/confidence"], ["unmapped", "/api/v1/mapping/unmapped"], ["networkTop", "/api/v1/visualizations/network/top-proteins?limit=100"], ["networkScores", "/api/v1/visualizations/network/score-distribution"], ["geoSummary", "/api/v1/visualizations/geo/summary"], ["geoTopSupported", "/api/v1/visualizations/geo/top-supported?limit=100"], ["geoScatter", "/api/v1/visualizations/geo/gdc-vs-support"], ["geoOverlap", "/api/v1/visualizations/geo/top-candidate-overlap?limit=100"], ["geoUnmatched", "/api/v1/geo/unmatched-candidates"], ["mlK", "/api/v1/visualizations/ml/k-selection"], ["mlSummary", "/api/v1/visualizations/ml/cluster-summary"], ["mlClusters", "/api/v1/ml/clusters"], ["mlExplain", "/api/v1/visualizations/ml/explainability"]
+    ["overview", "/api/v1/overview"], ["qcSamples", "/api/v1/visualizations/qc/sample-counts"], ["qcExclusions", "/api/v1/visualizations/qc/exclusions"], ["qcLibrary", "/api/v1/visualizations/qc/library-size"], ["qcZero", "/api/v1/visualizations/qc/zero-gene-rate"], ["degSummary", "/api/v1/visualizations/deg/summary"], ["topDeg", "/api/v1/visualizations/deg/top-genes?limit=50"], ["heatmap", "/api/v1/visualizations/deg/heatmap?top_n=24"], ["mappingSummary", "/api/v1/visualizations/mapping/summary"], ["mappingConfidence", "/api/v1/visualizations/mapping/confidence"], ["unmapped", "/api/v1/mapping/unmapped"], ["networkTop", "/api/v1/visualizations/network/top-proteins?limit=100"], ["networkScores", "/api/v1/visualizations/network/score-distribution"], ["geoSummary", "/api/v1/visualizations/geo/summary"], ["geoTopSupported", "/api/v1/visualizations/geo/top-supported?limit=100"], ["geoScatter", "/api/v1/visualizations/geo/gdc-vs-support"], ["geoOverlap", "/api/v1/visualizations/geo/top-candidate-overlap?limit=100"], ["geoUnmatched", "/api/v1/geo/unmatched-candidates"], ["mlK", "/api/v1/visualizations/ml/k-selection"], ["mlSummary", "/api/v1/visualizations/ml/cluster-summary"], ["mlClusters", "/api/v1/ml/clusters"], ["mlExplain", "/api/v1/visualizations/ml/explainability"]
   ];
   const entries = await Promise.all(calls.map(async ([key, path]) => [key, await api(path)]));
   state.data = { ...state.data, ...Object.fromEntries(entries) };
-  configureChat(state.data.chatStatus);
   populateClusterControls();
 }
 
@@ -2402,6 +2414,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   bindEvents();
   activateTab(tabFromLocation(), { push: false, render: false });
   addChatMessage("assistant", "Mình sẽ trả lời dựa trên knowledge base của DrugTargetProject và trích dẫn các mục KB đã truy xuất.");
+  await initializeChatStatus();
   try {
     await initializeData();
     await renderAll();

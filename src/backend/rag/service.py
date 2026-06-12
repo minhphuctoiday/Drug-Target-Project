@@ -248,7 +248,7 @@ class RagService:
             for document, metadata, distance in zip(documents, metadatas, distances)
         ]
 
-    def answer(self, question: str, target_context: str = "") -> dict[str, Any]:
+    def answer(self, question: str, target_context: str = "", mart_context: str = "") -> dict[str, Any]:
         chunks = self.retrieve(question)
         context_parts: list[str] = []
         used_chars = 0
@@ -264,12 +264,14 @@ class RagService:
         prompt = (
             f"Câu hỏi của người dùng:\n{question}\n\n"
             f"Target đang được chọn trên dashboard:\n{target_context or 'Không có target cụ thể.'}\n\n"
+            f"Dữ liệu real mart hiện tại của dashboard:\n{mart_context or 'Không có mart context bổ sung.'}\n\n"
             f"Tri thức truy xuất từ project:\n{context}"
         )
         system_instruction = (
             "Bạn là trợ lý kỹ thuật của DrugTargetProject. Trả lời bằng tiếng Việt, rõ ràng và đúng với "
-            "tri thức được cung cấp. Chỉ đưa ra khẳng định về project khi có căn cứ trong context. "
-            "Dùng citation dạng [KB-xxx] ngay sau thông tin tương ứng. Nếu context không đủ, nói rõ phần "
+            "tri thức và real mart data được cung cấp. Với số liệu hiện tại của dashboard, ưu tiên dữ liệu trong "
+            "block real mart vì đó là snapshot thật đang được backend đọc. Dùng citation dạng [MART] cho số liệu mart "
+            "và [KB-xxx] cho khái niệm/công thức từ knowledge base. Nếu context không đủ, nói rõ phần "
             "nào chưa xác định thay vì suy đoán. Phân biệt candidate ưu tiên với drug target đã được xác thực."
         )
 

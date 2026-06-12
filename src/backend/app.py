@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 from typing import Any
 
 from fastapi import FastAPI, HTTPException, Query
@@ -34,6 +35,41 @@ CLUSTER_INTERPRETATIONS = {
     1: "Thiên về biểu hiện, mạng thấp",
     2: "Protein hub, mạng tương tác mạnh",
 }
+
+CHAT_TARGET_FIELDS = [
+    "rank",
+    "gene_name",
+    "protein_id",
+    "ensp_id",
+    "log2FC",
+    "p_value",
+    "deg_direction",
+    "weighted_degree_protein",
+    "avg_combined_score",
+    "num_interactions_in_deg_network",
+    "expression_score",
+    "protein_network_score",
+    "string_confidence_score",
+    "final_score",
+    "geo_support_score",
+    "geo_support_level",
+    "geo_match_status",
+    "cluster_id",
+    "candidate_group",
+    "gene_confidence",
+]
+CHAT_NETWORK_FIELDS = [
+    "rank",
+    "gene_name",
+    "protein_id",
+    "weighted_degree_protein",
+    "degree_protein",
+    "avg_combined_score",
+    "num_interactions_in_deg_network",
+    "final_score",
+    "geo_support_level",
+    "cluster_id",
+]
 
 ML_FEATURES = [
     {"key": "abs_log2FC", "model_key": "abs_log2FC", "label": "|log2FC|", "meaning": "Độ lớn thay đổi expression giữa Tumor và Normal."},
@@ -111,6 +147,91 @@ def find_target(protein_id: str) -> dict[str, Any]:
         if any(value and str(value).upper() == token for value in values):
             return row
     raise HTTPException(status_code=404, detail="Candidate protein target not found in real mart data")
+
+
+def compact_rows(rows: list[dict[str, Any]], fields: list[str], limit: int | None = None) -> list[dict[str, Any]]:
+    selected = rows[:limit] if limit else rows
+    return [{key: row.get(key) for key in fields if key in row} for row in selected]
+
+
+def find_referenced_mart_rows(question: str, rows: list[dict[str, Any]], limit: int = 12) -> list[dict[str, Any]]:
+    haystack = question.upper()
+    matches: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for row in rows:
+        values = [row.get("gene_name"), row.get("protein_id"), row.get("ensp_id"), row.get("gene_id_base")]
+        for value in values:
+            token = str(value or "").strip().upper()
+            if len(token) < 3:
+                continue
+            pattern = rf"(?<![A-Z0-9_.-]){re.escape(token)}(?![A-Z0-9_.-])"
+            if re.search(pattern, haystack) or (token.startswith("9606.") and token in haystack):
+                row_id = str(row.get("protein_id") or row.get("gene_name") or token)
+                if row_id not in seen:
+                    seen.add(row_id)
+                    matches.append(row)
+                break
+        if len(matches) >= limit:
+            break
+    return matches
+
+
+def build_chat_mart_context(question: str, target: str = "") -> tuple[str, list[str]]:
+    top_targets = sorted(target_rows(), key=lambda row: row.get("rank") or 10**9)
+    network_rows = sorted(item_list("network_top_proteins"), key=lambda row: row.get("weighted_degree_protein") or 0, reverse=True)
+    ppi_edges_data = mart("ppi_visualization_edges")
+    ppi_edges = item_list("ppi_visualization_edges")
+    overview = mart("overview_summary")
+    geo_summary = mart("geo_validation_summary")
+    mapping_summary = mart("gene_protein_mapping_summary")
+
+    referenced_rows = find_referenced_mart_rows(question, top_targets + network_rows)
+    if target:
+        try:
+            selected = find_target(target)
+            referenced_rows = [selected, *[row for row in referenced_rows if row.get("protein_id") != selected.get("protein_id")]]
+        except HTTPException:
+            pass
+
+    payload = {
+        "source": "real_mart_json",
+        "mart_dir": str(settings.mart_dir),
+        "note": "Dữ liệu này được backend đọc trực tiếp từ visualization mart hiện tại, không phải dữ liệu giả.",
+        "overview_metrics": overview.get("metrics", []) if isinstance(overview, dict) else [],
+        "deg_summary": item_list("deg_summary"),
+        "mapping_summary": mapping_summary if isinstance(mapping_summary, dict) else {},
+        "geo_validation_summary": {
+            "mode": geo_summary.get("mode") if isinstance(geo_summary, dict) else None,
+            "description": geo_summary.get("description") if isinstance(geo_summary, dict) else None,
+            "items": geo_summary.get("items", []) if isinstance(geo_summary, dict) else [],
+        },
+        "ml_cluster_summary": item_list("ml_cluster_summary"),
+        "ppi_visualization_edges": {
+            "count": len(ppi_edges),
+            "edge_filter": ppi_edges_data.get("edge_filter") if isinstance(ppi_edges_data, dict) else None,
+            "examples": compact_rows(ppi_edges, ["gene_name_src", "gene_name_dst", "combined_score_protein", "edge_weight_protein"], 5),
+        },
+        "top_candidate_targets_enriched_top100": compact_rows(top_targets, CHAT_TARGET_FIELDS, 100),
+        "network_top_proteins_top25_by_weighted_degree": compact_rows(network_rows, CHAT_NETWORK_FIELDS, 25),
+        "top_deg_genes_top20": compact_rows(
+            item_list("top_deg_genes"),
+            ["gene_name", "gene_id_base", "log2FC", "p_value", "deg_direction", "abs_log2FC"],
+            20,
+        ),
+        "referenced_rows_from_question_or_selected_target": compact_rows(referenced_rows, CHAT_TARGET_FIELDS, 12),
+    }
+    sources = [
+        "overview_summary",
+        "deg_summary",
+        "gene_protein_mapping_summary",
+        "geo_validation_summary",
+        "ml_cluster_summary",
+        "ppi_visualization_edges",
+        "top_candidate_targets_enriched",
+        "network_top_proteins",
+        "top_deg_genes",
+    ]
+    return json.dumps(payload, ensure_ascii=False, default=str), sources
 
 
 def filtered_targets(
@@ -543,8 +664,20 @@ def chat(payload: dict[str, Any]) -> dict[str, Any]:
         ]
         target_context = json.dumps({key: row.get(key) for key in fields}, ensure_ascii=False)
 
+    mart_context, mart_sources = build_chat_mart_context(question, target)
+
     try:
-        return _rag.answer(question, target_context=target_context)
+        result = _rag.answer(question, target_context=target_context, mart_context=mart_context)
+        result["mart_context_used"] = True
+        result["mart_sources"] = mart_sources
+        result.setdefault("citations", []).insert(0, {
+            "chunk_id": "MART",
+            "title": "Real dashboard mart JSON snapshot",
+            "keywords": ", ".join(mart_sources),
+            "source_of_truth": "data/mart/*.json",
+            "similarity": 1.0,
+        })
+        return result
     except RagConfigurationError as exc:
         raise HTTPException(status_code=503, detail=str(exc)) from exc
     except Exception as exc:

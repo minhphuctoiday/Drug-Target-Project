@@ -283,25 +283,25 @@
         <section class="panel" id="tab-ai">
           <div class="section-head">
             <div>
-              <h2>Thử nghiệm / Công việc tiếp theo: Trợ lý AI</h2>
-              <p>Đây là giao diện thử nghiệm. Model API, RAG retrieval, finetune và model deployment chưa được kết nối trong bản dashboard local này.</p>
+              <h2>Trợ lý AI về DrugTargetProject</h2>
+              <p>Gemini 2.5 Flash trả lời dựa trên tri thức project được truy xuất từ ChromaDB và target đang chọn trên dashboard.</p>
             </div>
           </div>
           <div class="assistant-layout">
             <article class="panel-block">
-              <div class="panel-toolbar"><h3>Hỏi về project</h3><span class="coming-soon">Sắp có</span></div>
+              <div class="panel-toolbar"><h3>Hỏi về project</h3><span class="coming-soon" id="chat-status">Đang kiểm tra</span></div>
               <div class="chat-log" id="chat-log"></div>
               <form class="chat-form" id="chat-form">
-                <input id="chat-input" type="text" placeholder="Chức năng AI chưa được kết nối" disabled aria-disabled="true">
+                <input id="chat-input" type="text" placeholder="Đang kiểm tra trạng thái RAG" disabled aria-disabled="true" maxlength="4000">
                 <button type="submit" disabled aria-disabled="true">Gửi</button>
               </form>
             </article>
             <article class="panel-block">
               <h3>Điểm tích hợp</h3>
               <div class="hook-list">
-                <div><strong>Model API</strong><span class="coming-soon">Sắp có</span></div>
-                <div><strong>RAG Retrieval</strong><span class="coming-soon">Sắp có</span></div>
-                <div><strong>Finetune</strong><span class="coming-soon">Sắp có</span></div>
+                <div><strong>Model API</strong><span id="chat-model-status">Gemini 2.5 Flash</span></div>
+                <div><strong>RAG Retrieval</strong><span id="chat-rag-status">ChromaDB</span></div>
+                <div><strong>Grounding</strong><span>KB citation + target context</span></div>
                 <div><strong>Target hiện tại</strong><span id="chat-target">Chưa chọn target</span></div>
               </div>
             </article>

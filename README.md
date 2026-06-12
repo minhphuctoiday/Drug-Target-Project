@@ -10,7 +10,7 @@ This repository includes a dashboard scaffold for visualizing the drug-target pr
 - Static frontend with chart/table rendering and target detail drawer.
 - Visualization mart builder with local JSON fallback and optional HDFS write.
 - Optional MongoDB sync for mart snapshots.
-- AI Assistant UI only. Model API, RAG and finetune are intentionally not connected.
+- Project-grounded AI assistant using Gemini 2.5 Flash, Google embeddings and persistent ChromaDB retrieval.
 
 ### Run locally
 
@@ -38,6 +38,28 @@ Open:
 http://127.0.0.1:8000/
 http://127.0.0.1:8000/pipeline
 ```
+### Configure and index the RAG knowledge base
+
+Create the local environment file and add a Gemini API key:
+
+```bash
+cp .env.example .env
+```
+
+Validate that the Markdown knowledge base can be split into `KB-xxx` chunks without calling an external API:
+
+```bash
+python3 -m src.backend.jobs.index_rag_knowledge --validate-only
+```
+
+Generate Google embeddings and persist the chunks into ChromaDB:
+
+```bash
+python3 -m src.backend.jobs.index_rag_knowledge --rebuild
+```
+
+The chatbot uses `gemini-2.5-flash` for generation and `gemini-embedding-2` with 768-dimensional vectors by default. Its current configuration and index readiness are exposed at `/api/v1/chat/status`.
+
 
 The frontend expects real mart snapshots generated from HDFS phase outputs; missing marts are reported explicitly and no mock data fallback is used.
 

@@ -14,6 +14,7 @@ const state = {
   networkView: { panX: 0, panY: 0 },
   mlView: { centerX: 0, centerY: 0 },
   drag: null,
+  chatReady: false,
   suppressNetworkClick: false
 };
 
@@ -480,7 +481,16 @@ function canvasPoint(event, canvas) {
 }
 async function api(path, options = {}) {
   const response = await fetch(path, options);
-  if (!response.ok) throw new Error(`${path} -> HTTP ${response.status}`);
+  if (!response.ok) {
+    let detail = "";
+    try {
+      const body = await response.json();
+      detail = body.detail || body.message || "";
+    } catch (error) {
+      detail = "";
+    }
+    throw new Error(detail || `${path} -> HTTP ${response.status}`);
+  }
   return response.json();
 }
 
@@ -2108,13 +2118,45 @@ async function openTarget(proteinId, options = {}) {
   if (options.openDrawer) setDrawerOpen(true);
 }
 
-function addChatMessage(role, text) {
+function addChatMessage(role, text, citations = []) {
   const log = $("#chat-log");
   const div = document.createElement("div");
   div.className = `chat-message ${role}`;
-  div.innerHTML = `<small>${role === "user" ? "Bạn" : "Trợ lý"}</small>${esc(text)}`;
+  const citationHtml = citations.length ? `<div class="chat-citations">${citations.map((item) => `
+    <span title="${esc(item.source_of_truth || item.keywords || item.title)}">${esc(item.chunk_id)} · ${esc(item.title)} · ${esc(Math.round(Number(item.similarity || 0) * 100))}%</span>
+  `).join("")}</div>` : "";
+  div.innerHTML = `<small>${role === "user" ? "Bạn" : "Trợ lý"}</small><p>${esc(text)}</p>${citationHtml}`;
   log.appendChild(div);
   log.scrollTop = log.scrollHeight;
+}
+
+function configureChat(status) {
+  const input = $("#chat-input");
+  const button = $("#chat-form button");
+  const badge = $("#chat-status");
+  state.chatReady = Boolean(status?.ready);
+  input.disabled = !state.chatReady;
+  button.disabled = !state.chatReady;
+  input.setAttribute("aria-disabled", String(!state.chatReady));
+  button.setAttribute("aria-disabled", String(!state.chatReady));
+  $("#chat-model-status").textContent = status?.chat_model || "Gemini chưa cấu hình";
+  $("#chat-rag-status").textContent = `${fmt(status?.indexed_chunks || 0)} chunks · ${status?.embedding_model || "embedding chưa cấu hình"}`;
+
+  let label = `Sẵn sàng · ${fmt(status.indexed_chunks)} chunks`;
+  let placeholder = "Hỏi về pipeline, công thức, dữ liệu hoặc target đang chọn";
+  if (!status?.dependencies_ready) {
+    label = "Thiếu dependency RAG";
+    placeholder = "Cài requirements.txt để kích hoạt chatbot";
+  } else if (!status?.api_key_configured) {
+    label = "Thiếu GEMINI_API_KEY";
+    placeholder = "Thêm GEMINI_API_KEY vào file .env";
+  } else if (!status?.indexed_chunks) {
+    label = "Chưa index ChromaDB";
+    placeholder = "Chạy job index RAG để kích hoạt chatbot";
+  }
+  badge.textContent = label;
+  badge.classList.toggle("ready", state.chatReady);
+  input.placeholder = placeholder;
 }
 async function initializeData() {
   const health = await api("/api/v1/health");
@@ -2123,10 +2165,11 @@ async function initializeData() {
   $(".status-dot").classList.add("ok");
   $(".status-dot").classList.remove("error");
   const calls = [
-    ["overview", "/api/v1/overview"], ["qcSamples", "/api/v1/visualizations/qc/sample-counts"], ["qcExclusions", "/api/v1/visualizations/qc/exclusions"], ["qcLibrary", "/api/v1/visualizations/qc/library-size"], ["qcZero", "/api/v1/visualizations/qc/zero-gene-rate"], ["degSummary", "/api/v1/visualizations/deg/summary"], ["topDeg", "/api/v1/visualizations/deg/top-genes?limit=50"], ["heatmap", "/api/v1/visualizations/deg/heatmap?top_n=24"], ["mappingSummary", "/api/v1/visualizations/mapping/summary"], ["mappingConfidence", "/api/v1/visualizations/mapping/confidence"], ["unmapped", "/api/v1/mapping/unmapped"], ["networkTop", "/api/v1/visualizations/network/top-proteins?limit=100"], ["networkScores", "/api/v1/visualizations/network/score-distribution"], ["geoSummary", "/api/v1/visualizations/geo/summary"], ["geoTopSupported", "/api/v1/visualizations/geo/top-supported?limit=100"], ["geoScatter", "/api/v1/visualizations/geo/gdc-vs-support"], ["geoOverlap", "/api/v1/visualizations/geo/top-candidate-overlap?limit=100"], ["geoUnmatched", "/api/v1/geo/unmatched-candidates"], ["mlK", "/api/v1/visualizations/ml/k-selection"], ["mlSummary", "/api/v1/visualizations/ml/cluster-summary"], ["mlClusters", "/api/v1/ml/clusters"], ["mlExplain", "/api/v1/visualizations/ml/explainability"]
+    ["chatStatus", "/api/v1/chat/status"], ["overview", "/api/v1/overview"], ["qcSamples", "/api/v1/visualizations/qc/sample-counts"], ["qcExclusions", "/api/v1/visualizations/qc/exclusions"], ["qcLibrary", "/api/v1/visualizations/qc/library-size"], ["qcZero", "/api/v1/visualizations/qc/zero-gene-rate"], ["degSummary", "/api/v1/visualizations/deg/summary"], ["topDeg", "/api/v1/visualizations/deg/top-genes?limit=50"], ["heatmap", "/api/v1/visualizations/deg/heatmap?top_n=24"], ["mappingSummary", "/api/v1/visualizations/mapping/summary"], ["mappingConfidence", "/api/v1/visualizations/mapping/confidence"], ["unmapped", "/api/v1/mapping/unmapped"], ["networkTop", "/api/v1/visualizations/network/top-proteins?limit=100"], ["networkScores", "/api/v1/visualizations/network/score-distribution"], ["geoSummary", "/api/v1/visualizations/geo/summary"], ["geoTopSupported", "/api/v1/visualizations/geo/top-supported?limit=100"], ["geoScatter", "/api/v1/visualizations/geo/gdc-vs-support"], ["geoOverlap", "/api/v1/visualizations/geo/top-candidate-overlap?limit=100"], ["geoUnmatched", "/api/v1/geo/unmatched-candidates"], ["mlK", "/api/v1/visualizations/ml/k-selection"], ["mlSummary", "/api/v1/visualizations/ml/cluster-summary"], ["mlClusters", "/api/v1/ml/clusters"], ["mlExplain", "/api/v1/visualizations/ml/explainability"]
   ];
   const entries = await Promise.all(calls.map(async ([key, path]) => [key, await api(path)]));
   state.data = { ...state.data, ...Object.fromEntries(entries) };
+  configureChat(state.data.chatStatus);
   populateClusterControls();
 }
 
@@ -2330,11 +2373,24 @@ function bindEvents() {
     event.preventDefault();
     const input = $("#chat-input");
     const question = input.value.trim();
-    if (!question) return;
+    const button = $("#chat-form button");
+    if (!question || !state.chatReady) return;
     input.value = "";
     addChatMessage("user", question);
-    const response = await api("/api/v1/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question, target: state.currentTarget?.protein_id || null }) });
-    addChatMessage("assistant", response.answer);
+    input.disabled = true;
+    button.disabled = true;
+    button.textContent = "Đang hỏi...";
+    try {
+      const response = await api("/api/v1/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question, target: state.currentTarget?.protein_id || null }) });
+      addChatMessage("assistant", response.answer, response.citations || []);
+    } catch (error) {
+      addChatMessage("assistant", `Không thể trả lời: ${error.message}`);
+    } finally {
+      input.disabled = !state.chatReady;
+      button.disabled = !state.chatReady;
+      button.textContent = "Gửi";
+      if (state.chatReady) input.focus();
+    }
   });
   window.addEventListener("resize", () => {
     clearTimeout(window.__drugTargetResize);
@@ -2345,7 +2401,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   refreshIcons();
   bindEvents();
   activateTab(tabFromLocation(), { push: false, render: false });
-  addChatMessage("assistant", "Trợ lý AI đang ở chế độ thử nghiệm giao diện; dữ liệu dashboard lấy từ mart hiện tại của project.");
+  addChatMessage("assistant", "Mình sẽ trả lời dựa trên knowledge base của DrugTargetProject và trích dẫn các mục KB đã truy xuất.");
   try {
     await initializeData();
     await renderAll();

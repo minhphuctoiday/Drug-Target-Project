@@ -1,11 +1,13 @@
 from __future__ import annotations
 
+import json
 from typing import Any
 
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 
+from .rag import RagConfigurationError, get_rag_service
 from .repository import MartRepository
 from .settings import FRONTEND_DIR, settings
 
@@ -25,6 +27,7 @@ _repository = MartRepository(
     mongodb_uri=settings.mongodb_uri,
     mongodb_db=settings.mongodb_db,
 )
+_rag = get_rag_service()
 
 CLUSTER_INTERPRETATIONS = {
     0: "Biểu hiện mạnh, mạng cân bằng",
@@ -159,6 +162,7 @@ def frontend_asset(asset_name: str) -> FileResponse:
 
 @app.get("/api/v1/health")
 def health() -> dict[str, Any]:
+    rag_status = _rag.status()
     return {
         "status": "ok",
         "app": settings.app_name,
@@ -166,7 +170,7 @@ def health() -> dict[str, Any]:
         "mart_source": _repository.source_label,
         "mart_dir": str(settings.mart_dir),
         "mongodb_enabled": settings.mongodb_enabled,
-        "ai_mode": "ui_only_placeholder",
+        "ai_mode": "gemini_rag_ready" if rag_status["ready"] else "gemini_rag_not_ready",
         "mock_data": False,
     }
 
@@ -506,17 +510,42 @@ def ml_explainability() -> dict[str, Any]:
     }
 
 
+@app.get("/api/v1/chat/status")
+def chat_status() -> dict[str, Any]:
+    return _rag.status()
+
+
 @app.post("/api/v1/chat")
 def chat(payload: dict[str, Any]) -> dict[str, Any]:
     question = str(payload.get("question", "")).strip()
+    if not question:
+        raise HTTPException(status_code=422, detail="Question must not be empty")
+    if len(question) > 4000:
+        raise HTTPException(status_code=422, detail="Question is too long; maximum length is 4000 characters")
+
     target = str(payload.get("target", "")).strip()
-    focus = f" for {target}" if target else ""
-    return {
-        "mode": "ui_only_placeholder",
-        "answer": (
-            f"AI model, RAG and finetune are not connected in this build. "
-            f"The interface captured your question{focus}: '{question}'. "
-            "This hook is ready for a future project-grounded model service."
-        ),
-        "citations": [],
-    }
+    target_context = ""
+    if target:
+        row = find_target(target)
+        fields = [
+            "gene_name",
+            "protein_id",
+            "rank",
+            "final_score",
+            "log2FC",
+            "p_value",
+            "deg_direction",
+            "weighted_degree_protein",
+            "avg_combined_score",
+            "geo_support_score",
+            "geo_support_level",
+            "cluster_id",
+        ]
+        target_context = json.dumps({key: row.get(key) for key in fields}, ensure_ascii=False)
+
+    try:
+        return _rag.answer(question, target_context=target_context)
+    except RagConfigurationError as exc:
+        raise HTTPException(status_code=503, detail=str(exc)) from exc
+    except Exception as exc:
+        raise HTTPException(status_code=502, detail=f"Gemini RAG request failed: {exc}") from exc

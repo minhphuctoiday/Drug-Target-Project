@@ -247,10 +247,10 @@ Nguyên tắc raw layer:
 
 Giới hạn repository hiện tại:
 
-- `Ingest/README.md` đang rỗng.
 - `ingest_gdc_luad_raw.json` đang rỗng.
 - GEO template là mô tả flow, chưa phải full NiFi flow export.
 - STRING có flow/template đầy đủ hơn.
+- `Ingest/README.md` ghi rõ trạng thái của từng artifact ingest.
 
 ---
 
@@ -1555,7 +1555,7 @@ Nhóm API chính:
 - `/api/v1/visualizations/geo/...`
 - `/api/v1/visualizations/ml/...`
 
-AI Assistant hiện chỉ là UI placeholder; chưa kết nối model API, RAG hoặc finetune.
+AI Assistant đã có backend RAG qua Gemini, Google embeddings và ChromaDB. Trạng thái cấu hình được expose ở `/api/v1/chat/status`; khi thiếu dependency, `GEMINI_API_KEY` hoặc Chroma index, UI sẽ disable input và hiển thị lý do.
 
 ---
 
@@ -1689,7 +1689,7 @@ Các hướng phát triển phù hợp:
 - Dùng cohort bên ngoài có cả Tumor và Normal.
 - Bổ sung protein abundance hoặc proteomics.
 - Tự động version hóa run, HDFS output và mart snapshot.
-- Xây dựng RAG chatbot với Gemini 2.5 Flash và ChromaDB.
+- Mở rộng RAG chatbot với thêm nguồn tri thức, kiểm thử câu trả lời và quy tắc citation chặt hơn.
 
 ---
 
